@@ -13,7 +13,7 @@ extents = Vector2( 44.8035, 8.57422 )
 [node name="Main" type="Node2D"]
 
 [node name="Fundo" type="Sprite" parent="."]
-position = Vector2( 741.59, 579.53 )
+position = Vector2( 706.667, 540.831 )
 scale = Vector2( 2.25597, 2 )
 texture = ExtResource( 4 )
 __meta__ = {
@@ -27,17 +27,17 @@ position = Vector2( -934.867, 77.2743 )
 polygon = PoolVector2Array( 360.829, -42.134, 377.478, -43.3232, 410.776, -31.4312, 477.372, -31.4312, 477.372, 14.9479, 736.619, 19.7047, 733.051, -138.46, 822.242, -144.406, 836.512, 10.191, 979.217, 18.5155, 978.028, -25.4851, 1027.97, -25.4851, 1030.35, -76.621, 1075.54, -74.2426, 1076.73, -121.811, 1126.68, -124.189, 1135, -159.865, 1201.6, -161.055, 1206.36, 7.81262, 1252.74, 0.677368, 1357.39, 3.05579, 1510.79, 4.245, 1508.41, 92.2463, 353.694, 87.4896 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Fundo/StaticBody2D"]
-position = Vector2( -320.723, -23.9728 )
+position = Vector2( -324.07, -15.9498 )
 shape = SubResource( 2 )
 one_way_collision = true
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Fundo/StaticBody2D"]
-position = Vector2( 345.36, -43.4508 )
+position = Vector2( 341.594, -39.2034 )
 shape = SubResource( 3 )
 one_way_collision = true
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Fundo/StaticBody2D"]
-position = Vector2( 450.99, 16.4816 )
+position = Vector2( 451.409, 19.7851 )
 shape = SubResource( 3 )
 one_way_collision = true
 
