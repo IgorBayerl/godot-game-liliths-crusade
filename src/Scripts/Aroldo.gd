@@ -37,7 +37,7 @@ func sees_player():
 	var eye_right = eye_center + Vector2(eye_reach, 0)
 
 	var player_pos = Player.get_global_position()
-	var player_extents = Player.get_node("CollisionShape2D").shape.extents - Vector2(1, 1)
+	var player_extents = Player.get_node("Colision").shape.extents - Vector2(1, 1)
 	var top_left = player_pos + Vector2(-player_extents.x, -player_extents.y)
 	var top_right = player_pos + Vector2(player_extents.x, -player_extents.y)
 	var bottom_left = player_pos + Vector2(-player_extents.x, player_extents.y)
@@ -49,7 +49,7 @@ func sees_player():
 		for corner in [top_left, top_right, bottom_left, bottom_right]:
 			if (corner - eye).length() > vision:
 				continue
-			var collision = space_state.intersect_ray(eye, corner, [], 1) # collision mask = sum of 2^(collision layers) - e.g 2^0 + 2^3 = 9
+			var collision = space_state.intersect_ray(eye, corner, [], 4) # collision mask = sum of 2^(collision layers) - e.g 2^0 + 2^3 = 9
 			if collision and collision.collider.name == "Player":
 				return true
 	return false
