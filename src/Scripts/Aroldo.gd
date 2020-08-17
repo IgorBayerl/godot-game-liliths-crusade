@@ -1,8 +1,5 @@
 extends KinematicBody2D
 
-# Gonkee's follow AI for Godot 3 - full tutorial https://youtu.be/WXC8eBCEbho
-# If you use this script in your own project, I would prefer it if you gave credit to me and my channel
-
 onready var Player = get_parent().get_node("Player")
 
 var vel = Vector2(0, 0)
