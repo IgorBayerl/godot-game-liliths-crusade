@@ -12,10 +12,11 @@ extents = Vector2( 31.9642, 31.0912 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 365.807, 265.471 )
+collision_layer = 4
 JUMP_FORCE = -1000
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2( 433.532, 503.843 )
+position = Vector2( 682.996, 506.363 )
 scale = Vector2( 31.2484, 0.372927 )
 __meta__ = {
 "_edit_group_": true
@@ -28,7 +29,7 @@ shape = SubResource( 1 )
 texture = ExtResource( 2 )
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
-position = Vector2( 882.516, 400.576 )
+position = Vector2( 885.513, 400.576 )
 scale = Vector2( 4.52838, 0.372927 )
 __meta__ = {
 "_edit_group_": true
@@ -67,7 +68,10 @@ shape = SubResource( 1 )
 texture = ExtResource( 2 )
 
 [node name="Area2D" parent="." instance=ExtResource( 4 )]
-position = Vector2( 694.712, 461.711 )
+position = Vector2( 641.286, 456.525 )
+collision_mask = 4
 
 [node name="Aroldo" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1191.1, 419.265 )
+position = Vector2( 1574.11, 426.825 )
+collision_layer = 2
+collision_mask = 5
