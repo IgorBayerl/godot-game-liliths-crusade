@@ -53,7 +53,7 @@ shape = SubResource( 1 )
 texture = ExtResource( 2 )
 
 [node name="StaticBody2D4" type="StaticBody2D" parent="."]
-position = Vector2( -64.8416, 391.597 )
+position = Vector2( -64.8416, 389.597 )
 scale = Vector2( 4.52838, 0.372927 )
 __meta__ = {
 "_edit_group_": true

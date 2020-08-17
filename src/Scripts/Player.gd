@@ -8,7 +8,7 @@ const NORMAL = Vector2(0, -1)
 
 var motion = Vector2()
 var direction = Vector2()
-
+var is_dashing = false
 
 func _physics_process(delta: float) -> void:
 	_direction_move(delta)
@@ -46,6 +46,9 @@ func _direction_move(delta):
 	else:
 		GRAVITY = 50
 		
+	if Input.is_action_just_pressed("hability"):
+		dash()
+		
 	motion = move_and_slide(motion  , NORMAL)
 #	print(direction)
 	
@@ -54,3 +57,20 @@ func _pode_pular() -> bool:
 		return true
 	else:
 		return false
+		
+func _can_dash() -> bool:
+	if is_dashing == false:
+		return true
+	else:
+		return false
+		
+func dash():
+	if not _can_dash():
+		is_dashing = true
+		SPEED = 800
+		$Timer.start()
+
+func _on_Timer_timeout() -> void:
+	SPEED = 300
+	yield(get_tree().create_timer(0.5), "timeout")
+	is_dashing = false
