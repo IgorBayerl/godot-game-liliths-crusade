@@ -19,7 +19,6 @@ func _direction_move(delta):
 	direction = Vector2()
 	motion.y += GRAVITY
 	
-	
 	if Input.is_action_pressed("move_UP"):
 #		motion.y = -SPEED 
 		direction += Vector2(0,1)
@@ -39,12 +38,13 @@ func _direction_move(delta):
 		direction += Vector2(0,0)
 		motion.x = 0
 		
-		
-	if Input.is_action_pressed("jump") and _pode_pular():
-		var gravidade_save = GRAVITY
-		if Input.is_action_pressed("jump"):
+	if Input.is_action_pressed("jump"):
+		if _pode_pular():
 			motion.y = JUMP_FORCE
-		
+	elif motion.y < 0 :
+		GRAVITY = 120
+	else:
+		GRAVITY = 50
 		
 	motion = move_and_slide(motion  , NORMAL)
 #	print(direction)
