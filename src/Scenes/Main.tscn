@@ -1,14 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/Actors/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
 [ext_resource path="res://src/Actors/Aroldo.tscn" type="PackedScene" id=3]
-[ext_resource path="res://src/Sprites/Fundo.png" type="Texture" id=4]
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 57.7427, 14.5675 )
-
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 44.8035, 8.57422 )
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 31.9642, 31.0912 )
 
 [node name="Main" type="Node2D"]
 
@@ -16,15 +13,23 @@ extents = Vector2( 44.8035, 8.57422 )
 position = Vector2( 706.667, 540.831 )
 scale = Vector2( 2.25597, 2 )
 texture = ExtResource( 4 )
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 365.807, 265.471 )
+collision_mask = 2147483655
+JUMP_FORCE = -1000
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2( 682.996, 506.363 )
+scale = Vector2( 31.2484, 0.372927 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Fundo"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource( 1 )
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Fundo/StaticBody2D"]
-position = Vector2( -934.867, 77.2743 )
-polygon = PoolVector2Array( 360.829, -42.134, 377.478, -43.3232, 410.776, -31.4312, 477.372, -31.4312, 477.372, 14.9479, 736.619, 19.7047, 733.051, -138.46, 822.242, -144.406, 836.512, 10.191, 979.217, 18.5155, 978.028, -25.4851, 1027.97, -25.4851, 1030.35, -76.621, 1075.54, -74.2426, 1076.73, -121.811, 1126.68, -124.189, 1135, -159.865, 1201.6, -161.055, 1206.36, 7.81262, 1252.74, 0.677368, 1357.39, 3.05579, 1510.79, 4.245, 1508.41, 92.2463, 353.694, 87.4896 )
+[node name="Sprite" type="Sprite" parent="StaticBody2D"]
+texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Fundo/StaticBody2D"]
 position = Vector2( -324.07, -15.9498 )
@@ -40,14 +45,45 @@ one_way_collision = true
 position = Vector2( 451.409, 19.7851 )
 shape = SubResource( 3 )
 one_way_collision = true
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2( 885.513, 400.576 )
+scale = Vector2( 4.52838, 0.372927 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="StaticBody2D2"]
+texture = ExtResource( 2 )
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+position = Vector2( 1093.54, 256.901 )
+scale = Vector2( 4.52838, 0.372927 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="StaticBody2D3"]
+texture = ExtResource( 2 )
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="."]
+position = Vector2( -64.8416, 389.597 )
+scale = Vector2( 4.52838, 0.372927 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="StaticBody2D4"]
+texture = ExtResource( 2 )
 
 [node name="Aroldo" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1574.11, 426.825 )
-collision_layer = 2
-collision_mask = 5
-
-[node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 365.807, 265.471 )
-scale = Vector2( 1, 1 )
-collision_layer = 4
-JUMP_FORCE = -1000
+position = Vector2( 1431.08, 293.395 )
+collision_mask = 7
