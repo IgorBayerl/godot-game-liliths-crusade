@@ -67,6 +67,4 @@ shape = SubResource( 1 )
 texture = ExtResource( 2 )
 
 [node name="Aroldo" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1574.11, 426.825 )
-collision_layer = 2
-collision_mask = 5
+position = Vector2( 819.772, 329.354 )

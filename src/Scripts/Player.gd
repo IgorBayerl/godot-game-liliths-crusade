@@ -12,10 +12,10 @@ var is_dashing = false
 
 
 func _physics_process(delta: float) -> void:
-	_direction_move(delta)
+	_direction_move()
 	
 #	 MOVIMENTAÇÃO DO PLAYER
-func _direction_move(delta):
+func _direction_move():
 	
 	direction = Vector2()
 	motion.y += GRAVITY
