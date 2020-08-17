@@ -9,10 +9,6 @@ extents = Vector2( 31.9642, 31.0912 )
 
 [node name="Main" type="Node2D"]
 
-[node name="Fundo" type="Sprite" parent="."]
-position = Vector2( 706.667, 540.831 )
-scale = Vector2( 2.25597, 2 )
-texture = ExtResource( 4 )
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 365.807, 265.471 )
 collision_mask = 2147483655
@@ -31,20 +27,6 @@ shape = SubResource( 1 )
 [node name="Sprite" type="Sprite" parent="StaticBody2D"]
 texture = ExtResource( 2 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Fundo/StaticBody2D"]
-position = Vector2( -324.07, -15.9498 )
-shape = SubResource( 2 )
-one_way_collision = true
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Fundo/StaticBody2D"]
-position = Vector2( 341.594, -39.2034 )
-shape = SubResource( 3 )
-one_way_collision = true
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Fundo/StaticBody2D"]
-position = Vector2( 451.409, 19.7851 )
-shape = SubResource( 3 )
-one_way_collision = true
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
 position = Vector2( 885.513, 400.576 )
 scale = Vector2( 4.52838, 0.372927 )
@@ -85,5 +67,5 @@ shape = SubResource( 1 )
 texture = ExtResource( 2 )
 
 [node name="Aroldo" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1431.08, 293.395 )
+position = Vector2( 1415.21, 299.745 )
 collision_mask = 7
