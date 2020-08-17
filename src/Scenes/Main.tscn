@@ -9,7 +9,7 @@ extents = Vector2( 31.9642, 31.0912 )
 [node name="Main" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 417, 176 )
+position = Vector2( 439.224, 201.398 )
 JUMP_FORCE = -1000
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
