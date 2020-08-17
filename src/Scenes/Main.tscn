@@ -10,7 +10,7 @@ extents = Vector2( 31.9642, 31.0912 )
 [node name="Main" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 439.224, 201.398 )
+position = Vector2( 365.807, 265.471 )
 JUMP_FORCE = -1000
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
@@ -27,4 +27,4 @@ shape = SubResource( 1 )
 texture = ExtResource( 2 )
 
 [node name="Aroldo" parent="." instance=ExtResource( 3 )]
-position = Vector2( 618.277, 276.66 )
+position = Vector2( 575.563, 277.995 )

@@ -40,7 +40,7 @@ func _direction_move(delta):
 		motion.x = 0
 		
 		
-	if Input.is_action_just_pressed("jump") and is_on_floor():
+	if Input.is_action_pressed("jump") and _pode_pular():
 		var gravidade_save = GRAVITY
 		if Input.is_action_pressed("jump"):
 			motion.y = JUMP_FORCE
