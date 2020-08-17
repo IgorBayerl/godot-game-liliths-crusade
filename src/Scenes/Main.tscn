@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/Actors/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://src/Actors/Aroldo.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 31.9642, 31.0912 )
@@ -9,7 +10,8 @@ extents = Vector2( 31.9642, 31.0912 )
 [node name="Main" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 439.224, 201.398 )
+position = Vector2( 417, 176 )
+scale = Vector2( 1.00607, 0.986405 )
 JUMP_FORCE = -1000
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
@@ -24,3 +26,6 @@ shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="StaticBody2D"]
 texture = ExtResource( 2 )
+
+[node name="Aroldo" parent="." instance=ExtResource( 3 )]
+position = Vector2( 585.029, 254.635 )
