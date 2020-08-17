@@ -6,8 +6,6 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 [node name="Aroldo" type="KinematicBody2D"]
-collision_layer = 2
-collision_mask = 5
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
