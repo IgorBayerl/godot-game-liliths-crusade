@@ -14,8 +14,8 @@ position = Vector2( 365.807, 265.471 )
 JUMP_FORCE = -1000
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2( 462.716, 407.311 )
-scale = Vector2( 8.16838, 0.372927 )
+position = Vector2( 433.532, 503.843 )
+scale = Vector2( 31.2484, 0.372927 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -24,6 +24,45 @@ __meta__ = {
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="StaticBody2D"]
+texture = ExtResource( 2 )
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2( 882.516, 400.576 )
+scale = Vector2( 4.52838, 0.372927 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="StaticBody2D2"]
+texture = ExtResource( 2 )
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+position = Vector2( 1093.54, 256.901 )
+scale = Vector2( 4.52838, 0.372927 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="StaticBody2D3"]
+texture = ExtResource( 2 )
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="."]
+position = Vector2( -64.8416, 391.597 )
+scale = Vector2( 4.52838, 0.372927 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="StaticBody2D4"]
 texture = ExtResource( 2 )
 
 [node name="Aroldo" parent="." instance=ExtResource( 3 )]
