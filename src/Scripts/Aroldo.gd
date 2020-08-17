@@ -46,7 +46,7 @@ func sees_player():
 		for corner in [top_left, top_right, bottom_left, bottom_right]:
 			if (corner - eye).length() > vision:
 				continue
-			var collision = space_state.intersect_ray(eye, corner, [], 1) # collision mask = sum of 2^(collision layers) - e.g 2^0 + 2^3 = 9
+			var collision = space_state.intersect_ray(eye, corner, [], 4) # collision mask = sum of 2^(collision layers) - e.g 2^0 + 2^3 = 9
 			if collision and collision.collider.name == "Player":
 				return true
 	return false

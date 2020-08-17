@@ -18,7 +18,7 @@ extents = Vector2( 44.8035, 8.57422 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 365.807, 265.471 )
-collision_layer = 4
+collision_mask = 2147483655
 JUMP_FORCE = -1000
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
@@ -97,3 +97,5 @@ shape = SubResource( 3 )
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Fundo"]
 position = Vector2( 450.99, 16.4816 )
 shape = SubResource( 3 )
+position = Vector2( 1431.08, 293.395 )
+collision_mask = 7
