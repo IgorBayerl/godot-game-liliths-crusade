@@ -37,7 +37,7 @@ func sees_player():
 	var eye_right = eye_center + Vector2(eye_reach, 0)
 
 	var player_pos = Player.get_global_position()
-	var player_extents = Player.get_node("Colision").shape.extents - Vector2(1, 1)
+	var player_extents = Player.get_node("CollisionShape2D").shape.extents - Vector2(1, 1)
 	var top_left = player_pos + Vector2(-player_extents.x, -player_extents.y)
 	var top_right = player_pos + Vector2(player_extents.x, -player_extents.y)
 	var bottom_left = player_pos + Vector2(-player_extents.x, player_extents.y)

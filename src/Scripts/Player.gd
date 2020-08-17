@@ -10,11 +10,10 @@ var motion = Vector2()
 var direction = Vector2()
 var is_dashing = false
 
-
 func _physics_process(delta: float) -> void:
 	_direction_move(delta)
 	
-#	 MOVIMENTAÇÃO DO PLAYER
+	
 func _direction_move(delta):
 	
 	direction = Vector2()
@@ -48,34 +47,30 @@ func _direction_move(delta):
 		GRAVITY = 50
 		
 	if Input.is_action_just_pressed("hability"):
-		dash(  )
+		dash()
 		
 	motion = move_and_slide(motion  , NORMAL)
-
+#	print(direction)
 	
 func _pode_pular() -> bool:
-	if is_on_floor() :
+	if is_on_floor():
 		return true
 	else:
 		return false
 		
-#		DASH
 func _can_dash() -> bool:
 	if is_dashing == false:
 		return true
 	else:
-		return false	
-
-func dash( ) :
-	if _can_dash():
+		return false
+		
+func dash():
+	if not _can_dash():
 		is_dashing = true
 		SPEED = 800
-		$Dash.visible = false
 		$Timer.start()
-	
 
 func _on_Timer_timeout() -> void:
 	SPEED = 300
 	yield(get_tree().create_timer(0.5), "timeout")
 	is_dashing = false
-	$Dash.visible = true
