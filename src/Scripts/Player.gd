@@ -64,7 +64,7 @@ func _can_dash() -> bool:
 	if is_dashing == false:
 		return true
 	else:
-		return false
+		return false	
 
 func dash( ) :
 	if _can_dash():
@@ -72,7 +72,7 @@ func dash( ) :
 		SPEED = 800
 		$Dash.visible = false
 		$Timer.start()
-
+	
 
 func _on_Timer_timeout() -> void:
 	SPEED = 300

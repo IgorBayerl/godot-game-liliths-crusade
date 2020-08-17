@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/Actors/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 [ext_resource path="res://src/Actors/Aroldo.tscn" type="PackedScene" id=3]
-[ext_resource path="res://src/Actors/Destrutiveis/Barril.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 31.9642, 31.0912 )
@@ -65,9 +64,6 @@ shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="StaticBody2D4"]
 texture = ExtResource( 2 )
-
-[node name="Area2D" parent="." instance=ExtResource( 4 )]
-position = Vector2( 694.712, 461.711 )
 
 [node name="Aroldo" parent="." instance=ExtResource( 3 )]
 position = Vector2( 1191.1, 419.265 )
