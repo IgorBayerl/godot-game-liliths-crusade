@@ -86,14 +86,6 @@ move_RIGHT={
  ]
 }
 
-[layer_names]
-
-2d_physics/layer_1="Terrain"
-2d_physics/layer_2="Enemyes"
-2d_physics/layer_3="Player"
-2d_physics/layer_4="PlayerDash"
-2d_physics/layer_5="Coletables"
-
 [rendering]
 
 environment/default_environment="res://default_env.tres"
