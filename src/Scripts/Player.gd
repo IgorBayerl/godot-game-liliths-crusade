@@ -66,11 +66,14 @@ func _can_dash() -> bool:
 		
 func dash():
 	if _can_dash():
+		
 		is_dashing = true
 		SPEED = 800
+		$Dash.visible = false
 		$Timer.start()
 
 func _on_Timer_timeout() -> void:
 	SPEED = 300
 	yield(get_tree().create_timer(0.5), "timeout")
 	is_dashing = false
+	$Dash.visible = true
