@@ -4,7 +4,7 @@ var bullet = preload("res://src/Actors/Projeteis/Bullet.tscn")
 
 export var bullet_speed = 1000
 export var fire_rate = 0.2
-export var random_rate = 0.1
+export var random_rate = 0.08
 
 var dir: = Vector2()
 var can_fire = true
