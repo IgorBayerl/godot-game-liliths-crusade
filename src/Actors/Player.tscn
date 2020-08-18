@@ -48,6 +48,7 @@ texture = ExtResource( 2 )
 
 [node name="Light2D" type="Light2D" parent="."]
 texture = ExtResource( 4 )
+color = Color( 0.937255, 0.862745, 0.862745, 1 )
 energy = 0.7
 shadow_enabled = true
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
