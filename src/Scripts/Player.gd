@@ -9,6 +9,7 @@ const NORMAL = Vector2(0, -1)
 var motion = Vector2()
 var direction = Vector2()
 var is_dashing = false
+var can_dash = true
 
 func _physics_process(delta: float) -> void:
 	_direction_move(delta)
@@ -59,7 +60,7 @@ func _pode_pular() -> bool:
 		return false
 		
 func _can_dash() -> bool:
-	if is_dashing == false:
+	if is_dashing == false and can_dash == true:
 		return true
 	else:
 		return false
@@ -68,12 +69,23 @@ func dash():
 	if _can_dash():
 		
 		is_dashing = true
+		can_dash = false
 		SPEED = 800
 		$Dash.visible = false
-		$Timer.start()
+		$Dash_Timer.start()
 
 func _on_Timer_timeout() -> void:
 	SPEED = 300
-	yield(get_tree().create_timer(0.5), "timeout")
 	is_dashing = false
+	yield(get_tree().create_timer(0.5), "timeout")
+	can_dash = true
 	$Dash.visible = true
+
+
+
+func _on_Ghost_Timer_timeout() -> void:
+	if is_dashing:
+		var this_ghost = preload("res://src/Actors/Efeitos/ghost.tscn").instance()
+		get_parent().add_child(this_ghost)
+		this_ghost.position = position
+	

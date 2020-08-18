@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/STEPS - LEAVES.wav-b251975e8d38c8f0fee7b7f8cdc7950e.sample"
+
+[deps]
+
+source_file="res://src/Assets/Audios/Effects/STEPS - LEAVES.wav"
+dest_files=[ "res://.import/STEPS - LEAVES.wav-b251975e8d38c8f0fee7b7f8cdc7950e.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

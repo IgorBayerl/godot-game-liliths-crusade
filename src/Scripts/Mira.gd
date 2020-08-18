@@ -4,7 +4,7 @@ var bullet = preload("res://src/Actors/Projeteis/Bullet.tscn")
 
 export var bullet_speed = 1000
 export var fire_rate = 0.2
-export var random_rate = 1
+export var random_rate = 0.1
 
 var dir: = Vector2()
 var can_fire = true
@@ -15,6 +15,7 @@ func _process(delta: float) -> void:
 	
 	if Input.is_action_pressed("shoot") and can_fire:
 		instanciate_bullet()
+		$SoundEffects/Shoot.play()
 		
 func get_direction() -> int:
 	if Input.get_action_strength("move_LEFT") :
@@ -26,15 +27,18 @@ func get_direction() -> int:
 func instanciate_bullet() ->void:
 	var bullet_instance = bullet.instance()
 	bullet_instance.position = get_global_position()
-	bullet_instance.rotation_degrees = rotation_degrees
-	bullet_instance.apply_impulse(Vector2(),Vector2(bullet_speed,0).rotated(rotation))
+	bullet_instance.rotation_degrees = rotation_degrees + _random_value()
+	bullet_instance.apply_impulse(Vector2(),Vector2(bullet_speed,0).rotated(rotation + _random_value()))
 	get_tree().get_root().add_child((bullet_instance))
 	can_fire = false
 	yield(get_tree().create_timer(fire_rate), "timeout")
 	can_fire = true
 
 func _random_value()-> float:
-	return rand_range( -random_rate , random_rate )
+	var _random_shoot_value = 0
+	_random_shoot_value = rand_range( -random_rate , random_rate )
+	print(_random_shoot_value)
+	return _random_shoot_value
 	
 func set_direction_view() -> void:
 	
