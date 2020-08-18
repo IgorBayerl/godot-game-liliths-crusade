@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 [ext_resource path="res://src/Scripts/Mira.gd" type="Script" id=3]
+[ext_resource path="res://src/Assets/Sprites/light.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 27.9387, 29.178 )
@@ -23,6 +24,7 @@ script = ExtResource( 3 )
 __meta__ = {
 "_edit_group_": true
 }
+fire_rate = 0.1
 
 [node name="Arma" type="Sprite" parent="Mira"]
 position = Vector2( 51.0576, -0.333706 )
@@ -43,4 +45,9 @@ one_shot = true
 position = Vector2( -0.480262, -41.0047 )
 scale = Vector2( 0.137369, 0.137369 )
 texture = ExtResource( 2 )
+
+[node name="Light2D" type="Light2D" parent="."]
+texture = ExtResource( 4 )
+energy = 0.18
+shadow_enabled = true
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

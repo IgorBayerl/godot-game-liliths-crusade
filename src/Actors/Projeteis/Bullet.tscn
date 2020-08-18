@@ -7,10 +7,15 @@
 
 [node name="RigidBody2D" type="RigidBody2D"]
 collision_layer = 16
-collision_mask = 2
+collision_mask = 3
 mass = 0.00102041
 gravity_scale = 0.0
+contacts_reported = 1
+contact_monitor = true
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Sprite" type="Sprite" parent="."]
 rotation = 1.5708

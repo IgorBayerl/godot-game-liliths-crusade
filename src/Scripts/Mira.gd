@@ -4,6 +4,7 @@ var bullet = preload("res://src/Actors/Projeteis/Bullet.tscn")
 
 export var bullet_speed = 1000
 export var fire_rate = 0.2
+export var random_rate = 1
 
 var dir: = Vector2()
 var can_fire = true
@@ -32,6 +33,9 @@ func instanciate_bullet() ->void:
 	yield(get_tree().create_timer(fire_rate), "timeout")
 	can_fire = true
 
+func _random_value()-> float:
+	return rand_range( -random_rate , random_rate )
+	
 func set_direction_view() -> void:
 	
 	if get_direction() < 0:
