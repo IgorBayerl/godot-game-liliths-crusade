@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/Actors/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Sprites/Fundo.png" type="Texture" id=2]
 [ext_resource path="res://src/Actors/Aroldo.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/Sprites/Fundao.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 59.2435, 10 )
@@ -11,6 +12,11 @@ extents = Vector2( 59.2435, 10 )
 extents = Vector2( 50.2435, 7.00397 )
 
 [node name="Main" type="Node2D"]
+
+[node name="Fundao" type="Sprite" parent="."]
+position = Vector2( 669.485, 567.206 )
+scale = Vector2( 2.77788, 2.40004 )
+texture = ExtResource( 4 )
 
 [node name="Fundo" type="Sprite" parent="."]
 position = Vector2( 692.679, 583.687 )
