@@ -71,6 +71,7 @@ stream = ExtResource( 6 )
 
 [node name="Head" type="Sprite" parent="SPRITES"]
 position = Vector2( 1.18921, -59.4603 )
+scale = Vector2( 1.82315, 1.82315 )
 texture = ExtResource( 8 )
 [connection signal="timeout" from="Dash_Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="Ghost_Timer" to="." method="_on_Ghost_Timer_timeout"]
