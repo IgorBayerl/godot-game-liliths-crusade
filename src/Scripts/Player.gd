@@ -79,7 +79,7 @@ func dash():
 		$Dash_sound.play()
 		is_dashing = true
 		can_dash = false
-		SPEED = 800
+		SPEED = 1000
 		$Dash.visible = false
 		$Dash_Timer.start()
 
@@ -102,7 +102,11 @@ func animations_set():
 		dir.x = dir.x * -1
 	if dir.x == 0 and LOOKING_DIRECTION.x != 0:
 		dir.x = 1
-		
+	
+	if  direction.x != 0 and is_on_floor():
+		$SPRITES/body.play("RUNNING")
+	else :
+		$SPRITES/body.play("IDLE")
 		
 	$SPRITES/Head.rotation = -dir.angle()
 	$SPRITES.scale.x = LOOKING_DIRECTION.x
