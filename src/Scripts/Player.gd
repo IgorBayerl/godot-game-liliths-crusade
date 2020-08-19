@@ -2,9 +2,11 @@ extends KinematicBody2D
 
 export var SPEED = 300
 export var GRAVITY = 50
-export var JUMP_FORCE = -300
+export var JUMP_FORCE = -1000
 
 const NORMAL = Vector2(0, -1)
+
+var LOOKING_DIRECTION = Vector2( 1 , 0 )
 
 var motion = Vector2()
 var direction = Vector2()
@@ -13,6 +15,11 @@ var can_dash = true
 
 func _physics_process(delta: float) -> void:
 	_direction_move(delta)
+	animations_set()
+	if Input.is_action_just_pressed("interact"):
+		$Camera2D.shake = true
+		yield(get_tree().create_timer(0.2), "timeout")
+		$Camera2D.shake = false
 	
 	
 func _direction_move(delta):
@@ -32,9 +39,11 @@ func _direction_move(delta):
 	if Input.is_action_pressed("move_RIGHT"):
 		motion.x = SPEED 
 		direction += Vector2(1 ,0)
+		LOOKING_DIRECTION.x = 1
 	elif Input.is_action_pressed("move_LEFT"):
 		motion.x = -SPEED 
 		direction += Vector2(-1 ,0)
+		LOOKING_DIRECTION.x = -1 
 	else:
 		direction += Vector2(0,0)
 		motion.x = 0
@@ -67,7 +76,7 @@ func _can_dash() -> bool:
 		
 func dash():
 	if _can_dash():
-		
+		$Dash_sound.play()
 		is_dashing = true
 		can_dash = false
 		SPEED = 800
@@ -81,11 +90,25 @@ func _on_Timer_timeout() -> void:
 	can_dash = true
 	$Dash.visible = true
 
-
-
 func _on_Ghost_Timer_timeout() -> void:
 	if is_dashing:
 		var this_ghost = preload("res://src/Actors/Efeitos/ghost.tscn").instance()
 		get_parent().add_child(this_ghost)
 		this_ghost.position = position
 	
+func animations_set():
+	var dir = direction
+	if direction.x < 0:
+		dir.x = dir.x * -1
+	if dir.x == 0 and LOOKING_DIRECTION.x != 0:
+		dir.x = 1
+		
+		
+	$SPRITES/Head.rotation = -dir.angle()
+	$SPRITES.scale.x = LOOKING_DIRECTION.x
+
+
+
+
+
+

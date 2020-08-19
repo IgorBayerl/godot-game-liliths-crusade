@@ -37,7 +37,6 @@ func instanciate_bullet() ->void:
 func _random_value()-> float:
 	var _random_shoot_value = 0
 	_random_shoot_value = rand_range( -random_rate , random_rate )
-	print(_random_shoot_value)
 	return _random_shoot_value
 	
 func set_direction_view() -> void:
@@ -70,8 +69,7 @@ func set_direction_view() -> void:
 	var new_dir: = Vector2()
 	
 #	print( dir )
-	new_dir = dir
-	rotation = new_dir.angle()
+	rotation = dir.angle()
 	
 	
 	
