@@ -19,6 +19,10 @@ config/name="Jogo Godot"
 run/main_scene="res://src/Scenes/Main.tscn"
 config/icon="res://icon.png"
 
+[display]
+
+window/stretch/mode="viewport"
+
 [input]
 
 ui_left={
@@ -96,4 +100,6 @@ move_RIGHT={
 
 [rendering]
 
+quality/intended_usage/framebuffer_allocation=1
+quality/intended_usage/framebuffer_allocation.mobile=1
 environment/default_environment="res://default_env.tres"
