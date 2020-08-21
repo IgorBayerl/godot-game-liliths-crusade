@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 export var SPEED = 300
-export var GRAVITY = 50
+export var GRAVITY = 3000
 export var JUMP_FORCE = -1000
 
 const NORMAL = Vector2(0, -1)
@@ -25,7 +25,8 @@ func _physics_process(delta: float) -> void:
 func _direction_move(delta):
 	
 	direction = Vector2()
-	motion.y += GRAVITY
+#	if not is_on_floor():
+	motion.y += GRAVITY* delta
 	
 	if Input.is_action_pressed("move_UP"):
 #		motion.y = -SPEED 
@@ -52,9 +53,9 @@ func _direction_move(delta):
 		if _pode_pular():
 			motion.y = JUMP_FORCE
 	elif motion.y < 0 :
-		GRAVITY = 120
+		GRAVITY = 5000
 	else:
-		GRAVITY = 50
+		GRAVITY = 3000
 		
 	if Input.is_action_just_pressed("hability"):
 		dash()
@@ -101,6 +102,7 @@ func _on_Ghost_Timer_timeout() -> void:
 		var this_ghost = preload("res://src/Actors/Efeitos/ghost.tscn").instance()
 		get_parent().add_child(this_ghost)
 		this_ghost.position = position
+		this_ghost.texture = $SPRITES/body.frames.get_frame($SPRITES/body.animation, $SPRITES/body.frame)
 	
 func animations_set():
 	var dir = direction
