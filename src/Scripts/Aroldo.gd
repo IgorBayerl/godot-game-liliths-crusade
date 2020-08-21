@@ -68,7 +68,7 @@ func _process(delta):
 			vel.y = -800
 		next_jump_time = -1
 
-	vel.x = dir * 500
+	vel.x = dir * 400
 
 	if Player.position.y < position.y - 64 and next_jump_time == -1 and sees_player():
 		next_jump_time = OS.get_ticks_msec() + react_time

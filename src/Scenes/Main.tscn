@@ -1,57 +1,87 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/Actors/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://src/Assets/Sprites/Background.png" type="Texture" id=2]
+[ext_resource path="res://src/Assets/Sprites/Level.png" type="Texture" id=2]
 [ext_resource path="res://src/Actors/Aroldo.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/Interface/Health Bar.tscn" type="PackedScene" id=4]
+
+[sub_resource type="OccluderPolygon2D" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 42.4, 3.2 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 10.4, 4.8 )
+extents = Vector2( 44.7767, 2.36644 )
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 57.6, 6.39999 )
+extents = Vector2( 20.7079, 2.2342 )
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 19.8, 8.60001 )
+extents = Vector2( 20.4887, 1.82079 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 10.3599, 1.63678 )
 
 [node name="Main" type="Node2D"]
 
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 1487.65, 522.041 )
-scale = Vector2( 9.04, 9.04 )
+[node name="Level" type="Sprite" parent="."]
+position = Vector2( 1516.91, 524.181 )
 texture = ExtResource( 2 )
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Sprite"]
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Level"]
+position = Vector2( -29.2578, -2.13983 )
+scale = Vector2( 9.04, 9.04 )
+occluder = SubResource( 6 )
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite/StaticBody2D"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Level"]
 visible = false
-polygon = PoolVector2Array( -152.2, 17, -137.8, 17, -137.8, 29, 115.8, 29, 116.6, -14.2, 116.6, -37.4, 167, -39, 166.2, 61.8, -175.4, 61.8, -171.4, -41.4, -152.2, -38.2, -152.2, 17 )
+position = Vector2( -29.2578, -2.13983 )
+scale = Vector2( 9.04, 9.04 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/StaticBody2D"]
-visible = false
-position = Vector2( -120.2, 4.19999 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level/StaticBody2D"]
+polygon = PoolVector2Array( -152.2, 17, -137.8, 17, -137.8, 29, -76.7841, 28.7916, -64.5956, 35.3547, -25.6861, 35.1203, -25.3687, 17.0504, -7.80888, 17.0504, -7.4577, 3.00258, 50.4399, 3.94427, 48.8295, -57.7147, 60.406, -58.3404, 68.5409, 61.1794, -175.4, 61.8, -172.327, -60.2953, -151.08, -58.5393, -152.2, 17 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/StaticBody2D"]
+position = Vector2( -91.6203, -3.09277 )
 shape = SubResource( 1 )
 one_way_collision = true
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Sprite/StaticBody2D"]
-visible = false
-position = Vector2( -145.8, 21 )
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Level/StaticBody2D"]
+position = Vector2( 8.86695, -10.7867 )
 shape = SubResource( 2 )
 one_way_collision = true
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Sprite/StaticBody2D"]
-visible = false
-position = Vector2( 67, 18.6 )
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Level/StaticBody2D"]
+position = Vector2( -48.5015, -26.3391 )
 shape = SubResource( 3 )
 one_way_collision = true
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="Sprite/StaticBody2D"]
-visible = false
-position = Vector2( 66.2, -2.20001 )
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Level/StaticBody2D"]
+position = Vector2( 10.5906, 1.42365 )
 shape = SubResource( 4 )
+one_way_collision = true
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Level/StaticBody2D"]
+position = Vector2( -28.5798, 15.1074 )
+shape = SubResource( 4 )
+one_way_collision = true
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Level/StaticBody2D"]
+position = Vector2( -44.3182, -7.92882 )
+rotation = -0.380482
+shape = SubResource( 5 )
+one_way_collision = true
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Level/StaticBody2D"]
+position = Vector2( -56.823, 18.5781 )
+rotation = -0.380482
+shape = SubResource( 5 )
+one_way_collision = true
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Level/StaticBody2D"]
+position = Vector2( -137.452, -8.42178 )
+rotation = -5.83987
+shape = SubResource( 5 )
 one_way_collision = true
 
 [node name="Aroldo" parent="." instance=ExtResource( 3 )]
@@ -59,7 +89,8 @@ position = Vector2( 1415.21, 299.745 )
 collision_mask = 7
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 552.932, 297.205 )
+position = Vector2( 663.893, 709.206 )
+scale = Vector2( 0.519995, 0.519995 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
