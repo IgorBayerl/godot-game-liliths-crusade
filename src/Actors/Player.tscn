@@ -60,7 +60,7 @@ script = ExtResource( 3 )
 __meta__ = {
 "_edit_group_": true
 }
-fire_rate = 0.1
+automatica = true
 
 [node name="Arma" type="Sprite" parent="Mira"]
 position = Vector2( 51.0576, -0.333706 )
