@@ -74,6 +74,7 @@ stream = ExtResource( 5 )
 
 [node name="Camera2D" parent="." instance=ExtResource( 7 )]
 position = Vector2( 0, -2.11893 )
+offset = Vector2( 0, 0 )
 limit_smoothed = true
 offset_v = -0.7
 
