@@ -124,8 +124,3 @@ func animations_set():
 	$SPRITES/Head.rotation = -dir.angle()
 	$SPRITES.scale.x = LOOKING_DIRECTION.x
 
-
-
-
-
-

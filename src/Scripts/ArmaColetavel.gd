@@ -5,6 +5,8 @@ onready var TweenNode = get_node("Tween")
 var subindo = false
 var is_picked = false
 
+export var type = 1
+
 func _on_Arma_body_entered(body: Node) -> void:
 	if body.get_name() == "Player":
 		_picked()
