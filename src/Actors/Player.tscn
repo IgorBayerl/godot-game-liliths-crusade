@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://src/Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://src/Assets/Sprites/PLAYER/IDLE/IDLE_000.png" type="Texture" id=12]
 [ext_resource path="res://src/Assets/Sprites/PLAYER/IDLE/IDLE_001.png" type="Texture" id=13]
 [ext_resource path="res://src/Assets/Sprites/PLAYER/RUN/RUNNING_002.png" type="Texture" id=14]
+[ext_resource path="res://src/Assets/Sprites/gun.png" type="Texture" id=15]
 [ext_resource path="res://src/Assets/Sprites/PLAYER/RUN/RUNNING_014.png" type="Texture" id=16]
 [ext_resource path="res://src/Assets/Sprites/PLAYER/RUN/RUNNING_008.png" type="Texture" id=21]
 [ext_resource path="res://src/Assets/Sprites/PLAYER/RUN/RUNNING_010.png" type="Texture" id=22]
@@ -54,23 +55,43 @@ texture = ExtResource( 2 )
 position = Vector2( 0.471939, 26.9004 )
 shape = SubResource( 1 )
 
+[node name="SPRITES" type="Node2D" parent="."]
+
+[node name="body" type="AnimatedSprite" parent="SPRITES"]
+position = Vector2( -2.40782, 33.2936 )
+scale = Vector2( 1.7946, 1.7946 )
+frames = SubResource( 2 )
+animation = "RUNNING"
+frame = 1
+speed_scale = 2.0
+
+[node name="Head" type="Sprite" parent="SPRITES"]
+position = Vector2( 0.8555, -54.4547 )
+scale = Vector2( 1.82315, 1.82315 )
+texture = ExtResource( 8 )
+
 [node name="Mira" type="Position2D" parent="."]
-visible = false
+position = Vector2( 1.65541, -24.0035 )
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_group_": true
 }
 automatica = true
 
-[node name="Arma" type="Sprite" parent="Mira"]
-position = Vector2( 51.0576, -0.333706 )
-scale = Vector2( 1.69871, 0.176154 )
-texture = ExtResource( 2 )
+[node name="Arma" type="Node2D" parent="Mira"]
+
+[node name="Sprite" type="Sprite" parent="Mira/Arma"]
+position = Vector2( 49.458, 1.55992 )
+scale = Vector2( 2.24619, 1.81016 )
+texture = ExtResource( 15 )
 
 [node name="SoundEffects" type="Node" parent="Mira"]
 
 [node name="Shoot" type="AudioStreamPlayer" parent="Mira/SoundEffects"]
 stream = ExtResource( 5 )
+
+[node name="shooterPoint" type="Position2D" parent="Mira"]
+position = Vector2( 116.798, -4.69279 )
 
 [node name="Camera2D" parent="." instance=ExtResource( 7 )]
 position = Vector2( 5.21424, 7.7881 )
@@ -83,7 +104,7 @@ wait_time = 0.2
 one_shot = true
 
 [node name="Dash" type="Sprite" parent="."]
-position = Vector2( -0.480262, -41.0047 )
+position = Vector2( 3.46144, -92.2468 )
 scale = Vector2( 0.137369, 0.137369 )
 texture = ExtResource( 2 )
 
@@ -100,20 +121,5 @@ autostart = true
 
 [node name="Dash_sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
-
-[node name="SPRITES" type="Node2D" parent="."]
-
-[node name="body" type="AnimatedSprite" parent="SPRITES"]
-position = Vector2( -2.40782, 33.2936 )
-scale = Vector2( 1.7946, 1.7946 )
-frames = SubResource( 2 )
-animation = "RUNNING"
-frame = 1
-speed_scale = 2.0
-
-[node name="Head" type="Sprite" parent="SPRITES"]
-position = Vector2( 0.8555, -54.4547 )
-scale = Vector2( 1.82315, 1.82315 )
-texture = ExtResource( 8 )
 [connection signal="timeout" from="Dash_Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="Ghost_Timer" to="." method="_on_Ghost_Timer_timeout"]

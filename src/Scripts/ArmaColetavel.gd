@@ -28,6 +28,7 @@ func _desce():
 		_sobe()
 
 func _picked():
+	
 	if is_picked == false:
 		is_picked = true
 		print("peguei")

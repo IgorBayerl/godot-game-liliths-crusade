@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://src/Actors/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Assets/Sprites/Level.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://src/Interface/Health Bar.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/Actors/Arma.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/Actors/Efeitos/fog.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/Interface/Guns_Bar.tscn" type="PackedScene" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 42.4, 3.2 )
@@ -90,8 +91,8 @@ scale = Vector2( 0.519995, 0.519995 )
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Control" type="Control" parent="CanvasLayer"]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_right = 1028.0
+margin_bottom = 612.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -100,6 +101,14 @@ __meta__ = {
 margin_left = 10.0
 margin_top = 10.0
 rect_scale = Vector2( 0.3, 0.3 )
+
+[node name="Guns_bar" parent="CanvasLayer/Control" instance=ExtResource( 7 )]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+margin_left = -20.0
+margin_right = 329.0
+margin_bottom = 48.0
 
 [node name="Arma" parent="." instance=ExtResource( 5 )]
 position = Vector2( 1084.42, 596.424 )
@@ -110,3 +119,4 @@ position = Vector2( 1062.2, 794.849 )
 [node name="FOG" parent="." instance=ExtResource( 6 )]
 position = Vector2( 1511.34, 452.178 )
 scale = Vector2( 54.88, 39.12 )
+[connection signal="body_entered" from="Arma" to="CanvasLayer/Control/Guns_bar" method="_on_Arma_body_entered"]

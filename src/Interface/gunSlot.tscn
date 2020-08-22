@@ -1,0 +1,33 @@
+[gd_scene format=2]
+
+[node name="ListItem" type="Panel"]
+margin_right = 108.0
+margin_bottom = 78.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bullets" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -37.0
+margin_top = -20.0
+margin_right = 38.0
+text = "000"
+align = 1
+valign = 1
+
+[node name="GunSprite" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -46.0
+margin_top = -18.0
+margin_right = 46.0
+margin_bottom = 18.0
+__meta__ = {
+"_edit_use_anchors_": false
+}

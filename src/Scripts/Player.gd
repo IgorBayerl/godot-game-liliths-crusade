@@ -4,6 +4,11 @@ export var SPEED = 300
 export var GRAVITY = 3000
 export var JUMP_FORCE = -1000
 
+
+var gunsArray = [ 1 , -1 , -1 , -1 , -1 ]
+
+
+
 const NORMAL = Vector2(0, -1)
 
 var LOOKING_DIRECTION = Vector2( 1 , 0 )
