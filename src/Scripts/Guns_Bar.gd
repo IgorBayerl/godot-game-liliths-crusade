@@ -11,6 +11,13 @@ func addItem( value ):
 	item.rect_min_size = Vector2(50,50)
 	$list.add_child(item)
 	
+func addAmmo( value ):
+	print(value)
+	
+	
+func selectGun( value ):
+	print('Selected  ', value)
+
 func _ready() -> void:
 	pass
 #	addItem(5)

@@ -4,8 +4,9 @@ onready var TweenNode = get_node("Tween")
 
 var subindo = false
 var is_picked = false
+var ammount = 13
 
-export var type = 1
+export var type = "gun_1"
 
 func _on_Arma_body_entered(body: Node) -> void:
 	if body.get_name() == "Player":
