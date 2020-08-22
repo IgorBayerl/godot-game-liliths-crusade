@@ -7,21 +7,30 @@ var player_GUNS_information = {
 		"selected" : false ,
 		"ammo": 25,
 		"full_ammo": 60,
-		"fire_rate": 0.2
+		"fire_rate": 0,
+		"random_rate":0.08,
+		"bullet_speed": 1000,
+		"automatica": false
 	},
 	"gun_2": {
 		"unlocked" : false ,
 		"selected" : false ,
 		"ammo": 25,
 		"full_ammo": 60,
-		"fire_rate": 0.1
+		"fire_rate": 0.2,
+		"random_rate":0.08,
+		"bullet_speed": 1000,
+		"automatica": true
 	},
 	"gun_3": {
 		"unlocked" : false ,
 		"selected" : false ,
 		"ammo": 25,
 		"full_ammo": 60,
-		"fire_rate": 0.6
+		"fire_rate": 0.6,
+		"random_rate":0.08,
+		"bullet_speed": 400,
+		"automatica": true
 	}
 }
 
@@ -65,7 +74,9 @@ func _select_gun(gun):
 	$CanvasLayer/Control/Guns_bar.selectGun(gun)
 	var gun_selected = player_GUNS_information[gun]
 	$Player/Mira/Arma/Sprite.visible = true
-	$Player/Mira.automatica = true
+	$Player/Mira.random_rate = gun_selected.random_rate
+	$Player/Mira.bullet_speed = gun_selected.bullet_speed
+	$Player/Mira.automatica = gun_selected.automatica
 	$Player/Mira.fire_rate = gun_selected.fire_rate
 		
 		
