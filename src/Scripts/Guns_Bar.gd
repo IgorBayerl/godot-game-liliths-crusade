@@ -19,8 +19,8 @@ func selectGun( value ):
 	print('Selected  ', value)
 
 func _ready() -> void:
-	pass
-#	addItem(5)
+#	pass
+	addItem(10)
 #	for i in range(5):
 #		addItem(i)
 		

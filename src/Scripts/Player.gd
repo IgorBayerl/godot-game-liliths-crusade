@@ -106,7 +106,7 @@ func _on_Ghost_Timer_timeout() -> void:
 	if is_dashing:
 		var this_ghost = preload("res://src/Actors/Efeitos/ghost.tscn").instance()
 		get_parent().add_child(this_ghost)
-		this_ghost.position = position
+		this_ghost.position = position + Vector2(0,20)
 		this_ghost.texture = $SPRITES/body.frames.get_frame($SPRITES/body.animation, $SPRITES/body.frame)
 	
 func animations_set():
