@@ -1,12 +1,14 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/Sprites/Health Bar/Back.png" type="Texture" id=1]
 [ext_resource path="res://src/Sprites/Health Bar/Suco.png" type="Texture" id=2]
 [ext_resource path="res://src/Sprites/Health Bar/Border.png" type="Texture" id=3]
+[ext_resource path="res://src/Scripts/Health Bar.gd" type="Script" id=4]
 
 [node name="Health Bar" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
