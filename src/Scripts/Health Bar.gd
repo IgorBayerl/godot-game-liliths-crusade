@@ -16,7 +16,6 @@ func _on_max_health_updated(max_health):
 	health_under.max_value = max_health
 
 
-
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("interact"):
 		print("alooooo")

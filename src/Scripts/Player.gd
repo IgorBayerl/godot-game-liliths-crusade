@@ -4,11 +4,6 @@ export var SPEED = 300
 export var GRAVITY = 3000
 export var JUMP_FORCE = -1000
 
-
-var gunsArray = [ 1 , -1 , -1 , -1 , -1 ]
-
-
-
 const NORMAL = Vector2(0, -1)
 
 var LOOKING_DIRECTION = Vector2( 1 , 0 )
@@ -111,6 +106,8 @@ func _on_Ghost_Timer_timeout() -> void:
 	
 func animations_set():
 	var dir = direction
+	if dir.y < 0:
+		dir.y = dir.y/2
 	if direction.x < 0:
 		dir.x = dir.x * -1
 	if dir.x == 0 and LOOKING_DIRECTION.x != 0:

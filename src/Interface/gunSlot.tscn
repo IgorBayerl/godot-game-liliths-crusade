@@ -1,8 +1,10 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/Assets/Sprites/pistol.png" type="Texture" id=1]
 
 [node name="ListItem" type="Panel"]
 margin_right = 108.0
-margin_bottom = 78.0
+margin_bottom = 70.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -18,16 +20,21 @@ margin_right = 38.0
 text = "000"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="GunSprite" type="TextureRect" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -46.0
-margin_top = -18.0
-margin_right = 46.0
-margin_bottom = 18.0
+margin_left = -19.0
+margin_top = -13.0
+margin_right = 20.0
+margin_bottom = 9.0
+texture = ExtResource( 1 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }

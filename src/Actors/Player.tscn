@@ -1,41 +1,35 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://src/Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 [ext_resource path="res://src/Scripts/Mira.gd" type="Script" id=3]
-[ext_resource path="res://src/Assets/Sprites/light.png" type="Texture" id=4]
+[ext_resource path="res://src/Assets/Sprites/PLAYER/RUNNING/7.png" type="Texture" id=4]
 [ext_resource path="res://src/Assets/Audios/Effects/SHOOT.wav" type="AudioStream" id=5]
 [ext_resource path="res://src/Assets/Audios/Effects/DASH.wav" type="AudioStream" id=6]
 [ext_resource path="res://src/Actors/Camera2D.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/Assets/Sprites/PLAYER/HEAD.png" type="Texture" id=8]
-[ext_resource path="res://src/Assets/Sprites/PLAYER/IDLE/IDLE_003.png" type="Texture" id=9]
-[ext_resource path="res://src/Assets/Sprites/PLAYER/IDLE/IDLE_004.png" type="Texture" id=10]
-[ext_resource path="res://src/Assets/Sprites/PLAYER/IDLE/IDLE_002.png" type="Texture" id=11]
-[ext_resource path="res://src/Assets/Sprites/PLAYER/IDLE/IDLE_000.png" type="Texture" id=12]
-[ext_resource path="res://src/Assets/Sprites/PLAYER/IDLE/IDLE_001.png" type="Texture" id=13]
-[ext_resource path="res://src/Assets/Sprites/PLAYER/RUN/RUNNING_002.png" type="Texture" id=14]
+[ext_resource path="res://src/Assets/Sprites/PLAYER/RUNNING/1.png" type="Texture" id=9]
+[ext_resource path="res://src/Assets/Sprites/PLAYER/RUNNING/2.png" type="Texture" id=10]
+[ext_resource path="res://src/Assets/Sprites/PLAYER/RUNNING/3.png" type="Texture" id=11]
+[ext_resource path="res://src/Assets/Sprites/PLAYER/RUNNING/4.png" type="Texture" id=12]
+[ext_resource path="res://src/Assets/Sprites/PLAYER/RUNNING/5.png" type="Texture" id=13]
+[ext_resource path="res://src/Assets/Sprites/PLAYER/RUNNING/6.png" type="Texture" id=14]
 [ext_resource path="res://src/Assets/Sprites/gun.png" type="Texture" id=15]
-[ext_resource path="res://src/Assets/Sprites/PLAYER/RUN/RUNNING_014.png" type="Texture" id=16]
-[ext_resource path="res://src/Assets/Sprites/PLAYER/RUN/RUNNING_008.png" type="Texture" id=21]
-[ext_resource path="res://src/Assets/Sprites/PLAYER/RUN/RUNNING_010.png" type="Texture" id=22]
-[ext_resource path="res://src/Assets/Sprites/PLAYER/RUN/RUNNING_016.png" type="Texture" id=25]
-[ext_resource path="res://src/Assets/Sprites/PLAYER/RUN/RUNNING_018.png" type="Texture" id=29]
-[ext_resource path="res://src/Assets/Sprites/PLAYER/RUN/RUNNING_006.png" type="Texture" id=32]
-[ext_resource path="res://src/Assets/Sprites/PLAYER/RUN/RUNNING_000.png" type="Texture" id=33]
-[ext_resource path="res://src/Assets/Sprites/PLAYER/RUN/RUNNING_004.png" type="Texture" id=34]
-[ext_resource path="res://src/Assets/Sprites/PLAYER/RUN/RUNNING_012.png" type="Texture" id=35]
+[ext_resource path="res://src/Assets/Sprites/PLAYER/IDLE/2.png" type="Texture" id=16]
+[ext_resource path="res://src/Assets/Sprites/PLAYER/RUNNING/8.png" type="Texture" id=19]
+[ext_resource path="res://src/Assets/Sprites/PLAYER/IDLE/1.png" type="Texture" id=20]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 26.7526, 103.155 )
+extents = Vector2( 29.8221, 87.5779 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 33 ), ExtResource( 14 ), ExtResource( 34 ), ExtResource( 32 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 35 ), ExtResource( 16 ), ExtResource( 25 ), ExtResource( 29 ) ],
+"frames": [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 4 ), ExtResource( 19 ) ],
 "loop": true,
 "name": "RUNNING",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 12 ), ExtResource( 13 ), ExtResource( 11 ), ExtResource( 9 ), ExtResource( 10 ) ],
+"frames": [ ExtResource( 20 ), ExtResource( 20 ), ExtResource( 16 ), ExtResource( 16 ), ExtResource( 16 ) ],
 "loop": true,
 "name": "IDLE",
 "speed": 5.0
@@ -52,7 +46,7 @@ visible = false
 texture = ExtResource( 2 )
 
 [node name="Colision" type="CollisionShape2D" parent="."]
-position = Vector2( 0.471939, 26.9004 )
+position = Vector2( 0.14347, 32.4845 )
 shape = SubResource( 1 )
 
 [node name="SPRITES" type="Node2D" parent="."]
@@ -61,17 +55,17 @@ shape = SubResource( 1 )
 position = Vector2( -2.40782, 33.2936 )
 scale = Vector2( 1.7946, 1.7946 )
 frames = SubResource( 2 )
-animation = "RUNNING"
-frame = 1
+animation = "IDLE"
+frame = 3
 speed_scale = 2.0
 
 [node name="Head" type="Sprite" parent="SPRITES"]
-position = Vector2( 0.8555, -54.4547 )
-scale = Vector2( 1.82315, 1.82315 )
+position = Vector2( 7.90178, -24.9981 )
+scale = Vector2( 1.7198, 1.7198 )
 texture = ExtResource( 8 )
 
 [node name="Mira" type="Position2D" parent="."]
-position = Vector2( 1.65541, -24.0035 )
+position = Vector2( -13.5466, 6.58492 )
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_group_": true
@@ -95,8 +89,13 @@ position = Vector2( 116.798, -4.69279 )
 [node name="Camera2D" parent="." instance=ExtResource( 7 )]
 position = Vector2( 5.21424, 7.7881 )
 offset = Vector2( 0, 0 )
+limit_left = 0
+limit_top = 0
 limit_smoothed = true
+smoothing_speed = 5.0
 offset_v = -0.7
+drag_margin_left = 1.0
+drag_margin_right = 1.0
 
 [node name="Dash_Timer" type="Timer" parent="."]
 wait_time = 0.2
@@ -106,13 +105,6 @@ one_shot = true
 position = Vector2( 3.46144, -92.2468 )
 scale = Vector2( 0.137369, 0.137369 )
 texture = ExtResource( 2 )
-
-[node name="Light2D" type="Light2D" parent="."]
-position = Vector2( 4.71938, 14.6301 )
-texture = ExtResource( 4 )
-color = Color( 0.937255, 0.862745, 0.862745, 1 )
-energy = 0.7
-shadow_enabled = true
 
 [node name="Ghost_Timer" type="Timer" parent="."]
 wait_time = 0.05

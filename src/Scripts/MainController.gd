@@ -4,7 +4,7 @@ extends Node2D
 
 
 var player_GUNS_information = {
-	"gun_1": {
+	1: {
 		"unlocked" : true ,
 		"selected" : false ,
 		"ammo": 25,
@@ -14,7 +14,7 @@ var player_GUNS_information = {
 		"bullet_speed": 1000,
 		"automatica": false
 	},
-	"gun_2": {
+	2: {
 		"unlocked" : false ,
 		"selected" : false ,
 		"ammo": 25,
@@ -24,7 +24,7 @@ var player_GUNS_information = {
 		"bullet_speed": 1000,
 		"automatica": true
 	},
-	"gun_3": {
+	3: {
 		"unlocked" : false ,
 		"selected" : false ,
 		"ammo": 25,
@@ -41,21 +41,20 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("Gun_1"):
-		if player_GUNS_information.gun_1.unlocked == true:
-			_select_gun("gun_1")
-			
+		if player_GUNS_information[1].unlocked == true:
+			_select_gun(1)
 		else:
-			print("you don't have this gun !")
+			print("you don't have this gun yet !")
 	if Input.is_action_just_pressed("Gun_2"):
-		if player_GUNS_information.gun_2.unlocked == true:
-			_select_gun("gun_2")
+		if player_GUNS_information[2].unlocked == true:
+			_select_gun(2)
 		else:
-			print("you don't have this gun !")
+			print("you don't have this gun yet !")
 	if Input.is_action_just_pressed("Gun_3"):
-		if player_GUNS_information.gun_3.unlocked == true:
-			_select_gun("gun_3")
+		if player_GUNS_information[3].unlocked == true:
+			_select_gun(3)
 		else:
-			print("you don't have this gun !")
+			print("you don't have this gun yet !")
 	
 
 

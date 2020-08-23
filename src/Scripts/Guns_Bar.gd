@@ -4,6 +4,8 @@ const ListItem = preload("res://src/Interface/gunSlot.tscn")
 
 var listIndex = 0
 
+
+
 func addItem( value ):
 	var item = ListItem.instance()
 	listIndex += 1
@@ -14,9 +16,13 @@ func addItem( value ):
 func addAmmo( value ):
 	print(value)
 	
+# rect_size 78 --> 50
 	
 func selectGun( value ):
 	print('Selected  ', value)
+	$list.get_child(value-1).rect_scale = Vector2(1.3,1.3)
+#	$list.get_child(value-1).get_node("GunSprite").rect_scale = Vector2(2,2)
+	$list.get_child(value-1).get_node("Bullets").text = str(222)
 
 func _ready() -> void:
 #	pass
