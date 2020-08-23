@@ -80,7 +80,6 @@ __meta__ = {
 [node name="Arma" type="Node2D" parent="Mira"]
 
 [node name="Sprite" type="Sprite" parent="Mira/Arma"]
-visible = false
 position = Vector2( 49.458, 1.55992 )
 scale = Vector2( 2.24619, 1.81016 )
 texture = ExtResource( 15 )

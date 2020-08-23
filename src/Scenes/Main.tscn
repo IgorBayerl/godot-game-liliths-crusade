@@ -124,18 +124,18 @@ margin_right = 329.0
 margin_bottom = 48.0
 
 [node name="Arma" parent="MainController" instance=ExtResource( 5 )]
-position = Vector2( 981.786, 772.475 )
+position = Vector2( 980.992, 780.412 )
 
 [node name="Arma2" parent="MainController" instance=ExtResource( 5 )]
-position = Vector2( 987.03, 618.15 )
+position = Vector2( 1064.45, 595.458 )
 type = "gun_2"
 
 [node name="Arma4" parent="MainController" instance=ExtResource( 5 )]
-position = Vector2( 1135.36, 600.919 )
+position = Vector2( 1272.18, 596.247 )
 type = "gun_2"
 
 [node name="Arma3" parent="MainController" instance=ExtResource( 5 )]
-position = Vector2( 1178.81, 802.441 )
+position = Vector2( 1200.89, 779.492 )
 type = "gun_3"
 
 [node name="FOG" parent="." instance=ExtResource( 6 )]

@@ -1,6 +1,8 @@
 extends Node2D
 
 
+
+
 var player_GUNS_information = {
 	"gun_1": {
 		"unlocked" : true ,
@@ -40,8 +42,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("Gun_1"):
 		if player_GUNS_information.gun_1.unlocked == true:
-			
 			_select_gun("gun_1")
+			
 		else:
 			print("you don't have this gun !")
 	if Input.is_action_just_pressed("Gun_2"):
@@ -65,7 +67,7 @@ func _on_GetItem_area_entered(area: Area2D) -> void:
 			player_GUNS_information[type].unlocked = true
 			player_GUNS_information[type].ammo += quantidade
 			$CanvasLayer/Control/Guns_bar.addItem(quantidade)
-			print("unlocked a new gun")
+			print("agaragun bitch  ", type)
 		else:
 			print("more ammo")
 #			$CanvasLayer/Controld/Guns_bar.addAmmo( 10 )
