@@ -31,9 +31,9 @@ func get_direction() -> int:
 	return horizontal_dir
 	
 func instanciate_bullet() ->void:
+	get_tree().get_root().get_node("Main").get_node("MainController").atirando()
 	var bullet_instance = bullet.instance()
 	bullet_instance.position = $shooterPoint.get_global_position()
-#	bullet_instance.position = get_global_position()
 	bullet_instance.rotation_degrees = rotation_degrees + _random_value()
 	bullet_instance.apply_impulse(Vector2(),Vector2(bullet_speed,0).rotated(rotation + _random_value()))
 	get_tree().get_root().add_child((bullet_instance))

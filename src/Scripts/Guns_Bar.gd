@@ -13,12 +13,10 @@ func addItem( value ):
 	item.rect_min_size = Vector2(50,50)
 	$list.add_child(item)
 	
-func addAmmo( value ):
-	
-	print(value)
-	
-	
-	
+func setAmmo( gun , quantidade ):
+	$list.get_child(gun-1).get_node("Bullets").text = str(quantidade)
+
+
 func selectGun( value ):
 	
 	var item_list_count = $list.get_child_count()
