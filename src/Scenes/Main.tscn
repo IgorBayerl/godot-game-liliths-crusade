@@ -26,7 +26,7 @@ extents = Vector2( 20.4887, 1.82079 )
 extents = Vector2( 10.3599, 1.63678 )
 
 [sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 29.6115, 90.1687 )
+extents = Vector2( 27.6583, 105.159 )
 
 [node name="Main" type="Node2D"]
 
@@ -140,8 +140,8 @@ position = Vector2( 1200.89, 779.492 )
 type = 2
 
 [node name="FOG" parent="." instance=ExtResource( 6 )]
-position = Vector2( 1446.53, 570.534 )
-scale = Vector2( 44.7077, 34.4197 )
+position = Vector2( 1511.34, 452.178 )
+scale = Vector2( 54.88, 39.12 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )

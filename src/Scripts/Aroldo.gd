@@ -3,6 +3,7 @@ extends KinematicBody2D
 onready var Player = get_parent().get_node("Player")
 
 var vel = Vector2(0, 0)
+var LOOKING_DIRECTION = Vector2( 1 , 0 )
 
 var grav = 1800
 var max_grav = 3000
@@ -52,11 +53,17 @@ func sees_player():
 	return false
 
 func _process(delta):
+	
+	$AnimatedSprite.scale = LOOKING_DIRECTION
 
 	if Player.position.x < position.x - target_player_dist and sees_player():
 		set_dir(-1)
+		LOOKING_DIRECTION = Vector2(1,0)
+		
 	elif Player.position.x > position.x + target_player_dist and sees_player():
 		set_dir(1)
+		LOOKING_DIRECTION = Vector2(-1,0)
+		
 	else:
 		set_dir(0)
 
