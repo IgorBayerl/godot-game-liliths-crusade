@@ -3,7 +3,7 @@ extends Control
 const ListItem = preload("res://src/Interface/gunSlot.tscn")
 
 var listIndex = 0
-
+var selected_gun = 0
 
 
 func addItem( value ):
@@ -14,32 +14,24 @@ func addItem( value ):
 	$list.add_child(item)
 	
 func addAmmo( value ):
+	
 	print(value)
 	
-# rect_size 78 --> 50
+	
 	
 func selectGun( value ):
-	print('Selected  ', value)
+	
+	var item_list_count = $list.get_child_count()
+	print(' Selected  ', value)
+	selected_gun = value-1
+	for i in range(0, item_list_count):
+		$list.get_child(i).rect_scale = Vector2(1.0,1.0)
 	$list.get_child(value-1).rect_scale = Vector2(1.3,1.3)
-#	$list.get_child(value-1).get_node("GunSprite").rect_scale = Vector2(2,2)
-	$list.get_child(value-1).get_node("Bullets").text = str(222)
+	
 
 func _ready() -> void:
-#	pass
 	addItem(10)
-#	for i in range(5):
-#		addItem(i)
 		
 func _process(delta: float) -> void:
-	pass
+	$list.get_child(selected_gun).rect_scale = Vector2(1.3,1.3)
 
-
-#
-#func _on_Arma_body_entered(body: Node) -> void:
-#	if body.get_name() == "Player":
-#		addItem(15)
-#
-	
-	
-	
-	

@@ -102,7 +102,7 @@ wait_time = 0.2
 one_shot = true
 
 [node name="Dash" type="Sprite" parent="."]
-position = Vector2( 3.46144, -92.2468 )
+position = Vector2( 5.11871, -60.2061 )
 scale = Vector2( 0.137369, 0.137369 )
 texture = ExtResource( 2 )
 
