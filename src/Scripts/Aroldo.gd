@@ -54,7 +54,7 @@ func sees_player():
 
 func _process(delta):
 	
-	$AnimatedSprite.scale = LOOKING_DIRECTION
+	$AnimatedSprite.scale.x = LOOKING_DIRECTION.x
 
 	if Player.position.x < position.x - target_player_dist and sees_player():
 		set_dir(-1)

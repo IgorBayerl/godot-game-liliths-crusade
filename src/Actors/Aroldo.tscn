@@ -6,7 +6,7 @@
 [ext_resource path="res://src/Sprites/Aroldo/Bixo quase lah.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 9.59579, 9.20985 )
+extents = Vector2( 13.0891, 17.5726 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -27,8 +27,7 @@ collision_mask = 5
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 23.748, 0 )
-scale = Vector2( 2.697, 5.093 )
+scale = Vector2( 2.84, 2.88 )
 shape = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
