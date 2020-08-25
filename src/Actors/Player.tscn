@@ -16,11 +16,10 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 29.8221, 87.5779 )
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 20.702, 44.3677 )
 
-[sub_resource type="Animation" id=2]
-resource_name = "Atack1"
+[sub_resource type="Animation" id=3]
 length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
@@ -47,8 +46,7 @@ tracks/1/keys = {
 "values": [ false, true ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "Atack2"
+[sub_resource type="Animation" id=4]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
@@ -75,8 +73,7 @@ tracks/1/keys = {
 "values": [ true, false, true ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "Idle"
+[sub_resource type="Animation" id=5]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -104,8 +101,7 @@ tracks/1/keys = {
 "values": [ true, true ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "Running"
+[sub_resource type="Animation" id=6]
 length = 0.8
 loop = true
 tracks/0/type = "value"
@@ -169,7 +165,7 @@ frame = 25
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SPRITES/body2/SwordHit"]
 position = Vector2( 33.981, -4.45905 )
-shape = SubResource( 6 )
+shape = SubResource( 2 )
 disabled = true
 
 [node name="Head" type="Sprite" parent="SPRITES"]
@@ -179,10 +175,10 @@ texture = ExtResource( 8 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="SPRITES"]
 root_node = NodePath("../body2")
-anims/Atack1 = SubResource( 2 )
-anims/Atack2 = SubResource( 3 )
-anims/Idle = SubResource( 4 )
-anims/Running = SubResource( 5 )
+anims/Atack1 = SubResource( 3 )
+anims/Atack2 = SubResource( 4 )
+anims/Idle = SubResource( 5 )
+anims/Running = SubResource( 6 )
 
 [node name="Mira" type="Position2D" parent="."]
 position = Vector2( 3.98624, 14.1905 )
@@ -209,7 +205,7 @@ frame = 1
 stream = ExtResource( 5 )
 
 [node name="shooterPoint" type="Position2D" parent="Mira"]
-position = Vector2( 70.2447, -1.37644 )
+position = Vector2( 110.064, -11.3314 )
 
 [node name="Camera2D" parent="." instance=ExtResource( 7 )]
 position = Vector2( 5.21424, 7.7881 )
