@@ -10,7 +10,7 @@ const NORMAL = Vector2(0, -1)
 
 var LOOKING_DIRECTION = Vector2( 1 , 0 )
 
-var is_atacking = false
+var is_atacking = 0
 var motion = Vector2()
 var direction = Vector2()
 var is_dashing = false
@@ -108,12 +108,18 @@ func _on_Ghost_Timer_timeout() -> void:
 		this_ghost.texture = $SPRITES/body.frames.get_frame($SPRITES/body.animation, $SPRITES/body.frame)
 	
 func animations_set():
-	if Input.is_action_just_pressed("interact"):
-		is_atacking = true
+	if Input.is_action_just_pressed("interact") and is_atacking == 0 :
+		is_atacking = 1
 		$SPRITES/AnimationPlayer.play("Atack1")
+		yield(get_tree().create_timer(0.7), "timeout")
+		if is_atacking == 1:
+			is_atacking = 0
+	if Input.is_action_just_pressed("interact") and is_atacking == 1:
+		is_atacking = 2
+		$SPRITES/AnimationPlayer.play("Atack2")
 		yield(get_tree().create_timer(1), "timeout")
-		is_atacking = false
-	
+		is_atacking = 0
+		
 	var dir = direction
 	if dir.y < 0:
 		dir.y = dir.y/2
