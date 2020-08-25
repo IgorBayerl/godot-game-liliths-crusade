@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Bixo ae.png-3984e6de8efb9d3424efb3a3fa0134f5.stex"
+path="res://.import/Idle Aroldo.png-5eb7f615769a25532be9676b6a272618.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/Sprites/Aroldo/Bixo ae.png"
-dest_files=[ "res://.import/Bixo ae.png-3984e6de8efb9d3424efb3a3fa0134f5.stex" ]
+source_file="res://src/Sprites/Aroldo/Idle Aroldo.png"
+dest_files=[ "res://.import/Idle Aroldo.png-5eb7f615769a25532be9676b6a272618.stex" ]
 
 [params]
 
