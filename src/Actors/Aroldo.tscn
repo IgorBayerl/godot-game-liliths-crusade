@@ -8,14 +8,14 @@
 [ext_resource path="res://src/Sprites/Aroldo/Idle Aroldo.png" type="Texture" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 13.0891, 17.5726 )
+extents = Vector2( 7.84693, 14.1331 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
 "frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 1 ), ExtResource( 3 ) ],
 "loop": true,
 "name": "Walk",
-"speed": 8.0
+"speed": 4.0
 }, {
 "frames": [ ExtResource( 6 ) ],
 "loop": true,
@@ -33,7 +33,9 @@ scale = Vector2( 2.84, 2.88 )
 shape = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 1.61257, -7.85754 )
+scale = Vector2( 1.09546, 1 )
 frames = SubResource( 2 )
 animation = "Walk"
-frame = 1
-playing = true
+frame = 3
+offset = Vector2( -25.754, 0 )
