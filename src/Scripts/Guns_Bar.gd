@@ -7,10 +7,12 @@ var selected_gun = 0
 
 
 func addItem( value ):
+	
 	var item = ListItem.instance()
 	listIndex += 1
 	item.get_node("Bullets").text = str(value)
-	item.rect_min_size = Vector2(50,50)
+	item.get_node("PanelContainer/AnimatedSprite").set_frame(listIndex-1)
+	item.rect_min_size = Vector2(70,50)
 	$list.add_child(item)
 	
 func setAmmo( gun , quantidade ):
