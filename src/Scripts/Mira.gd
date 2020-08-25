@@ -2,16 +2,17 @@ extends Position2D
 
 var bullet = preload("res://src/Actors/Projeteis/Bullet.tscn")
 
-export var bullet_speed = 1000
-export var fire_rate = 0.2
-export var random_rate = 0.08
-export var automatica = false
+var bullet_speed = 1000
+var fire_rate = 0.3
+var random_rate = 0.08
+var automatica = false
 
 var dir: = Vector2()
 var can_fire = true
 var horizontal_dir := -1
 
 func _process(delta: float) -> void:
+	print(can_fire)
 	set_direction_view()
 	if automatica:
 		if Input.is_action_pressed("shoot") and can_fire:
@@ -21,8 +22,8 @@ func _process(delta: float) -> void:
 		if Input.is_action_just_pressed("shoot") and can_fire:
 			instanciate_bullet()
 			$SoundEffects/Shoot.play()
-	
-		
+
+
 func get_direction() -> int:
 	if Input.get_action_strength("move_LEFT") :
 		horizontal_dir = 1
@@ -31,6 +32,7 @@ func get_direction() -> int:
 	return horizontal_dir
 	
 func instanciate_bullet() ->void:
+	
 	get_tree().get_root().get_node("Main").get_node("MainController").atirando()
 	var bullet_instance = bullet.instance()
 	bullet_instance.position = $shooterPoint.get_global_position()

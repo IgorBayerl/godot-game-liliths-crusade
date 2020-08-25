@@ -18,7 +18,6 @@ func setAmmo( gun , quantidade ):
 
 
 func selectGun( value ):
-	
 	var item_list_count = $list.get_child_count()
 	print(' Selected ', value)
 	selected_gun = value-1

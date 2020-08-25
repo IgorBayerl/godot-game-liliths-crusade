@@ -110,7 +110,6 @@ func animations_set():
 		$Mira.can_fire = false
 	else:
 		$Mira/Arma.visible = true
-		$Mira.can_fire = true
 	
 	
 	if Input.is_action_just_pressed("interact") and is_atacking == 0 :

@@ -10,7 +10,7 @@ var player_GUNS_information = {
 		"ammo": 25,
 		"full_ammo": 60,
 		"fire_rate": 0,
-		"random_rate":0.08,
+		"random_rate":0.02,
 		"bullet_speed": 1000,
 		"automatica": false
 	},
@@ -19,7 +19,7 @@ var player_GUNS_information = {
 		"selected" : false ,
 		"ammo": 25,
 		"full_ammo": 60,
-		"fire_rate": 0.2,
+		"fire_rate": 0.3,
 		"random_rate":0.08,
 		"bullet_speed": 1000,
 		"automatica": true
@@ -67,13 +67,12 @@ func _on_GetItem_area_entered(area: Area2D) -> void:
 		if player_GUNS_information[gun].unlocked == false:
 			player_GUNS_information[gun].unlocked = true
 			$CanvasLayer/Control/Guns_bar.addItem(quantidade)
-			print("agaragun bitch  ", gun)
+			print("agaragun bitch")
 		else:
 			var total = player_GUNS_information[gun].ammo + quantidade
 			player_GUNS_information[gun].ammo += quantidade
 			$CanvasLayer/Control/Guns_bar.setAmmo(gun, total)
 			print("more ammo")
-
 
 
 func _select_gun(gun):
