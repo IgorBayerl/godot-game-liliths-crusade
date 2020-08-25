@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://src/Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -13,9 +13,12 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 29.8221, 87.5779 )
 
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 20.702, 44.3677 )
+
 [sub_resource type="Animation" id=2]
 resource_name = "Atack1"
-length = 0.5
+length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
@@ -28,9 +31,22 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 21, 23, 24 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("SwordHit/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "Atack2"
+length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
@@ -42,6 +58,18 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 25, 26, 27, 28, 29 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SwordHit/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -60,6 +88,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 10, 12, 13, 10 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("SwordHit/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, true ]
+}
 
 [sub_resource type="Animation" id=5]
 resource_name = "Running"
@@ -76,6 +116,18 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SwordHit/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, true ]
 }
 
 [node name="Player" type="KinematicBody2D"]
@@ -100,7 +152,14 @@ scale = Vector2( 1.79639, 1.79639 )
 texture = ExtResource( 17 )
 vframes = 5
 hframes = 10
-frame = 28
+frame = 25
+
+[node name="SwordHit" type="Area2D" parent="SPRITES/body2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SPRITES/body2/SwordHit"]
+position = Vector2( 33.8272, -4.30529 )
+shape = SubResource( 6 )
+disabled = true
 
 [node name="Head" type="Sprite" parent="SPRITES"]
 position = Vector2( 4.10647, -22.2141 )
@@ -161,6 +220,7 @@ autostart = true
 
 [node name="Dash_sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
+[connection signal="area_entered" from="SPRITES/body2/SwordHit" to="." method="_on_SwordHit_area_entered"]
 [connection signal="timeout" from="MiliAtack_Timer" to="." method="_on_MiliAtack_Timer_timeout"]
 [connection signal="timeout" from="Dash_Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="Ghost_Timer" to="." method="_on_Ghost_Timer_timeout"]

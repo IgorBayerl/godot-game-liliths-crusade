@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://src/Sprites/Aroldo/Andando_Roldo3.png" type="Texture" id=1]
 [ext_resource path="res://src/Scripts/Aroldo.gd" type="Script" id=2]
@@ -6,9 +6,6 @@
 [ext_resource path="res://src/Sprites/Aroldo/Andando_Roldo1.png" type="Texture" id=4]
 [ext_resource path="res://src/Sprites/Aroldo/Andando_Roldo2.png" type="Texture" id=5]
 [ext_resource path="res://src/Sprites/Aroldo/Idle Aroldo.png" type="Texture" id=6]
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 7.84693, 14.1331 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -23,14 +20,16 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 7.84693, 14.1331 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 23.5, 36 )
+
 [node name="Aroldo" type="KinematicBody2D"]
 collision_layer = 2
 collision_mask = 5
 script = ExtResource( 2 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2( 2.84, 2.88 )
-shape = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 1.61257, -7.85754 )
@@ -39,3 +38,15 @@ frames = SubResource( 2 )
 animation = "Walk"
 frame = 3
 offset = Vector2( -25.754, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2( 2.84, 2.88 )
+shape = SubResource( 1 )
+
+[node name="HurtBox" type="Area2D" parent="." groups=[
+"hurtbox",
+]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2( -2, 2 )
+shape = SubResource( 3 )

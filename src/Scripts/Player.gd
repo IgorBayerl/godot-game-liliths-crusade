@@ -157,4 +157,6 @@ func animations_set():
 	$SPRITES.scale.x = LOOKING_DIRECTION.x
 
 
-
+func _on_SwordHit_area_entered(area: Area2D) -> void:
+	if area.is_in_group("hurtbox"):
+		area.get_parent().take_damage()

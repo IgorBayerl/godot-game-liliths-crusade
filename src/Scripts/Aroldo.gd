@@ -89,3 +89,6 @@ func _process(delta):
 		vel.y = 0
 
 	vel = move_and_slide(vel, Vector2(0, -1))
+
+func take_damage():
+	print('outch !!! tomei um dano aqui !')
