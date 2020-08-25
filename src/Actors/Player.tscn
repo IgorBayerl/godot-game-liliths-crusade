@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://src/Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://src/Assets/Sprites/PLAYER/RUNNING/6.png" type="Texture" id=14]
 [ext_resource path="res://src/Assets/Sprites/gun.png" type="Texture" id=15]
 [ext_resource path="res://src/Assets/Sprites/PLAYER/IDLE/2.png" type="Texture" id=16]
+[ext_resource path="res://src/Assets/Sprites/PLAYER/SpriteSheet.png" type="Texture" id=17]
 [ext_resource path="res://src/Assets/Sprites/PLAYER/RUNNING/8.png" type="Texture" id=19]
 [ext_resource path="res://src/Assets/Sprites/PLAYER/IDLE/1.png" type="Texture" id=20]
 
@@ -35,6 +36,72 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="Animation" id=3]
+resource_name = "Atack1"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 21, 23, 24 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Atack2"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 25, 26, 27, 28, 29 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "Idle"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 10, 12, 13, 10 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "Running"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+}
+
 [node name="Player" type="KinematicBody2D"]
 scale = Vector2( 0.64, 0.64 )
 collision_layer = 4
@@ -52,6 +119,7 @@ shape = SubResource( 1 )
 [node name="SPRITES" type="Node2D" parent="."]
 
 [node name="body" type="AnimatedSprite" parent="SPRITES"]
+visible = false
 position = Vector2( -2.40782, 33.2936 )
 scale = Vector2( 1.7946, 1.7946 )
 frames = SubResource( 2 )
@@ -59,23 +127,35 @@ animation = "IDLE"
 frame = 3
 speed_scale = 2.0
 
+[node name="body2" type="Sprite" parent="SPRITES"]
+position = Vector2( -0.737395, 33.1831 )
+scale = Vector2( 1.79639, 1.79639 )
+texture = ExtResource( 17 )
+vframes = 5
+hframes = 10
+frame = 24
+
 [node name="Head" type="Sprite" parent="SPRITES"]
-position = Vector2( 7.90178, -24.9981 )
-scale = Vector2( 1.7198, 1.7198 )
+position = Vector2( 4.10647, -22.2141 )
+scale = Vector2( 1.79177, 1.79177 )
 texture = ExtResource( 8 )
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SPRITES"]
+root_node = NodePath("../body2")
+anims/Atack1 = SubResource( 3 )
+anims/Atack2 = SubResource( 4 )
+anims/Idle = SubResource( 5 )
+anims/Running = SubResource( 6 )
+
 [node name="Mira" type="Position2D" parent="."]
-position = Vector2( -13.5466, 6.58492 )
+position = Vector2( 3.98624, 14.1905 )
 script = ExtResource( 3 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Arma" type="Node2D" parent="Mira"]
 
 [node name="Sprite" type="Sprite" parent="Mira/Arma"]
-position = Vector2( 49.458, 1.55992 )
-scale = Vector2( 2.24619, 1.81016 )
+position = Vector2( 26.9135, 4.0145 )
+scale = Vector2( 1.9685, 1.58638 )
 texture = ExtResource( 15 )
 
 [node name="SoundEffects" type="Node" parent="Mira"]
@@ -84,7 +164,7 @@ texture = ExtResource( 15 )
 stream = ExtResource( 5 )
 
 [node name="shooterPoint" type="Position2D" parent="Mira"]
-position = Vector2( 116.798, -4.69279 )
+position = Vector2( 91.3385, -1.18113 )
 
 [node name="Camera2D" parent="." instance=ExtResource( 7 )]
 position = Vector2( 5.21424, 7.7881 )

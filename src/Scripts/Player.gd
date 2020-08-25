@@ -4,10 +4,13 @@ export var SPEED = 300
 export var GRAVITY = 3000
 export var JUMP_FORCE = -1000
 
+
+
 const NORMAL = Vector2(0, -1)
 
 var LOOKING_DIRECTION = Vector2( 1 , 0 )
 
+var is_atacking = false
 var motion = Vector2()
 var direction = Vector2()
 var is_dashing = false
@@ -105,6 +108,12 @@ func _on_Ghost_Timer_timeout() -> void:
 		this_ghost.texture = $SPRITES/body.frames.get_frame($SPRITES/body.animation, $SPRITES/body.frame)
 	
 func animations_set():
+	if Input.is_action_just_pressed("interact"):
+		is_atacking = true
+		$SPRITES/AnimationPlayer.play("Atack1")
+		yield(get_tree().create_timer(1), "timeout")
+		is_atacking = false
+	
 	var dir = direction
 	if dir.y < 0:
 		dir.y = dir.y/2
@@ -112,11 +121,15 @@ func animations_set():
 		dir.x = dir.x * -1
 	if dir.x == 0 and LOOKING_DIRECTION.x != 0:
 		dir.x = 1
+		
 	
-	if  direction.x != 0 and is_on_floor():
+	
+	if  direction.x != 0 and is_on_floor() and not is_atacking:
 		$SPRITES/body.play("RUNNING")
-	else :
+		$SPRITES/AnimationPlayer.play("Running")
+	elif direction.x == 0 and is_on_floor() and not is_atacking:
 		$SPRITES/body.play("IDLE")
+		$SPRITES/AnimationPlayer.play("Idle")
 		
 	$SPRITES/Head.rotation = -dir.angle()
 	$SPRITES.scale.x = LOOKING_DIRECTION.x
