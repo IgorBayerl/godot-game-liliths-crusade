@@ -205,7 +205,7 @@ frame = 1
 stream = ExtResource( 5 )
 
 [node name="shooterPoint" type="Position2D" parent="Mira"]
-position = Vector2( 110.064, -11.3314 )
+position = Vector2( 70.2447, -1.37644 )
 
 [node name="Camera2D" parent="." instance=ExtResource( 7 )]
 position = Vector2( 5.21424, 7.7881 )

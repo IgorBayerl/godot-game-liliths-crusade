@@ -12,7 +12,6 @@ var can_fire = true
 var horizontal_dir := -1
 
 func _process(delta: float) -> void:
-	print(can_fire)
 	set_direction_view()
 	if automatica:
 		if Input.is_action_pressed("shoot") and can_fire:
