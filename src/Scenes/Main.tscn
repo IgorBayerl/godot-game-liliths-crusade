@@ -125,18 +125,18 @@ margin_right = 329.0
 margin_bottom = 48.0
 
 [node name="Arma" parent="MainController" instance=ExtResource( 5 )]
-position = Vector2( 980.992, 780.412 )
+position = Vector2( 981.659, 786.419 )
 
 [node name="Arma2" parent="MainController" instance=ExtResource( 5 )]
-position = Vector2( 1064.45, 595.458 )
+position = Vector2( 1152.39, 608.172 )
 type = 2
 
 [node name="Arma4" parent="MainController" instance=ExtResource( 5 )]
-position = Vector2( 1272.18, 596.247 )
+position = Vector2( 1334, 610.925 )
 type = 3
 
 [node name="Arma3" parent="MainController" instance=ExtResource( 5 )]
-position = Vector2( 1185.77, 778.232 )
+position = Vector2( 1182.43, 786.908 )
 type = 2
 
 [node name="FOG" parent="." instance=ExtResource( 6 )]

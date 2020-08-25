@@ -20,16 +20,17 @@ func setAmmo( gun , quantidade ):
 func selectGun( value ):
 	
 	var item_list_count = $list.get_child_count()
-	print(' Selected  ', value)
+	print(' Selected ', value)
 	selected_gun = value-1
 	for i in range(0, item_list_count):
 		$list.get_child(i).rect_scale = Vector2(1.0,1.0)
 	$list.get_child(value-1).rect_scale = Vector2(1.3,1.3)
-	
+
 
 func _ready() -> void:
 	addItem(10)
-		
+
+
 func _process(delta: float) -> void:
 	$list.get_child(selected_gun).rect_scale = Vector2(1.3,1.3)
 

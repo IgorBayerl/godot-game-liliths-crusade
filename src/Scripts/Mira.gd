@@ -36,7 +36,7 @@ func instanciate_bullet() ->void:
 	bullet_instance.position = $shooterPoint.get_global_position()
 	bullet_instance.rotation_degrees = rotation_degrees + _random_value()
 	bullet_instance.apply_impulse(Vector2(),Vector2(bullet_speed,0).rotated(rotation + _random_value()))
-	get_tree().get_root().add_child((bullet_instance))
+	get_tree().get_root().add_child(bullet_instance)
 	can_fire = false
 	yield(get_tree().create_timer(fire_rate), "timeout")
 	can_fire = true

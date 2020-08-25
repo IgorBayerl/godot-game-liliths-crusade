@@ -27,11 +27,11 @@ var player_GUNS_information = {
 	3: {
 		"unlocked" : false ,
 		"selected" : false ,
-		"ammo": 25,
-		"full_ammo": 60,
-		"fire_rate": 0.6,
-		"random_rate":0.08,
-		"bullet_speed": 400,
+		"ammo": 700,
+		"full_ammo": 700,
+		"fire_rate": 0.02,
+		"random_rate":0.2,
+		"bullet_speed": 350,
 		"automatica": true
 	}
 }
