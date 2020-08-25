@@ -125,10 +125,8 @@ func animations_set():
 	
 	
 	if  direction.x != 0 and is_on_floor() and not is_atacking:
-		$SPRITES/body.play("RUNNING")
 		$SPRITES/AnimationPlayer.play("Running")
 	elif direction.x == 0 and is_on_floor() and not is_atacking:
-		$SPRITES/body.play("IDLE")
 		$SPRITES/AnimationPlayer.play("Idle")
 		
 	$SPRITES/Head.rotation = -dir.angle()

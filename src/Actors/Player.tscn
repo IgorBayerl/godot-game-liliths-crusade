@@ -1,40 +1,17 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://src/Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 [ext_resource path="res://src/Scripts/Mira.gd" type="Script" id=3]
-[ext_resource path="res://src/Assets/Sprites/PLAYER/RUNNING/7.png" type="Texture" id=4]
 [ext_resource path="res://src/Assets/Audios/Effects/SHOOT.wav" type="AudioStream" id=5]
 [ext_resource path="res://src/Assets/Audios/Effects/DASH.wav" type="AudioStream" id=6]
 [ext_resource path="res://src/Actors/Camera2D.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/Assets/Sprites/PLAYER/HEAD.png" type="Texture" id=8]
-[ext_resource path="res://src/Assets/Sprites/PLAYER/RUNNING/1.png" type="Texture" id=9]
-[ext_resource path="res://src/Assets/Sprites/PLAYER/RUNNING/2.png" type="Texture" id=10]
-[ext_resource path="res://src/Assets/Sprites/PLAYER/RUNNING/3.png" type="Texture" id=11]
-[ext_resource path="res://src/Assets/Sprites/PLAYER/RUNNING/4.png" type="Texture" id=12]
-[ext_resource path="res://src/Assets/Sprites/PLAYER/RUNNING/5.png" type="Texture" id=13]
-[ext_resource path="res://src/Assets/Sprites/PLAYER/RUNNING/6.png" type="Texture" id=14]
 [ext_resource path="res://src/Assets/Sprites/gun.png" type="Texture" id=15]
-[ext_resource path="res://src/Assets/Sprites/PLAYER/IDLE/2.png" type="Texture" id=16]
 [ext_resource path="res://src/Assets/Sprites/PLAYER/SpriteSheet.png" type="Texture" id=17]
-[ext_resource path="res://src/Assets/Sprites/PLAYER/RUNNING/8.png" type="Texture" id=19]
-[ext_resource path="res://src/Assets/Sprites/PLAYER/IDLE/1.png" type="Texture" id=20]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 29.8221, 87.5779 )
-
-[sub_resource type="SpriteFrames" id=2]
-animations = [ {
-"frames": [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 4 ), ExtResource( 19 ) ],
-"loop": true,
-"name": "RUNNING",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 20 ), ExtResource( 20 ), ExtResource( 16 ), ExtResource( 16 ), ExtResource( 16 ) ],
-"loop": true,
-"name": "IDLE",
-"speed": 5.0
-} ]
 
 [sub_resource type="Animation" id=3]
 resource_name = "Atack1"
@@ -118,22 +95,13 @@ shape = SubResource( 1 )
 
 [node name="SPRITES" type="Node2D" parent="."]
 
-[node name="body" type="AnimatedSprite" parent="SPRITES"]
-visible = false
-position = Vector2( -2.40782, 33.2936 )
-scale = Vector2( 1.7946, 1.7946 )
-frames = SubResource( 2 )
-animation = "IDLE"
-frame = 3
-speed_scale = 2.0
-
 [node name="body2" type="Sprite" parent="SPRITES"]
 position = Vector2( -0.737395, 33.1831 )
 scale = Vector2( 1.79639, 1.79639 )
 texture = ExtResource( 17 )
 vframes = 5
 hframes = 10
-frame = 24
+frame = 21
 
 [node name="Head" type="Sprite" parent="SPRITES"]
 position = Vector2( 4.10647, -22.2141 )
