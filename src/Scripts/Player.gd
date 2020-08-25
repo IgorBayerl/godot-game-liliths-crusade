@@ -108,17 +108,35 @@ func _on_Ghost_Timer_timeout() -> void:
 #		this_ghost.texture = $SPRITES/body.frames.get_frame($SPRITES/body.animation, $SPRITES/body.frame)
 	
 func animations_set():
+	if is_atacking != 0:
+		$Mira/Arma.visible = false
+		$Mira.can_fire = false
+	else:
+		$Mira/Arma.visible = true
+		$Mira.can_fire = true
+	
+	
 	if Input.is_action_just_pressed("interact") and is_atacking == 0 :
 		is_atacking = 1
 		$SPRITES/AnimationPlayer.play("Atack1")
-		yield(get_tree().create_timer(0.7), "timeout")
+		yield(get_tree().create_timer(0.5), "timeout")
 		if is_atacking == 1:
 			is_atacking = 0
 	if Input.is_action_just_pressed("interact") and is_atacking == 1:
 		is_atacking = 2
 		$SPRITES/AnimationPlayer.play("Atack2")
-		yield(get_tree().create_timer(1), "timeout")
-		is_atacking = 0
+		yield(get_tree().create_timer(0.6), "timeout")
+		if is_atacking == 2:
+			is_atacking = 0
+	if Input.is_action_just_pressed("interact") and is_atacking == 2 :
+		is_atacking = 1
+		$SPRITES/AnimationPlayer.play("Atack1")
+		yield(get_tree().create_timer(0.5), "timeout")
+		if is_atacking == 1:
+			is_atacking = 0
+	
+	
+		
 		
 	var dir = direction
 	if dir.y < 0:
@@ -137,4 +155,6 @@ func animations_set():
 		
 	$SPRITES/Head.rotation = -dir.angle()
 	$SPRITES.scale.x = LOOKING_DIRECTION.x
+
+
 
