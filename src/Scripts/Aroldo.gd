@@ -59,14 +59,15 @@ func _process(delta):
 	if Player.position.x < position.x - target_player_dist and sees_player():
 		set_dir(-1)
 		LOOKING_DIRECTION = Vector2(1,0)
+		$AnimatedSprite.play("Walk")
 		
 	elif Player.position.x > position.x + target_player_dist and sees_player():
 		set_dir(1)
 		LOOKING_DIRECTION = Vector2(-1,0)
-		
+		$AnimatedSprite.play("Walk")
 	else:
 		set_dir(0)
-
+		$AnimatedSprite.play("Idle")
 	if OS.get_ticks_msec() > next_dir_time:
 		dir = next_dir
 
