@@ -13,6 +13,7 @@ func _on_Arma_body_entered(body: Node) -> void:
 		_picked()
 		
 func _ready() -> void:
+	$AnimatedSprite.set_frame(type-1)
 	_sobe()
 
 	

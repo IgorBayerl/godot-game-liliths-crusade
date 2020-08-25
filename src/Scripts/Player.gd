@@ -19,10 +19,7 @@ var can_dash = true
 func _physics_process(delta: float) -> void:
 	_direction_move(delta)
 	animations_set()
-	if Input.is_action_just_pressed("interact"):
-		$Camera2D.shake = true
-		yield(get_tree().create_timer(0.2), "timeout")
-		$Camera2D.shake = false
+	
 	
 	
 func _direction_move(delta):
@@ -159,4 +156,8 @@ func animations_set():
 
 func _on_SwordHit_area_entered(area: Area2D) -> void:
 	if area.is_in_group("hurtbox"):
+		$Camera2D.shake = true
 		area.get_parent().take_damage()
+		yield(get_tree().create_timer(0.2), "timeout")
+		$Camera2D.shake = false
+		

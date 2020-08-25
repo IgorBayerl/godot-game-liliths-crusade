@@ -1,12 +1,15 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://src/Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 [ext_resource path="res://src/Scripts/Mira.gd" type="Script" id=3]
+[ext_resource path="res://src/Sprites/armas/Rifle.png" type="Texture" id=4]
 [ext_resource path="res://src/Assets/Audios/Effects/SHOOT.wav" type="AudioStream" id=5]
 [ext_resource path="res://src/Assets/Audios/Effects/DASH.wav" type="AudioStream" id=6]
 [ext_resource path="res://src/Actors/Camera2D.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/Assets/Sprites/PLAYER/HEAD.png" type="Texture" id=8]
+[ext_resource path="res://src/Sprites/armas/pistola.png" type="Texture" id=9]
+[ext_resource path="res://src/Sprites/armas/Chamas.png" type="Texture" id=10]
 [ext_resource path="res://src/Assets/Sprites/gun.png" type="Texture" id=15]
 [ext_resource path="res://src/Assets/Sprites/PLAYER/SpriteSheet.png" type="Texture" id=17]
 
@@ -130,6 +133,14 @@ tracks/1/keys = {
 "values": [ true, true ]
 }
 
+[sub_resource type="SpriteFrames" id=7]
+animations = [ {
+"frames": [ ExtResource( 9 ), ExtResource( 4 ), ExtResource( 10 ) ],
+"loop": false,
+"name": "Guns",
+"speed": 0.0
+} ]
+
 [node name="Player" type="KinematicBody2D"]
 scale = Vector2( 0.64, 0.64 )
 collision_layer = 4
@@ -157,7 +168,7 @@ frame = 25
 [node name="SwordHit" type="Area2D" parent="SPRITES/body2"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SPRITES/body2/SwordHit"]
-position = Vector2( 33.8272, -4.30529 )
+position = Vector2( 33.981, -4.45905 )
 shape = SubResource( 6 )
 disabled = true
 
@@ -180,9 +191,17 @@ script = ExtResource( 3 )
 [node name="Arma" type="Node2D" parent="Mira"]
 
 [node name="Sprite" type="Sprite" parent="Mira/Arma"]
+visible = false
 position = Vector2( 26.9135, 4.0145 )
 scale = Vector2( 1.9685, 1.58638 )
 texture = ExtResource( 15 )
+
+[node name="GunSprite" type="AnimatedSprite" parent="Mira/Arma"]
+position = Vector2( 29.5014, -8.72817 )
+scale = Vector2( 1.99719, 1.99719 )
+frames = SubResource( 7 )
+animation = "Guns"
+frame = 1
 
 [node name="SoundEffects" type="Node" parent="Mira"]
 
@@ -190,7 +209,7 @@ texture = ExtResource( 15 )
 stream = ExtResource( 5 )
 
 [node name="shooterPoint" type="Position2D" parent="Mira"]
-position = Vector2( 91.3385, -1.18113 )
+position = Vector2( 70.2447, -1.37644 )
 
 [node name="Camera2D" parent="." instance=ExtResource( 7 )]
 position = Vector2( 5.21424, 7.7881 )

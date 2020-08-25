@@ -80,7 +80,7 @@ func _select_gun(gun):
 	selected_gun = gun
 	$CanvasLayer/Control/Guns_bar.selectGun(gun)
 	var gun_selected = player_GUNS_information[gun]
-	$Player/Mira/Arma/Sprite.visible = true
+	$Player/Mira/Arma/GunSprite.set_frame(gun-1)
 	$Player/Mira.random_rate = gun_selected.random_rate
 	$Player/Mira.bullet_speed = gun_selected.bullet_speed
 	$Player/Mira.automatica = gun_selected.automatica
@@ -90,7 +90,7 @@ func _select_gun(gun):
 func atirando():
 	player_GUNS_information[selected_gun].ammo -= 1
 	$CanvasLayer/Control/Guns_bar.setAmmo(selected_gun, player_GUNS_information[selected_gun].ammo)
-	print('TEI !')
+	
 
 
 
