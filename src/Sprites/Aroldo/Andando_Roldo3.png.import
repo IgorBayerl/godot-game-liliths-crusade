@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Bixo quase lah.png-ff0e4fd9c0f709c48047864e85d9e6d4.stex"
+path="res://.import/Andando_Roldo3.png-b4a61fea4db7bb737a6d30b3dce19b20.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/Sprites/Aroldo/Bixo quase lah.png"
-dest_files=[ "res://.import/Bixo quase lah.png-ff0e4fd9c0f709c48047864e85d9e6d4.stex" ]
+source_file="res://src/Sprites/Aroldo/Andando_Roldo3.png"
+dest_files=[ "res://.import/Andando_Roldo3.png-b4a61fea4db7bb737a6d30b3dce19b20.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Bixo ai ai meu pé.png-ce8efdfbdb881a0e2b83a82f3f10bb25.stex"
+path="res://.import/Andando_Roldo1.png-00f32ae0173619b11d8033980791e1b3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/Sprites/Aroldo/Bixo ai ai meu pé.png"
-dest_files=[ "res://.import/Bixo ai ai meu pé.png-ce8efdfbdb881a0e2b83a82f3f10bb25.stex" ]
+source_file="res://src/Sprites/Aroldo/Andando_Roldo1.png"
+dest_files=[ "res://.import/Andando_Roldo1.png-00f32ae0173619b11d8033980791e1b3.stex" ]
 
 [params]
 
