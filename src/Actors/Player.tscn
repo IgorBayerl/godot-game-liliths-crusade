@@ -13,9 +13,9 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 29.8221, 87.5779 )
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "Atack1"
-length = 0.3
+length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
@@ -29,9 +29,8 @@ tracks/0/keys = {
 "values": [ 21, 23, 24 ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "Atack2"
-length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
@@ -45,7 +44,7 @@ tracks/0/keys = {
 "values": [ 25, 26, 27, 28, 29 ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 resource_name = "Idle"
 length = 0.4
 loop = true
@@ -62,7 +61,7 @@ tracks/0/keys = {
 "values": [ 10, 12, 13, 10 ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=5]
 resource_name = "Running"
 length = 0.8
 loop = true
@@ -101,7 +100,7 @@ scale = Vector2( 1.79639, 1.79639 )
 texture = ExtResource( 17 )
 vframes = 5
 hframes = 10
-frame = 21
+frame = 28
 
 [node name="Head" type="Sprite" parent="SPRITES"]
 position = Vector2( 4.10647, -22.2141 )
@@ -110,10 +109,10 @@ texture = ExtResource( 8 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="SPRITES"]
 root_node = NodePath("../body2")
-anims/Atack1 = SubResource( 3 )
-anims/Atack2 = SubResource( 4 )
-anims/Idle = SubResource( 5 )
-anims/Running = SubResource( 6 )
+anims/Atack1 = SubResource( 2 )
+anims/Atack2 = SubResource( 3 )
+anims/Idle = SubResource( 4 )
+anims/Running = SubResource( 5 )
 
 [node name="Mira" type="Position2D" parent="."]
 position = Vector2( 3.98624, 14.1905 )
@@ -145,6 +144,8 @@ offset_v = -0.7
 drag_margin_left = 1.0
 drag_margin_right = 1.0
 
+[node name="MiliAtack_Timer" type="Timer" parent="."]
+
 [node name="Dash_Timer" type="Timer" parent="."]
 wait_time = 0.2
 one_shot = true
@@ -160,5 +161,6 @@ autostart = true
 
 [node name="Dash_sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
+[connection signal="timeout" from="MiliAtack_Timer" to="." method="_on_MiliAtack_Timer_timeout"]
 [connection signal="timeout" from="Dash_Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="Ghost_Timer" to="." method="_on_Ghost_Timer_timeout"]
