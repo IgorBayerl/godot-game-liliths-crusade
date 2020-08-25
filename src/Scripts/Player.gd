@@ -105,7 +105,7 @@ func _on_Ghost_Timer_timeout() -> void:
 		var this_ghost = preload("res://src/Actors/Efeitos/ghost.tscn").instance()
 		get_parent().add_child(this_ghost)
 		this_ghost.position = position + Vector2(0,20)
-		this_ghost.texture = $SPRITES/body.frames.get_frame($SPRITES/body.animation, $SPRITES/body.frame)
+#		this_ghost.texture = $SPRITES/body.frames.get_frame($SPRITES/body.animation, $SPRITES/body.frame)
 	
 func animations_set():
 	if Input.is_action_just_pressed("interact") and is_atacking == 0 :
