@@ -17,7 +17,7 @@ var next_dir_time = 0
 
 var next_jump_time = -1
 
-var target_player_dist = 140
+var target_player_dist = 90
 
 var eye_reach = 90
 var vision = 600
