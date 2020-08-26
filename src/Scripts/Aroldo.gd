@@ -20,7 +20,7 @@ var next_jump_time = -1
 var target_player_dist = 90
 
 var eye_reach = 90
-var vision = 600
+var vision = 750
 
 func _ready():
 	set_process(true)
