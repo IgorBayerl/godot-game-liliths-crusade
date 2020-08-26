@@ -2,6 +2,8 @@ extends KinematicBody2D
 
 onready var Player = get_parent().get_node("Player")
 
+var atacking = false
+
 var vel = Vector2(0, 0)
 var LOOKING_DIRECTION = Vector2( 1 , 0 )
 
@@ -55,19 +57,22 @@ func sees_player():
 func _process(delta):
 	
 	$AnimatedSprite.scale.x = LOOKING_DIRECTION.x
-
-	if Player.position.x < position.x - target_player_dist and sees_player():
-		set_dir(-1)
-		LOOKING_DIRECTION = Vector2(1,0)
-		$AnimatedSprite.play("Walk")
-		
-	elif Player.position.x > position.x + target_player_dist and sees_player():
-		set_dir(1)
-		LOOKING_DIRECTION = Vector2(-1,0)
-		$AnimatedSprite.play("Walk")
+	if not atacking:
+		if Player.position.x < position.x - target_player_dist and sees_player() :
+			set_dir(-1)
+			LOOKING_DIRECTION = Vector2(1,0)
+			$AnimatedSprite.play("Walk")
+			
+		elif Player.position.x > position.x + target_player_dist and sees_player() :
+			set_dir(1)
+			LOOKING_DIRECTION = Vector2(-1,0)
+			$AnimatedSprite.play("Walk")
+		else :
+			set_dir(0)
+			$AnimatedSprite.play("Idle")
 	else:
-		set_dir(0)
-		$AnimatedSprite.play("Idle")
+		$AnimatedSprite.play("Atack")
+
 	if OS.get_ticks_msec() > next_dir_time:
 		dir = next_dir
 
@@ -92,3 +97,13 @@ func _process(delta):
 
 func take_damage():
 	print('outch !!! tomei um dano aqui !')
+
+
+
+func _on_Trigger_area_entered(area: Area2D) -> void:
+	print ('atack')
+	atacking = true
+	$AnimatedSprite.play("atack")
+	$AnimatedSprite/HitBox/AnimationPlayer.play("Hit")
+	yield(get_tree().create_timer(0.5), "timeout")
+	atacking = false
