@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://src/Sprites/Aroldo/Andando_Roldo3.png" type="Texture" id=1]
 [ext_resource path="res://src/Scripts/Aroldo.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://src/Sprites/Aroldo/AroldoAtack2.png" type="Texture" id=7]
 [ext_resource path="res://src/Sprites/Aroldo/AroldoAtack3.png" type="Texture" id=8]
 [ext_resource path="res://src/Sprites/Aroldo/AroldoAtack1.png" type="Texture" id=9]
+[ext_resource path="res://src/Actors/Efeitos/BloodSplitter.tscn" type="PackedScene" id=10]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -28,7 +29,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=2]
 resource_name = "Hit"
 tracks/0/type = "value"
 tracks/0/path = NodePath("CollisionShape2D:disabled")
@@ -43,21 +44,20 @@ tracks/0/keys = {
 "values": [ true, false, true ]
 }
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 27.2914, 31.379 )
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 28.6344, 38.7868 )
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 7.84693, 14.1331 )
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 23.5, 36 )
 
 [node name="Aroldo" type="KinematicBody2D"]
-collision_layer = 2
-collision_mask = 5
+collision_layer = 130
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
@@ -70,36 +70,44 @@ offset = Vector2( -25.754, 0 )
 [node name="HitBox" type="Area2D" parent="AnimatedSprite"]
 position = Vector2( -1.47205, 7.85754 )
 scale = Vector2( 0.912858, 1 )
-collision_layer = 4
-collision_mask = 4
+collision_layer = 34
+collision_mask = 36
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite/HitBox"]
-anims/Hit = SubResource( 4 )
+anims/Hit = SubResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite/HitBox"]
 position = Vector2( -34.5157, -0.280617 )
-shape = SubResource( 5 )
+shape = SubResource( 3 )
 disabled = true
 
 [node name="Trigger" type="Area2D" parent="AnimatedSprite"]
 position = Vector2( -1.47205, 7.85754 )
 scale = Vector2( 0.912858, 1 )
+collision_layer = 34
+collision_mask = 2147483685
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite/Trigger"]
 position = Vector2( -35.1905, 2.00452 )
-shape = SubResource( 6 )
+shape = SubResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
+light_mask = -2147483647
+position = Vector2( -0.235962, 0.23597 )
 scale = Vector2( 2.84, 2.88 )
-shape = SubResource( 2 )
+shape = SubResource( 5 )
 
 [node name="HurtBox" type="Area2D" parent="." groups=[
 "hurtbox",
 ]]
-visible = false
+collision_layer = 2147483682
+collision_mask = 36
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+visible = false
 position = Vector2( -2, 2 )
-shape = SubResource( 3 )
+shape = SubResource( 6 )
+
+[node name="BloodSplitter" parent="." instance=ExtResource( 10 )]
+position = Vector2( -0.943878, -16.0459 )
 [connection signal="area_entered" from="AnimatedSprite/Trigger" to="." method="_on_Trigger_area_entered"]

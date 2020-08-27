@@ -3,6 +3,8 @@ extends KinematicBody2D
 onready var Player = get_parent().get_node("Player")
 
 var atacking = false
+var health = 100
+
 
 var vel = Vector2(0, 0)
 var LOOKING_DIRECTION = Vector2( 1 , 0 )
@@ -22,7 +24,11 @@ var target_player_dist = 90
 var eye_reach = 90
 var vision = 750
 
+var walk_speed = 275
+
 func _ready():
+	
+	walk_speed = rand_range(250 , 280)
 	set_process(true)
 
 func set_dir(target_dir):
@@ -55,6 +61,8 @@ func sees_player():
 	return false
 
 func _process(delta):
+	if health <= 0 :
+		queue_free()
 	
 	$AnimatedSprite.scale.x = LOOKING_DIRECTION.x
 	if not atacking:
@@ -81,10 +89,10 @@ func _process(delta):
 			vel.y = -800
 		next_jump_time = -1
 
-	vel.x = dir * 275
+	vel.x = dir * walk_speed
 
-	if Player.position.y < position.y - 64 and next_jump_time == -1 and sees_player():
-		next_jump_time = OS.get_ticks_msec() + react_time
+#	if Player.position.y < position.y - 64 and next_jump_time == -1 and sees_player():
+#		next_jump_time = OS.get_ticks_msec() + react_time
 
 	vel.y += grav * delta;
 	if vel.y > max_grav:
@@ -95,15 +103,19 @@ func _process(delta):
 
 	vel = move_and_slide(vel, Vector2(0, -1))
 
-func take_damage():
+func take_damage(damage):
+	
+	health -= damage 
 	print('outch !!! tomei um dano aqui !')
 
 
 
 func _on_Trigger_area_entered(area: Area2D) -> void:
-	print ('atack')
-	atacking = true
-	$AnimatedSprite.play("atack")
-	$AnimatedSprite/HitBox/AnimationPlayer.play("Hit")
-	yield(get_tree().create_timer(0.5), "timeout")
-	atacking = false
+	if area.is_in_group("Player"):
+		print ('atack')
+		atacking = true
+		$AnimatedSprite.play("atack")
+		$AnimatedSprite/HitBox/AnimationPlayer.play("Hit")
+		yield(get_tree().create_timer(0.5), "timeout")
+		atacking = false
+		get_parent().get_node("Player").take_damage(30)
