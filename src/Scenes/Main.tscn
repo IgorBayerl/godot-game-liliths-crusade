@@ -93,12 +93,13 @@ position = Vector2( 316.783, 704.06 )
 script = ExtResource( 8 )
 
 [node name="Player" parent="MainController" instance=ExtResource( 1 )]
-position = Vector2( 538.177, 706.961 )
+position = Vector2( 571.172, 684.257 )
 scale = Vector2( 0.519995, 0.519995 )
 
 [node name="GetItem" type="Area2D" parent="MainController/Player" groups=[
 "Player",
 ]]
+visible = false
 collision_layer = 4
 
 [node name="GetItem_CollisionShape" type="CollisionShape2D" parent="MainController/Player/GetItem"]

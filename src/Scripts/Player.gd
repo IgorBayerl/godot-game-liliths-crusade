@@ -4,6 +4,8 @@ export var SPEED = 300
 export var GRAVITY = 3000
 export var JUMP_FORCE = -1000
 
+var health = 100
+
 signal OnDeath(WhoDied)
 
 const NORMAL = Vector2(0, -1)
@@ -19,6 +21,8 @@ var can_dash = true
 func _physics_process(delta: float) -> void:
 	_direction_move(delta)
 	animations_set()
+	
+	death_detection()
 	
 	if Input.is_action_just_pressed("Gun_4"):
 		take_damage(30)
@@ -169,5 +173,8 @@ func _on_SwordHit_area_entered(area: Area2D) -> void:
 func take_damage(damage):
 	get_parent().get_node("CanvasLayer/Control/Health Bar").take_damage(damage)
 	print('take_damage')
-	emit_signal("OnDeath",self)
 		
+func death_detection():
+	if health <= 0 :
+		emit_signal("OnDeath",self)
+		queue_free()

@@ -6,6 +6,8 @@ onready var update_tween = $UpdateTween
 
 var health = 100
 
+
+
 func _on_health_updated(health, amount):
 	health_over.value = health
 	update_tween.interpolate_property(health_under, "value", health_under.value, health, 0.4, Tween.TRANS_SINE, Tween.EASE_IN_OUT, 0.4)
@@ -23,6 +25,7 @@ func _on_max_health_updated(max_health):
 
 func _ready() -> void:
 	_on_health_updated(health,0)
+#	health = get_parent().get_parent().get_parent().get_node("Player").health
 	
 func take_damage(damage):
 		health = health - damage

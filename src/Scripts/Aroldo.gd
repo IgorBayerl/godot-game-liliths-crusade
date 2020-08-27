@@ -70,7 +70,7 @@ func _process(delta):
 			set_dir(-1)
 			LOOKING_DIRECTION = Vector2(1,0)
 			$AnimatedSprite.play("Walk")
-			
+
 		elif Player.position.x > position.x + target_player_dist and sees_player() :
 			set_dir(1)
 			LOOKING_DIRECTION = Vector2(-1,0)
@@ -118,4 +118,10 @@ func _on_Trigger_area_entered(area: Area2D) -> void:
 		$AnimatedSprite/HitBox/AnimationPlayer.play("Hit")
 		yield(get_tree().create_timer(0.5), "timeout")
 		atacking = false
-		get_parent().get_node("Player").take_damage(30)
+#		get_parent().get_node("Player").take_damage(30)
+
+
+func _on_HitBox_body_entered(body: Node) -> void:
+	if body.is_in_group("Player"):
+		print("acertou")
+		body.take_damage(30)
