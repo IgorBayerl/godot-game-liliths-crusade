@@ -114,7 +114,7 @@ func _on_Trigger_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Player"):
 		print ('atack')
 		atacking = true
-		$AnimatedSprite.play("atack")
+		$AnimatedSprite.play("Atack")
 		$AnimatedSprite/HitBox/AnimationPlayer.play("Hit")
 		yield(get_tree().create_timer(0.5), "timeout")
 		atacking = false

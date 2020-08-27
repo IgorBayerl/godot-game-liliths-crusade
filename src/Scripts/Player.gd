@@ -5,6 +5,7 @@ export var GRAVITY = 3000
 export var JUMP_FORCE = -1000
 
 var health = 100
+var is_alive = true
 
 signal OnDeath(WhoDied)
 
@@ -164,7 +165,7 @@ func animations_set():
 func _on_SwordHit_area_entered(area: Area2D) -> void:
 	if area.is_in_group("hurtbox"):
 		$Camera2D.shake = true
-		var damage = rand_range(15, 30)
+		var damage = rand_range(30, 30)
 		area.get_parent().take_damage(damage)
 		print(damage)
 		yield(get_tree().create_timer(0.2), "timeout")
@@ -172,9 +173,11 @@ func _on_SwordHit_area_entered(area: Area2D) -> void:
 		
 func take_damage(damage):
 	get_parent().get_node("CanvasLayer/Control/Health Bar").take_damage(damage)
+	health -= damage
 	print('take_damage')
 		
 func death_detection():
-	if health <= 0 :
+	if health <= 0 and is_alive:
+		is_alive = false
+#		print ("AAAAAAAAAAAAAAAAAAAAAAAAAHHHH")
 		emit_signal("OnDeath",self)
-		queue_free()

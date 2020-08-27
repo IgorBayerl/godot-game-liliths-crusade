@@ -78,7 +78,7 @@ func set_direction_view() -> void:
 	if Input.is_action_just_released("move_UP"):
 		dir += Vector2(dir.x , 0)
 		
-	var new_dir: = Vector2()
+	
 	
 #	print( dir )
 	rotation = dir.angle()

@@ -19,7 +19,7 @@ func on_parent_death(parent : Node):
 	splatter()
 	
 func splatter(particles_to_spawn := -1):
-	if (particles_to_spawn <=0):
+	if (particles_to_spawn <= 0):
 		particles_to_spawn = BloodParticleNumber
 		
 	var spawnedParticles : RigidBody2D
@@ -33,3 +33,5 @@ func splatter(particles_to_spawn := -1):
 		
 		spawnedParticles.linear_velocity = Vector2(rnd.randf_range(-RandomVelocity, RandomVelocity), rnd.randf_range(-RandomVelocity, RandomVelocity))
 		
+
+
