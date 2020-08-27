@@ -12,6 +12,10 @@ var can_fire = true
 var horizontal_dir := -1
 
 func _process(delta: float) -> void:
+	if horizontal_dir > 0:
+		$Arma.scale.y = -1
+	else:
+		$Arma.scale.y = 1
 	set_direction_view()
 	if automatica:
 		if Input.is_action_pressed("shoot") and can_fire:
