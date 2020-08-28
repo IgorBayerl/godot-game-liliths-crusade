@@ -23,7 +23,7 @@ offset = Vector2( -2.766, 0 )
 [node name="Light2D" type="Light2D" parent="."]
 texture = ExtResource( 3 )
 texture_scale = 0.2
-color = Color( 0.156863, 0.172549, 0.223529, 1 )
+color = Color( 0.219608, 0.0705882, 0.0392157, 1 )
 
 [node name="LuzPiscando" type="Tween" parent="."]
 [connection signal="body_entered" from="." to="." method="_on_CheckPoint_body_entered"]
