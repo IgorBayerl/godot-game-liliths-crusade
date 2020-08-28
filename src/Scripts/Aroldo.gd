@@ -5,6 +5,7 @@ onready var Player = get_parent().get_node("Player")
 var atacking = false
 var health = 100
 
+signal OnDeath(WhoDied)
 
 var vel = Vector2(0, 0)
 var LOOKING_DIRECTION = Vector2( 1 , 0 )
@@ -110,18 +111,18 @@ func take_damage(damage):
 
 
 
-func _on_Trigger_area_entered(area: Area2D) -> void:
-	if area.is_in_group("Player"):
+
+func _on_HitBox_body_entered(body: Node) -> void:
+	if body.is_in_group("Player"):
+		print("acertou")
+		body.take_damage(30)
+
+
+func _on_Trigger_body_entered(body: Node) -> void:
+	if body.is_in_group("Player"):
 		print ('atack')
 		atacking = true
 		$AnimatedSprite.play("Atack")
 		$AnimatedSprite/HitBox/AnimationPlayer.play("Hit")
 		yield(get_tree().create_timer(0.5), "timeout")
 		atacking = false
-#		get_parent().get_node("Player").take_damage(30)
-
-
-func _on_HitBox_body_entered(body: Node) -> void:
-	if body.is_in_group("Player"):
-		print("acertou")
-		body.take_damage(30)

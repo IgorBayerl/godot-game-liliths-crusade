@@ -18,14 +18,14 @@ animations = [ {
 "name": "Walk",
 "speed": 4.0
 }, {
-"frames": [ ExtResource( 9 ), ExtResource( 7 ), ExtResource( 8 ) ],
-"loop": true,
-"name": "Atack",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 6 ) ],
 "loop": true,
 "name": "Idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 7 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "Atack",
 "speed": 5.0
 } ]
 
@@ -112,4 +112,4 @@ shape = SubResource( 6 )
 [node name="BloodSplitter" parent="." instance=ExtResource( 10 )]
 position = Vector2( -0.943878, -16.0459 )
 [connection signal="body_entered" from="AnimatedSprite/HitBox" to="." method="_on_HitBox_body_entered"]
-[connection signal="area_entered" from="AnimatedSprite/Trigger" to="." method="_on_Trigger_area_entered"]
+[connection signal="body_entered" from="AnimatedSprite/Trigger" to="." method="_on_Trigger_body_entered"]

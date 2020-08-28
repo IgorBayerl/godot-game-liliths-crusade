@@ -12,9 +12,9 @@ animations = [ {
 "speed": 0.0
 } ]
 
-[node name="ListItem" type="Panel"]
-margin_right = 108.0
-margin_bottom = 75.0
+[node name="ListItem" type="Control"]
+margin_right = 67.0
+margin_bottom = 52.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -24,17 +24,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -28.0
+margin_left = -27.5
 margin_top = -20.0
-margin_right = 28.0
-margin_bottom = 20.0
+margin_right = 27.5
+margin_bottom = 24.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="PanelContainer"]
-position = Vector2( 27.9087, 19.4526 )
-scale = Vector2( 0.925085, 0.925085 )
+position = Vector2( 26.7525, 15.4583 )
+scale = Vector2( 0.630771, 0.630771 )
 frames = SubResource( 1 )
 frame = 1
 

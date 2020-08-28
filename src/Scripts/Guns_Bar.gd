@@ -12,7 +12,7 @@ func addItem( value ):
 	listIndex += 1
 	item.get_node("Bullets").text = str(value)
 	item.get_node("PanelContainer/AnimatedSprite").set_frame(listIndex-1)
-	item.rect_min_size = Vector2(70,50)
+	item.rect_min_size = Vector2(40,10)
 	$list.add_child(item)
 	
 func setAmmo( gun , quantidade ):

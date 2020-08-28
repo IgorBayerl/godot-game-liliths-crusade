@@ -87,7 +87,7 @@ shape = SubResource( 5 )
 one_way_collision = true
 
 [node name="CheckPoint" parent="." instance=ExtResource( 10 )]
-position = Vector2( 316.783, 704.06 )
+position = Vector2( 317.18, 703.266 )
 
 [node name="MainController" type="Node2D" parent="."]
 script = ExtResource( 8 )
@@ -96,9 +96,7 @@ script = ExtResource( 8 )
 position = Vector2( 571.172, 684.257 )
 scale = Vector2( 0.519995, 0.519995 )
 
-[node name="GetItem" type="Area2D" parent="MainController/Player" groups=[
-"Player",
-]]
+[node name="GetItem" type="Area2D" parent="MainController/Player"]
 visible = false
 collision_layer = 4
 
@@ -145,8 +143,8 @@ anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.0
 margin_left = -20.0
-margin_right = 329.0
-margin_bottom = 48.0
+margin_right = 247.0
+margin_bottom = 29.0
 
 [node name="Arma" parent="MainController" instance=ExtResource( 5 )]
 position = Vector2( 981.659, 786.419 )
@@ -171,11 +169,11 @@ scale = Vector2( 44.7077, 34.4197 )
 stream = ExtResource( 9 )
 volume_db = -28.272
 [connection signal="area_entered" from="MainController/Player/GetItem" to="MainController" method="_on_GetItem_area_entered"]
-[connection signal="body_entered" from="MainController/Arma" to="MainController" method="_on_Arma_body_entered"]
 [connection signal="body_entered" from="MainController/Arma" to="MainController/CanvasLayer/Control/Guns_bar" method="_on_Arma_body_entered"]
-[connection signal="body_entered" from="MainController/Arma2" to="MainController" method="_on_Arma_body_entered"]
+[connection signal="body_entered" from="MainController/Arma" to="MainController" method="_on_Arma_body_entered"]
 [connection signal="body_entered" from="MainController/Arma2" to="MainController/CanvasLayer/Control/Guns_bar" method="_on_Arma_body_entered"]
-[connection signal="body_entered" from="MainController/Arma4" to="MainController" method="_on_Arma_body_entered"]
+[connection signal="body_entered" from="MainController/Arma2" to="MainController" method="_on_Arma_body_entered"]
 [connection signal="body_entered" from="MainController/Arma4" to="MainController/CanvasLayer/Control/Guns_bar" method="_on_Arma_body_entered"]
-[connection signal="body_entered" from="MainController/Arma3" to="MainController" method="_on_Arma_body_entered"]
+[connection signal="body_entered" from="MainController/Arma4" to="MainController" method="_on_Arma_body_entered"]
 [connection signal="body_entered" from="MainController/Arma3" to="MainController/CanvasLayer/Control/Guns_bar" method="_on_Arma_body_entered"]
+[connection signal="body_entered" from="MainController/Arma3" to="MainController" method="_on_Arma_body_entered"]

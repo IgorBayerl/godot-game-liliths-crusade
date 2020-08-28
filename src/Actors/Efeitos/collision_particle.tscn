@@ -36,7 +36,7 @@ tracks/1/keys = {
 }
 
 [node name="BloodParticle" type="RigidBody2D"]
-collision_layer = 0
+collision_layer = 512
 gravity_scale = 10.0
 script = ExtResource( 2 )
 
