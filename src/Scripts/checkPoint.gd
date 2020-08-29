@@ -26,12 +26,12 @@ func _desce():
 	_sobe()
 	
 func _ascende():
-	TweenLight.interpolate_property($Light2D, "energy", $Light2D.energy, $Light2D.energy + 2, tempo_piscada, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
+	TweenLight.interpolate_property($Light2D, "energy", $Light2D.energy, $Light2D.energy + 1, tempo_piscada, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
 	TweenLight.start()
 	yield(get_tree().create_timer(tempo_piscada), "timeout")
 	_apaga()
 func _apaga():
-	TweenLight.interpolate_property($Light2D, "energy", $Light2D.energy, $Light2D.energy - 2, tempo_piscada, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
+	TweenLight.interpolate_property($Light2D, "energy", $Light2D.energy, $Light2D.energy - 1, tempo_piscada, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
 	TweenLight.start()
 	yield(get_tree().create_timer(tempo_piscada), "timeout")
 	_ascende()
