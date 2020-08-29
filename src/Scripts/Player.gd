@@ -1,8 +1,13 @@
 extends KinematicBody2D
 
+export var NORMAL_GRAVITIY = 300
+export var SMALL_JUMP_GRAVITIY = 800
+
 export var SPEED = 300
-export var GRAVITY = 3000
+var GRAVITY = 500
 export var JUMP_FORCE = -1000
+
+
 
 var health = 100
 var is_alive = true
@@ -60,9 +65,9 @@ func _direction_move(delta):
 		if _pode_pular():
 			motion.y = JUMP_FORCE
 	elif motion.y < 0 :
-		GRAVITY = 5000
+		GRAVITY = SMALL_JUMP_GRAVITIY
 	else:
-		GRAVITY = 3000
+		GRAVITY = NORMAL_GRAVITIY
 		
 	if Input.is_action_just_pressed("hability"):
 		dash()
