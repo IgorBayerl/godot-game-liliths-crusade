@@ -35,3 +35,5 @@ hframes = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Voando = SubResource( 2 )
+
+[node name="Tween" type="Tween" parent="."]

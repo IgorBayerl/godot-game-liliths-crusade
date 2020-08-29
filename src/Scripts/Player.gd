@@ -184,5 +184,5 @@ func take_damage(damage):
 func death_detection():
 	if health <= 0 and is_alive:
 		is_alive = false
-#		print ("AAAAAAAAAAAAAAAAAAAAAAAAAHHHH")
+		print ("AAAAAAAAAAAAAAAAAAAAAAAAAHHHH")
 		emit_signal("OnDeath",self)
