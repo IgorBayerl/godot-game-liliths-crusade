@@ -285,10 +285,17 @@ frame = 1
 stream = ExtResource( 5 )
 
 [node name="shooterPoint" type="Position2D" parent="Mira"]
-position = Vector2( 70.2447, -1.37644 )
+position = Vector2( 81.0049, -7.99806 )
 
-[node name="Camera2D" parent="." instance=ExtResource( 7 )]
-position = Vector2( 5.21424, 7.7881 )
+[node name="Camera_position" type="Position2D" parent="Mira"]
+position = Vector2( 216.222, -12.1422 )
+
+[node name="Sprite" type="Sprite" parent="Mira/Camera_position"]
+visible = false
+texture = ExtResource( 2 )
+
+[node name="Camera2D" parent="Mira/Camera_position" instance=ExtResource( 7 )]
+position = Vector2( 2.51382, -1.15216 )
 offset = Vector2( 0, 0 )
 limit_left = 0
 limit_top = 0
@@ -297,6 +304,7 @@ smoothing_speed = 5.0
 offset_v = -0.7
 drag_margin_left = 1.0
 drag_margin_right = 1.0
+DAMP_EASING = 1.8025
 
 [node name="MiliAtack_Timer" type="Timer" parent="."]
 

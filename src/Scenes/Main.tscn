@@ -131,7 +131,8 @@ collision_mask = 33
 [node name="CanvasLayer" type="CanvasLayer" parent="MainController"]
 
 [node name="Control" type="Control" parent="MainController/CanvasLayer"]
-margin_right = 1028.0
+margin_left = -0.793701
+margin_right = 1027.21
 margin_bottom = 612.0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -166,7 +167,9 @@ position = Vector2( 1182.43, 786.908 )
 type = 2
 
 [node name="Roberto" parent="MainController" instance=ExtResource( 11 )]
-position = Vector2( 738.439, 670.909 )
+position = Vector2( 756.399, 583.357 )
+collision_layer = 2
+collision_mask = 33
 
 [node name="FOG" parent="." instance=ExtResource( 6 )]
 visible = false

@@ -18,6 +18,8 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+
+
 	var damping : = ease(timer.time_left / timer.wait_time, DAMP_EASING)
 	offset = Vector2(
 		rand_range(amplitude, -amplitude) * damping,

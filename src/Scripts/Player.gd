@@ -169,12 +169,13 @@ func animations_set():
 
 func _on_SwordHit_area_entered(area: Area2D) -> void:
 	if area.is_in_group("hurtbox"):
-		$Camera2D.shake = true
+		$Mira/Camera_position/Camera2D.shake = true
+#		$Camera2D
 		var damage = rand_range(30, 30)
 		area.get_parent().take_damage(damage)
 		print(damage)
 		yield(get_tree().create_timer(0.2), "timeout")
-		$Camera2D.shake = false
+		$Mira/Camera_position/Camera2D.shake = false
 		
 func take_damage(damage):
 	get_parent().get_node("CanvasLayer/Control/Health Bar").take_damage(damage)
