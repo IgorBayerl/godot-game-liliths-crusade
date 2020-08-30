@@ -288,7 +288,7 @@ stream = ExtResource( 5 )
 position = Vector2( 81.0049, -7.99806 )
 
 [node name="Camera_position" type="Position2D" parent="Mira"]
-position = Vector2( 216.222, -12.1422 )
+position = Vector2( 191.055, -13.3127 )
 
 [node name="Sprite" type="Sprite" parent="Mira/Camera_position"]
 visible = false

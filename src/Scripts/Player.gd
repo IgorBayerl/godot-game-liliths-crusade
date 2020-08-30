@@ -49,11 +49,11 @@ func _direction_move(delta):
 	else:
 		direction += Vector2(0,0)
 		
-	if Input.is_action_pressed("move_RIGHT"):
+	if Input.is_action_pressed("move_RIGHT") and not Input.is_action_pressed("ctrl") and is_atacking == 0:
 		motion.x = SPEED 
 		direction += Vector2(1 ,0)
 		LOOKING_DIRECTION.x = 1
-	elif Input.is_action_pressed("move_LEFT"):
+	elif Input.is_action_pressed("move_LEFT")and not Input.is_action_pressed("ctrl") and is_atacking == 0:
 		motion.x = -SPEED 
 		direction += Vector2(-1 ,0)
 		LOOKING_DIRECTION.x = -1 
