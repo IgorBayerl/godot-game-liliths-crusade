@@ -7,7 +7,8 @@ func _process(delta: float) -> void:
 
 func take_damage(damage,damage_direction):
 	get_parent().get_node("Player").camera_shake(0.2)
-	health -= damage 
+	health -= damage
+	
 
 func _death_detection():
 	if health <= 0 :

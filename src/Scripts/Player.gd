@@ -70,7 +70,6 @@ func _direction_move(delta):
 	
 	if Input.is_action_just_pressed("jump") and Input.is_action_pressed("move_DOWN"):
 		position.y += 1
-		print("desce")
 #	elif motion.y < 0 :
 #		GRAVITY = SMALL_JUMP_GRAVITIY
 #	else:
