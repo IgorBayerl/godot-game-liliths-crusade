@@ -8,14 +8,16 @@
 [node name="Health Bar" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_right = 42.0
+margin_bottom = 3.0
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="HealthUnder" type="TextureProgress" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_right = 1158.0
+margin_bottom = 79.0
 value = 50.0
 texture_under = ExtResource( 1 )
 texture_over = ExtResource( 3 )
@@ -26,8 +28,8 @@ __meta__ = {
 }
 
 [node name="HealthOver" type="TextureProgress" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_right = 1158.0
+margin_bottom = 79.0
 value = 50.0
 texture_under = ExtResource( 1 )
 texture_over = ExtResource( 3 )

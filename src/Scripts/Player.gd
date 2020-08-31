@@ -1,10 +1,10 @@
 extends KinematicBody2D
-
-export var NORMAL_GRAVITIY = 300
-export var SMALL_JUMP_GRAVITIY = 800
+#
+#export var NORMAL_GRAVITIY = 300
+#export var SMALL_JUMP_GRAVITIY = 800
 
 export var SPEED = 300
-var GRAVITY = 500
+export var GRAVITY = 500
 export var JUMP_FORCE = -1000
 
 
@@ -24,56 +24,61 @@ var direction = Vector2()
 var is_dashing = false
 var can_dash = true
 
+func _process(delta: float) -> void:
+	animations_set()
+	death_detection()
 func _physics_process(delta: float) -> void:
 	_direction_move(delta)
-	animations_set()
 	
-	death_detection()
-	
-	if Input.is_action_just_pressed("Gun_4"):
-		take_damage(30)
-	
+func _can_move() -> bool:
+	if not Input.is_action_pressed("ctrl") and is_atacking == 0:
+		return true
+	else:
+		return false
 	
 func _direction_move(delta):
 	
 	direction = Vector2()
-#	if not is_on_floor():
 	motion.y += GRAVITY* delta
 	
 	if Input.is_action_pressed("move_UP"):
-#		motion.y = -SPEED 
 		direction += Vector2(0,1)
 	elif Input.is_action_pressed("move_DOWN"):
-#		motion.y = SPEED 
 		direction += Vector2(0,-1)
 	else:
 		direction += Vector2(0,0)
 		
-	if Input.is_action_pressed("move_RIGHT"):
-		motion.x = SPEED 
-		direction += Vector2(1 ,0)
+	if Input.is_action_pressed("move_RIGHT") :
+		if _can_move():
+			motion.x = SPEED 
+			direction += Vector2(1 ,0)
 		LOOKING_DIRECTION.x = 1
 	elif Input.is_action_pressed("move_LEFT"):
-		motion.x = -SPEED 
-		direction += Vector2(-1 ,0)
+		if _can_move():
+			motion.x = -SPEED 
+			direction += Vector2(-1 ,0)
 		LOOKING_DIRECTION.x = -1 
 	else:
 		direction += Vector2(0,0)
 		motion.x = 0
-		
-	if Input.is_action_pressed("jump"):
+	
+	if Input.is_action_pressed("jump") and not Input.is_action_pressed("move_DOWN"):
 		if _pode_pular():
 			motion.y = JUMP_FORCE
-	elif motion.y < 0 :
-		GRAVITY = SMALL_JUMP_GRAVITIY
-	else:
-		GRAVITY = NORMAL_GRAVITIY
+	if Input.is_action_just_released("jump") and motion.y < -400 :
+		motion.y = -400
+	
+	if Input.is_action_just_pressed("jump") and Input.is_action_pressed("move_DOWN"):
+		position.y += 1
+#	elif motion.y < 0 :
+#		GRAVITY = SMALL_JUMP_GRAVITIY
+#	else:
+#		GRAVITY = NORMAL_GRAVITIY
 		
 	if Input.is_action_just_pressed("hability"):
 		dash()
 		
 	motion = move_and_slide(motion  , NORMAL)
-#	print(direction)
 	
 func _pode_pular() -> bool:
 	if is_on_floor():
@@ -167,22 +172,29 @@ func animations_set():
 	$SPRITES.scale.x = LOOKING_DIRECTION.x
 
 
-func _on_SwordHit_area_entered(area: Area2D) -> void:
-	if area.is_in_group("hurtbox"):
-		$Camera2D.shake = true
-		var damage = rand_range(30, 30)
-		area.get_parent().take_damage(damage)
-		print(damage)
-		yield(get_tree().create_timer(0.2), "timeout")
-		$Camera2D.shake = false
-		
+
+func camera_shake(timeout):
+	$Mira/Camera_position/Camera2D.shake = true
+	yield(get_tree().create_timer(timeout), "timeout")
+	$Mira/Camera_position/Camera2D.shake = false
+	
 func take_damage(damage):
 	get_parent().get_node("CanvasLayer/Control/Health Bar").take_damage(damage)
 	health -= damage
-	print('take_damage')
 		
 func death_detection():
 	if health <= 0 and is_alive:
 		is_alive = false
-		print ("AAAAAAAAAAAAAAAAAAAAAAAAAHHHH")
 		emit_signal("OnDeath",self)
+
+
+func _on_SwordHit_body_entered(body: Node) -> void:
+	if body.is_in_group("Entidade"):
+		$Mira/Camera_position/Camera2D.shake = true
+		var damage = rand_range(30, 30)
+		if LOOKING_DIRECTION.x == 1:
+			body.take_damage(damage, 0)
+		if LOOKING_DIRECTION.x == -1:
+			body.take_damage(damage, 180)
+		yield(get_tree().create_timer(0.2), "timeout")
+		$Mira/Camera_position/Camera2D.shake = false

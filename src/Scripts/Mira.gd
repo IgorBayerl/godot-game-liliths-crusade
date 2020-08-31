@@ -6,25 +6,32 @@ var bullet_speed = 1000
 var fire_rate = 0.3
 var random_rate = 0.08
 var automatica = false
+var damage = 0
 
 var dir: = Vector2()
 var can_fire = true
 var horizontal_dir := -1
 
+
+
 func _process(delta: float) -> void:
+	
 	if horizontal_dir > 0:
 		$Arma.scale.y = -1
 	else:
 		$Arma.scale.y = 1
 	set_direction_view()
-	if automatica:
-		if Input.is_action_pressed("shoot") and can_fire:
-			instanciate_bullet()
-			$SoundEffects/Shoot.play()
-	else:
-		if Input.is_action_just_pressed("shoot") and can_fire:
-			instanciate_bullet()
-			$SoundEffects/Shoot.play()
+	var Main_controller = get_tree().get_root().get_node("Main").get_node("MainController")
+	if Main_controller.player_GUNS_information[Main_controller.selected_gun].ammo > 0:
+		if automatica:
+			if Input.is_action_pressed("shoot") and can_fire:
+				
+				instanciate_bullet()
+				$SoundEffects/Shoot.play()
+		else:
+			if Input.is_action_just_pressed("shoot") and can_fire:
+				instanciate_bullet()
+				$SoundEffects/Shoot.play()
 
 
 func get_direction() -> int:
@@ -35,9 +42,10 @@ func get_direction() -> int:
 	return horizontal_dir
 	
 func instanciate_bullet() ->void:
-	
-	get_tree().get_root().get_node("Main").get_node("MainController").atirando()
+	var Main_controller = get_tree().get_root().get_node("Main").get_node("MainController")
+	Main_controller.atirando()
 	var bullet_instance = bullet.instance()
+	bullet_instance.damage = damage
 	bullet_instance.position = $shooterPoint.get_global_position()
 	bullet_instance.rotation_degrees = rotation_degrees + _random_value()
 	bullet_instance.apply_impulse(Vector2(),Vector2(bullet_speed,0).rotated(rotation + _random_value()))

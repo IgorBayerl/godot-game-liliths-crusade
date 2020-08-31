@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://src/Actors/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Assets/Sprites/Level.png" type="Texture" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://src/Assets/Audios/Tracks/Songa.wav" type="AudioStream" id=9]
 [ext_resource path="res://src/Actors/checkPoint.tscn" type="PackedScene" id=10]
 [ext_resource path="res://src/Actors/Roberto.tscn" type="PackedScene" id=11]
+[ext_resource path="res://src/Actors/Barril.tscn" type="PackedScene" id=12]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 42.4, 3.2 )
@@ -93,12 +94,12 @@ position = Vector2( 317.18, 703.266 )
 [node name="MainController" type="Node2D" parent="."]
 script = ExtResource( 8 )
 
+[node name="Barril" parent="MainController" instance=ExtResource( 12 )]
+position = Vector2( 741.5, 743 )
+
 [node name="Player" parent="MainController" instance=ExtResource( 1 )]
 position = Vector2( 571.172, 684.257 )
 scale = Vector2( 0.519995, 0.519995 )
-NORMAL_GRAVITIY = 500
-SMALL_JUMP_GRAVITIY = 1000
-JUMP_FORCE = -400
 
 [node name="GetItem" type="Area2D" parent="MainController/Player"]
 visible = false
@@ -108,38 +109,37 @@ collision_layer = 4
 position = Vector2( -0.00012207, 25.9325 )
 shape = SubResource( 6 )
 
-[node name="Aroldo" parent="MainController" instance=ExtResource( 3 )]
-position = Vector2( 1098.74, 213.812 )
-collision_layer = 2
-collision_mask = 33
-
 [node name="Aroldo2" parent="MainController" instance=ExtResource( 3 )]
 position = Vector2( 1759.77, 333.653 )
 collision_layer = 2
-collision_mask = 33
 
 [node name="Aroldo3" parent="MainController" instance=ExtResource( 3 )]
 position = Vector2( 956.192, 405.735 )
 collision_layer = 2
-collision_mask = 33
 
 [node name="Aroldo4" parent="MainController" instance=ExtResource( 3 )]
 position = Vector2( 443.614, 411.074 )
 collision_layer = 2
-collision_mask = 33
+
+[node name="Roberto" parent="MainController" instance=ExtResource( 11 )]
+position = Vector2( 756.399, 583.357 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="MainController"]
 
 [node name="Control" type="Control" parent="MainController/CanvasLayer"]
-margin_right = 1028.0
+margin_left = -0.793701
+margin_right = 1027.21
 margin_bottom = 612.0
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
 [node name="Health Bar" parent="MainController/CanvasLayer/Control" instance=ExtResource( 4 )]
 margin_left = 10.0
 margin_top = 10.0
+margin_right = 21.9963
+margin_bottom = -13.0
 rect_scale = Vector2( 0.3, 0.3 )
 
 [node name="Guns_bar" parent="MainController/CanvasLayer/Control" instance=ExtResource( 7 )]
@@ -165,9 +165,6 @@ type = 3
 position = Vector2( 1182.43, 786.908 )
 type = 2
 
-[node name="Roberto" parent="MainController" instance=ExtResource( 11 )]
-position = Vector2( 573.997, 413.879 )
-
 [node name="FOG" parent="." instance=ExtResource( 6 )]
 position = Vector2( 1448.12, 570.089 )
 scale = Vector2( 44.7077, 34.4197 )
@@ -176,11 +173,11 @@ scale = Vector2( 44.7077, 34.4197 )
 stream = ExtResource( 9 )
 volume_db = -28.272
 [connection signal="area_entered" from="MainController/Player/GetItem" to="MainController" method="_on_GetItem_area_entered"]
-[connection signal="body_entered" from="MainController/Arma" to="MainController/CanvasLayer/Control/Guns_bar" method="_on_Arma_body_entered"]
 [connection signal="body_entered" from="MainController/Arma" to="MainController" method="_on_Arma_body_entered"]
-[connection signal="body_entered" from="MainController/Arma2" to="MainController/CanvasLayer/Control/Guns_bar" method="_on_Arma_body_entered"]
+[connection signal="body_entered" from="MainController/Arma" to="MainController/CanvasLayer/Control/Guns_bar" method="_on_Arma_body_entered"]
 [connection signal="body_entered" from="MainController/Arma2" to="MainController" method="_on_Arma_body_entered"]
-[connection signal="body_entered" from="MainController/Arma4" to="MainController/CanvasLayer/Control/Guns_bar" method="_on_Arma_body_entered"]
+[connection signal="body_entered" from="MainController/Arma2" to="MainController/CanvasLayer/Control/Guns_bar" method="_on_Arma_body_entered"]
 [connection signal="body_entered" from="MainController/Arma4" to="MainController" method="_on_Arma_body_entered"]
-[connection signal="body_entered" from="MainController/Arma3" to="MainController/CanvasLayer/Control/Guns_bar" method="_on_Arma_body_entered"]
+[connection signal="body_entered" from="MainController/Arma4" to="MainController/CanvasLayer/Control/Guns_bar" method="_on_Arma_body_entered"]
 [connection signal="body_entered" from="MainController/Arma3" to="MainController" method="_on_Arma_body_entered"]
+[connection signal="body_entered" from="MainController/Arma3" to="MainController/CanvasLayer/Control/Guns_bar" method="_on_Arma_body_entered"]

@@ -56,8 +56,11 @@ extents = Vector2( 7.84693, 14.1331 )
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 23.5, 36 )
 
-[node name="Aroldo" type="KinematicBody2D"]
+[node name="Aroldo" type="KinematicBody2D" groups=[
+"Entidade",
+]]
 collision_layer = 130
+collision_mask = 1057
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
