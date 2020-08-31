@@ -61,13 +61,16 @@ func _direction_move(delta):
 	else:
 		direction += Vector2(0,0)
 		motion.x = 0
-		
-	if Input.is_action_pressed("jump"):
+	
+	if Input.is_action_pressed("jump") and not Input.is_action_pressed("move_DOWN"):
 		if _pode_pular():
-			
 			motion.y = JUMP_FORCE
 	if Input.is_action_just_released("jump") and motion.y < -400 :
 		motion.y = -400
+	
+	if Input.is_action_just_pressed("jump") and Input.is_action_pressed("move_DOWN"):
+		position.y += 1
+		print("desce")
 #	elif motion.y < 0 :
 #		GRAVITY = SMALL_JUMP_GRAVITIY
 #	else:
@@ -170,18 +173,7 @@ func animations_set():
 	$SPRITES.scale.x = LOOKING_DIRECTION.x
 
 
-func _on_SwordHit_area_entered(area: Area2D) -> void:
-	if area.is_in_group("hurtbox"):
-		$Mira/Camera_position/Camera2D.shake = true
-#		$Camera2D
-		var damage = rand_range(30, 30)
-		if LOOKING_DIRECTION.x == 1:
-			area.get_parent().take_damage(damage, 0)
-		if LOOKING_DIRECTION.x == -1:
-			area.get_parent().take_damage(damage, 180)
-		yield(get_tree().create_timer(0.2), "timeout")
-		$Mira/Camera_position/Camera2D.shake = false
-		
+
 func camera_shake(timeout):
 	$Mira/Camera_position/Camera2D.shake = true
 	yield(get_tree().create_timer(timeout), "timeout")
@@ -196,3 +188,15 @@ func death_detection():
 	if health <= 0 and is_alive:
 		is_alive = false
 		emit_signal("OnDeath",self)
+
+
+func _on_SwordHit_body_entered(body: Node) -> void:
+	if body.is_in_group("Entidade"):
+		$Mira/Camera_position/Camera2D.shake = true
+		var damage = rand_range(30, 30)
+		if LOOKING_DIRECTION.x == 1:
+			body.take_damage(damage, 0)
+		if LOOKING_DIRECTION.x == -1:
+			body.take_damage(damage, 180)
+		yield(get_tree().create_timer(0.2), "timeout")
+		$Mira/Camera_position/Camera2D.shake = false

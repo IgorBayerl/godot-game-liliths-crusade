@@ -14,7 +14,7 @@
 [ext_resource path="res://src/Assets/Sprites/gun.png" type="Texture" id=15]
 [ext_resource path="res://src/Assets/Sprites/PLAYER/SpriteSheet.png" type="Texture" id=17]
 
-[sub_resource type="RectangleShape2D" id=8]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 28.3935, 76.1278 )
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -215,7 +215,7 @@ animations = [ {
 ]]
 scale = Vector2( 0.64, 0.64 )
 collision_layer = 4
-collision_mask = 2147483681
+collision_mask = 2147484705
 script = ExtResource( 1 )
 GRAVITY = 1400
 JUMP_FORCE = -650
@@ -228,7 +228,7 @@ texture = ExtResource( 2 )
 "Player",
 ]]
 position = Vector2( -0.116311, 44.7364 )
-shape = SubResource( 8 )
+shape = SubResource( 1 )
 
 [node name="SPRITES" type="Node2D" parent="."]
 
@@ -242,7 +242,7 @@ frame = 3
 
 [node name="SwordHit" type="Area2D" parent="SPRITES/body2"]
 collision_layer = 4
-collision_mask = 34
+collision_mask = 1059
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SPRITES/body2/SwordHit"]
 position = Vector2( 35.8261, -4.76657 )
@@ -327,6 +327,7 @@ position = Vector2( 12.8755, -6.7047 )
 BloodParticleNumber = 50
 RandomVelocity = 350.0
 [connection signal="area_entered" from="SPRITES/body2/SwordHit" to="." method="_on_SwordHit_area_entered"]
+[connection signal="body_entered" from="SPRITES/body2/SwordHit" to="." method="_on_SwordHit_body_entered"]
 [connection signal="timeout" from="MiliAtack_Timer" to="." method="_on_MiliAtack_Timer_timeout"]
 [connection signal="timeout" from="Dash_Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="Ghost_Timer" to="." method="_on_Ghost_Timer_timeout"]
