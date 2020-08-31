@@ -175,8 +175,10 @@ func _on_SwordHit_area_entered(area: Area2D) -> void:
 		$Mira/Camera_position/Camera2D.shake = true
 #		$Camera2D
 		var damage = rand_range(30, 30)
-		area.get_parent().take_damage(damage)
-		print(damage)
+		if LOOKING_DIRECTION.x == 1:
+			area.get_parent().take_damage(damage, 0)
+		if LOOKING_DIRECTION.x == -1:
+			area.get_parent().take_damage(damage, 180)
 		yield(get_tree().create_timer(0.2), "timeout")
 		$Mira/Camera_position/Camera2D.shake = false
 		
@@ -193,5 +195,4 @@ func take_damage(damage):
 func death_detection():
 	if health <= 0 and is_alive:
 		is_alive = false
-		print ("AAAAAAAAAAAAAAAAAAAAAAAAAHHHH")
 		emit_signal("OnDeath",self)

@@ -290,10 +290,9 @@ stream = ExtResource( 5 )
 position = Vector2( 81.0049, -7.99806 )
 
 [node name="Camera_position" type="Position2D" parent="Mira"]
-position = Vector2( 119.355, -0.607853 )
+position = Vector2( 118, 0 )
 
 [node name="Camera2D" parent="Mira/Camera_position" instance=ExtResource( 7 )]
-position = Vector2( 2.51382, -1.15216 )
 offset = Vector2( 0, 0 )
 limit_left = 0
 limit_top = 0

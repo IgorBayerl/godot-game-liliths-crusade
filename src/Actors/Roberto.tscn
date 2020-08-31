@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/Scripts/Roberto.gd" type="Script" id=1]
 [ext_resource path="res://src/Sprites/Roberto/spritesheet.png" type="Texture" id=2]
+[ext_resource path="res://src/Actors/Efeitos/BloodSplitter.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -41,3 +42,6 @@ frame = 3
 anims/Voando = SubResource( 2 )
 
 [node name="Tween" type="Tween" parent="."]
+
+[node name="BloodSplitter" parent="." instance=ExtResource( 3 )]
+position = Vector2( -0.5, 1.5 )

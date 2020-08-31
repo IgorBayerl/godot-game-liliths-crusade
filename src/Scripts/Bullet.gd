@@ -10,6 +10,6 @@ func _on_Timer_timeout() -> void:
 func _on_RigidBody2D_body_entered(body: Node) -> void:
 	
 	if body.is_in_group("Entidade"):
-		body.take_damage(20)
+		body.take_damage(20, rotation_degrees)
 		queue_free()
 

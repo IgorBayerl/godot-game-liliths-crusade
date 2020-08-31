@@ -5,7 +5,7 @@ onready var Player = get_parent().get_node("Player")
 var atacking = false
 var health = 100
 
-signal OnDeath(WhoDied)
+
 
 var vel = Vector2(0, 0)
 var LOOKING_DIRECTION = Vector2( 1 , 0 )
@@ -26,6 +26,13 @@ var eye_reach = 90
 var vision = 750
 
 var walk_speed = 275
+
+signal OnDeath(WhoDied)
+
+func _death_detection():
+	if health <= 0 :
+		queue_free()
+		emit_signal("OnDeath",self)
 
 func _ready():
 	
@@ -61,9 +68,9 @@ func sees_player():
 				return true
 	return false
 
+
 func _process(delta):
-	if health <= 0 :
-		queue_free()
+	_death_detection()
 	
 	$AnimatedSprite.scale.x = LOOKING_DIRECTION.x
 	if not atacking:
@@ -104,10 +111,10 @@ func _process(delta):
 
 	vel = move_and_slide(vel, Vector2(0, -1))
 
-func take_damage(damage):
+func take_damage(damage,damage_direction):
+	print(damage_direction)
 	get_parent().get_node("Player").camera_shake(0.2)
 	health -= damage 
-	print('outch !!! tomei um dano aqui !')
 
 
 

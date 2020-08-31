@@ -125,6 +125,11 @@ position = Vector2( 443.614, 411.074 )
 collision_layer = 2
 collision_mask = 33
 
+[node name="Roberto" parent="MainController" instance=ExtResource( 11 )]
+position = Vector2( 756.399, 583.357 )
+collision_layer = 2
+collision_mask = 33
+
 [node name="CanvasLayer" type="CanvasLayer" parent="MainController"]
 
 [node name="Control" type="Control" parent="MainController/CanvasLayer"]
@@ -162,11 +167,6 @@ type = 3
 [node name="Arma3" parent="MainController" instance=ExtResource( 5 )]
 position = Vector2( 1182.43, 786.908 )
 type = 2
-
-[node name="Roberto" parent="MainController" instance=ExtResource( 11 )]
-position = Vector2( 756.399, 583.357 )
-collision_layer = 2
-collision_mask = 33
 
 [node name="FOG" parent="." instance=ExtResource( 6 )]
 visible = false
