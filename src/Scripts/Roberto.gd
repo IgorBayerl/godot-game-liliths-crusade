@@ -19,3 +19,6 @@ func _desce():
 	TweenNode.start()
 	yield(get_tree().create_timer(tempo), "timeout")
 	_sobe()
+	
+func take_damage(damage):
+	print(damage)

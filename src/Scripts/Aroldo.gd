@@ -105,7 +105,7 @@ func _process(delta):
 	vel = move_and_slide(vel, Vector2(0, -1))
 
 func take_damage(damage):
-	
+	get_parent().get_node("Player").camera_shake(0.2)
 	health -= damage 
 	print('outch !!! tomei um dano aqui !')
 

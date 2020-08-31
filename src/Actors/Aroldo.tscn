@@ -18,14 +18,14 @@ animations = [ {
 "name": "Walk",
 "speed": 4.0
 }, {
-"frames": [ ExtResource( 6 ) ],
-"loop": true,
-"name": "Idle",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 9 ), ExtResource( 7 ), ExtResource( 8 ) ],
 "loop": true,
 "name": "Atack",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "Idle",
 "speed": 5.0
 } ]
 
@@ -56,7 +56,9 @@ extents = Vector2( 7.84693, 14.1331 )
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 23.5, 36 )
 
-[node name="Aroldo" type="KinematicBody2D"]
+[node name="Aroldo" type="KinematicBody2D" groups=[
+"Entidade",
+]]
 collision_layer = 130
 script = ExtResource( 2 )
 

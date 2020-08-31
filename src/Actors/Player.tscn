@@ -14,8 +14,8 @@
 [ext_resource path="res://src/Assets/Sprites/gun.png" type="Texture" id=15]
 [ext_resource path="res://src/Assets/Sprites/PLAYER/SpriteSheet.png" type="Texture" id=17]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 31.1514, 77.076 )
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 28.3935, 76.1278 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 20.702, 44.3677 )
@@ -217,6 +217,8 @@ scale = Vector2( 0.64, 0.64 )
 collision_layer = 4
 collision_mask = 2147483681
 script = ExtResource( 1 )
+GRAVITY = 1400
+JUMP_FORCE = -650
 
 [node name="player" type="Sprite" parent="."]
 visible = false
@@ -225,8 +227,8 @@ texture = ExtResource( 2 )
 [node name="Colision" type="CollisionShape2D" parent="." groups=[
 "Player",
 ]]
-position = Vector2( -0.408946, 42.9806 )
-shape = SubResource( 1 )
+position = Vector2( -0.116311, 44.7364 )
+shape = SubResource( 8 )
 
 [node name="SPRITES" type="Node2D" parent="."]
 
@@ -288,11 +290,7 @@ stream = ExtResource( 5 )
 position = Vector2( 81.0049, -7.99806 )
 
 [node name="Camera_position" type="Position2D" parent="Mira"]
-position = Vector2( 191.055, -13.3127 )
-
-[node name="Sprite" type="Sprite" parent="Mira/Camera_position"]
-visible = false
-texture = ExtResource( 2 )
+position = Vector2( 119.355, -0.607853 )
 
 [node name="Camera2D" parent="Mira/Camera_position" instance=ExtResource( 7 )]
 position = Vector2( 2.51382, -1.15216 )
@@ -304,7 +302,8 @@ smoothing_speed = 5.0
 offset_v = -0.7
 drag_margin_left = 1.0
 drag_margin_right = 1.0
-DAMP_EASING = 1.8025
+amplitude = 5.0
+DAMP_EASING = 1.7411
 
 [node name="MiliAtack_Timer" type="Timer" parent="."]
 

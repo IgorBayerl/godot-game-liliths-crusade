@@ -8,6 +8,8 @@ func _on_Timer_timeout() -> void:
 	
 
 func _on_RigidBody2D_body_entered(body: Node) -> void:
-	if!body.is_in_group("Player"):
+	
+	if body.is_in_group("Entidade"):
+		body.take_damage(20)
 		queue_free()
 
