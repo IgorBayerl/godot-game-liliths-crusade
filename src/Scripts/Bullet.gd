@@ -13,7 +13,6 @@ func _on_RigidBody2D_body_entered(body: Node) -> void:
 	
 	if body.is_in_group("Entidade"):
 		body.take_damage(20, rotation_degrees)
-		print(self.position)
 		var explode_instance = explode.instance()
 		explode_instance.position = self.position
 		get_tree().get_root().add_child(explode_instance)

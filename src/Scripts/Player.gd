@@ -181,7 +181,6 @@ func camera_shake(timeout):
 func take_damage(damage):
 	get_parent().get_node("CanvasLayer/Control/Health Bar").take_damage(damage)
 	health -= damage
-	print('take_damage')
 		
 func death_detection():
 	if health <= 0 and is_alive:

@@ -112,7 +112,6 @@ func _process(delta):
 	vel = move_and_slide(vel, Vector2(0, -1))
 
 func take_damage(damage,damage_direction):
-	print(damage_direction)
 	get_parent().get_node("Player").camera_shake(0.2)
 	health -= damage 
 
@@ -121,13 +120,11 @@ func take_damage(damage,damage_direction):
 
 func _on_HitBox_body_entered(body: Node) -> void:
 	if body.is_in_group("Player"):
-		print("acertou")
 		body.take_damage(30)
 
 
 func _on_Trigger_body_entered(body: Node) -> void:
 	if body.is_in_group("Player"):
-		print ('atack')
 		atacking = true
 		$AnimatedSprite.play("Atack")
 		$AnimatedSprite/HitBox/AnimationPlayer.play("Hit")
