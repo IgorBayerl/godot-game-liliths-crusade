@@ -5,6 +5,8 @@ const ListItem = preload("res://src/Interface/gunSlot.tscn")
 var listIndex = 0
 var selected_gun = 0
 
+var normal_size = 1.0
+var selected_size = 1.1
 
 func addItem( value ):
 	
@@ -24,8 +26,8 @@ func selectGun( value ):
 	print(' Selected ', value)
 	selected_gun = value-1
 	for i in range(0, item_list_count):
-		$list.get_child(i).rect_scale = Vector2(1.0,1.0)
-	$list.get_child(value-1).rect_scale = Vector2(1.3,1.3)
+		$list.get_child(i).rect_scale = Vector2(normal_size,normal_size)
+	$list.get_child(value-1).rect_scale = Vector2(selected_size,selected_size)
 
 
 func _ready() -> void:
@@ -33,5 +35,5 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	$list.get_child(selected_gun).rect_scale = Vector2(1.3,1.3)
+	$list.get_child(selected_gun).rect_scale = Vector2(selected_size,selected_size)
 
