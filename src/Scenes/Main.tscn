@@ -33,7 +33,7 @@ extents = Vector2( 29.6115, 90.1687 )
 [node name="Main" type="Node2D"]
 
 [node name="Level" type="Sprite" parent="."]
-position = Vector2( 1512.91, 523.62 )
+position = Vector2( 1512.91, 524.181 )
 texture = ExtResource( 2 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Level"]
@@ -96,8 +96,8 @@ script = ExtResource( 8 )
 [node name="Player" parent="MainController" instance=ExtResource( 1 )]
 position = Vector2( 571.172, 684.257 )
 scale = Vector2( 0.519995, 0.519995 )
-NORMAL_GRAVITIY = 100
-SMALL_JUMP_GRAVITIY = 200
+NORMAL_GRAVITIY = 500
+SMALL_JUMP_GRAVITIY = 1000
 JUMP_FORCE = -400
 
 [node name="GetItem" type="Area2D" parent="MainController/Player"]
@@ -166,11 +166,10 @@ position = Vector2( 1182.43, 786.908 )
 type = 2
 
 [node name="Roberto" parent="MainController" instance=ExtResource( 11 )]
-position = Vector2( 738.439, 670.909 )
+position = Vector2( 573.997, 413.879 )
 
 [node name="FOG" parent="." instance=ExtResource( 6 )]
-visible = false
-position = Vector2( 1409.04, 608.412 )
+position = Vector2( 1448.12, 570.089 )
 scale = Vector2( 44.7077, 34.4197 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
