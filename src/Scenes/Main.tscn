@@ -94,6 +94,9 @@ position = Vector2( 317.18, 703.266 )
 [node name="MainController" type="Node2D" parent="."]
 script = ExtResource( 8 )
 
+[node name="Barril" parent="MainController" instance=ExtResource( 12 )]
+position = Vector2( 741.5, 743 )
+
 [node name="Player" parent="MainController" instance=ExtResource( 1 )]
 position = Vector2( 571.172, 684.257 )
 scale = Vector2( 0.519995, 0.519995 )
@@ -105,10 +108,6 @@ collision_layer = 4
 [node name="GetItem_CollisionShape" type="CollisionShape2D" parent="MainController/Player/GetItem"]
 position = Vector2( -0.00012207, 25.9325 )
 shape = SubResource( 6 )
-
-[node name="Aroldo" parent="MainController" instance=ExtResource( 3 )]
-position = Vector2( 1098.74, 213.812 )
-collision_layer = 2
 
 [node name="Aroldo2" parent="MainController" instance=ExtResource( 3 )]
 position = Vector2( 1759.77, 333.653 )
@@ -124,9 +123,6 @@ collision_layer = 2
 
 [node name="Roberto" parent="MainController" instance=ExtResource( 11 )]
 position = Vector2( 756.399, 583.357 )
-
-[node name="Barril" parent="MainController" instance=ExtResource( 12 )]
-position = Vector2( 746.66, 739.776 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="MainController"]
 
