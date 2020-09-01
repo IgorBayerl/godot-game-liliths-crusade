@@ -1,0 +1,9 @@
+{
+    "money": 100,
+    "life": 50,
+    "totalLife": 100,
+    "levels": {
+        "level1": 0,
+        "level2": 0
+    }
+}

@@ -9,7 +9,7 @@
 			"fire_rate": 0.02,
 			"full_ammo": 700,
 			"random_rate": 0.2,
-			"selected": false,
+			"selected": true,
 			"type": 3,
 			"unlocked": false
 		},
@@ -50,7 +50,7 @@
 			"fire_rate": 0.02,
 			"full_ammo": 700,
 			"random_rate": 0.2,
-			"selected": false,
+			"selected": true,
 			"type": 3,
 			"unlocked": false
 		},
@@ -91,7 +91,7 @@
 			"fire_rate": 0.1,
 			"full_ammo": 60,
 			"random_rate": 0.08,
-			"selected": false,
+			"selected": true,
 			"type": 3,
 			"unlocked": false
 		}
@@ -106,7 +106,7 @@
 			"fire_rate": 0.02,
 			"full_ammo": 700,
 			"random_rate": 0.2,
-			"selected": false,
+			"selected": true,
 			"type": 3,
 			"unlocked": false
 		},
