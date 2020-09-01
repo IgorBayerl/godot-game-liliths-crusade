@@ -124,6 +124,7 @@ ctrl={
 2d_physics/layer_3="Player"
 2d_physics/layer_4="PlayerDash"
 2d_physics/layer_5="Coletables"
+2d_physics/layer_6="Obstaculos"
 
 [rendering]
 

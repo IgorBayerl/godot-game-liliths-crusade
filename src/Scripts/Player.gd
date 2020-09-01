@@ -124,8 +124,7 @@ func dash():
 		is_dashing = true
 		can_dash = false
 		collision_layer = 8
-		collision_mask = 4  
-		collision_mask = 1 
+
 		SPEED = 1000
 		$Dash.visible = false
 		$Dash_Timer.start()
@@ -134,8 +133,7 @@ func _on_Timer_timeout() -> void:
 	SPEED = 300
 	is_dashing = false
 	collision_layer = 4
-	collision_mask = 2 
-	collision_mask = 1 
+
 	GRAVITY = temp_GRAVITY
 	yield(get_tree().create_timer(0.5), "timeout")
 	can_dash = true

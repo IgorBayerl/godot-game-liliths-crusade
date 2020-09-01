@@ -30,10 +30,10 @@ extents = Vector2( 20.4887, 1.82079 )
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 10.3599, 1.63678 )
 
-[sub_resource type="RectangleShape2D" id=9]
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 31.6357, 31.6972 )
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 29.6115, 90.1687 )
 
 [sub_resource type="ShaderMaterial" id=8]
@@ -109,7 +109,7 @@ __meta__ = {
 [node name="StaticBody2D" type="StaticBody2D" parent="Level/wall"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/wall/StaticBody2D"]
-shape = SubResource( 9 )
+shape = SubResource( 6 )
 
 [node name="wall2" type="Sprite" parent="Level"]
 position = Vector2( 221.088, -390.773 )
@@ -122,7 +122,7 @@ __meta__ = {
 [node name="StaticBody2D" type="StaticBody2D" parent="Level/wall2"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/wall2/StaticBody2D"]
-shape = SubResource( 9 )
+shape = SubResource( 6 )
 
 [node name="CheckPoint" parent="." instance=ExtResource( 10 )]
 position = Vector2( 317.18, 703.266 )
@@ -143,7 +143,7 @@ collision_layer = 4
 
 [node name="GetItem_CollisionShape" type="CollisionShape2D" parent="MainController/Player/GetItem"]
 position = Vector2( -0.00012207, 25.9325 )
-shape = SubResource( 6 )
+shape = SubResource( 7 )
 
 [node name="Aroldo2" parent="MainController" instance=ExtResource( 3 )]
 position = Vector2( 1411.87, 329.41 )

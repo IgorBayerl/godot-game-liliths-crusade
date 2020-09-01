@@ -10,7 +10,8 @@ extents = Vector2( 15.1824, 26.9609 )
 [node name="Barril" type="StaticBody2D" groups=[
 "Entidade",
 ]]
-collision_layer = 1024
+collision_layer = 32
+collision_mask = 0
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]

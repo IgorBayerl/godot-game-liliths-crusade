@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/slot.png-2424aa4a201712f81f2f63fbcd8b9ba3.stex"
+path="res://.import/inventory_background.png-8657c12320383f99d281f56f927b7ff8.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/Assets/Sprites/slot.png"
-dest_files=[ "res://.import/slot.png-2424aa4a201712f81f2f63fbcd8b9ba3.stex" ]
+source_file="res://src/Assets/Sprites/inventory_background.png"
+dest_files=[ "res://.import/inventory_background.png-8657c12320383f99d281f56f927b7ff8.stex" ]
 
 [params]
 

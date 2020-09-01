@@ -215,7 +215,7 @@ animations = [ {
 ]]
 scale = Vector2( 0.64, 0.64 )
 collision_layer = 4
-collision_mask = 2147484705
+collision_mask = 2147483681
 script = ExtResource( 1 )
 GRAVITY = 1400
 JUMP_FORCE = -650
