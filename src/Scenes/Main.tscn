@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://src/Actors/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Assets/Sprites/Level.png" type="Texture" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://src/Actors/Barril.tscn" type="PackedScene" id=12]
 [ext_resource path="res://src/flash_shader.shader" type="Shader" id=13]
 [ext_resource path="res://icon.png" type="Texture" id=14]
+[ext_resource path="res://src/Interface/Inventory/inventory.tscn" type="PackedScene" id=15]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 42.4, 3.2 )
@@ -164,9 +165,8 @@ position = Vector2( 755.399, 583.357 )
 [node name="CanvasLayer" type="CanvasLayer" parent="MainController"]
 
 [node name="Control" type="Control" parent="MainController/CanvasLayer"]
-margin_left = -0.793701
-margin_right = 1027.21
-margin_bottom = 612.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
@@ -186,6 +186,9 @@ anchor_bottom = 0.0
 margin_left = -20.0
 margin_right = 247.0
 margin_bottom = 29.0
+
+[node name="Inventory" parent="MainController/CanvasLayer/Control" instance=ExtResource( 15 )]
+visible = false
 
 [node name="Arma" parent="MainController" instance=ExtResource( 5 )]
 position = Vector2( 981.659, 786.419 )

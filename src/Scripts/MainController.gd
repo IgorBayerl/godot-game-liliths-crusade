@@ -64,6 +64,12 @@ func _process(delta: float) -> void:
 		else:
 			print("you don't have this gun yet !")
 
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("inventory"):
+		if $CanvasLayer/Control/Inventory.visible == false:
+			$CanvasLayer/Control/Inventory.visible = true
+		else: 
+			$CanvasLayer/Control/Inventory.visible = false
 
 
 func _on_GetItem_area_entered(area: Area2D) -> void:
