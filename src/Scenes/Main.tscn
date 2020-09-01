@@ -211,11 +211,11 @@ scale = Vector2( 44.7077, 34.4197 )
 stream = ExtResource( 9 )
 volume_db = -28.272
 [connection signal="area_entered" from="MainController/Player/GetItem" to="MainController" method="_on_GetItem_area_entered"]
-[connection signal="body_entered" from="MainController/Arma" to="MainController" method="_on_Arma_body_entered"]
 [connection signal="body_entered" from="MainController/Arma" to="MainController/CanvasLayer/Control/Guns_bar" method="_on_Arma_body_entered"]
-[connection signal="body_entered" from="MainController/Arma2" to="MainController" method="_on_Arma_body_entered"]
+[connection signal="body_entered" from="MainController/Arma" to="MainController" method="_on_Arma_body_entered"]
 [connection signal="body_entered" from="MainController/Arma2" to="MainController/CanvasLayer/Control/Guns_bar" method="_on_Arma_body_entered"]
-[connection signal="body_entered" from="MainController/Arma4" to="MainController" method="_on_Arma_body_entered"]
+[connection signal="body_entered" from="MainController/Arma2" to="MainController" method="_on_Arma_body_entered"]
 [connection signal="body_entered" from="MainController/Arma4" to="MainController/CanvasLayer/Control/Guns_bar" method="_on_Arma_body_entered"]
-[connection signal="body_entered" from="MainController/Arma3" to="MainController" method="_on_Arma_body_entered"]
+[connection signal="body_entered" from="MainController/Arma4" to="MainController" method="_on_Arma_body_entered"]
 [connection signal="body_entered" from="MainController/Arma3" to="MainController/CanvasLayer/Control/Guns_bar" method="_on_Arma_body_entered"]
+[connection signal="body_entered" from="MainController/Arma3" to="MainController" method="_on_Arma_body_entered"]

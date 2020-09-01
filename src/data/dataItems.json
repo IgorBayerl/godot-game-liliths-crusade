@@ -1,50 +1,127 @@
 {
-	"revolver": {
-		"unlocked" : true ,
-		"selected" : false ,
-		"ammo": 25,
-		"ammo_type" : 1,
-		"damage": 30,
-		"full_ammo": 60,
-		"fire_rate": 0,
-		"random_rate":0.02,
-		"bullet_speed": 1000,
-		"automatica": false
+	"type1": {
+		"canoCurto": {
+			"ammo": 700,
+			"ammo_type": 2,
+			"automatica": true,
+			"bullet_speed": 350,
+			"damage": 8,
+			"fire_rate": 0.02,
+			"full_ammo": 700,
+			"random_rate": 0.2,
+			"selected": false,
+			"type": 3,
+			"unlocked": false
+		},
+		"nova": {
+			"ammo": 25,
+			"ammo_type": 1,
+			"automatica": true,
+			"bullet_speed": 1000,
+			"damage": 20,
+			"fire_rate": 0.1,
+			"full_ammo": 60,
+			"random_rate": 0.08,
+			"selected": false,
+			"type": 3,
+			"unlocked": false
+		}
 	},
-	"rifle": {
-		"unlocked" : false ,
-		"selected" : false ,
-		"ammo": 25,
-		"ammo_type" : 1,
-		"damage": 20,
-		"full_ammo": 60,
-		"fire_rate": 0.1,
-		"random_rate":0.08,
-		"bullet_speed": 1000,
-		"automatica": true
+	"type2": {
+		"canoCurto": {
+			"ammo": 700,
+			"ammo_type": 2,
+			"automatica": true,
+			"bullet_speed": 350,
+			"damage": 8,
+			"fire_rate": 0.02,
+			"full_ammo": 700,
+			"random_rate": 0.2,
+			"selected": false,
+			"type": 3,
+			"unlocked": false
+		},
+		"lancaChamas": {
+			"ammo": 700,
+			"ammo_type": 2,
+			"automatica": true,
+			"bullet_speed": 350,
+			"damage": 8,
+			"fire_rate": 0.02,
+			"full_ammo": 700,
+			"random_rate": 0.2,
+			"selected": false,
+			"type": 3,
+			"unlocked": false
+		},
+		"nova": {
+			"ammo": 25,
+			"ammo_type": 1,
+			"automatica": true,
+			"bullet_speed": 1000,
+			"damage": 20,
+			"fire_rate": 0.1,
+			"full_ammo": 60,
+			"random_rate": 0.08,
+			"selected": false,
+			"type": 3,
+			"unlocked": false
+		}
 	},
-	"nova": {
-		"unlocked" : false ,
-		"selected" : false ,
-		"ammo": 25,
-		"ammo_type" : 1,
-		"damage": 20,
-		"full_ammo": 60,
-		"fire_rate": 0.1,
-		"random_rate":0.08,
-		"bullet_speed": 1000,
-		"automatica": true
+	"type3": {
+		"canoCurto": {
+			"ammo": 700,
+			"ammo_type": 2,
+			"automatica": true,
+			"bullet_speed": 350,
+			"damage": 8,
+			"fire_rate": 0.02,
+			"full_ammo": 700,
+			"random_rate": 0.2,
+			"selected": false,
+			"type": 3,
+			"unlocked": false
+		},
+		"nova": {
+			"ammo": 25,
+			"ammo_type": 1,
+			"automatica": true,
+			"bullet_speed": 1000,
+			"damage": 20,
+			"fire_rate": 0.1,
+			"full_ammo": 60,
+			"random_rate": 0.08,
+			"selected": false,
+			"type": 3,
+			"unlocked": false
+		}
 	},
-	"canoCurto": {
-		"unlocked" : false ,
-		"selected" : false ,
-		"ammo": 700,
-		"ammo_type" : 2,
-		"damage": 8,
-		"full_ammo": 700,
-		"fire_rate": 0.02,
-		"random_rate":0.2,
-		"bullet_speed": 350,
-		"automatica": true
+	"type4": {
+		"canoCurto": {
+			"ammo": 700,
+			"ammo_type": 2,
+			"automatica": true,
+			"bullet_speed": 350,
+			"damage": 8,
+			"fire_rate": 0.02,
+			"full_ammo": 700,
+			"random_rate": 0.2,
+			"selected": false,
+			"type": 3,
+			"unlocked": false
+		},
+		"nova": {
+			"ammo": 25,
+			"ammo_type": 1,
+			"automatica": true,
+			"bullet_speed": 1000,
+			"damage": 20,
+			"fire_rate": 0.1,
+			"full_ammo": 60,
+			"random_rate": 0.08,
+			"selected": false,
+			"type": 3,
+			"unlocked": false
+		}
 	}
 }

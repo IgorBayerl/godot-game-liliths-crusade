@@ -19,6 +19,10 @@ config/name="Jogo Godot"
 run/main_scene="res://src/Scenes/Main.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+JsonData="*res://src/Scripts/JSONData.gd"
+
 [display]
 
 window/size/width=740
