@@ -1,8 +1,14 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/Scripts/Roberto.gd" type="Script" id=1]
 [ext_resource path="res://src/Sprites/Roberto/spritesheet.png" type="Texture" id=2]
 [ext_resource path="res://src/Actors/Efeitos/BloodSplitter.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/flash_shader.shader" type="Shader" id=4]
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = ExtResource( 4 )
+shader_param/flash_color = Color( 0.952941, 0.313726, 0.313726, 1 )
+shader_param/flash_modifier = 0.0
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 19.5466, 16.3886 )
@@ -27,6 +33,7 @@ tracks/0/keys = {
 [node name="Roberto" type="KinematicBody2D" groups=[
 "Entidade",
 ]]
+material = SubResource( 3 )
 collision_layer = 2
 collision_mask = 1027
 script = ExtResource( 1 )
@@ -36,6 +43,7 @@ position = Vector2( 0.280609, 2.80615 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
+use_parent_material = true
 texture = ExtResource( 2 )
 offset = Vector2( 0, -0.850314 )
 vframes = 2

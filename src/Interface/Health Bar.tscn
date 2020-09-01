@@ -28,8 +28,9 @@ __meta__ = {
 }
 
 [node name="HealthOver" type="TextureProgress" parent="."]
+margin_top = -5.60598
 margin_right = 1158.0
-margin_bottom = 79.0
+margin_bottom = 73.394
 value = 50.0
 texture_under = ExtResource( 1 )
 texture_over = ExtResource( 3 )

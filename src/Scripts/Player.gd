@@ -7,7 +7,7 @@ export var SPEED = 300
 export var GRAVITY = 500
 export var JUMP_FORCE = -1000
 
-
+var temp_GRAVITY = 500
 
 var health = 100
 var is_alive = true
@@ -24,6 +24,9 @@ var direction = Vector2()
 var is_dashing = false
 var can_dash = true
 
+func _ready() -> void:
+	temp_GRAVITY = GRAVITY
+
 func _process(delta: float) -> void:
 	animations_set()
 	death_detection()
@@ -35,11 +38,33 @@ func _can_move() -> bool:
 		return true
 	else:
 		return false
+func _player_is_on_wall() -> bool:
+	if (is_on_wall() 
+	and (Input.is_action_pressed("move_LEFT") 
+	or Input.is_action_pressed("move_RIGHT")) 
+	and not is_on_floor() 
+	and motion.y > 0):
+		return true
+	else:
+		return false
 	
 func _direction_move(delta):
 	
 	direction = Vector2()
 	motion.y += GRAVITY* delta
+#	if Input.is_action_just_pressed("ctrl") and is_on_floor():
+#		motion.x = 0
+	if _player_is_on_wall():
+		motion.y = 50 
+		if Input.is_action_just_pressed("jump"):
+			motion.y = JUMP_FORCE- JUMP_FORCE/4
+			if Input.is_action_pressed("move_LEFT"):
+				motion.x = -SPEED *10
+				direction += Vector2(1 ,0)
+			if Input.is_action_pressed("move_RIGHT"):
+				motion.x = -SPEED *10
+				direction += Vector2(-1 ,0)
+		
 	
 	if Input.is_action_pressed("move_UP"):
 		direction += Vector2(0,1)
@@ -94,6 +119,7 @@ func _can_dash() -> bool:
 		
 func dash():
 	if _can_dash():
+		GRAVITY = GRAVITY*3
 		$Dash_sound.play()
 		is_dashing = true
 		can_dash = false
@@ -110,6 +136,7 @@ func _on_Timer_timeout() -> void:
 	collision_layer = 4
 	collision_mask = 2 
 	collision_mask = 1 
+	GRAVITY = temp_GRAVITY
 	yield(get_tree().create_timer(0.5), "timeout")
 	can_dash = true
 	$Dash.visible = true

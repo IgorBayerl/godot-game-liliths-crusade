@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://src/Actors/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Assets/Sprites/Level.png" type="Texture" id=2]
@@ -12,6 +12,8 @@
 [ext_resource path="res://src/Actors/checkPoint.tscn" type="PackedScene" id=10]
 [ext_resource path="res://src/Actors/Roberto.tscn" type="PackedScene" id=11]
 [ext_resource path="res://src/Actors/Barril.tscn" type="PackedScene" id=12]
+[ext_resource path="res://src/flash_shader.shader" type="Shader" id=13]
+[ext_resource path="res://icon.png" type="Texture" id=14]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 42.4, 3.2 )
@@ -28,13 +30,21 @@ extents = Vector2( 20.4887, 1.82079 )
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 10.3599, 1.63678 )
 
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 31.6357, 31.6972 )
+
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 29.6115, 90.1687 )
+
+[sub_resource type="ShaderMaterial" id=8]
+shader = ExtResource( 13 )
+shader_param/flash_color = Color( 0.854902, 0.176471, 0.176471, 1 )
+shader_param/flash_modifier = 0.0
 
 [node name="Main" type="Node2D"]
 
 [node name="Level" type="Sprite" parent="."]
-position = Vector2( 1512.91, 524.181 )
+position = Vector2( 1512.91, 523.62 )
 texture = ExtResource( 2 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Level"]
@@ -88,6 +98,32 @@ rotation = -5.83987
 shape = SubResource( 5 )
 one_way_collision = true
 
+[node name="wall" type="Sprite" parent="Level"]
+position = Vector2( 429.614, -253.393 )
+scale = Vector2( 3.03236, 4.39655 )
+texture = ExtResource( 14 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Level/wall"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/wall/StaticBody2D"]
+shape = SubResource( 9 )
+
+[node name="wall2" type="Sprite" parent="Level"]
+position = Vector2( 221.088, -390.773 )
+scale = Vector2( 0.777273, 4.49588 )
+texture = ExtResource( 14 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Level/wall2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/wall2/StaticBody2D"]
+shape = SubResource( 9 )
+
 [node name="CheckPoint" parent="." instance=ExtResource( 10 )]
 position = Vector2( 317.18, 703.266 )
 
@@ -110,7 +146,7 @@ position = Vector2( -0.00012207, 25.9325 )
 shape = SubResource( 6 )
 
 [node name="Aroldo2" parent="MainController" instance=ExtResource( 3 )]
-position = Vector2( 1759.77, 333.653 )
+position = Vector2( 1411.87, 329.41 )
 collision_layer = 2
 
 [node name="Aroldo3" parent="MainController" instance=ExtResource( 3 )]
@@ -122,7 +158,8 @@ position = Vector2( 443.614, 411.074 )
 collision_layer = 2
 
 [node name="Roberto" parent="MainController" instance=ExtResource( 11 )]
-position = Vector2( 756.399, 583.357 )
+material = SubResource( 8 )
+position = Vector2( 755.399, 583.357 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="MainController"]
 
@@ -140,7 +177,7 @@ margin_left = 10.0
 margin_top = 10.0
 margin_right = 21.9963
 margin_bottom = -13.0
-rect_scale = Vector2( 0.3, 0.3 )
+rect_scale = Vector2( 0.2, 0.2 )
 
 [node name="Guns_bar" parent="MainController/CanvasLayer/Control" instance=ExtResource( 7 )]
 anchor_left = 0.5
@@ -166,7 +203,8 @@ position = Vector2( 1182.43, 786.908 )
 type = 2
 
 [node name="FOG" parent="." instance=ExtResource( 6 )]
-position = Vector2( 1448.12, 570.089 )
+visible = false
+position = Vector2( 1409.04, 608.412 )
 scale = Vector2( 44.7077, 34.4197 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
