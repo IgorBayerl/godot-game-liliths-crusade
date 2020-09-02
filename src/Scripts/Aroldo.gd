@@ -31,6 +31,7 @@ signal OnDeath(WhoDied)
 
 func _death_detection():
 	if health <= 0 :
+		get_parent().get_node("Player").camera_shake(0.2)
 		queue_free()
 		emit_signal("OnDeath",self)
 
@@ -112,8 +113,12 @@ func _process(delta):
 	vel = move_and_slide(vel, Vector2(0, -1))
 
 func take_damage(damage,damage_direction):
-	get_parent().get_node("Player").camera_shake(0.2)
+#	get_parent().get_node("Player").camera_shake(0.2)
 	health -= damage 
+	get_node("AnimatedSprite/HitBox/AnimationPlayer").play("take_damage")
+#	$AnimatedSprite/HitBox/AnimationPlayer
+#	yield(get_tree().create_timer(0.2), "timeout")
+#	$AnimatedSprite/HitBox/AnimationPlayer.play("Voando")
 
 
 

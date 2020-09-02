@@ -39,7 +39,7 @@ extents = Vector2( 29.6115, 90.1687 )
 
 [sub_resource type="ShaderMaterial" id=8]
 shader = ExtResource( 13 )
-shader_param/flash_color = Color( 0.854902, 0.176471, 0.176471, 1 )
+shader_param/flash_color = Color( 0.898039, 0.870588, 0.870588, 1 )
 shader_param/flash_modifier = 0.0
 
 [node name="Main" type="Node2D"]
@@ -151,7 +151,7 @@ position = Vector2( 1411.87, 329.41 )
 collision_layer = 2
 
 [node name="Aroldo3" parent="MainController" instance=ExtResource( 3 )]
-position = Vector2( 956.192, 405.735 )
+position = Vector2( 1243.06, 571.442 )
 collision_layer = 2
 
 [node name="Aroldo4" parent="MainController" instance=ExtResource( 3 )]

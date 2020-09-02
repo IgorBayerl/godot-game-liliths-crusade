@@ -2,12 +2,13 @@ extends KinematicBody2D
 
 onready var TweenNode = get_node("Tween")
 export var tempo = 0.25
-var health = 45
+export var health = 200
 
 signal OnDeath(WhoDied)
 
 func _death_detection():
 	if health <= 0 :
+		get_parent().get_node("Player").camera_shake(0.2)
 		queue_free()
 		emit_signal("OnDeath",self)
 
@@ -33,5 +34,9 @@ func _desce():
 	
 func take_damage(damage, damage_direction):
 	print(damage_direction)
-	get_parent().get_node("Player").camera_shake(0.2)
 	health -= damage 
+	$AnimationPlayer.play("taking_damage")
+	yield(get_tree().create_timer(0.2), "timeout")
+	$AnimationPlayer.play("Voando")
+	
+	
