@@ -17,7 +17,7 @@ func _ready() -> void:
 			selected_gun = i
 			print("The guns selected is : ", i)
 		var item = slot.instance()
-		$GunSlideBar.add_child(item)
+		$ScrollContainer/GunSlideBar.add_child(item)
 		print(i)
 
 
@@ -28,16 +28,13 @@ func _select_gun(direction):
 		if guns[i].selected == true :
 			temp_select_id = guns[i].id
 		guns[i].selected = false
-		$GunSlideBar.get_child(int(i)-1).rect_scale = Vector2(1,1)
+		$ScrollContainer/GunSlideBar.get_child(int(i)-1).rect_scale = Vector2(1,1)
 	new_selected = int(temp_select_id) + int(direction)
-	if new_selected == guns.size()+1:
-		new_selected = 1
-	if new_selected == 0:
-		new_selected = guns.size()
 	guns[str(new_selected)].selected = true
-	print("child count: ", $GunSlideBar.get_child(new_selected-1).name)
-	$GunSlideBar.get_child(new_selected-1).rect_scale = Vector2(1.1,1.1)
-	
+	print(guns[str(new_selected)].id)
+	print("child count: ", $ScrollContainer/GunSlideBar.get_child(new_selected-1).name)
+	$ScrollContainer/GunSlideBar.get_child(new_selected-1).rect_scale = Vector2(1.1,1.1)
+
 func _unhandled_input(event: InputEvent) -> void:
 	if is_on_focus:
 		inventory_controller.ammo = guns.size()
@@ -54,9 +51,13 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _on_VBoxGunsList_focus_entered() -> void:
 	is_on_focus = true
-
+	modulate.r = 255
+	modulate.g = 255
+	modulate.b = 255
 
 
 func _on_VBoxGunsList_focus_exited() -> void:
 	is_on_focus = false
-
+	modulate.r = 0
+	modulate.g = 0
+	modulate.b = 0

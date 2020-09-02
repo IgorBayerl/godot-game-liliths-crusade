@@ -1,6 +1,7 @@
 {
 	"type1": {
-		"canoCurto": {
+		"1": {
+			"id": 1,
 			"ammo": 700,
 			"ammo_type": 2,
 			"automatica": true,
@@ -13,7 +14,8 @@
 			"type": 3,
 			"unlocked": false
 		},
-		"nova": {
+		"2": {
+			"id": 2,
 			"ammo": 25,
 			"ammo_type": 1,
 			"automatica": true,
@@ -28,7 +30,8 @@
 		}
 	},
 	"type2": {
-		"canoCurto": {
+		"1": {
+			"id": 1,
 			"ammo": 700,
 			"ammo_type": 2,
 			"automatica": true,
@@ -41,7 +44,8 @@
 			"type": 3,
 			"unlocked": false
 		},
-		"lancaChamas": {
+		"2": {
+			"id": 2,
 			"ammo": 700,
 			"ammo_type": 2,
 			"automatica": true,
@@ -54,7 +58,8 @@
 			"type": 3,
 			"unlocked": false
 		},
-		"nova": {
+		"3": {
+			"id": 3,
 			"ammo": 25,
 			"ammo_type": 1,
 			"automatica": true,
@@ -69,7 +74,8 @@
 		}
 	},
 	"type3": {
-		"canoCurto": {
+		"1": {
+			"id": 1,
 			"ammo": 700,
 			"ammo_type": 2,
 			"automatica": true,
@@ -82,7 +88,8 @@
 			"type": 3,
 			"unlocked": false
 		},
-		"nova": {
+		"2": {
+			"id": 2,
 			"ammo": 25,
 			"ammo_type": 1,
 			"automatica": true,
@@ -97,7 +104,8 @@
 		}
 	},
 	"type4": {
-		"canoCurto": {
+		"1": {
+			"id": 1,
 			"ammo": 700,
 			"ammo_type": 2,
 			"automatica": true,
@@ -110,7 +118,8 @@
 			"type": 3,
 			"unlocked": false
 		},
-		"nova": {
+		"2": {
+			"id": 2,
 			"ammo": 25,
 			"ammo_type": 1,
 			"automatica": true,
@@ -120,6 +129,34 @@
 			"full_ammo": 60,
 			"random_rate": 0.08,
 			"selected": false,
+			"type": 3,
+			"unlocked": false
+		},
+		"3": {
+			"id": 3,
+			"ammo": 700,
+			"ammo_type": 2,
+			"automatica": true,
+			"bullet_speed": 350,
+			"damage": 8,
+			"fire_rate": 0.02,
+			"full_ammo": 700,
+			"random_rate": 0.2,
+			"selected": true,
+			"type": 3,
+			"unlocked": false
+		},
+		"4": {
+			"id": 4,
+			"ammo": 700,
+			"ammo_type": 2,
+			"automatica": true,
+			"bullet_speed": 350,
+			"damage": 8,
+			"fire_rate": 0.02,
+			"full_ammo": 700,
+			"random_rate": 0.2,
+			"selected": true,
 			"type": 3,
 			"unlocked": false
 		}
