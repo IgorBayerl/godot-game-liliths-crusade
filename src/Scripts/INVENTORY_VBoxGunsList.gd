@@ -16,7 +16,6 @@ func _ready() -> void:
 	
 	for i in guns:
 		if guns[i].selected == true:
-#			selected_gun = guns[i].name
 			info_gun = guns[i]
 			_info_to_label(guns[i])
 			print("The guns selected is : ", i)
@@ -25,8 +24,6 @@ func _ready() -> void:
 		$GunSlideBar.add_child(item)
 
 func _info_to_label(info):
-#	inventory_controller.selectedGun = info.name
-#	inventory_controller.ammo = info.ammo
 	inventory_controller.info = info
 func _select_gun(direction):
 	var temp_select_id
@@ -44,8 +41,6 @@ func _select_gun(direction):
 		new_selected = guns.size()
 	guns[str(new_selected)].selected = true
 	print("child count: ", $GunSlideBar.get_child(new_selected-1).name)
-#	ARMA SELECIONADA
-#	selected_gun = guns[str(new_selected)].name
 	info_gun = guns[str(new_selected)]
 	$GunSlideBar.get_child(new_selected-1).rect_scale = Vector2(1.1,1.1)
 	$GunSlideBar.get_child(new_selected-1).rect_pivot_offset.y = 100

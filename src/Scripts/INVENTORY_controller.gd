@@ -10,7 +10,7 @@ func _ready() -> void:
 
 
 
-func _unhandled_input(event: InputEvent) -> void:
+func _unhandled_input(event):
 	_set_text()
 
 

@@ -158,19 +158,16 @@ func animations_set():
 	
 	if Input.is_action_just_pressed("interact") and is_atacking == 0 :
 		is_atacking = 1
-		$SPRITES/AnimationPlayer.play("Atack1")
 		yield(get_tree().create_timer(0.5), "timeout")
 		if is_atacking == 1:
 			is_atacking = 0
 	if Input.is_action_just_pressed("interact") and is_atacking == 1:
 		is_atacking = 2
-		$SPRITES/AnimationPlayer.play("Atack2")
 		yield(get_tree().create_timer(0.6), "timeout")
 		if is_atacking == 2:
 			is_atacking = 0
 	if Input.is_action_just_pressed("interact") and is_atacking == 2 :
 		is_atacking = 1
-		$SPRITES/AnimationPlayer.play("Atack1")
 		yield(get_tree().create_timer(0.5), "timeout")
 		if is_atacking == 1:
 			is_atacking = 0

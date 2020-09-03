@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://src/Actors/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Assets/Sprites/Level.png" type="Texture" id=2]
@@ -34,10 +34,7 @@ extents = Vector2( 10.3599, 1.63678 )
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 31.6357, 31.6972 )
 
-[sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 29.6115, 90.1687 )
-
-[sub_resource type="ShaderMaterial" id=8]
+[sub_resource type="ShaderMaterial" id=7]
 shader = ExtResource( 13 )
 shader_param/flash_color = Color( 0.898039, 0.870588, 0.870588, 1 )
 shader_param/flash_modifier = 0.0
@@ -45,7 +42,7 @@ shader_param/flash_modifier = 0.0
 [node name="Main" type="Node2D"]
 
 [node name="Level" type="Sprite" parent="."]
-position = Vector2( 1512.91, 523.62 )
+position = Vector2( 1512, 520 )
 texture = ExtResource( 2 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Level"]
@@ -54,7 +51,7 @@ position = Vector2( -29.2578, -2.13983 )
 scale = Vector2( 9.04, 9.04 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level/StaticBody2D"]
-polygon = PoolVector2Array( -152.2, 17, -137.8, 17, -137.8, 29, -76.7841, 28.7916, -64.5956, 35.3547, -25.6861, 35.1203, -25.3687, 17.0504, -7.80888, 17.0504, -7.4577, 3.00258, 50.4399, 3.94427, 48.8295, -57.7147, 60.406, -58.3404, 68.5409, 61.1794, -175.4, 61.8, -172.327, -60.2953, -151.08, -58.5393, -152.2, 17 )
+polygon = PoolVector2Array( -151.731, 16.6504, -137.572, 16.6504, -137.572, 28.1549, -76.5102, 28.1549, -64.1208, 35.2345, -25.1828, 35.2345, -25.1828, 13.9956, -8.36861, 13.9956, -8.36861, 2.49113, 48.2686, 2.49113, 48.2686, -57.6859, 60.406, -58.3404, 68.5409, 61.1794, -175.4, 61.8, -172.327, -60.2953, -151.731, -58.5708, -151.731, 16.6504 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/StaticBody2D"]
 position = Vector2( -91.6203, -3.09277 )
@@ -77,7 +74,7 @@ shape = SubResource( 4 )
 one_way_collision = true
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="Level/StaticBody2D"]
-position = Vector2( -28.5798, 15.1074 )
+position = Vector2( -29.6075, 15.7655 )
 shape = SubResource( 4 )
 one_way_collision = true
 
@@ -88,7 +85,7 @@ shape = SubResource( 5 )
 one_way_collision = true
 
 [node name="CollisionShape2D7" type="CollisionShape2D" parent="Level/StaticBody2D"]
-position = Vector2( -56.823, 18.5781 )
+position = Vector2( -58.8111, 19.3053 )
 rotation = -0.380482
 shape = SubResource( 5 )
 one_way_collision = true
@@ -113,7 +110,7 @@ __meta__ = {
 shape = SubResource( 6 )
 
 [node name="wall2" type="Sprite" parent="Level"]
-position = Vector2( 221.088, -390.773 )
+position = Vector2( 151.792, -395.813 )
 scale = Vector2( 0.777273, 4.49588 )
 texture = ExtResource( 14 )
 __meta__ = {
@@ -135,19 +132,11 @@ script = ExtResource( 8 )
 position = Vector2( 741.5, 743 )
 
 [node name="Player" parent="MainController" instance=ExtResource( 1 )]
-position = Vector2( 571.172, 684.257 )
-scale = Vector2( 0.519995, 0.519995 )
-
-[node name="GetItem" type="Area2D" parent="MainController/Player"]
-visible = false
-collision_layer = 4
-
-[node name="GetItem_CollisionShape" type="CollisionShape2D" parent="MainController/Player/GetItem"]
-position = Vector2( -0.00012207, 25.9325 )
-shape = SubResource( 7 )
+position = Vector2( 1624.33, 335.928 )
+scale = Vector2( 0.52, 0.52 )
 
 [node name="Aroldo2" parent="MainController" instance=ExtResource( 3 )]
-position = Vector2( 1411.87, 329.41 )
+position = Vector2( 764.473, 396.152 )
 collision_layer = 2
 
 [node name="Aroldo3" parent="MainController" instance=ExtResource( 3 )]
@@ -159,7 +148,7 @@ position = Vector2( 443.614, 411.074 )
 collision_layer = 2
 
 [node name="Roberto" parent="MainController" instance=ExtResource( 11 )]
-material = SubResource( 8 )
+material = SubResource( 7 )
 position = Vector2( 755.399, 583.357 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="MainController"]
@@ -213,12 +202,11 @@ scale = Vector2( 44.7077, 34.4197 )
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
 volume_db = -28.272
-[connection signal="area_entered" from="MainController/Player/GetItem" to="MainController" method="_on_GetItem_area_entered"]
-[connection signal="body_entered" from="MainController/Arma" to="MainController" method="_on_Arma_body_entered"]
 [connection signal="body_entered" from="MainController/Arma" to="MainController/CanvasLayer/Control/Guns_bar" method="_on_Arma_body_entered"]
-[connection signal="body_entered" from="MainController/Arma2" to="MainController" method="_on_Arma_body_entered"]
+[connection signal="body_entered" from="MainController/Arma" to="MainController" method="_on_Arma_body_entered"]
 [connection signal="body_entered" from="MainController/Arma2" to="MainController/CanvasLayer/Control/Guns_bar" method="_on_Arma_body_entered"]
-[connection signal="body_entered" from="MainController/Arma4" to="MainController" method="_on_Arma_body_entered"]
+[connection signal="body_entered" from="MainController/Arma2" to="MainController" method="_on_Arma_body_entered"]
 [connection signal="body_entered" from="MainController/Arma4" to="MainController/CanvasLayer/Control/Guns_bar" method="_on_Arma_body_entered"]
-[connection signal="body_entered" from="MainController/Arma3" to="MainController" method="_on_Arma_body_entered"]
+[connection signal="body_entered" from="MainController/Arma4" to="MainController" method="_on_Arma_body_entered"]
 [connection signal="body_entered" from="MainController/Arma3" to="MainController/CanvasLayer/Control/Guns_bar" method="_on_Arma_body_entered"]
+[connection signal="body_entered" from="MainController/Arma3" to="MainController" method="_on_Arma_body_entered"]

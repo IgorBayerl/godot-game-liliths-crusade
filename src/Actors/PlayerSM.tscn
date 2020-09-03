@@ -1,6 +1,6 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=21 format=2]
 
-[ext_resource path="res://src/Scripts/PlayerFSM.gd" type="Script" id=1]
+[ext_resource path="res://src/Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 [ext_resource path="res://src/Scripts/Mira.gd" type="Script" id=3]
 [ext_resource path="res://src/Sprites/armas/Rifle.png" type="Texture" id=4]
@@ -11,7 +11,6 @@
 [ext_resource path="res://src/Sprites/armas/pistola.png" type="Texture" id=9]
 [ext_resource path="res://src/Sprites/armas/Chamas.png" type="Texture" id=10]
 [ext_resource path="res://src/Actors/Efeitos/BloodSplitter.tscn" type="PackedScene" id=11]
-[ext_resource path="res://src/Scripts/StateMachinePlayer.gd" type="Script" id=12]
 [ext_resource path="res://src/Assets/Sprites/gun.png" type="Texture" id=15]
 [ext_resource path="res://src/Assets/Sprites/PLAYER/SpriteSheet.png" type="Texture" id=17]
 
@@ -218,6 +217,8 @@ scale = Vector2( 0.64, 0.64 )
 collision_layer = 4
 collision_mask = 2147483681
 script = ExtResource( 1 )
+GRAVITY = 1400
+JUMP_FORCE = -650
 
 [node name="player" type="Sprite" parent="."]
 visible = false
@@ -237,7 +238,7 @@ scale = Vector2( 1.79639, 1.79639 )
 texture = ExtResource( 17 )
 vframes = 5
 hframes = 10
-frame = 21
+frame = 3
 
 [node name="SwordHit" type="Area2D" parent="SPRITES/body2"]
 collision_layer = 4
@@ -246,9 +247,11 @@ collision_mask = 1059
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SPRITES/body2/SwordHit"]
 position = Vector2( 35.8261, -4.76657 )
 shape = SubResource( 2 )
+disabled = true
 
 [node name="Head" type="Sprite" parent="SPRITES"]
-position = Vector2( 3.06244, -20.126 )
+position = Vector2( 5.39879, -20.6847 )
+rotation = 0.0191986
 scale = Vector2( 1.79177, 1.79177 )
 texture = ExtResource( 8 )
 
@@ -324,41 +327,9 @@ position = Vector2( 12.8755, -6.7047 )
 BloodParticleNumber = 50
 RandomVelocity = 350.0
 
-[node name="StateMachine" type="Node" parent="."]
-script = ExtResource( 12 )
-
-[node name="WallRaycast" type="Node2D" parent="."]
-
-[node name="RightWallRaycast" type="Node2D" parent="WallRaycast"]
-
-[node name="RightWallRaycast_1" type="RayCast2D" parent="WallRaycast/RightWallRaycast"]
-position = Vector2( 10, 0 )
-enabled = true
-cast_to = Vector2( 20, 0 )
-
-[node name="RightWallRaycast_2" type="RayCast2D" parent="WallRaycast/RightWallRaycast"]
-position = Vector2( 10, 90 )
-enabled = true
-cast_to = Vector2( 20, 0 )
-
-[node name="LeftWallRaycast" type="Node2D" parent="WallRaycast"]
-
-[node name="LeftWallRaycast_1" type="RayCast2D" parent="WallRaycast/LeftWallRaycast"]
-position = Vector2( -10, 0 )
-enabled = true
-cast_to = Vector2( -20, 0 )
-
-[node name="LeftWallRaycast_2" type="RayCast2D" parent="WallRaycast/LeftWallRaycast"]
-position = Vector2( -10, 90 )
-enabled = true
-cast_to = Vector2( -20, 0 )
-
-[node name="WallSlideSticknesTimer" type="Timer" parent="."]
-wait_time = 0.1
-one_shot = true
+[node name="State" type="Node" parent="."]
 [connection signal="area_entered" from="SPRITES/body2/SwordHit" to="." method="_on_SwordHit_area_entered"]
 [connection signal="body_entered" from="SPRITES/body2/SwordHit" to="." method="_on_SwordHit_body_entered"]
 [connection signal="timeout" from="MiliAtack_Timer" to="." method="_on_MiliAtack_Timer_timeout"]
 [connection signal="timeout" from="Dash_Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="Ghost_Timer" to="." method="_on_Ghost_Timer_timeout"]
-[connection signal="timeout" from="WallSlideSticknesTimer" to="StateMachine" method="_on_WallSlideSticknesTimer_timeout"]
