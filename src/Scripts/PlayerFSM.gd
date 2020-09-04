@@ -7,7 +7,7 @@ signal OnDeath(WhoDied)
 
 const UP = Vector2(0, -1)
 const SLOPE_STOP = 60
-const WALL_JUMP_VELOCITY = Vector2(700 , -600)
+const WALL_JUMP_VELOCITY = Vector2(400 , -500)
 
 var can_dash = true
 
@@ -19,6 +19,10 @@ var move_direction
 var move_input_speed = 0
 var facing = 1
 var wall_direction = 1
+var max_health = 100
+var health = 100
+var wal_jumping = false
+var head_direction = Vector2()
 
 var max_jump_velocity = -600
 var min_jump_velocity = -400
@@ -65,6 +69,8 @@ func _wall_jump():
 	var wall_jump_velocity = WALL_JUMP_VELOCITY
 	wall_jump_velocity.x *= -wall_direction
 	velocity = wall_jump_velocity
+	wal_jumping = true
+	$WalljumpMovementBlocker.start()
 
 func _apply_movement():
 	velocity = move_and_slide(velocity, UP,SLOPE_STOP)
@@ -106,6 +112,14 @@ func _check_is_valid_wall(wall_raycasts):
 			if dot > PI * 0.35 and dot < PI * 0.55:
 				return true
 	return false
+
+func _set_head_direction():
+	head_direction.x = 1.5
+	head_direction.y = -int(Input.is_action_pressed("move_DOWN")) + int(Input.is_action_pressed("move_UP"))
+	$SPRITES/Head.rotation = -head_direction.angle()
+	
+func _atack():
+	pass
 	
 #func _direction_move(delta):
 
@@ -182,29 +196,6 @@ func _on_Ghost_Timer_timeout() -> void:
 #		is_atacking = 1
 #		yield(get_tree().create_timer(0.5), "timeout")
 #		if is_atacking == 1:
-#			is_atacking = 0
-	
-	
-		
-		#### VIRANDO A CABEÇA ####
-#	var dir = direction
-#	if dir.y < 0:
-#		dir.y = dir.y/2
-#	if direction.x < 0:
-#		dir.x = dir.x * -1
-#	if dir.x == 0 and LOOKING_DIRECTION.x != 0:
-#		dir.x = 1
-		
-	
-	
-#	if  direction.x != 0 and is_on_floor() and not is_atacking:
-#		$SPRITES/AnimationPlayer.play("Running")
-#	elif direction.x == 0 and is_on_floor() and not is_atacking:
-#		$SPRITES/AnimationPlayer.play("Idle")
-#
-#	$SPRITES/Head.rotation = -dir.angle()
-#	$SPRITES.scale.x = LOOKING_DIRECTION.x
-
 
 
 func camera_shake(timeout):
@@ -213,13 +204,15 @@ func camera_shake(timeout):
 	$Mira/Camera_position/Camera2D.shake = false
 	
 func take_damage(damage):
-#	get_parent().get_node("CanvasLayer/Control/Health Bar").take_damage(damage)
-#	health -= damage
+	get_parent().get_node("CanvasLayer/Control/Health Bar").take_damage(damage)
+	health -= damage
 	print("damage")
-#func death_detection():
-#	if health <= 0 :#and is_alive:
-##		is_alive = false
-#		emit_signal("OnDeath",self)
+	death_detection()
+	
+func death_detection():
+	if health <= 0 and not is_dead:
+		is_dead = true
+		emit_signal("OnDeath",self)
 
 
 func _on_SwordHit_body_entered(body: Node) -> void:
@@ -232,3 +225,7 @@ func _on_SwordHit_body_entered(body: Node) -> void:
 			body.take_damage(damage, 180)
 		yield(get_tree().create_timer(0.2), "timeout")
 		$Mira/Camera_position/Camera2D.shake = false
+
+
+func _on_WalljumpMovementBlocker_timeout() -> void:
+	wal_jumping = false

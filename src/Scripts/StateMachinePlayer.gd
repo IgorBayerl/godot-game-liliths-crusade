@@ -39,11 +39,13 @@ func _input(event):
 
 
 func _state_logic(delta):
+	parent._set_head_direction()
 	parent._update_move_direction()
 	parent._update_wall_direction()
 	if state != states.wall_slide:
 		if state != states.rolling:
-			parent._handle_move_input()
+			if !parent.wal_jumping == true:
+				parent._handle_move_input()
 	if state == states.wall_slide:
 		parent._cap_gravity_wall_slide()
 		parent._handle_wall_slide_sticking()

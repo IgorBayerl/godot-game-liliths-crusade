@@ -51,7 +51,7 @@ position = Vector2( -29.2578, -2.13983 )
 scale = Vector2( 9.04, 9.04 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level/StaticBody2D"]
-polygon = PoolVector2Array( -151.731, 16.6504, -137.572, 16.6504, -137.572, 28.1549, -76.5102, 28.1549, -64.1208, 35.2345, -25.1828, 35.2345, -25.1828, 13.9956, -8.36861, 13.9956, -8.36861, 2.49113, 48.2686, 2.49113, 48.2686, -57.6859, 60.406, -58.3404, 68.5409, 61.1794, -175.4, 61.8, -172.327, -60.2953, -151.731, -58.5708, -151.731, 16.6504 )
+polygon = PoolVector2Array( -151.731, 16.6504, -137.572, 16.6504, -137.572, 28.1549, -76.5102, 28.1549, -64.1208, 35.2345, -25.1828, 35.2345, -25.1828, 13.9956, -8.36861, 13.9956, -8.36861, 2.49113, 48.2686, 2.49113, 48.3692, -57.2854, 62.5285, -57.2854, 62.5285, 63.0686, -164.02, 63.0686, -164.02, -57.2854, -151.631, -57.2854, -151.731, 16.6504 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/StaticBody2D"]
 position = Vector2( -91.6203, -3.09277 )
@@ -107,6 +107,58 @@ __meta__ = {
 [node name="StaticBody2D" type="StaticBody2D" parent="Level/wall"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/wall/StaticBody2D"]
+shape = SubResource( 6 )
+
+[node name="wall3" type="Sprite" parent="Level"]
+position = Vector2( 1032.96, 195.113 )
+scale = Vector2( 15.4213, 3.52056 )
+texture = ExtResource( 14 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Level/wall3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/wall3/StaticBody2D"]
+shape = SubResource( 6 )
+
+[node name="wall4" type="Sprite" parent="Level"]
+position = Vector2( 914.899, -386.073 )
+scale = Vector2( 1.42134, 9.73998 )
+texture = ExtResource( 14 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Level/wall4"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/wall4/StaticBody2D"]
+shape = SubResource( 6 )
+
+[node name="wall5" type="Sprite" parent="Level"]
+position = Vector2( 1193.27, -133.907 )
+scale = Vector2( 1.42134, 6.77056 )
+texture = ExtResource( 14 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Level/wall5"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/wall5/StaticBody2D"]
+shape = SubResource( 6 )
+
+[node name="wall6" type="Sprite" parent="Level"]
+position = Vector2( 1536.74, -253.311 )
+scale = Vector2( 1.42134, 10.6072 )
+texture = ExtResource( 14 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Level/wall6"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/wall6/StaticBody2D"]
 shape = SubResource( 6 )
 
 [node name="wall2" type="Sprite" parent="Level"]
