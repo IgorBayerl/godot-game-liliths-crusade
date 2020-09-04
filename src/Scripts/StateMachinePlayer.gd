@@ -10,6 +10,7 @@ func _ready() -> void:
 	add_state("stun")
 	add_state("wall_slide")
 	add_state("crouch")
+	add_state("rolling")
 	call_deferred("set_state", states.idle)
 	
 func _input(event):
@@ -21,6 +22,11 @@ func _input(event):
 				parent.is_jumping = true
 			elif Input.is_action_pressed("move_DOWN"):
 				parent.position.y += 1
+				
+		#DASH
+		if state != states.rolling:
+			if event.is_action_pressed("hability"):
+				parent.is_dashing = true
 				
 	elif state == states.wall_slide:
 		if event.is_action_pressed("jump"):
@@ -36,7 +42,8 @@ func _state_logic(delta):
 	parent._update_move_direction()
 	parent._update_wall_direction()
 	if state != states.wall_slide:
-		parent._handle_move_input()
+		if state != states.rolling:
+			parent._handle_move_input()
 	if state == states.wall_slide:
 		parent._cap_gravity_wall_slide()
 		parent._handle_wall_slide_sticking()
@@ -93,10 +100,13 @@ func _enter_state(new_state, old_state):
 			parent.anim_player.play("Running")
 		states.jump:
 			print('jump')
+			parent.anim_player.play("jump")
 		states.fall:
 			print('fall')
+			parent.anim_player.play("fall")
 		states.wall_slide:
 			print('wall_slide')
+			parent.anim_player.play("wall_slide")
 	
 func _exit_state(old_state, new_state):
 	pass

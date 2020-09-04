@@ -108,32 +108,8 @@ func _check_is_valid_wall(wall_raycasts):
 	return false
 	
 #func _direction_move(delta):
-	
-#
-#	if Input.is_action_pressed("move_UP"):
-#		direction += Vector2(0,1)
-#	elif Input.is_action_pressed("move_DOWN"):
-#		direction += Vector2(0,-1)
-#	else:
-#		direction += Vector2(0,0)
-#
-	
-#	PULO ALTO E BAIXO
-#	if Input.is_action_pressed("jump") and not Input.is_action_pressed("move_DOWN"):
-#		if _pode_pular():
-#			motion.y = JUMP_FORCE
-#	if Input.is_action_just_released("jump") and motion.y < -400 :
-#		motion.y = -400
 
-	# DESCER DE PLATAFORMA
 	
-#	if Input.is_action_just_pressed("jump") and Input.is_action_pressed("move_DOWN"):
-#		position.y += 1
-#	elif motion.y < 0 :
-#		GRAVITY = SMALL_JUMP_GRAVITIY
-#	else:
-#		GRAVITY = NORMAL_GRAVITIY
-		
 #	if Input.is_action_just_pressed("hability"):
 #		dash()
 		
@@ -151,33 +127,33 @@ func _check_is_valid_wall(wall_raycasts):
 #	else:
 #		return false
 #
-#func dash():
-#	if _can_dash():
-#		GRAVITY = GRAVITY*3
-#		$Dash_sound.play()
-#		is_dashing = true
-#		can_dash = false
-#		collision_layer = 8
-#
-#		SPEED = 1000
-#		$Dash.visible = false
-#		$Dash_Timer.start()
+func dash():
+	$Dash_sound.play()
+	is_dashing = true
+	can_dash = false
+#	collision_layer = 8
+
+	move_speed = 1000
+	$Dash.visible = false
+	$Dash_Timer.start()
 #########################################
-#func _on_Timer_timeout() -> void:
-#	SPEED = 300
-#	is_dashing = false
+func _on_Timer_timeout() -> void:
+	move_speed = 300
+	is_dashing = false
+	
 #	collision_layer = 4
-#
+
 #	GRAVITY = temp_GRAVITY
-#	yield(get_tree().create_timer(0.5), "timeout")
-#	can_dash = true
-#	$Dash.visible = true
+	yield(get_tree().create_timer(0.5), "timeout")
+	can_dash = true
+	$Dash.visible = true
 ############################################
 func _on_Ghost_Timer_timeout() -> void:
-	if is_dashing:
-		var this_ghost = preload("res://src/Actors/Efeitos/ghost.tscn").instance()
-		get_parent().add_child(this_ghost)
-		this_ghost.position = position + Vector2(0,20)
+	pass
+#	if is_dashing:
+#		var this_ghost = preload("res://src/Actors/Efeitos/ghost.tscn").instance()
+#		get_parent().add_child(this_ghost)
+#		this_ghost.position = position + Vector2(0,20)
 #		this_ghost.texture = $SPRITES/body.frames.get_frame($SPRITES/body.animation, $SPRITES/body.frame)
 ###########################################
 #func animations_set():

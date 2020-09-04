@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://src/Scripts/PlayerFSM.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -12,17 +12,17 @@
 [ext_resource path="res://src/Sprites/armas/Chamas.png" type="Texture" id=10]
 [ext_resource path="res://src/Actors/Efeitos/BloodSplitter.tscn" type="PackedScene" id=11]
 [ext_resource path="res://src/Scripts/StateMachinePlayer.gd" type="Script" id=12]
+[ext_resource path="res://src/Assets/Sprites/PLAYER/Player.png" type="Texture" id=13]
 [ext_resource path="res://src/Assets/Sprites/gun.png" type="Texture" id=15]
-[ext_resource path="res://src/Assets/Sprites/PLAYER/SpriteSheet.png" type="Texture" id=17]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 28.3935, 76.1278 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 20.702, 44.3677 )
+extents = Vector2( 11.8421, 28.6792 )
 
 [sub_resource type="Animation" id=3]
-length = 0.3
+length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
@@ -30,10 +30,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 21, 23, 24 ]
+"values": [ 18, 19, 20, 21 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("SwordHit/CollisionShape2D:disabled")
@@ -81,10 +81,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 25, 26, 27, 28, 29 ]
+"values": [ 22, 23, 24, 25 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("SwordHit/CollisionShape2D:disabled")
@@ -164,7 +164,7 @@ tracks/2/keys = {
 }
 
 [sub_resource type="Animation" id=6]
-length = 0.8
+length = 0.7
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
@@ -173,10 +173,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+"values": [ 3, 4, 5, 6, 7, 8, 9 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("SwordHit/CollisionShape2D:disabled")
@@ -201,6 +201,57 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 5.49709, -19.8999 ), Vector2( 5.14908, -19.8999 ), Vector2( 5.49709, -20.9937 ), Vector2( 5.49709, -19.3282 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "fall"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 14, 15, 16, 17 ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "jump"
+length = 0.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 11, 12, 13 ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "wall_slide"
+length = 0.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
 }
 
 [sub_resource type="SpriteFrames" id=7]
@@ -233,22 +284,25 @@ shape = SubResource( 1 )
 
 [node name="body2" type="Sprite" parent="SPRITES"]
 position = Vector2( -0.737395, 33.1831 )
-scale = Vector2( 1.79639, 1.79639 )
-texture = ExtResource( 17 )
-vframes = 5
-hframes = 10
-frame = 21
+scale = Vector2( 2.89255, 2.89255 )
+texture = ExtResource( 13 )
+vframes = 6
+hframes = 5
+frame = 5
 
 [node name="SwordHit" type="Area2D" parent="SPRITES/body2"]
 collision_layer = 4
 collision_mask = 1059
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SPRITES/body2/SwordHit"]
-position = Vector2( 35.8261, -4.76657 )
+position = Vector2( 19.793, 0.941169 )
 shape = SubResource( 2 )
+disabled = true
 
 [node name="Head" type="Sprite" parent="SPRITES"]
-position = Vector2( 3.06244, -20.126 )
+visible = false
+position = Vector2( -5.28975, -25.3461 )
+rotation = 0.174533
 scale = Vector2( 1.79177, 1.79177 )
 texture = ExtResource( 8 )
 
@@ -258,10 +312,16 @@ anims/Atack1 = SubResource( 3 )
 anims/Atack2 = SubResource( 4 )
 anims/Idle = SubResource( 5 )
 anims/Running = SubResource( 6 )
+anims/fall = SubResource( 9 )
+anims/jump = SubResource( 10 )
+anims/wall_slide = SubResource( 8 )
 
 [node name="Mira" type="Position2D" parent="."]
-position = Vector2( 3.98624, 14.1905 )
+position = Vector2( 3.46482, 32.4403 )
 script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Arma" type="Node2D" parent="Mira"]
 
