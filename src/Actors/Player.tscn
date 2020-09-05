@@ -42,10 +42,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ false, true ]
+"values": [ true, false, true ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("../Head:position")
@@ -203,7 +203,7 @@ tracks/2/keys = {
 "values": [ Vector2( 5.49709, -19.8999 ), Vector2( 5.14908, -19.8999 ), Vector2( 5.49709, -20.9937 ), Vector2( 5.49709, -19.3282 ) ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=7]
 resource_name = "fall"
 length = 0.4
 loop = true
@@ -220,7 +220,7 @@ tracks/0/keys = {
 "values": [ 14, 15, 16, 17 ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=8]
 resource_name = "jump"
 length = 0.3
 loop = true
@@ -237,8 +237,7 @@ tracks/0/keys = {
 "values": [ 11, 12, 13 ]
 }
 
-[sub_resource type="Animation" id=8]
-resource_name = "wall_slide"
+[sub_resource type="Animation" id=9]
 length = 0.3
 loop = true
 tracks/0/type = "value"
@@ -254,7 +253,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2 ]
 }
 
-[sub_resource type="SpriteFrames" id=7]
+[sub_resource type="SpriteFrames" id=10]
 animations = [ {
 "frames": [ ExtResource( 9 ), ExtResource( 4 ), ExtResource( 10 ) ],
 "loop": false,
@@ -288,7 +287,7 @@ scale = Vector2( 2.89255, 2.89255 )
 texture = ExtResource( 13 )
 vframes = 6
 hframes = 5
-frame = 5
+frame = 21
 
 [node name="SwordHit" type="Area2D" parent="SPRITES/body2"]
 collision_layer = 4
@@ -300,8 +299,8 @@ shape = SubResource( 2 )
 disabled = true
 
 [node name="Head" type="Sprite" parent="SPRITES"]
-position = Vector2( -5.28975, -25.3461 )
-rotation = 0.174533
+position = Vector2( -2.15767, -25.6942 )
+rotation = -0.164061
 scale = Vector2( 1.79177, 1.79177 )
 texture = ExtResource( 8 )
 
@@ -311,9 +310,9 @@ anims/Atack1 = SubResource( 3 )
 anims/Atack2 = SubResource( 4 )
 anims/Idle = SubResource( 5 )
 anims/Running = SubResource( 6 )
-anims/fall = SubResource( 9 )
-anims/jump = SubResource( 10 )
-anims/wall_slide = SubResource( 8 )
+anims/fall = SubResource( 7 )
+anims/jump = SubResource( 8 )
+anims/wall_slide = SubResource( 9 )
 
 [node name="Mira" type="Position2D" parent="."]
 position = Vector2( 3.46482, 32.4403 )
@@ -333,7 +332,7 @@ texture = ExtResource( 15 )
 [node name="GunSprite" type="AnimatedSprite" parent="Mira/Arma"]
 position = Vector2( 29.8494, -6.98813 )
 scale = Vector2( 1.99719, 1.99719 )
-frames = SubResource( 7 )
+frames = SubResource( 10 )
 animation = "Guns"
 frame = 1
 
@@ -421,6 +420,7 @@ wait_time = 0.5
 one_shot = true
 [connection signal="area_entered" from="SPRITES/body2/SwordHit" to="." method="_on_SwordHit_area_entered"]
 [connection signal="body_entered" from="SPRITES/body2/SwordHit" to="." method="_on_SwordHit_body_entered"]
+[connection signal="animation_finished" from="SPRITES/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="timeout" from="MiliAtack_Timer" to="." method="_on_MiliAtack_Timer_timeout"]
 [connection signal="timeout" from="Dash_Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="Ghost_Timer" to="." method="_on_Ghost_Timer_timeout"]

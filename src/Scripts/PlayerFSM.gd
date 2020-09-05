@@ -23,6 +23,7 @@ var max_health = 100
 var health = 100
 var wal_jumping = false
 var head_direction = Vector2()
+var atack_combo = 0
 
 var max_jump_velocity = -600
 var min_jump_velocity = -400
@@ -37,6 +38,8 @@ var is_dead = false
 var is_atacking = false
 var is_dashing = false
 var is_crouched = false
+
+
 
 ############
 
@@ -119,8 +122,21 @@ func _set_head_direction():
 	$SPRITES/Head.rotation = -head_direction.angle()
 	
 func _atack():
-	pass
+	is_atacking = true
+	if atack_combo < 2:
+		atack_combo += 1
+	elif atack_combo == 2:
+		atack_combo =1
+	print("atack_combo = ", atack_combo)
 	
+func _atack_combo():
+	if is_atacking == true:
+		if atack_combo == 1:
+			anim_player.play("Atack1")
+		elif atack_combo == 2:
+			anim_player.play("Atack2")
+
+		
 func camera_shake(timeout):
 	$Mira/Camera_position/Camera2D.shake = true
 	yield(get_tree().create_timer(timeout), "timeout")
@@ -138,19 +154,6 @@ func death_detection():
 		emit_signal("OnDeath",self)
 
 
-#func _direction_move(delta):
-
-	
-#	if Input.is_action_just_pressed("hability"):
-#		dash()
-		
-#	motion = move_and_slide(motion  , NORMAL)
-	
-#func _pode_pular() -> bool:
-#	if is_on_floor():
-#		return true
-#	else:
-#		return false
 ################## DASH ###################
 #func _can_dash() -> bool:
 #	if is_dashing == false and can_dash == true:
@@ -220,9 +223,9 @@ func _on_SwordHit_body_entered(body: Node) -> void:
 	if body.is_in_group("Entidade"):
 		$Mira/Camera_position/Camera2D.shake = true
 		var damage = rand_range(30, 30)
-		if facing.x == 1:
+		if facing == 1:
 			body.take_damage(damage, 0)
-		if facing.x == -1:
+		if facing == -1:
 			body.take_damage(damage, 180)
 		yield(get_tree().create_timer(0.2), "timeout")
 		$Mira/Camera_position/Camera2D.shake = false
@@ -230,3 +233,12 @@ func _on_SwordHit_body_entered(body: Node) -> void:
 
 func _on_WalljumpMovementBlocker_timeout() -> void:
 	wal_jumping = false
+
+
+func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
+	if anim_name == "Atack1":
+		if atack_combo == 1:
+			atack_combo = 0
+			is_atacking = false
+		elif is_atacking == 2:
+			print("COMBO")

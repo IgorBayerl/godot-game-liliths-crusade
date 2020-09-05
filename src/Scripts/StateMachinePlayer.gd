@@ -23,8 +23,10 @@ func _input(event):
 			elif Input.is_action_pressed("move_DOWN"):
 				parent.position.y += 1
 				
-		#DASH
+		#DASH / #ATACK
 		if state != states.rolling:
+			if event.is_action_pressed("interact"):
+				parent._atack()
 			if event.is_action_pressed("hability"):
 				parent.is_dashing = true
 				
@@ -43,7 +45,7 @@ func _state_logic(delta):
 	parent._update_move_direction()
 	parent._update_wall_direction()
 	if state != states.wall_slide:
-		if state != states.rolling:
+		if state != states.rolling or state != states.atack:
 			if !parent.wal_jumping == true:
 				parent._handle_move_input()
 	if state == states.wall_slide:
@@ -62,6 +64,8 @@ func _get_transition(delta):
 					return states.fall
 			elif parent.velocity.x != 0:
 				return states.run
+			elif parent.is_atacking == true:
+				return states.atack
 		states.run:
 			if !parent.is_on_floor():
 				if parent.velocity.y < 0:
@@ -70,6 +74,8 @@ func _get_transition(delta):
 					return states.fall
 			elif parent.velocity.x == 0:
 				return states.idle
+			elif parent.is_atacking == true:
+				return states.atack
 		states.jump:
 			if parent.wall_direction != 0:
 				return states.wall_slide
@@ -89,7 +95,24 @@ func _get_transition(delta):
 				return states.idle
 			elif parent.wall_direction == 0:
 				return states.fall
-
+		states.atack:
+			if parent.is_atacking == false:
+				if parent.atack_combo == 0:
+					if parent.velocity.x == 0:
+						return states.idle
+					elif parent.velocity.x != 0:
+						return states.run
+				elif parent.atack_combo == 1:
+					return states.atack2
+		states.atack2:
+			if parent.is_atacking == false:
+				if parent.atack_combo == 0:
+					if parent.velocity.x == 0:
+						return states.idle
+					elif parent.velocity.x != 0:
+						return states.run
+				elif parent.atack_combo == 2:
+					return states.atack
 	return null
 
 func _enter_state(new_state, old_state):
@@ -109,6 +132,12 @@ func _enter_state(new_state, old_state):
 		states.wall_slide:
 			print('wall_slide')
 			parent.anim_player.play("wall_slide")
+		states.atack:
+			print('atack')
+			parent._atack_combo()
+		states.atack2:
+			print('atack2')
+			parent._atack_combo()
 	
 func _exit_state(old_state, new_state):
 	pass
