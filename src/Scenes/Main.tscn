@@ -97,8 +97,8 @@ shape = SubResource( 5 )
 one_way_collision = true
 
 [node name="wall" type="Sprite" parent="Level"]
-position = Vector2( 497.727, -143.236 )
-scale = Vector2( 5.16088, 7.83897 )
+position = Vector2( 497.727, -211.118 )
+scale = Vector2( 5.16088, 9.96029 )
 texture = ExtResource( 14 )
 __meta__ = {
 "_edit_group_": true
@@ -254,6 +254,7 @@ scale = Vector2( 44.7077, 34.4197 )
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
 volume_db = -28.272
+autoplay = true
 [connection signal="body_entered" from="MainController/Arma" to="MainController" method="_on_Arma_body_entered"]
 [connection signal="body_entered" from="MainController/Arma" to="MainController/CanvasLayer/Control/Guns_bar" method="_on_Arma_body_entered"]
 [connection signal="body_entered" from="MainController/Arma2" to="MainController" method="_on_Arma_body_entered"]

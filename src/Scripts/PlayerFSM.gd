@@ -23,7 +23,7 @@ var max_health = 100
 var health = 100
 var wal_jumping = false
 var head_direction = Vector2()
-var rolling_speed = 400
+var rolling_speed = 600
 
 var atack_combo = 0
 var can_atack = true
@@ -42,6 +42,9 @@ var is_rolling = false
 var is_crouched = false
 var is_stuned = false
 
+var is_on_menus = false
+
+
 ############
 
 onready var anim_player = $SPRITES/AnimationPlayer
@@ -58,8 +61,9 @@ func _apply_gravity(delta):
 		is_jumping = false
 
 func _cap_gravity_wall_slide():
-	var max_velocity = 96
-	velocity.y = min(velocity.y, max_velocity)
+	if !Input.is_action_pressed("move_DOWN"):
+		var max_velocity = 96
+		velocity.y = min(velocity.y, max_velocity)
 
 func _handle_wall_slide_sticking():
 	if move_direction !=0 and move_direction != wall_direction:
@@ -106,7 +110,7 @@ func _update_wall_direction():
 		wall_direction = move_direction
 	else:
 		wall_direction = -int(is_near_wall_left) + int(is_near_wall_right)
-
+		
 func _check_is_valid_wall(wall_raycasts):
 	for raycast in wall_raycasts.get_children():
 		if raycast.is_colliding():
@@ -183,6 +187,7 @@ func _update_effect_animation():
 		anim_effect.play("normal")
 
 func _respawn():
+	yield(get_tree().create_timer(1), "timeout")
 	position = checkpoint_position
 	health = max_health
 	is_dead = false

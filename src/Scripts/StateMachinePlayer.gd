@@ -39,7 +39,7 @@ func _input(event):
 
 func _state_logic(delta):
 	parent._update_lebel_state(state , previous_state)
-	if !parent.is_dead:
+	if !parent.is_dead :
 		parent._set_head_direction()
 		if state != states.rolling:
 			parent._update_move_direction()
@@ -152,6 +152,7 @@ func _enter_state(new_state, old_state):
 		states.wall_slide:
 			print('wall_slide')
 			parent.anim_player.play("wall_slide")
+			parent.get_node("SPRITES").scale.x = -parent.wall_direction
 		states.rolling:
 			print('lets rolla')
 			parent._rolling_direction()

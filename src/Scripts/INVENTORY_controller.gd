@@ -4,15 +4,19 @@ extends Control
 #var selectedGun : String = "gun"
 var info
 
+onready var player = get_parent().get_parent().get_parent().get_node("Player")
 
 func _ready() -> void:
 	$Background/Container/Guns/VBoxGunsList.grab_focus()
 
 
-
 func _unhandled_input(event):
 	_set_text()
-
+	if visible == true:
+		print("alooo alooo aloo ")
+		player.is_on_menus = true
+	else:
+		player.is_on_menus = false
 
 func _set_text():
 	#Name
