@@ -6,7 +6,6 @@ func _ready() -> void:
 	add_state("jump")
 	add_state("fall")
 	add_state("atack")
-	add_state("atack2")
 	add_state("stun")
 	add_state("wall_slide")
 	add_state("crouch")
@@ -23,10 +22,9 @@ func _input(event):
 			elif Input.is_action_pressed("move_DOWN"):
 				parent.position.y += 1
 				
-		#DASH / #ATACK
+		#ROLL / #ATACK
 		if state != states.rolling:
 			if event.is_action_pressed("hability"):
-				print("roll")
 				parent.is_rolling = true
 				
 	elif state == states.wall_slide:
@@ -41,25 +39,29 @@ func _input(event):
 
 func _state_logic(delta):
 	parent._update_lebel_state(state , previous_state)
-	parent._set_head_direction()
-	if state != states.rolling:
-		parent._update_move_direction()
-	parent._update_wall_direction()
-	if state != states.wall_slide:
-		if state != states.rolling or state != states.atack:
-			if !parent.wal_jumping == true:
-				parent._handle_move_input()
-	if state == states.wall_slide:
-		parent._cap_gravity_wall_slide()
-		parent._handle_wall_slide_sticking()
+	if !parent.is_dead:
+		parent._set_head_direction()
+		if state != states.rolling:
+			parent._update_move_direction()
+		parent._update_wall_direction()
+		if state != states.wall_slide:
+			if state != states.rolling or state != states.atack or state != states.stun:
+				if !parent.wal_jumping == true:
+					parent._handle_move_input()
+		if state == states.wall_slide:
+			parent._cap_gravity_wall_slide()
+			parent._handle_wall_slide_sticking()
+		parent._apply_movement()
+		if state == states.rolling:
+			parent._roll()
+	parent._update_effect_animation()
 	parent._apply_gravity(delta)
-	parent._apply_movement()
-	if state == states.rolling:
-		parent._roll()
 
 func _get_transition(delta):
 	match state:
 		states.idle:
+			if parent.is_stuned:
+				return states.stun
 			if !parent.is_on_floor():
 				if parent.velocity.y < 0:
 					return states.jump
@@ -71,6 +73,8 @@ func _get_transition(delta):
 				if parent.velocity.x != 0:
 					return states.run
 		states.run:
+			if parent.is_stuned:
+				return states.stun
 			if !parent.is_on_floor():
 				if parent.velocity.y < 0:
 					return states.jump
@@ -82,6 +86,8 @@ func _get_transition(delta):
 				if parent.velocity.x == 0:
 					return states.idle
 		states.jump:
+			if parent.is_stuned:
+				return states.stun
 			if parent.wall_direction != 0:
 				return states.wall_slide
 			elif parent.is_on_floor():
@@ -89,6 +95,8 @@ func _get_transition(delta):
 			elif parent.velocity.y >= 0:
 				return states.fall
 		states.fall:
+			if parent.is_stuned:
+				return states.stun
 			if parent.wall_direction != 0:
 				return states.wall_slide
 			elif parent.is_on_floor():
@@ -96,6 +104,8 @@ func _get_transition(delta):
 			elif parent.velocity.y < 0 :
 				return states.jump
 		states.wall_slide:
+			if parent.is_stuned:
+				return states.stun
 			if parent.is_on_floor():
 				return states.idle
 			elif parent.wall_direction == 0:
@@ -111,6 +121,18 @@ func _get_transition(delta):
 					return states.fall
 				elif parent.wall_direction != 0:
 					return states.wall_slide
+		states.stun:
+			if !parent.is_stuned:
+				if !parent.is_on_floor():
+					if parent.velocity.y < 0:
+						return states.jump
+					elif parent.velocity.y > 0:
+						return states.fall
+				elif parent.is_rolling:
+					return states.rolling
+				elif !parent.is_rolling:
+					if parent.velocity.x != 0:
+						return states.run
 	return null
 
 func _enter_state(new_state, old_state):
@@ -133,6 +155,9 @@ func _enter_state(new_state, old_state):
 		states.rolling:
 			print('lets rolla')
 			parent._rolling_direction()
+		states.stun:
+			print('stunned')
+			parent.anim_effect.play("piscando")
 	
 func _exit_state(old_state, new_state):
 	pass

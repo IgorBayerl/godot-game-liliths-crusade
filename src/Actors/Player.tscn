@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://src/Scripts/PlayerFSM.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -13,7 +13,13 @@
 [ext_resource path="res://src/Actors/Efeitos/BloodSplitter.tscn" type="PackedScene" id=11]
 [ext_resource path="res://src/Scripts/StateMachinePlayer.gd" type="Script" id=12]
 [ext_resource path="res://src/Assets/Sprites/PLAYER/Player.png" type="Texture" id=13]
+[ext_resource path="res://src/flash_shader.shader" type="Shader" id=14]
 [ext_resource path="res://src/Assets/Sprites/gun.png" type="Texture" id=15]
+
+[sub_resource type="ShaderMaterial" id=11]
+shader = ExtResource( 14 )
+shader_param/flash_color = Color( 1, 1, 1, 1 )
+shader_param/flash_modifier = 0.0
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 28.3935, 76.1278 )
@@ -261,9 +267,42 @@ animations = [ {
 "speed": 0.0
 } ]
 
+[sub_resource type="Animation" id=13]
+resource_name = "normal"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:shader_param/flash_modifier")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "piscando"
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:shader_param/flash_modifier")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0, 0.0 ]
+}
+
 [node name="Player" type="KinematicBody2D" groups=[
 "Player",
 ]]
+material = SubResource( 11 )
 scale = Vector2( 0.64, 0.64 )
 collision_layer = 4
 collision_mask = 2147483681
@@ -280,14 +319,16 @@ position = Vector2( -0.116311, 44.7364 )
 shape = SubResource( 1 )
 
 [node name="SPRITES" type="Node2D" parent="."]
+use_parent_material = true
 
 [node name="body2" type="Sprite" parent="SPRITES"]
+use_parent_material = true
 position = Vector2( -0.737395, 33.1831 )
 scale = Vector2( 2.89255, 2.89255 )
 texture = ExtResource( 13 )
 vframes = 6
 hframes = 5
-frame = 21
+frame = 18
 
 [node name="SwordHit" type="Area2D" parent="SPRITES/body2"]
 collision_layer = 4
@@ -299,8 +340,8 @@ shape = SubResource( 2 )
 disabled = true
 
 [node name="Head" type="Sprite" parent="SPRITES"]
-position = Vector2( -2.15767, -25.6942 )
-rotation = -0.164061
+use_parent_material = true
+position = Vector2( 3.06244, -20.126 )
 scale = Vector2( 1.79177, 1.79177 )
 texture = ExtResource( 8 )
 
@@ -367,15 +408,6 @@ one_shot = true
 wait_time = 0.4
 one_shot = true
 
-[node name="Dash" type="Sprite" parent="."]
-position = Vector2( 5.11871, -60.2061 )
-scale = Vector2( 0.137369, 0.137369 )
-texture = ExtResource( 2 )
-
-[node name="Ghost_Timer" type="Timer" parent="."]
-wait_time = 0.05
-autostart = true
-
 [node name="Dash_sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
 
@@ -388,6 +420,7 @@ RandomVelocity = 350.0
 script = ExtResource( 12 )
 
 [node name="WallRaycast" type="Node2D" parent="."]
+visible = false
 
 [node name="RightWallRaycast" type="Node2D" parent="WallRaycast"]
 
@@ -430,11 +463,19 @@ text = "AAAA"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Ivunerability" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="Effects_animationPlayer" type="AnimationPlayer" parent="."]
+anims/normal = SubResource( 13 )
+anims/piscando = SubResource( 12 )
 [connection signal="area_entered" from="SPRITES/body2/SwordHit" to="." method="_on_SwordHit_area_entered"]
 [connection signal="body_entered" from="SPRITES/body2/SwordHit" to="." method="_on_SwordHit_body_entered"]
 [connection signal="animation_finished" from="SPRITES/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="timeout" from="MiliAtack_Timer" to="." method="_on_MiliAtack_Timer_timeout"]
 [connection signal="timeout" from="Roll_Timer" to="." method="_on_Roll_Timer_timeout"]
-[connection signal="timeout" from="Ghost_Timer" to="." method="_on_Ghost_Timer_timeout"]
 [connection signal="timeout" from="WallSlideSticknesTimer" to="StateMachine" method="_on_WallSlideSticknesTimer_timeout"]
 [connection signal="timeout" from="WalljumpMovementBlocker" to="." method="_on_WalljumpMovementBlocker_timeout"]
+[connection signal="timeout" from="Ivunerability" to="." method="_on_Ivunerability_timeout"]

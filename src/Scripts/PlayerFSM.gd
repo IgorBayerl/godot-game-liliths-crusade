@@ -11,6 +11,8 @@ const WALL_JUMP_VELOCITY = Vector2(400 , -500)
 
 ####################
 
+var checkpoint_position: Vector2
+
 var move_speed = 300
 var velocity = Vector2()
 var move_direction
@@ -38,16 +40,17 @@ var is_dead = false
 var is_atacking = false
 var is_rolling = false
 var is_crouched = false
+var is_stuned = false
 
 ############
 
 onready var anim_player = $SPRITES/AnimationPlayer
 onready var player_body = $SPRITES
-
 onready var left_wall_raycasts = $WallRaycast/LeftWallRaycast
 onready var right_wall_raycasts = $WallRaycast/RightWallRaycast
-
 onready var wall_slide_sticky_timer = $WallSlideSticknesTimer
+onready var anim_effect = $Effects_animationPlayer
+onready var ivunerability = $Ivunerability
 
 func _apply_gravity(delta):
 	velocity.y += GRAVITY * delta
@@ -122,7 +125,6 @@ func _roll():
 
 func _rolling_direction():
 	if $Roll_Timer.is_stopped():
-		print('_rolling(direction)')
 		$Roll_Timer.start()
 		is_rolling = true
 
@@ -161,17 +163,30 @@ func camera_shake(timeout):
 	$Mira/Camera_position/Camera2D.shake = false
 
 func take_damage(damage):
-	get_parent().get_node("CanvasLayer/Control/Health Bar").take_damage(damage)
-	health -= damage
-	death_detection()
+	if ivunerability.is_stopped():
+		is_stuned = true
+		ivunerability.start()
+		get_parent().get_node("CanvasLayer/Control/Health Bar").take_damage(damage)
+		health -= damage
+		death_detection()
 
 func death_detection():
 	if health <= 0 and not is_dead:
 		is_dead = true
 		emit_signal("OnDeath",self)
+		_respawn()
 
+func _update_effect_animation():
+	if is_stuned:
+		anim_effect.play("piscando")
+	else:
+		anim_effect.play("normal")
 
-
+func _respawn():
+	position = checkpoint_position
+	health = max_health
+	is_dead = false
+	get_parent().get_node("CanvasLayer/Control/Health Bar").restore_health()
 #	######## MILI ATACK ########
 #	if is_atacking != 0:
 #		$Mira/Arma.visible = false
@@ -221,3 +236,6 @@ func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 
 func _on_Roll_Timer_timeout() -> void:
 	is_rolling = false
+
+func _on_Ivunerability_timeout() -> void:
+	is_stuned = false
