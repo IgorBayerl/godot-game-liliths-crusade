@@ -14,7 +14,7 @@ func _ready() -> void:
 	call_deferred("set_state", states.idle)
 	
 func _input(event):
-	if[states.idle, states.run].has(state):
+	if[states.idle, states.run ].has(state):
 		#JUMP
 		if event.is_action_pressed("jump"):
 			if not Input.is_action_pressed("move_DOWN"):
@@ -25,10 +25,9 @@ func _input(event):
 				
 		#DASH / #ATACK
 		if state != states.rolling:
-			if event.is_action_pressed("interact"):
-				parent._atack()
 			if event.is_action_pressed("hability"):
-				parent.is_dashing = true
+				print("roll")
+				parent.is_rolling = true
 				
 	elif state == states.wall_slide:
 		if event.is_action_pressed("jump"):
@@ -41,8 +40,10 @@ func _input(event):
 
 
 func _state_logic(delta):
+	parent._update_lebel_state(state , previous_state)
 	parent._set_head_direction()
-	parent._update_move_direction()
+	if state != states.rolling:
+		parent._update_move_direction()
 	parent._update_wall_direction()
 	if state != states.wall_slide:
 		if state != states.rolling or state != states.atack:
@@ -53,6 +54,8 @@ func _state_logic(delta):
 		parent._handle_wall_slide_sticking()
 	parent._apply_gravity(delta)
 	parent._apply_movement()
+	if state == states.rolling:
+		parent._roll()
 
 func _get_transition(delta):
 	match state:
@@ -62,20 +65,22 @@ func _get_transition(delta):
 					return states.jump
 				elif parent.velocity.y > 0:
 					return states.fall
-			elif parent.velocity.x != 0:
-				return states.run
-			elif parent.is_atacking == true:
-				return states.atack
+			elif parent.is_rolling:
+				return states.rolling
+			elif !parent.is_rolling:
+				if parent.velocity.x != 0:
+					return states.run
 		states.run:
 			if !parent.is_on_floor():
 				if parent.velocity.y < 0:
 					return states.jump
 				elif parent.velocity.y > 0:
 					return states.fall
-			elif parent.velocity.x == 0:
-				return states.idle
-			elif parent.is_atacking == true:
-				return states.atack
+			elif parent.is_rolling:
+				return states.rolling
+			elif !parent.is_rolling:
+				if parent.velocity.x == 0:
+					return states.idle
 		states.jump:
 			if parent.wall_direction != 0:
 				return states.wall_slide
@@ -95,24 +100,17 @@ func _get_transition(delta):
 				return states.idle
 			elif parent.wall_direction == 0:
 				return states.fall
-		states.atack:
-			if parent.is_atacking == false:
-				if parent.atack_combo == 0:
-					if parent.velocity.x == 0:
-						return states.idle
-					elif parent.velocity.x != 0:
+		states.rolling:
+			if !parent.is_rolling:
+				if parent.is_on_floor():
+					if parent.velocity.x != 0:
 						return states.run
-				elif parent.atack_combo == 1:
-					return states.atack2
-		states.atack2:
-			if parent.is_atacking == false:
-				if parent.atack_combo == 0:
-					if parent.velocity.x == 0:
+					elif parent.velocity.x == 0:
 						return states.idle
-					elif parent.velocity.x != 0:
-						return states.run
-				elif parent.atack_combo == 2:
-					return states.atack
+				elif parent.wall_direction == 0:
+					return states.fall
+				elif parent.wall_direction != 0:
+					return states.wall_slide
 	return null
 
 func _enter_state(new_state, old_state):
@@ -132,17 +130,13 @@ func _enter_state(new_state, old_state):
 		states.wall_slide:
 			print('wall_slide')
 			parent.anim_player.play("wall_slide")
-		states.atack:
-			print('atack')
-			parent._atack_combo()
-		states.atack2:
-			print('atack2')
-			parent._atack_combo()
+		states.rolling:
+			print('lets rolla')
+			parent._rolling_direction()
 	
 func _exit_state(old_state, new_state):
 	pass
 	
-
 func _on_WallSlideSticknesTimer_timeout() -> void:
 	if state == states.wall_slide:
 		set_state(states.fall)

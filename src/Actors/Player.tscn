@@ -360,9 +360,11 @@ amplitude = 5.0
 DAMP_EASING = 1.7411
 
 [node name="MiliAtack_Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
 
-[node name="Dash_Timer" type="Timer" parent="."]
-wait_time = 0.2
+[node name="Roll_Timer" type="Timer" parent="."]
+wait_time = 0.4
 one_shot = true
 
 [node name="Dash" type="Sprite" parent="."]
@@ -418,11 +420,21 @@ one_shot = true
 [node name="WalljumpMovementBlocker" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
+
+[node name="state_label" type="Label" parent="."]
+margin_left = -33.2223
+margin_top = -98.8058
+margin_right = 36.7777
+margin_bottom = -57.8058
+text = "AAAA"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="area_entered" from="SPRITES/body2/SwordHit" to="." method="_on_SwordHit_area_entered"]
 [connection signal="body_entered" from="SPRITES/body2/SwordHit" to="." method="_on_SwordHit_body_entered"]
 [connection signal="animation_finished" from="SPRITES/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="timeout" from="MiliAtack_Timer" to="." method="_on_MiliAtack_Timer_timeout"]
-[connection signal="timeout" from="Dash_Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="Roll_Timer" to="." method="_on_Roll_Timer_timeout"]
 [connection signal="timeout" from="Ghost_Timer" to="." method="_on_Ghost_Timer_timeout"]
 [connection signal="timeout" from="WallSlideSticknesTimer" to="StateMachine" method="_on_WallSlideSticknesTimer_timeout"]
 [connection signal="timeout" from="WalljumpMovementBlocker" to="." method="_on_WalljumpMovementBlocker_timeout"]

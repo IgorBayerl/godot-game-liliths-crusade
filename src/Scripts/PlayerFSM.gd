@@ -23,7 +23,10 @@ var max_health = 100
 var health = 100
 var wal_jumping = false
 var head_direction = Vector2()
+var rolling_speed = 400
+
 var atack_combo = 0
+var can_atack = true
 
 var max_jump_velocity = -600
 var min_jump_velocity = -400
@@ -36,7 +39,7 @@ var is_grounded = false
 var is_wall_sliding = false
 var is_dead = false
 var is_atacking = false
-var is_dashing = false
+var is_rolling = false
 var is_crouched = false
 
 
@@ -57,7 +60,6 @@ func _apply_gravity(delta):
 		is_jumping = false
 	
 func _cap_gravity_wall_slide():
-	print("gravity cap")
 	var max_velocity = 96
 	velocity.y = min(velocity.y, max_velocity)
 	
@@ -82,7 +84,6 @@ func _update_move_direction():
 	move_direction = -int(Input.is_action_pressed("move_LEFT")) + int(Input.is_action_pressed("move_RIGHT"))
 	
 func _handle_move_input():
-
 	velocity.x = lerp(velocity.x, move_speed * move_direction, _get_h_weight())
 	if move_direction != 0:
 		player_body.scale.x = move_direction
@@ -121,15 +122,38 @@ func _set_head_direction():
 	head_direction.y = -int(Input.is_action_pressed("move_DOWN")) + int(Input.is_action_pressed("move_UP"))
 	$SPRITES/Head.rotation = -head_direction.angle()
 	
+func _roll():
+	velocity.x = facing * rolling_speed
+
+func _rolling_direction():
+	if $Roll_Timer.is_stopped():
+		print('_rolling(direction)')
+		$Roll_Timer.start()
+		is_rolling = true
+
 func _atack():
-	is_atacking = true
-	if atack_combo < 2:
-		atack_combo += 1
-	elif atack_combo == 2:
-		atack_combo =1
+	if can_atack:
+		if atack_combo == 0 and can_atack and not is_atacking:
+			print("atack 0 --> 1")
+			atack_combo = 1
+			is_atacking = true
+			can_atack = false
+			$MiliAtack_Timer.start()
+		if atack_combo == 1 and can_atack and is_atacking:
+			print("atack 1 --> 2")
+			atack_combo = 2
+			is_atacking = true
+			can_atack = false
+			$MiliAtack_Timer.start()
+
+
 	print("atack_combo = ", atack_combo)
-	
+
+func _update_lebel_state(state, previous_state):
+	$state_label.text = str(state)
+
 func _atack_combo():
+	$MiliAtack_Timer.start()
 	if is_atacking == true:
 		if atack_combo == 1:
 			anim_player.play("Atack1")
@@ -145,7 +169,6 @@ func camera_shake(timeout):
 func take_damage(damage):
 	get_parent().get_node("CanvasLayer/Control/Health Bar").take_damage(damage)
 	health -= damage
-	print("damage")
 	death_detection()
 	
 func death_detection():
@@ -155,32 +178,14 @@ func death_detection():
 
 
 ################## DASH ###################
-#func _can_dash() -> bool:
-#	if is_dashing == false and can_dash == true:
-#		return true
-#	else:
-#		return false
-#
+
 func dash():
 	$Dash_sound.play()
-	is_dashing = true
+	is_rolling = true
 	can_dash = false
-#	collision_layer = 8
 
 	move_speed = 1000
 	$Dash.visible = false
-	$Dash_Timer.start()
-#########################################
-func _on_Timer_timeout() -> void:
-	move_speed = 300
-	is_dashing = false
-	
-#	collision_layer = 4
-
-#	GRAVITY = temp_GRAVITY
-	yield(get_tree().create_timer(0.5), "timeout")
-	can_dash = true
-	$Dash.visible = true
 ############################################
 func _on_Ghost_Timer_timeout() -> void:
 	pass
@@ -217,7 +222,9 @@ func _on_Ghost_Timer_timeout() -> void:
 #		yield(get_tree().create_timer(0.5), "timeout")
 #		if is_atacking == 1:
 
-
+func _on_MiliAtack_Timer_timeout():
+	can_atack = true
+	print("can atack == true")
 
 func _on_SwordHit_body_entered(body: Node) -> void:
 	if body.is_in_group("Entidade"):
@@ -230,15 +237,14 @@ func _on_SwordHit_body_entered(body: Node) -> void:
 		yield(get_tree().create_timer(0.2), "timeout")
 		$Mira/Camera_position/Camera2D.shake = false
 
-
 func _on_WalljumpMovementBlocker_timeout() -> void:
 	wal_jumping = false
 
-
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	if anim_name == "Atack1":
-		if atack_combo == 1:
-			atack_combo = 0
-			is_atacking = false
-		elif is_atacking == 2:
-			print("COMBO")
+		is_atacking = false
+
+
+
+func _on_Roll_Timer_timeout() -> void:
+	is_rolling = false
