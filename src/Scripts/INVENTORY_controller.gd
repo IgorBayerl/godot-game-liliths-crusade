@@ -13,7 +13,6 @@ func _ready() -> void:
 func _unhandled_input(event):
 	_set_text()
 	if visible == true:
-		print("alooo alooo aloo ")
 		player.is_on_menus = true
 	else:
 		player.is_on_menus = false

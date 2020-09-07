@@ -12,8 +12,8 @@
 			"fire_rate": 0.02,
 			"full_ammo": 700,
 			"random_rate": 0.2,
-			"selected": true,
 			"type": 3,
+			"selected": true,
 			"unlocked": false,
 			"using": false
 		},
@@ -29,8 +29,8 @@
 			"fire_rate": 0.1,
 			"full_ammo": 60,
 			"random_rate": 0.08,
-			"selected": false,
 			"type": 3,
+			"selected": false,
 			"unlocked": false,
 			"using": false
 		}
@@ -48,8 +48,8 @@
 			"fire_rate": 0.02,
 			"full_ammo": 700,
 			"random_rate": 0.2,
-			"selected": false,
 			"type": 3,
+			"selected": false,
 			"unlocked": false,
 			"using": false
 		},
@@ -65,8 +65,8 @@
 			"fire_rate": 0.02,
 			"full_ammo": 700,
 			"random_rate": 0.2,
-			"selected": true,
 			"type": 3,
+			"selected": true,
 			"unlocked": false,
 			"using": false
 		},
@@ -82,8 +82,8 @@
 			"fire_rate": 0.1,
 			"full_ammo": 60,
 			"random_rate": 0.08,
-			"selected": false,
 			"type": 3,
+			"selected": false,
 			"unlocked": false,
 			"using": false
 		}
@@ -101,8 +101,8 @@
 			"fire_rate": 0.02,
 			"full_ammo": 700,
 			"random_rate": 0.2,
-			"selected": false,
 			"type": 3,
+			"selected": false,
 			"unlocked": false,
 			"using": false
 		},
@@ -118,10 +118,10 @@
 			"fire_rate": 0.1,
 			"full_ammo": 60,
 			"random_rate": 0.08,
-			"selected": true,
 			"type": 3,
+			"selected": true,
 			"unlocked": false,
-			"using": false
+			"using": true
 		}
 	},
 	"type4": {
@@ -137,8 +137,8 @@
 			"fire_rate": 0.02,
 			"full_ammo": 700,
 			"random_rate": 0.2,
-			"selected": true,
 			"type": 3,
+			"selected": true,
 			"unlocked": false,
 			"using": false
 		},
@@ -154,8 +154,8 @@
 			"fire_rate": 0.1,
 			"full_ammo": 60,
 			"random_rate": 0.08,
-			"selected": false,
 			"type": 3,
+			"selected": false,
 			"unlocked": false,
 			"using": false
 		},
@@ -171,8 +171,8 @@
 			"fire_rate": 0.02,
 			"full_ammo": 700,
 			"random_rate": 0.2,
-			"selected": true,
 			"type": 3,
+			"selected": false,
 			"unlocked": false,
 			"using": false
 		},
@@ -188,10 +188,13 @@
 			"fire_rate": 0.02,
 			"full_ammo": 700,
 			"random_rate": 0.2,
-			"selected": true,
 			"type": 3,
+			"selected": false,
 			"unlocked": false,
 			"using": false
 		}
+	},
+	"onHand": {
+		"type": 1
 	}
 }
