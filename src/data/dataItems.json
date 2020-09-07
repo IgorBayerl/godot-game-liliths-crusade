@@ -66,7 +66,7 @@
 			"full_ammo": 700,
 			"random_rate": 0.2,
 			"type": 3,
-			"selected": true,
+			"selected": false,
 			"unlocked": false,
 			"using": false
 		},
@@ -83,7 +83,7 @@
 			"full_ammo": 60,
 			"random_rate": 0.08,
 			"type": 3,
-			"selected": false,
+			"selected": true,
 			"unlocked": false,
 			"using": false
 		}
@@ -92,7 +92,7 @@
 		"1": {
 			"name": "pistol",
 			"gun_id": 1,
-			"id": 3,
+			"id": 1,
 			"ammo": 700,
 			"ammo_type": 2,
 			"automatica": true,
@@ -109,7 +109,7 @@
 		"2": {
 			"name": "rifle",
 			"gun_id": 2,
-			"id": 3,
+			"id": 2,
 			"ammo": 25,
 			"ammo_type": 1,
 			"automatica": true,

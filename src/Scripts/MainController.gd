@@ -13,7 +13,7 @@ var player_GUNS_information = {
 	1: {
 		"unlocked" : true ,
 		"selected" : false ,
-		"ammo": 25,
+		"ammo": 200,
 		"ammo_type" : 1,
 		"damage": 30,
 		"full_ammo": 60,
@@ -25,7 +25,7 @@ var player_GUNS_information = {
 	2: {
 		"unlocked" : false ,
 		"selected" : false ,
-		"ammo": 25,
+		"ammo": 200,
 		"ammo_type" : 1,
 		"damage": 20,
 		"full_ammo": 60,
@@ -67,7 +67,7 @@ func _update_gun():
 	for i in guns_info[gun_on_hand_str]:
 		if guns_info[gun_on_hand_str][i].selected == true:
 			gun = guns_info[gun_on_hand_str][i]
-			print("selected gun of the type : ", gun.id)
+			print("selected gun of the type : ", gun.gun_id)
 	_select_gun(gun)
 	
 func _process(delta: float) -> void:
