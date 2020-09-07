@@ -61,15 +61,14 @@ func _update_ammo(gun, ammo):
 
 func _update_gun():
 	var gun_on_hand_str = str("type" , gun_on_hand)
-	
-	print("gun_on_hand_str === " ,gun_on_hand_str
-	)
+
+	print("gun_on_hand_str === " ,gun_on_hand_str)
 	for i in guns_info[gun_on_hand_str]:
 		if guns_info[gun_on_hand_str][i].selected == true:
 			gun = guns_info[gun_on_hand_str][i]
 			print("selected gun of the type : ", gun.gun_id)
 	_select_gun(gun)
-	
+
 func _process(delta: float) -> void:
 	pass
 
