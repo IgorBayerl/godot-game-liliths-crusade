@@ -14,7 +14,8 @@
 			"random_rate": 0.2,
 			"selected": true,
 			"type": 3,
-			"unlocked": false
+			"unlocked": false,
+			"using": false
 		},
 		"2": {
 			"name": "rifle",
@@ -30,7 +31,8 @@
 			"random_rate": 0.08,
 			"selected": false,
 			"type": 3,
-			"unlocked": false
+			"unlocked": false,
+			"using": false
 		}
 	},
 	"type2": {
@@ -48,7 +50,8 @@
 			"random_rate": 0.2,
 			"selected": false,
 			"type": 3,
-			"unlocked": false
+			"unlocked": false,
+			"using": false
 		},
 		"2": {
 			"name": "flamethrower",
@@ -64,7 +67,8 @@
 			"random_rate": 0.2,
 			"selected": true,
 			"type": 3,
-			"unlocked": false
+			"unlocked": false,
+			"using": false
 		},
 		"3": {
 			"name": "rifle",
@@ -80,7 +84,8 @@
 			"random_rate": 0.08,
 			"selected": false,
 			"type": 3,
-			"unlocked": false
+			"unlocked": false,
+			"using": false
 		}
 	},
 	"type3": {
@@ -98,7 +103,8 @@
 			"random_rate": 0.2,
 			"selected": false,
 			"type": 3,
-			"unlocked": false
+			"unlocked": false,
+			"using": false
 		},
 		"2": {
 			"name": "rifle",
@@ -114,7 +120,8 @@
 			"random_rate": 0.08,
 			"selected": true,
 			"type": 3,
-			"unlocked": false
+			"unlocked": false,
+			"using": false
 		}
 	},
 	"type4": {
@@ -132,7 +139,8 @@
 			"random_rate": 0.2,
 			"selected": true,
 			"type": 3,
-			"unlocked": false
+			"unlocked": false,
+			"using": false
 		},
 		"2": {
 			"name": "flamethrower",
@@ -148,7 +156,8 @@
 			"random_rate": 0.08,
 			"selected": false,
 			"type": 3,
-			"unlocked": false
+			"unlocked": false,
+			"using": false
 		},
 		"3": {
 			"name": "flamethrower",
@@ -164,7 +173,8 @@
 			"random_rate": 0.2,
 			"selected": true,
 			"type": 3,
-			"unlocked": false
+			"unlocked": false,
+			"using": false
 		},
 		"4": {
 			"name": "pistol",
@@ -180,7 +190,8 @@
 			"random_rate": 0.2,
 			"selected": true,
 			"type": 3,
-			"unlocked": false
+			"unlocked": false,
+			"using": false
 		}
 	}
 }

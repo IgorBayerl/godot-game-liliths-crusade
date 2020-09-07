@@ -44,7 +44,6 @@ var is_stuned = false
 
 var is_on_menus = false
 
-
 ############
 
 onready var anim_player = $SPRITES/AnimationPlayer
@@ -192,34 +191,9 @@ func _respawn():
 	health = max_health
 	is_dead = false
 	get_parent().get_node("CanvasLayer/Control/Health Bar").restore_health()
-#	######## MILI ATACK ########
-#	if is_atacking != 0:
-#		$Mira/Arma.visible = false
-#		$Mira.can_fire = false
-#	else:
-#		if Input.is_action_just_pressed("shoot"):
-#			$Mira.can_fire = true
-#		$Mira/Arma.visible = true
-#
-#
-#	if Input.is_action_just_pressed("interact") and is_atacking == 0 :
-#		is_atacking = 1
-#		yield(get_tree().create_timer(0.5), "timeout")
-#		if is_atacking == 1:
-#			is_atacking = 0
-#	if Input.is_action_just_pressed("interact") and is_atacking == 1:
-#		is_atacking = 2
-#		yield(get_tree().create_timer(0.6), "timeout")
-#		if is_atacking == 2:
-#			is_atacking = 0
-#	if Input.is_action_just_pressed("interact") and is_atacking == 2 :
-#		is_atacking = 1
-#		yield(get_tree().create_timer(0.5), "timeout")
-#		if is_atacking == 1:
 
 func _on_MiliAtack_Timer_timeout():
 	can_atack = true
-	print("can atack == true")
 
 func _on_SwordHit_body_entered(body: Node) -> void:
 	if body.is_in_group("Entidade"):

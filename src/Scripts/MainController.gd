@@ -3,6 +3,8 @@ extends Node2D
 
 var selected_gun = 1
 
+var guns_info: Dictionary
+
 var player_GUNS_information = {
 	1: {
 		"unlocked" : true ,
@@ -43,26 +45,11 @@ var player_GUNS_information = {
 }
 
 func _ready() -> void:
-	$CanvasLayer/Control/Guns_bar.setAmmo(selected_gun, player_GUNS_information[selected_gun].ammo)
+	guns_info = JsonData.item_data
 	_select_gun(1)
 
 func _process(delta: float) -> void:
-	
-	if Input.is_action_just_pressed("Gun_1"):
-		if player_GUNS_information[1].unlocked == true:
-			_select_gun(1)
-		else:
-			print("you don't have this gun yet !")
-	if Input.is_action_just_pressed("Gun_2"):
-		if player_GUNS_information[2].unlocked == true:
-			_select_gun(2)
-		else:
-			print("you don't have this gun yet !")
-	if Input.is_action_just_pressed("Gun_3"):
-		if player_GUNS_information[3].unlocked == true:
-			_select_gun(3)
-		else:
-			print("you don't have this gun yet !")
+	pass
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("inventory"):
@@ -75,18 +62,15 @@ func _on_GetItem_area_entered(area: Area2D) -> void:
 		var gun = area.type
 		if player_GUNS_information[gun].unlocked == false:
 			player_GUNS_information[gun].unlocked = true
-			$CanvasLayer/Control/Guns_bar.addItem(quantidade)
 			print("agaragun bitch")
 		else:
 			var total = player_GUNS_information[gun].ammo + quantidade
 			player_GUNS_information[gun].ammo += quantidade
-			$CanvasLayer/Control/Guns_bar.setAmmo(gun, total)
 			print("more ammo")
 
 
 func _select_gun(gun):
 	selected_gun = gun
-	$CanvasLayer/Control/Guns_bar.selectGun(gun)
 	var gun_selected = player_GUNS_information[gun]
 	$Player/Mira/Arma/GunSprite.set_frame(gun-1)
 	$Player/Mira.damage = gun_selected.damage
@@ -98,8 +82,7 @@ func _select_gun(gun):
 
 func atirando():
 	player_GUNS_information[selected_gun].ammo -= 1
-	$CanvasLayer/Control/Guns_bar.setAmmo(selected_gun, player_GUNS_information[selected_gun].ammo)
-	
+
 
 
 

@@ -21,12 +21,15 @@ func _input(event):
 				parent.is_jumping = true
 			elif Input.is_action_pressed("move_DOWN"):
 				parent.position.y += 1
+		if event.is_action_pressed("ctrl"):
+			parent.is_crouched = true
 				
 		#ROLL / #ATACK
 		if state != states.rolling:
 			if event.is_action_pressed("hability"):
 				parent.is_rolling = true
-				
+	elif event.is_action_released("ctrl"):
+			parent.is_crouched = false	
 	elif state == states.wall_slide:
 		if event.is_action_pressed("jump"):
 			parent._wall_jump()
@@ -45,7 +48,7 @@ func _state_logic(delta):
 			parent._update_move_direction()
 		parent._update_wall_direction()
 		if state != states.wall_slide:
-			if state != states.rolling or state != states.atack or state != states.stun:
+			if ![states.rolling, states.atack, states.stun,states.crouch ].has(state):
 				if !parent.wal_jumping == true:
 					parent._handle_move_input()
 		if state == states.wall_slide:
@@ -62,6 +65,8 @@ func _get_transition(delta):
 		states.idle:
 			if parent.is_stuned:
 				return states.stun
+			if parent.is_crouched:
+				return states.crouch
 			if !parent.is_on_floor():
 				if parent.velocity.y < 0:
 					return states.jump
@@ -75,6 +80,8 @@ func _get_transition(delta):
 		states.run:
 			if parent.is_stuned:
 				return states.stun
+			if parent.is_crouched:
+				return states.crouch
 			if !parent.is_on_floor():
 				if parent.velocity.y < 0:
 					return states.jump
@@ -113,6 +120,8 @@ func _get_transition(delta):
 		states.rolling:
 			if !parent.is_rolling:
 				if parent.is_on_floor():
+					if parent.is_crouched:
+						return states.crouch
 					if parent.velocity.x != 0:
 						return states.run
 					elif parent.velocity.x == 0:
@@ -133,6 +142,17 @@ func _get_transition(delta):
 				elif !parent.is_rolling:
 					if parent.velocity.x != 0:
 						return states.run
+					elif parent.velocity.x == 0:
+						return states.idle
+		states.crouch:
+			if !parent.is_crouched:
+				if parent.is_rolling:
+					return states.rolling
+				elif !parent.is_rolling:
+					if parent.velocity.x != 0:
+						return states.run
+					elif parent.velocity.x == 0:
+						return states.idle
 	return null
 
 func _enter_state(new_state, old_state):
@@ -159,6 +179,9 @@ func _enter_state(new_state, old_state):
 		states.stun:
 			print('stunned')
 			parent.anim_effect.play("piscando")
+		states.crouch:
+			print('crouched')
+			parent.velocity.x = 0
 	
 func _exit_state(old_state, new_state):
 	pass
