@@ -167,11 +167,12 @@ func camera_shake(timeout):
 
 func take_damage(damage):
 	if ivunerability.is_stopped():
-		is_stuned = true
-		ivunerability.start()
-		get_parent().get_node("CanvasLayer/Control/Health Bar").take_damage(damage)
-		health -= damage
-		death_detection()
+		if !is_rolling:
+			is_stuned = true
+			ivunerability.start()
+			get_parent().get_node("CanvasLayer/Control/Health Bar").take_damage(damage)
+			health -= damage
+			death_detection()
 
 func death_detection():
 	if health <= 0 and not is_dead:

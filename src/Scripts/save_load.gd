@@ -1,6 +1,9 @@
 extends Node
 
-var path = "user://data.json"
+var path = "res://src/data/dataItems.json"
+
+var default_itemData: Dictionary
+#"res://src/data/dataItems.json"
 
 var default_data = {
 	"player": {
