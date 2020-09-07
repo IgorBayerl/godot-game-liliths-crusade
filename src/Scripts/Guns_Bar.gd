@@ -31,9 +31,11 @@ func selectGun( value ):
 
 
 func _ready() -> void:
-	addItem(10)
+	pass
+#	addItem(10)
 
 
 func _process(delta: float) -> void:
-	$list.get_child(selected_gun).rect_scale = Vector2(selected_size,selected_size)
+	pass
+#	$list.get_child(selected_gun).rect_scale = Vector2(selected_size,selected_size)
 

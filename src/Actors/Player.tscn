@@ -16,18 +16,18 @@
 [ext_resource path="res://src/flash_shader.shader" type="Shader" id=14]
 [ext_resource path="res://src/Assets/Sprites/gun.png" type="Texture" id=15]
 
-[sub_resource type="ShaderMaterial" id=11]
+[sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 14 )
 shader_param/flash_color = Color( 1, 1, 1, 1 )
 shader_param/flash_modifier = 0.0
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 28.3935, 76.1278 )
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 11.8421, 28.6792 )
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=4]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
@@ -78,7 +78,7 @@ tracks/3/keys = {
 "values": [ 0.0, -9.4 ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=5]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
@@ -129,7 +129,7 @@ tracks/3/keys = {
 "values": [ 10.0, 1.1 ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=6]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -169,7 +169,7 @@ tracks/2/keys = {
 "values": [ Vector2( -1.46168, -25.6941 ), Vector2( -2.85371, -27.7822 ) ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=7]
 length = 0.7
 loop = true
 tracks/0/type = "value"
@@ -209,8 +209,7 @@ tracks/2/keys = {
 "values": [ Vector2( 5.49709, -19.8999 ), Vector2( 5.14908, -19.8999 ), Vector2( 5.49709, -20.9937 ), Vector2( 5.49709, -19.3282 ) ]
 }
 
-[sub_resource type="Animation" id=7]
-resource_name = "fall"
+[sub_resource type="Animation" id=8]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -226,8 +225,7 @@ tracks/0/keys = {
 "values": [ 14, 15, 16, 17 ]
 }
 
-[sub_resource type="Animation" id=8]
-resource_name = "jump"
+[sub_resource type="Animation" id=9]
 length = 0.3
 loop = true
 tracks/0/type = "value"
@@ -243,7 +241,7 @@ tracks/0/keys = {
 "values": [ 11, 12, 13 ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=10]
 length = 0.3
 loop = true
 tracks/0/type = "value"
@@ -259,7 +257,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2 ]
 }
 
-[sub_resource type="SpriteFrames" id=10]
+[sub_resource type="SpriteFrames" id=11]
 animations = [ {
 "frames": [ ExtResource( 9 ), ExtResource( 4 ), ExtResource( 10 ) ],
 "loop": false,
@@ -267,7 +265,7 @@ animations = [ {
 "speed": 0.0
 } ]
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=12]
 resource_name = "normal"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:material:shader_param/flash_modifier")
@@ -282,8 +280,7 @@ tracks/0/keys = {
 "values": [ 0.0 ]
 }
 
-[sub_resource type="Animation" id=12]
-resource_name = "piscando"
+[sub_resource type="Animation" id=13]
 length = 0.2
 loop = true
 tracks/0/type = "value"
@@ -302,7 +299,7 @@ tracks/0/keys = {
 [node name="Player" type="KinematicBody2D" groups=[
 "Player",
 ]]
-material = SubResource( 11 )
+material = SubResource( 1 )
 scale = Vector2( 0.64, 0.64 )
 collision_layer = 4
 collision_mask = 2147483681
@@ -316,7 +313,7 @@ texture = ExtResource( 2 )
 "Player",
 ]]
 position = Vector2( -0.116311, 44.7364 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="SPRITES" type="Node2D" parent="."]
 use_parent_material = true
@@ -336,7 +333,7 @@ collision_mask = 1059
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SPRITES/body2/SwordHit"]
 position = Vector2( 19.793, 0.941169 )
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 disabled = true
 
 [node name="Head" type="Sprite" parent="SPRITES"]
@@ -347,13 +344,13 @@ texture = ExtResource( 8 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="SPRITES"]
 root_node = NodePath("../body2")
-anims/Atack1 = SubResource( 3 )
-anims/Atack2 = SubResource( 4 )
-anims/Idle = SubResource( 5 )
-anims/Running = SubResource( 6 )
-anims/fall = SubResource( 7 )
-anims/jump = SubResource( 8 )
-anims/wall_slide = SubResource( 9 )
+anims/Atack1 = SubResource( 4 )
+anims/Atack2 = SubResource( 5 )
+anims/Idle = SubResource( 6 )
+anims/Running = SubResource( 7 )
+anims/fall = SubResource( 8 )
+anims/jump = SubResource( 9 )
+anims/wall_slide = SubResource( 10 )
 
 [node name="Mira" type="Position2D" parent="."]
 position = Vector2( 3.46482, 32.4403 )
@@ -373,7 +370,7 @@ texture = ExtResource( 15 )
 [node name="GunSprite" type="AnimatedSprite" parent="Mira/Arma"]
 position = Vector2( 29.8494, -6.98813 )
 scale = Vector2( 1.99719, 1.99719 )
-frames = SubResource( 10 )
+frames = SubResource( 11 )
 animation = "Guns"
 frame = 1
 
@@ -455,6 +452,7 @@ wait_time = 0.5
 one_shot = true
 
 [node name="state_label" type="Label" parent="."]
+visible = false
 margin_left = -33.2223
 margin_top = -98.8058
 margin_right = 36.7777
@@ -469,8 +467,8 @@ wait_time = 0.5
 one_shot = true
 
 [node name="Effects_animationPlayer" type="AnimationPlayer" parent="."]
-anims/normal = SubResource( 13 )
-anims/piscando = SubResource( 12 )
+anims/normal = SubResource( 12 )
+anims/piscando = SubResource( 13 )
 [connection signal="area_entered" from="SPRITES/body2/SwordHit" to="." method="_on_SwordHit_area_entered"]
 [connection signal="body_entered" from="SPRITES/body2/SwordHit" to="." method="_on_SwordHit_body_entered"]
 [connection signal="animation_finished" from="SPRITES/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
