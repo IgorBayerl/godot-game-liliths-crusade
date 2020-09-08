@@ -12,22 +12,22 @@
 [ext_resource path="res://src/Actors/Efeitos/BloodSplitter.tscn" type="PackedScene" id=10]
 [ext_resource path="res://src/flash_shader.shader" type="Shader" id=11]
 
-[sub_resource type="ShaderMaterial" id=9]
+[sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 11 )
 shader_param/flash_color = Color( 1, 1, 1, 1 )
 shader_param/flash_modifier = 0.0
 
-[sub_resource type="SpriteFrames" id=10]
+[sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 1 ), ExtResource( 3 ) ],
-"loop": true,
-"name": "Walk",
-"speed": 4.0
-}, {
 "frames": [ ExtResource( 6 ) ],
 "loop": true,
 "name": "Idle",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 1 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "Walk",
+"speed": 4.0
 }, {
 "frames": [ ExtResource( 9 ), ExtResource( 7 ), ExtResource( 8 ) ],
 "loop": true,
@@ -35,7 +35,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=3]
 tracks/0/type = "value"
 tracks/0/path = NodePath("CollisionShape2D:disabled")
 tracks/0/interp = 1
@@ -49,7 +49,7 @@ tracks/0/keys = {
 "values": [ true, false, true ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=4]
 resource_name = "take_damage"
 length = 0.1
 step = 0.01
@@ -66,10 +66,10 @@ tracks/0/keys = {
 "values": [ 0.755, 0.755, 0.0 ]
 }
 
-[sub_resource type="RectangleShape2D" id=13]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 27.2914, 31.379 )
 
-[sub_resource type="RectangleShape2D" id=14]
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 28.6344, 38.7868 )
 
 [sub_resource type="RectangleShape2D" id=7]
@@ -81,7 +81,7 @@ extents = Vector2( 23.5, 36 )
 [node name="Aroldo" type="KinematicBody2D" groups=[
 "Entidade",
 ]]
-material = SubResource( 9 )
+material = SubResource( 1 )
 collision_layer = 130
 collision_mask = 33
 script = ExtResource( 2 )
@@ -90,7 +90,7 @@ script = ExtResource( 2 )
 use_parent_material = true
 position = Vector2( 1.61257, -7.85754 )
 scale = Vector2( 1.09546, 1 )
-frames = SubResource( 10 )
+frames = SubResource( 2 )
 animation = "Atack"
 offset = Vector2( -25.754, 0 )
 
@@ -101,12 +101,12 @@ collision_layer = 34
 collision_mask = 36
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite/HitBox"]
-anims/Hit = SubResource( 11 )
-anims/take_damage = SubResource( 12 )
+anims/Hit = SubResource( 3 )
+anims/take_damage = SubResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite/HitBox"]
 position = Vector2( -34.5157, -0.280617 )
-shape = SubResource( 13 )
+shape = SubResource( 5 )
 disabled = true
 
 [node name="Trigger" type="Area2D" parent="AnimatedSprite"]
@@ -118,7 +118,7 @@ collision_mask = 2147483685
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite/Trigger"]
 position = Vector2( -35.1905, 2.00452 )
-shape = SubResource( 14 )
+shape = SubResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = -2147483647
@@ -139,5 +139,9 @@ shape = SubResource( 8 )
 
 [node name="BloodSplitter" parent="." instance=ExtResource( 10 )]
 position = Vector2( -0.943878, -16.0459 )
+
+[node name="AtackTimer" type="Timer" parent="."]
+one_shot = true
 [connection signal="body_entered" from="AnimatedSprite/HitBox" to="." method="_on_HitBox_body_entered"]
 [connection signal="body_entered" from="AnimatedSprite/Trigger" to="." method="_on_Trigger_body_entered"]
+[connection signal="body_exited" from="AnimatedSprite/Trigger" to="." method="_on_Trigger_body_exited"]

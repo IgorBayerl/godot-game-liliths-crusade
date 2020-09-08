@@ -69,8 +69,8 @@ func _update_gun():
 			print("selected gun of the type : ", gun.gun_id)
 	_select_gun(gun)
 
-func _process(delta: float) -> void:
-	pass
+#func _process(delta: float) -> void:
+#	pass
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("Gun_1"):
@@ -89,8 +89,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		gun_on_hand = 4
 		_update_gun()
 		print("Gun_4")
-	
-	
+
+
 	if event.is_action_pressed("inventory"):
 		var inventory = $CanvasLayer/Control/Inventory
 		inventory.visible = !inventory.visible

@@ -410,7 +410,7 @@ stream = ExtResource( 6 )
 
 [node name="BloodSplitter" parent="." instance=ExtResource( 11 )]
 position = Vector2( 12.8755, -6.7047 )
-BloodParticleNumber = 50
+BloodParticleNumber = 30
 RandomVelocity = 350.0
 
 [node name="StateMachine" type="Node" parent="."]

@@ -5,7 +5,7 @@ onready var Player = get_parent().get_node("Player")
 var atacking = false
 var health = 100
 
-
+var is_in_atack_range = false
 
 var vel = Vector2(0, 0)
 var LOOKING_DIRECTION = Vector2( 1 , 0 )
@@ -72,6 +72,8 @@ func sees_player():
 
 func _process(delta):
 	_death_detection()
+	if is_in_atack_range:
+		_atack()
 	
 	$AnimatedSprite.scale.x = LOOKING_DIRECTION.x
 	if not atacking:
@@ -130,6 +132,18 @@ func _on_HitBox_body_entered(body: Node) -> void:
 
 func _on_Trigger_body_entered(body: Node) -> void:
 	if body.is_in_group("Player"):
+		is_in_atack_range = true
+		
+
+
+func _on_Trigger_body_exited(body: Node) -> void:
+	if body.is_in_group("Player"):
+		is_in_atack_range = false
+
+func _atack():
+	var atc_timer = $AtackTimer
+	if atc_timer.is_stopped():
+		atc_timer.start()
 		atacking = true
 		$AnimatedSprite.play("Atack")
 		$AnimatedSprite/HitBox/AnimationPlayer.play("Hit")
