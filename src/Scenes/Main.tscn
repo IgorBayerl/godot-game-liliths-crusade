@@ -217,10 +217,11 @@ __meta__ = {
 }
 
 [node name="Health Bar" parent="MainController/CanvasLayer/Control" instance=ExtResource( 4 )]
-margin_left = 10.0
-margin_top = 10.0
-margin_right = 21.9963
-margin_bottom = -13.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 0.0
+margin_right = 751.996
+margin_bottom = 393.0
 rect_scale = Vector2( 0.2, 0.2 )
 
 [node name="Inventory" parent="MainController/CanvasLayer/Control" instance=ExtResource( 15 )]

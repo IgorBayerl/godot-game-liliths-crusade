@@ -15,5 +15,4 @@ animations = [ {
 [node name="CenterContainer" type="AnimatedSprite"]
 frames = SubResource( 1 )
 animation = "guns"
-frame = 1
 centered = false
