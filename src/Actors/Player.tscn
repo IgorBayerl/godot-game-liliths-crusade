@@ -337,7 +337,6 @@ shape = SubResource( 3 )
 disabled = true
 
 [node name="Head" type="Sprite" parent="SPRITES"]
-visible = false
 use_parent_material = true
 position = Vector2( -3.1138, -20.1376 )
 scale = Vector2( 1.93084, 1.99071 )
