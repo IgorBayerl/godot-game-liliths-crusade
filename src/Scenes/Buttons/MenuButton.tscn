@@ -1,12 +1,17 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/Fonts/dynamicfont_menu.tres" type="DynamicFont" id=1]
 [ext_resource path="res://src/Scenes/Buttons/MenuButton.gd" type="Script" id=2]
+[ext_resource path="res://src/Assets/Sprites/UI_elements/menu1.png" type="Texture" id=3]
+[ext_resource path="res://src/Assets/Audios/Effects/click.wav" type="AudioStream" id=4]
+
+[sub_resource type="StyleBoxEmpty" id=1]
 
 [node name="MenuButton" type="Button"]
 margin_right = 609.0
 margin_bottom = 80.0
 rect_min_size = Vector2( 0, 60 )
+custom_styles/focus = SubResource( 1 )
 flat = true
 script = ExtResource( 2 )
 __meta__ = {
@@ -16,6 +21,7 @@ __meta__ = {
 [node name="Label" type="Label" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 90.0
 custom_fonts/font = ExtResource( 1 )
 custom_colors/font_color_shadow = Color( 0.129412, 0.129412, 0.129412, 1 )
 custom_constants/shadow_offset_x = 0
@@ -25,3 +31,17 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 3 )
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+[connection signal="focus_entered" from="." to="." method="_on_MenuButton_focus_entered"]
+[connection signal="focus_exited" from="." to="." method="_on_MenuButton_focus_exited"]

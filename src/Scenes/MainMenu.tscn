@@ -4,7 +4,7 @@
 [ext_resource path="res://src/Scenes/Buttons/SettingsButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/Scenes/Buttons/NewGameButton.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/Scenes/Buttons/LoadGameButton.tscn" type="PackedScene" id=4]
-[ext_resource path="res://src/Assets/Sprites/PLAYER/HEAD.png" type="Texture" id=5]
+[ext_resource path="res://src/Assets/Sprites/UI_elements/initial screen.png" type="Texture" id=5]
 [ext_resource path="res://src/Actors/Efeitos/Fade_in.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/Scripts/MainMenu.gd" type="Script" id=7]
 
@@ -65,22 +65,25 @@ margin_right = 302.0
 margin_bottom = 220.0
 rect_min_size = Vector2( 0, 60 )
 
-[node name="CenterContainer" type="CenterContainer" parent="Menu/CenterRow"]
+[node name="CenterContainer" type="Container" parent="Menu/CenterRow"]
 margin_left = 306.0
 margin_right = 609.0
 margin_bottom = 220.0
+rect_clip_content = true
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Character" type="TextureRect" parent="Menu/CenterRow/CenterContainer"]
-margin_left = 134.0
-margin_top = 98.0
-margin_right = 168.0
-margin_bottom = 121.0
+margin_right = 200.0
+margin_bottom = 315.0
+rect_scale = Vector2( 0.5, 0.5 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource( 5 )
-stretch_mode = 4
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label" type="Label" parent="Menu"]
 margin_top = 292.0
@@ -89,7 +92,7 @@ margin_bottom = 342.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Version 0.2.2 BETA
-Alekjão e Igor"
+Alekjão - Igor"
 valign = 2
 
 [node name="Fade" parent="." instance=ExtResource( 6 )]

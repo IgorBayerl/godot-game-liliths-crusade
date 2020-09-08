@@ -13,8 +13,8 @@ var can_fire = true
 var horizontal_dir := -1
 
 
-
 func _process(delta: float) -> void:
+	
 	
 	if horizontal_dir > 0:
 		$Arma.scale.y = -1

@@ -105,6 +105,7 @@ __meta__ = {
 }
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Level/wall"]
+collision_layer = 65
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/wall/StaticBody2D"]
 shape = SubResource( 6 )
@@ -118,6 +119,7 @@ __meta__ = {
 }
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Level/wall3"]
+collision_layer = 65
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/wall3/StaticBody2D"]
 shape = SubResource( 6 )
@@ -131,6 +133,7 @@ __meta__ = {
 }
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Level/wall4"]
+collision_layer = 65
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/wall4/StaticBody2D"]
 shape = SubResource( 6 )
@@ -144,6 +147,7 @@ __meta__ = {
 }
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Level/wall5"]
+collision_layer = 65
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/wall5/StaticBody2D"]
 shape = SubResource( 6 )
@@ -157,6 +161,7 @@ __meta__ = {
 }
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Level/wall6"]
+collision_layer = 65
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/wall6/StaticBody2D"]
 shape = SubResource( 6 )
@@ -170,6 +175,7 @@ __meta__ = {
 }
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Level/wall2"]
+collision_layer = 65
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/wall2/StaticBody2D"]
 shape = SubResource( 6 )

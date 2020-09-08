@@ -16,18 +16,18 @@
 [ext_resource path="res://src/flash_shader.shader" type="Shader" id=14]
 [ext_resource path="res://src/Assets/Sprites/gun.png" type="Texture" id=15]
 
-[sub_resource type="ShaderMaterial" id=14]
+[sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 14 )
 shader_param/flash_color = Color( 1, 1, 1, 1 )
 shader_param/flash_modifier = 0.0
 
-[sub_resource type="RectangleShape2D" id=15]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 28.3935, 76.1278 )
 
-[sub_resource type="RectangleShape2D" id=16]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 11.8421, 28.6792 )
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=4]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
@@ -78,7 +78,7 @@ tracks/3/keys = {
 "values": [ 0.0, -9.4 ]
 }
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=5]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
@@ -129,7 +129,7 @@ tracks/3/keys = {
 "values": [ 10.0, 1.1 ]
 }
 
-[sub_resource type="Animation" id=19]
+[sub_resource type="Animation" id=6]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -169,7 +169,7 @@ tracks/2/keys = {
 "values": [ Vector2( -1.46168, -25.6941 ), Vector2( -2.85371, -27.7822 ) ]
 }
 
-[sub_resource type="Animation" id=20]
+[sub_resource type="Animation" id=7]
 length = 0.7
 loop = true
 tracks/0/type = "value"
@@ -209,7 +209,7 @@ tracks/2/keys = {
 "values": [ Vector2( 5.49709, -19.8999 ), Vector2( 5.14908, -19.8999 ), Vector2( 5.49709, -20.9937 ), Vector2( 5.49709, -19.3282 ) ]
 }
 
-[sub_resource type="Animation" id=21]
+[sub_resource type="Animation" id=8]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -225,7 +225,7 @@ tracks/0/keys = {
 "values": [ 14, 15, 16, 17 ]
 }
 
-[sub_resource type="Animation" id=22]
+[sub_resource type="Animation" id=9]
 length = 0.3
 loop = true
 tracks/0/type = "value"
@@ -241,7 +241,7 @@ tracks/0/keys = {
 "values": [ 11, 12, 13 ]
 }
 
-[sub_resource type="Animation" id=23]
+[sub_resource type="Animation" id=10]
 length = 0.3
 loop = true
 tracks/0/type = "value"
@@ -265,7 +265,7 @@ animations = [ {
 "speed": 0.0
 } ]
 
-[sub_resource type="Animation" id=24]
+[sub_resource type="Animation" id=12]
 resource_name = "normal"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:material:shader_param/flash_modifier")
@@ -299,7 +299,7 @@ tracks/0/keys = {
 [node name="Player" type="KinematicBody2D" groups=[
 "Player",
 ]]
-material = SubResource( 14 )
+material = SubResource( 1 )
 scale = Vector2( 0.64, 0.64 )
 collision_layer = 4
 collision_mask = 2147483681
@@ -313,7 +313,7 @@ texture = ExtResource( 2 )
 "Player",
 ]]
 position = Vector2( -0.116311, 44.7364 )
-shape = SubResource( 15 )
+shape = SubResource( 2 )
 
 [node name="SPRITES" type="Node2D" parent="."]
 use_parent_material = true
@@ -333,24 +333,25 @@ collision_mask = 1059
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SPRITES/body2/SwordHit"]
 position = Vector2( 19.793, 0.941169 )
-shape = SubResource( 16 )
+shape = SubResource( 3 )
 disabled = true
 
 [node name="Head" type="Sprite" parent="SPRITES"]
+visible = false
 use_parent_material = true
-position = Vector2( 3.06244, -20.126 )
-scale = Vector2( 1.79177, 1.79177 )
+position = Vector2( -3.1138, -20.1376 )
+scale = Vector2( 1.93084, 1.99071 )
 texture = ExtResource( 8 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="SPRITES"]
 root_node = NodePath("../body2")
-anims/Atack1 = SubResource( 17 )
-anims/Atack2 = SubResource( 18 )
-anims/Idle = SubResource( 19 )
-anims/Running = SubResource( 20 )
-anims/fall = SubResource( 21 )
-anims/jump = SubResource( 22 )
-anims/wall_slide = SubResource( 23 )
+anims/Atack1 = SubResource( 4 )
+anims/Atack2 = SubResource( 5 )
+anims/Idle = SubResource( 6 )
+anims/Running = SubResource( 7 )
+anims/fall = SubResource( 8 )
+anims/jump = SubResource( 9 )
+anims/wall_slide = SubResource( 10 )
 
 [node name="Mira" type="Position2D" parent="."]
 position = Vector2( 3.46482, 32.4403 )
@@ -425,11 +426,13 @@ visible = false
 position = Vector2( 10, 0 )
 enabled = true
 cast_to = Vector2( 20, 0 )
+collision_mask = 64
 
 [node name="RightWallRaycast_2" type="RayCast2D" parent="WallRaycast/RightWallRaycast"]
 position = Vector2( 10, 90 )
 enabled = true
 cast_to = Vector2( 20, 0 )
+collision_mask = 64
 
 [node name="LeftWallRaycast" type="Node2D" parent="WallRaycast"]
 
@@ -437,11 +440,13 @@ cast_to = Vector2( 20, 0 )
 position = Vector2( -10, 0 )
 enabled = true
 cast_to = Vector2( -20, 0 )
+collision_mask = 64
 
 [node name="LeftWallRaycast_2" type="RayCast2D" parent="WallRaycast/LeftWallRaycast"]
 position = Vector2( -10, 90 )
 enabled = true
 cast_to = Vector2( -20, 0 )
+collision_mask = 64
 
 [node name="WallSlideSticknesTimer" type="Timer" parent="."]
 wait_time = 0.1
@@ -467,7 +472,7 @@ wait_time = 0.5
 one_shot = true
 
 [node name="Effects_animationPlayer" type="AnimationPlayer" parent="."]
-anims/normal = SubResource( 24 )
+anims/normal = SubResource( 12 )
 anims/piscando = SubResource( 13 )
 [connection signal="area_entered" from="SPRITES/body2/SwordHit" to="." method="_on_SwordHit_area_entered"]
 [connection signal="body_entered" from="SPRITES/body2/SwordHit" to="." method="_on_SwordHit_body_entered"]

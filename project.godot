@@ -21,7 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Jogo Godot"
-run/main_scene="res://src/Scenes/Main.tscn"
+run/main_scene="res://src/Scenes/MainMenu.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -139,6 +139,7 @@ inventory={
 2d_physics/layer_4="PlayerDash"
 2d_physics/layer_5="Coletables"
 2d_physics/layer_6="Obstaculos"
+2d_physics/layer_7="WallsSlide"
 
 [rendering]
 
