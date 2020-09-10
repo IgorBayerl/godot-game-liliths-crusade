@@ -47,6 +47,7 @@ position = Vector2( 1512, 520 )
 texture = ExtResource( 2 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Level"]
+visible = false
 position = Vector2( -29.2578, -2.13983 )
 scale = Vector2( 9.04, 9.04 )
 

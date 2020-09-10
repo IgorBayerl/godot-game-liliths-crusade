@@ -24,12 +24,20 @@ var health = 100
 var wal_jumping = false
 var head_direction = Vector2()
 var rolling_speed = 600
+var jump_count = 0
 
 var atack_combo = 0
 var can_atack = true
 
 var max_jump_velocity = -600
 var min_jump_velocity = -400
+
+# Skills control #
+
+var have_double_jump = true
+var have_wall_jump = true
+var have_rolling = false
+var have_heavy_gun = false
 
 # STATES #
 

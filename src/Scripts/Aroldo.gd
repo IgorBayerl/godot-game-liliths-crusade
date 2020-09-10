@@ -149,3 +149,11 @@ func _atack():
 		$AnimatedSprite/HitBox/AnimationPlayer.play("Hit")
 		yield(get_tree().create_timer(0.5), "timeout")
 		atacking = false
+
+
+func _on_VisibilityNotifier2D_screen_entered() -> void:
+	set_process(true)
+
+
+func _on_VisibilityNotifier2D_screen_exited() -> void:
+	set_process(false)

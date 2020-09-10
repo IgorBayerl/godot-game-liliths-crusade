@@ -19,6 +19,8 @@ onready var parent = get_parent()
 onready var Main_controller = get_tree().get_root().get_node("Main").get_node("MainController")
 
 func _process(delta: float) -> void:
+	if parent.in_menu:
+		return
 	_states()
 	_try_shoot()
 	$Arma.scale.y = looking

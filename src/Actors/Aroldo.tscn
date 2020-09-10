@@ -19,15 +19,15 @@ shader_param/flash_modifier = 0.0
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 6 ) ],
-"loop": true,
-"name": "Idle",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 1 ), ExtResource( 3 ) ],
 "loop": true,
 "name": "Walk",
 "speed": 4.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
 }, {
 "frames": [ ExtResource( 9 ), ExtResource( 7 ), ExtResource( 8 ) ],
 "loop": true,
@@ -142,6 +142,10 @@ position = Vector2( -0.943878, -16.0459 )
 
 [node name="AtackTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="VisibilityNotifier2D" type="VisibilityEnabler2D" parent="."]
+position = Vector2( 0.14031, -5.6123 )
+scale = Vector2( 6.6544, 6.33169 )
 [connection signal="body_entered" from="AnimatedSprite/HitBox" to="." method="_on_HitBox_body_entered"]
 [connection signal="body_entered" from="AnimatedSprite/Trigger" to="." method="_on_Trigger_body_entered"]
 [connection signal="body_exited" from="AnimatedSprite/Trigger" to="." method="_on_Trigger_body_exited"]
