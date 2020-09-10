@@ -154,8 +154,8 @@ collision_layer = 65
 shape = SubResource( 6 )
 
 [node name="wall7" type="Sprite" parent="Level"]
-position = Vector2( 1363.05, 785.84 )
-scale = Vector2( 8.23897, 2.93392 )
+position = Vector2( 1580.3, 763.187 )
+scale = Vector2( 16.9292, 3.84004 )
 texture = ExtResource( 14 )
 __meta__ = {
 "_edit_group_": true
@@ -196,8 +196,8 @@ collision_layer = 65
 shape = SubResource( 6 )
 
 [node name="wall6" type="Sprite" parent="Level"]
-position = Vector2( 1536.74, 182.421 )
-scale = Vector2( 1.42134, 24.2239 )
+position = Vector2( 1706.05, -228.115 )
+scale = Vector2( 8.19369, 16.0731 )
 texture = ExtResource( 14 )
 __meta__ = {
 "_edit_group_": true
@@ -207,6 +207,20 @@ __meta__ = {
 collision_layer = 65
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/wall6/StaticBody2D"]
+shape = SubResource( 6 )
+
+[node name="wall10" type="Sprite" parent="Level"]
+position = Vector2( 1986.08, 556.397 )
+scale = Vector2( 9.77939, 6.98742 )
+texture = ExtResource( 14 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Level/wall10"]
+collision_layer = 65
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/wall10/StaticBody2D"]
 shape = SubResource( 6 )
 
 [node name="wall2" type="Sprite" parent="Level"]

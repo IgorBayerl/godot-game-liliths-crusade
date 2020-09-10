@@ -31,6 +31,7 @@ var can_atack = true
 
 var max_jump_velocity = -600
 var min_jump_velocity = -400
+var double_jump_velocity = -460
 
 # Skills control #
 
@@ -61,6 +62,11 @@ onready var right_wall_raycasts = $WallRaycast/RightWallRaycast
 onready var wall_slide_sticky_timer = $WallSlideSticknesTimer
 onready var anim_effect = $Effects_animationPlayer
 onready var ivunerability = $Ivunerability
+
+
+func _turning_on_skills():
+	if Input.is_key_pressed(KEY_J):
+		have_double_jump = !have_double_jump
 
 func _apply_gravity(delta):
 	velocity.y += GRAVITY * delta

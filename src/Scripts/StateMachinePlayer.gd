@@ -37,7 +37,7 @@ func _input(event):
 			set_state(states.jump)
 	if[states.fall, states.jump ].has(state) and parent.have_double_jump:
 		if event.is_action_pressed("jump") and parent.jump_count == 0:
-			parent.velocity.y = parent.max_jump_velocity
+			parent.velocity.y = parent.double_jump_velocity
 			parent.jump_count = 1
 			parent.is_jumping = true
 	if state == states.jump:
@@ -48,6 +48,7 @@ func _input(event):
 
 func _state_logic(delta):
 	parent._update_lebel_state(state , previous_state)
+	parent._turning_on_skills()
 	if !parent.is_dead and !parent.in_menu == true:
 		parent._set_head_direction()
 		if state != states.rolling:
