@@ -13,7 +13,7 @@
 [ext_resource path="res://src/Actors/Roberto.tscn" type="PackedScene" id=11]
 [ext_resource path="res://src/Actors/Barril.tscn" type="PackedScene" id=12]
 [ext_resource path="res://src/flash_shader.shader" type="Shader" id=13]
-[ext_resource path="res://icon.png" type="Texture" id=14]
+[ext_resource path="res://src/Assets/Sprites/preto.png" type="Texture" id=14]
 [ext_resource path="res://src/Interface/Inventory/inventory.tscn" type="PackedScene" id=15]
 [ext_resource path="res://src/Actors/Efeitos/Fade_in.tscn" type="PackedScene" id=16]
 
@@ -27,13 +27,13 @@ extents = Vector2( 44.7767, 2.36644 )
 extents = Vector2( 20.7079, 2.2342 )
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 20.4887, 1.82079 )
+extents = Vector2( 20.354, 1.76991 )
 
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 10.3599, 1.63678 )
 
 [sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 31.6357, 31.6972 )
+extents = Vector2( 24.9444, 25.0529 )
 
 [sub_resource type="ShaderMaterial" id=7]
 shader = ExtResource( 13 )
@@ -47,12 +47,11 @@ position = Vector2( 1512, 520 )
 texture = ExtResource( 2 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Level"]
-visible = false
 position = Vector2( -29.2578, -2.13983 )
 scale = Vector2( 9.04, 9.04 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level/StaticBody2D"]
-polygon = PoolVector2Array( -151.731, 16.6504, -137.572, 16.6504, -137.572, 28.1549, -76.5102, 28.1549, -64.1208, 35.2345, -25.1828, 35.2345, -25.1828, 13.9956, -8.36861, 13.9956, 62.5285, 13.511, 62.5285, 63.0686, -164.02, 63.0686, -164.02, -57.2854, -151.631, -57.2854, -151.731, 16.6504 )
+polygon = PoolVector2Array( -151.731, 16.6504, -137.572, 16.6504, -137.572, 28.1549, -76.5102, 28.1549, -64.1208, 35.2345, -25.1828, 35.2345, -25.0821, 13.511, -8.26794, 13.511, 62.5285, 13.511, 62.5285, 63.0686, -164.02, 63.0686, -164.02, -57.2854, -151.631, -57.2854, -151.731, 16.6504 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/StaticBody2D"]
 position = Vector2( -91.6203, -3.09277 )
@@ -75,7 +74,7 @@ shape = SubResource( 4 )
 one_way_collision = true
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="Level/StaticBody2D"]
-position = Vector2( -29.6075, 15.7655 )
+position = Vector2( -29.5069, 15.2809 )
 shape = SubResource( 4 )
 one_way_collision = true
 
@@ -98,8 +97,8 @@ shape = SubResource( 5 )
 one_way_collision = true
 
 [node name="wall" type="Sprite" parent="Level"]
-position = Vector2( 497.727, -192.915 )
-scale = Vector2( 5.16088, 5.72142 )
+position = Vector2( 513.773, -227.366 )
+scale = Vector2( 5.80271, 7.09948 )
 texture = ExtResource( 14 )
 __meta__ = {
 "_edit_group_": true
@@ -112,8 +111,8 @@ collision_layer = 65
 shape = SubResource( 6 )
 
 [node name="wall3" type="Sprite" parent="Level"]
-position = Vector2( 847.22, 213.885 )
-scale = Vector2( 9.9757, 2.93392 )
+position = Vector2( 472.178, 214.814 )
+scale = Vector2( 29.1271, 3.79256 )
 texture = ExtResource( 14 )
 __meta__ = {
 "_edit_group_": true
@@ -125,9 +124,37 @@ collision_layer = 65
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/wall3/StaticBody2D"]
 shape = SubResource( 6 )
 
+[node name="wall8" type="Sprite" parent="Level"]
+position = Vector2( -1436.57, 29.2919 )
+scale = Vector2( 2.7574, 18.8716 )
+texture = ExtResource( 14 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Level/wall8"]
+collision_layer = 65
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/wall8/StaticBody2D"]
+shape = SubResource( 6 )
+
+[node name="wall9" type="Sprite" parent="Level"]
+position = Vector2( -1337.5, 261.219 )
+scale = Vector2( 2.7574, 4.75759 )
+texture = ExtResource( 14 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Level/wall9"]
+collision_layer = 65
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/wall9/StaticBody2D"]
+shape = SubResource( 6 )
+
 [node name="wall7" type="Sprite" parent="Level"]
-position = Vector2( 1377.5, 574.174 )
-scale = Vector2( 9.9757, 2.93392 )
+position = Vector2( 1363.05, 785.84 )
+scale = Vector2( 8.23897, 2.93392 )
 texture = ExtResource( 14 )
 __meta__ = {
 "_edit_group_": true
@@ -140,8 +167,8 @@ collision_layer = 65
 shape = SubResource( 6 )
 
 [node name="wall4" type="Sprite" parent="Level"]
-position = Vector2( 920, -392 )
-scale = Vector2( 1.42134, 9.73998 )
+position = Vector2( 920, -369.728 )
+scale = Vector2( 1.42134, 10.6309 )
 texture = ExtResource( 14 )
 __meta__ = {
 "_edit_group_": true
@@ -154,8 +181,8 @@ collision_layer = 65
 shape = SubResource( 6 )
 
 [node name="wall5" type="Sprite" parent="Level"]
-position = Vector2( 1200, 326 )
-scale = Vector2( 1.42134, 19.8331 )
+position = Vector2( 1200, 309.964 )
+scale = Vector2( 1.42134, 20.4745 )
 texture = ExtResource( 14 )
 __meta__ = {
 "_edit_group_": true
@@ -199,7 +226,7 @@ shape = SubResource( 6 )
 position = Vector2( 317.18, 701.679 )
 
 [node name="CheckPoint2" parent="." instance=ExtResource( 10 )]
-position = Vector2( 1063.88, 180.007 )
+position = Vector2( 1872.54, 567.688 )
 
 [node name="MainController" type="Node2D" parent="."]
 script = ExtResource( 8 )
@@ -208,7 +235,7 @@ script = ExtResource( 8 )
 position = Vector2( 741.5, 743 )
 
 [node name="Player" parent="MainController" instance=ExtResource( 1 )]
-position = Vector2( 2866.68, 780.7 )
+position = Vector2( 2496, 552 )
 scale = Vector2( 0.52, 0.52 )
 
 [node name="Aroldo2" parent="MainController" instance=ExtResource( 3 )]
@@ -225,7 +252,7 @@ collision_layer = 2
 
 [node name="Roberto" parent="MainController" instance=ExtResource( 11 )]
 material = SubResource( 7 )
-position = Vector2( 755.399, 583.357 )
+position = Vector2( 1416.6, 286.055 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="MainController"]
 
@@ -261,11 +288,11 @@ position = Vector2( 1152.39, 608.172 )
 type = 2
 
 [node name="Arma4" parent="MainController" instance=ExtResource( 5 )]
-position = Vector2( 1334, 610.925 )
+position = Vector2( 1651.16, 593.107 )
 type = 3
 
 [node name="Arma3" parent="MainController" instance=ExtResource( 5 )]
-position = Vector2( 1182.43, 786.908 )
+position = Vector2( 2055.51, 599.819 )
 type = 2
 
 [node name="FOG" parent="." instance=ExtResource( 6 )]

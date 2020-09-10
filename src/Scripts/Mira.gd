@@ -39,8 +39,10 @@ func _try_shoot():
 func _states():
 	if parent.is_dead or parent.is_atacking or parent.is_rolling:
 			is_able_to_fire = false
+			visible = false
 	else :
 		is_able_to_fire = true
+		visible = true
 
 func get_direction() -> int:
 	if parent.is_wall_sliding:
