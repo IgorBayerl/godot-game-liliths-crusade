@@ -42,7 +42,7 @@ var is_rolling = false
 var is_crouched = false
 var is_stuned = false
 
-var is_on_menus = false
+var in_menu = false
 
 ############
 
@@ -60,9 +60,11 @@ func _apply_gravity(delta):
 		is_jumping = false
 
 func _cap_gravity_wall_slide():
-	if !Input.is_action_pressed("move_DOWN"):
-		var max_velocity = 96
-		velocity.y = min(velocity.y, max_velocity)
+#	if !Input.is_action_pressed("move_DOWN"):
+#		var max_velocity = 96
+#		velocity.y = min(velocity.y, max_velocity)
+	var max_velocity = 96
+	velocity.y = min(velocity.y, max_velocity)
 
 func _handle_wall_slide_sticking():
 	if move_direction !=0 and move_direction != wall_direction:
@@ -86,6 +88,8 @@ func _update_move_direction():
 
 func _handle_move_input():
 	velocity.x = lerp(velocity.x, move_speed * move_direction, _get_h_weight())
+
+func _update_sprite_direction():
 	if move_direction != 0:
 		player_body.scale.x = move_direction
 		facing = move_direction

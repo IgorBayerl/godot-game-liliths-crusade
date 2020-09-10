@@ -111,8 +111,8 @@ collision_layer = 65
 shape = SubResource( 6 )
 
 [node name="wall3" type="Sprite" parent="Level"]
-position = Vector2( 1027.22, 213.885 )
-scale = Vector2( 15.6007, 2.93392 )
+position = Vector2( 847.22, 213.885 )
+scale = Vector2( 9.9757, 2.93392 )
 texture = ExtResource( 14 )
 __meta__ = {
 "_edit_group_": true
@@ -122,6 +122,20 @@ __meta__ = {
 collision_layer = 65
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/wall3/StaticBody2D"]
+shape = SubResource( 6 )
+
+[node name="wall7" type="Sprite" parent="Level"]
+position = Vector2( 1377.5, 574.174 )
+scale = Vector2( 9.9757, 2.93392 )
+texture = ExtResource( 14 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Level/wall7"]
+collision_layer = 65
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/wall7/StaticBody2D"]
 shape = SubResource( 6 )
 
 [node name="wall4" type="Sprite" parent="Level"]
@@ -139,8 +153,8 @@ collision_layer = 65
 shape = SubResource( 6 )
 
 [node name="wall5" type="Sprite" parent="Level"]
-position = Vector2( 1200, -92 )
-scale = Vector2( 1.42134, 6.77056 )
+position = Vector2( 1200, 326 )
+scale = Vector2( 1.42134, 19.8331 )
 texture = ExtResource( 14 )
 __meta__ = {
 "_edit_group_": true
@@ -153,8 +167,8 @@ collision_layer = 65
 shape = SubResource( 6 )
 
 [node name="wall6" type="Sprite" parent="Level"]
-position = Vector2( 1536.74, -232.371 )
-scale = Vector2( 1.42134, 11.2616 )
+position = Vector2( 1536.74, 182.421 )
+scale = Vector2( 1.42134, 24.2239 )
 texture = ExtResource( 14 )
 __meta__ = {
 "_edit_group_": true
@@ -193,7 +207,7 @@ script = ExtResource( 8 )
 position = Vector2( 741.5, 743 )
 
 [node name="Player" parent="MainController" instance=ExtResource( 1 )]
-position = Vector2( 484.33, 685.928 )
+position = Vector2( 2866.68, 780.7 )
 scale = Vector2( 0.52, 0.52 )
 
 [node name="Aroldo2" parent="MainController" instance=ExtResource( 3 )]
@@ -258,7 +272,6 @@ scale = Vector2( 44.7077, 34.4197 )
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
 volume_db = -28.272
-autoplay = true
 [connection signal="body_entered" from="MainController/Arma" to="MainController" method="_on_Arma_body_entered"]
 [connection signal="body_entered" from="MainController/Arma2" to="MainController" method="_on_Arma_body_entered"]
 [connection signal="body_entered" from="MainController/Arma4" to="MainController" method="_on_Arma_body_entered"]

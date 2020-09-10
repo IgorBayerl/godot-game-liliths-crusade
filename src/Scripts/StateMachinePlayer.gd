@@ -42,15 +42,17 @@ func _input(event):
 
 func _state_logic(delta):
 	parent._update_lebel_state(state , previous_state)
-	if !parent.is_dead :
+	if !parent.is_dead and !parent.in_menu == true:
 		parent._set_head_direction()
 		if state != states.rolling:
 			parent._update_move_direction()
 		parent._update_wall_direction()
 		if state != states.wall_slide:
-			if ![states.rolling, states.atack, states.stun,states.crouch ].has(state):
+			if ![states.rolling, states.atack, states.stun ].has(state):
 				if !parent.wal_jumping == true:
-					parent._handle_move_input()
+					if !parent.is_crouched:
+						parent._handle_move_input()
+					parent._update_sprite_direction()
 		if state == states.wall_slide:
 			parent._cap_gravity_wall_slide()
 			parent._handle_wall_slide_sticking()
@@ -172,6 +174,7 @@ func _enter_state(new_state, old_state):
 		states.wall_slide:
 			print('wall_slide')
 			parent.anim_player.play("wall_slide")
+			parent.is_wall_sliding = true
 			parent.get_node("SPRITES").scale.x = -parent.wall_direction
 		states.rolling:
 			print('lets rolla')
@@ -184,8 +187,10 @@ func _enter_state(new_state, old_state):
 			parent.velocity.x = 0
 	
 func _exit_state(old_state, new_state):
-	pass
-	
+	match old_state:
+		states.wall_slide:
+			parent.is_wall_sliding = false
+			
 func _on_WallSlideSticknesTimer_timeout() -> void:
 	if state == states.wall_slide:
 		set_state(states.fall)

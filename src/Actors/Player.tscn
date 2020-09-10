@@ -332,7 +332,7 @@ collision_layer = 4
 collision_mask = 1059
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SPRITES/body2/SwordHit"]
-position = Vector2( 19.793, 0.941169 )
+position = Vector2( 19.928, 0.941169 )
 shape = SubResource( 3 )
 disabled = true
 

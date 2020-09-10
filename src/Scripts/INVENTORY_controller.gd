@@ -13,9 +13,9 @@ func _ready() -> void:
 func _unhandled_input(event):
 	_set_text()
 	if visible == true:
-		player.is_on_menus = true
+		player.in_menu = true
 	else:
-		player.is_on_menus = false
+		player.in_menu = false
 
 func _set_text():
 	#Name
