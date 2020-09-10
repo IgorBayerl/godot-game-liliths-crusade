@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://src/Actors/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Assets/Sprites/Level.png" type="Texture" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://src/flash_shader.shader" type="Shader" id=13]
 [ext_resource path="res://icon.png" type="Texture" id=14]
 [ext_resource path="res://src/Interface/Inventory/inventory.tscn" type="PackedScene" id=15]
+[ext_resource path="res://src/Actors/Efeitos/Fade_in.tscn" type="PackedScene" id=16]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 42.4, 3.2 )
@@ -248,6 +249,9 @@ rect_scale = Vector2( 0.2, 0.2 )
 visible = false
 
 [node name="Guns_bar" parent="MainController/CanvasLayer/Control" instance=ExtResource( 7 )]
+
+[node name="Fade" parent="MainController/CanvasLayer/Control" instance=ExtResource( 16 )]
+visible = false
 
 [node name="Arma" parent="MainController" instance=ExtResource( 5 )]
 position = Vector2( 981.659, 786.419 )

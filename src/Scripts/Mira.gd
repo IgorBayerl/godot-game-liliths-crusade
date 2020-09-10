@@ -22,9 +22,7 @@ func _process(delta: float) -> void:
 	_states()
 	_try_shoot()
 	$Arma.scale.y = looking
-
 	_set_poit_direction()
-	
 
 func _try_shoot():
 	if is_able_to_fire:

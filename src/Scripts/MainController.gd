@@ -52,6 +52,8 @@ func _ready() -> void:
 	guns_info = JsonData.item_data
 	gun_on_hand = guns_info["onHand"].type
 	_update_gun()
+	$CanvasLayer/Control/Fade.show()
+	$CanvasLayer/Control/Fade.fade_out()
 
 func _update_guns_inventory():
 	pass
@@ -71,6 +73,7 @@ func _update_gun():
 
 #func _process(delta: float) -> void:
 #	pass
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("Gun_1"):

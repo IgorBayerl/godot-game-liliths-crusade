@@ -20,20 +20,21 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Background" type="TextureRect" parent="."]
+[node name="Background" type="NinePatchRect" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -160.0
-margin_top = -164.0
-margin_right = 160.0
-margin_bottom = 164.0
+margin_left = -274.0
+margin_top = -158.0
+margin_right = 275.0
+margin_bottom = 178.0
 texture = ExtResource( 1 )
-stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
+region_rect = Rect2( 10, 6, 79, 90 )
+patch_margin_left = 3
+patch_margin_top = 16
+patch_margin_right = 3
+patch_margin_bottom = 3
 
 [node name="Container" type="VBoxContainer" parent="Background"]
 anchor_left = 0.5
