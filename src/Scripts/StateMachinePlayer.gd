@@ -6,6 +6,7 @@ func _ready() -> void:
 	add_state("jump")
 	add_state("fall")
 	add_state("atack")
+	add_state("air_atack")
 	add_state("stun")
 	add_state("wall_slide")
 	add_state("crouch")
@@ -23,6 +24,8 @@ func _input(event):
 				parent.position.y += 1
 		if event.is_action_pressed("ctrl"):
 			parent.is_crouched = true
+		if event.is_action_pressed("interact"):
+			parent.is_atacking = true
 				
 		#ROLL / #ATACK
 		if state != states.rolling:
@@ -76,6 +79,8 @@ func _get_transition(delta):
 				return states.stun
 			if parent.is_crouched:
 				return states.crouch
+			if parent.is_atacking:
+				return states.atack
 			if !parent.is_on_floor():
 				if parent.velocity.y < 0:
 					return states.jump
@@ -155,6 +160,8 @@ func _get_transition(delta):
 						return states.idle
 		states.crouch:
 			if !parent.is_crouched:
+				if parent.is_stuned:
+					return states.stun
 				if parent.is_rolling:
 					return states.rolling
 				elif !parent.is_rolling:
@@ -162,6 +169,9 @@ func _get_transition(delta):
 						return states.run
 					elif parent.velocity.x == 0:
 						return states.idle
+		states.atack:
+			if !parent.is_atacking:
+				return states.idle
 	return null
 
 func _enter_state(new_state, old_state):
@@ -192,11 +202,14 @@ func _enter_state(new_state, old_state):
 			parent._rolling_direction()
 		states.stun:
 			print('stunned')
+			parent.velocity = Vector2()
 			parent.anim_effect.play("piscando")
 		states.crouch:
 			parent.jump_count = 0
 			print('crouched')
 			parent.velocity.x = 0
+		states.atack:
+			parent.anim_player.play("Atack1")
 	
 func _exit_state(old_state, new_state):
 	match old_state:

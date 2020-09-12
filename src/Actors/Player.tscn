@@ -168,6 +168,20 @@ tracks/2/keys = {
 "update": 0,
 "values": [ Vector2( -1.46168, -25.6941 ), Vector2( -2.85371, -27.7822 ) ]
 }
+tracks/3/type = "method"
+tracks/3/path = NodePath("../..")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_atack_finish"
+} ]
+}
 
 [sub_resource type="Animation" id=7]
 length = 0.7
@@ -325,7 +339,7 @@ scale = Vector2( 2.89255, 2.89255 )
 texture = ExtResource( 13 )
 vframes = 6
 hframes = 5
-frame = 3
+frame = 10
 
 [node name="SwordHit" type="Area2D" parent="SPRITES/body2"]
 collision_layer = 4
@@ -338,7 +352,7 @@ disabled = true
 
 [node name="Head" type="Sprite" parent="SPRITES"]
 use_parent_material = true
-position = Vector2( 2.77695, -20.1376 )
+position = Vector2( -1.92569, -26.3901 )
 scale = Vector2( 1.93084, 1.99071 )
 texture = ExtResource( 8 )
 

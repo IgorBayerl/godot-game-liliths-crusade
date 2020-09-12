@@ -67,6 +67,7 @@ onready var ivunerability = $Ivunerability
 func _turning_on_skills():
 	if Input.is_key_pressed(KEY_J):
 		have_double_jump = !have_double_jump
+		print('double_jump = ', have_double_jump)
 
 func _apply_gravity(delta):
 	velocity.y += GRAVITY * delta
@@ -210,6 +211,9 @@ func _respawn():
 	health = max_health
 	is_dead = false
 	get_parent().get_node("CanvasLayer/Control/Health Bar").restore_health()
+
+func _atack_finish():
+	is_atacking = false
 
 func _on_MiliAtack_Timer_timeout():
 	can_atack = true
