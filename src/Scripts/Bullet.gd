@@ -7,6 +7,9 @@ func _ready() -> void:
 	$Timer.start()
 	
 func _on_Timer_timeout() -> void:
+	var explode_instance = explode.instance()
+	explode_instance.position = self.position
+	get_tree().get_root().add_child(explode_instance)
 	queue_free()
 	
 

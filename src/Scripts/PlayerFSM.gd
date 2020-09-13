@@ -63,6 +63,8 @@ onready var wall_slide_sticky_timer = $WallSlideSticknesTimer
 onready var anim_effect = $Effects_animationPlayer
 onready var ivunerability = $Ivunerability
 
+onready var particles_wall_slide1 = $SPRITES/Particles2D
+onready var particles_wall_slide2 = $SPRITES/Particles2D2
 
 func _turning_on_skills():
 	if Input.is_key_pressed(KEY_J):

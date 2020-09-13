@@ -213,6 +213,8 @@ func _enter_state(new_state, old_state):
 			print('wall_slide')
 			parent.anim_player.play("wall_slide")
 			parent.is_wall_sliding = true
+			parent.particles_wall_slide1.emitting = true
+			parent.particles_wall_slide2.emitting = true
 			parent.get_node("SPRITES").scale.x = -parent.wall_direction
 		states.rolling:
 			parent.jump_count = 0
@@ -237,6 +239,8 @@ func _exit_state(old_state, new_state):
 	match old_state:
 		states.wall_slide:
 			parent.is_wall_sliding = false
+			parent.particles_wall_slide1.emitting = false
+			parent.particles_wall_slide2.emitting = false
 			
 func _on_WallSlideSticknesTimer_timeout() -> void:
 	if state == states.wall_slide:
