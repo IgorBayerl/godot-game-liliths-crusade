@@ -214,8 +214,8 @@ collision_layer = 65
 shape = SubResource( 6 )
 
 [node name="wall10" type="Sprite" parent="Level"]
-position = Vector2( 1986.08, 465.18 )
-scale = Vector2( 9.77939, 3.33875 )
+position = Vector2( 1882.63, 451.832 )
+scale = Vector2( 11.6749, 3.33875 )
 texture = ExtResource( 14 )
 __meta__ = {
 "_edit_group_": true
@@ -225,6 +225,20 @@ __meta__ = {
 collision_layer = 65
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/wall10/StaticBody2D"]
+shape = SubResource( 6 )
+
+[node name="wall12" type="Sprite" parent="Level"]
+position = Vector2( 1703.52, 560.728 )
+scale = Vector2( 1.92048, 1.94286 )
+texture = ExtResource( 14 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Level/wall12"]
+collision_layer = 65
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/wall12/StaticBody2D"]
 shape = SubResource( 6 )
 
 [node name="wall11" type="Sprite" parent="Level"]
@@ -268,7 +282,7 @@ script = ExtResource( 8 )
 position = Vector2( 741.5, 743 )
 
 [node name="Player" parent="MainController" instance=ExtResource( 1 )]
-position = Vector2( 2496, 552 )
+position = Vector2( 2432.55, 556.415 )
 scale = Vector2( 0.52, 0.52 )
 
 [node name="Aroldo2" parent="MainController" instance=ExtResource( 3 )]

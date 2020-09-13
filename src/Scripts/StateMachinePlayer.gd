@@ -38,11 +38,14 @@ func _input(event):
 		if event.is_action_pressed("jump"):
 			parent._wall_jump()
 			set_state(states.jump)
-	if[states.fall, states.jump ].has(state) and parent.have_double_jump:
-		if event.is_action_pressed("jump") and parent.jump_count == 0:
-			parent.velocity.y = parent.double_jump_velocity
-			parent.jump_count = 1
-			parent.is_jumping = true
+	if[states.fall, states.jump ].has(state) :
+		if event.is_action_pressed("interact"):
+			parent.is_atacking = true
+		if parent.have_double_jump:
+			if event.is_action_pressed("jump") and parent.jump_count == 0:
+				parent.velocity.y = parent.double_jump_velocity
+				parent.jump_count = 1
+				parent.is_jumping = true
 	if state == states.jump:
 		if event.is_action_released("jump") and parent.velocity.y < parent.min_jump_velocity:
 			parent.velocity.y = parent. min_jump_velocity
@@ -109,6 +112,8 @@ func _get_transition(delta):
 		states.jump:
 			if parent.is_stuned:
 				return states.stun
+			if parent.is_atacking:
+				return states.air_atack
 			if parent.wall_direction != 0 and parent.have_wall_jump:
 				return states.wall_slide
 			elif parent.is_on_floor():
@@ -118,6 +123,8 @@ func _get_transition(delta):
 		states.fall:
 			if parent.is_stuned:
 				return states.stun
+			if parent.is_atacking:
+				return states.air_atack
 			if parent.wall_direction != 0 and parent.have_wall_jump:
 				return states.wall_slide
 			elif parent.is_on_floor():
@@ -172,6 +179,17 @@ func _get_transition(delta):
 		states.atack:
 			if !parent.is_atacking:
 				return states.idle
+		states.air_atack:
+			if !parent.is_atacking:
+				if !parent.is_on_floor():
+					if parent.velocity.y < 0:
+						return states.jump
+					elif parent.velocity.y > 0:
+						return states.fall
+				elif parent.velocity.x != 0:
+					return states.run
+				elif parent.velocity.x == 0:
+					return states.idle
 	return null
 
 func _enter_state(new_state, old_state):
@@ -199,6 +217,7 @@ func _enter_state(new_state, old_state):
 		states.rolling:
 			parent.jump_count = 0
 			print('lets rolla')
+			parent.anim_player.play("crouched")
 			parent._rolling_direction()
 		states.stun:
 			print('stunned')
@@ -207,9 +226,12 @@ func _enter_state(new_state, old_state):
 		states.crouch:
 			parent.jump_count = 0
 			print('crouched')
+			parent.anim_player.play("crouched")
 			parent.velocity.x = 0
 		states.atack:
 			parent.anim_player.play("Atack1")
+		states.air_atack:
+			parent.anim_player.play("Atack2")
 	
 func _exit_state(old_state, new_state):
 	match old_state:

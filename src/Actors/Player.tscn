@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://src/Scripts/PlayerFSM.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -22,7 +22,7 @@ shader_param/flash_color = Color( 1, 1, 1, 1 )
 shader_param/flash_modifier = 0.0
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 28.3935, 76.1278 )
+extents = Vector2( 33.2077, 75.0774 )
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 11.8421, 28.6792 )
@@ -77,6 +77,44 @@ tracks/3/keys = {
 "update": 0,
 "values": [ 0.0, -9.4 ]
 }
+tracks/4/type = "method"
+tracks/4/path = NodePath("../..")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_atack_finish"
+} ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../../Colision:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -0.116311, 44.7364 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("../../Colision:shape:extents")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 33.2077, 75.0774 ) ]
+}
 
 [sub_resource type="Animation" id=5]
 length = 0.4
@@ -127,6 +165,44 @@ tracks/3/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 10.0, 1.1 ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath("../..")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_atack_finish"
+} ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../../Colision:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -0.116311, 44.7364 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("../../Colision:shape:extents")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 33.2077, 75.0774 ) ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -182,6 +258,42 @@ tracks/3/keys = {
 "method": "_atack_finish"
 } ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("../../Mira:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -1.3283, 30.2281 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../../Colision:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -0.116311, 44.7364 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("../../Colision:shape:extents")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 33.2077, 75.0774 ) ]
+}
 
 [sub_resource type="Animation" id=7]
 length = 0.7
@@ -222,6 +334,105 @@ tracks/2/keys = {
 "update": 0,
 "values": [ Vector2( 5.49709, -19.8999 ), Vector2( 5.14908, -19.8999 ), Vector2( 5.49709, -20.9937 ), Vector2( 5.49709, -19.3282 ) ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("../../Mira:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -1.697, 29.4907 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../../Colision:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -0.116311, 44.7364 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../../Colision:shape:extents")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 33.2077, 75.0774 ) ]
+}
+
+[sub_resource type="Animation" id=14]
+resource_name = "crouched"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 27 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Head:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 3.43114, 37.76 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../../Mira:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -5.384, 70.4165 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../../Colision:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -0.485013, 66.1211 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../../Colision:shape:extents")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 35.7886, 51.4805 ) ]
+}
 
 [sub_resource type="Animation" id=8]
 length = 0.4
@@ -237,6 +448,42 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 14, 15, 16, 17 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../../Mira:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 2.35871, 27.6472 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../../Colision:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -0.116311, 44.7364 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../../Colision:shape:extents")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 33.2077, 75.0774 ) ]
 }
 
 [sub_resource type="Animation" id=9]
@@ -254,6 +501,42 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 11, 12, 13 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("../../Mira:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 2.35871, 27.6472 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../../Colision:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -0.116311, 44.7364 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../../Colision:shape:extents")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 33.2077, 75.0774 ) ]
+}
 
 [sub_resource type="Animation" id=10]
 length = 0.3
@@ -269,6 +552,42 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ 0, 1, 2 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../../Mira:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 2.35871, 27.6472 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../../Colision:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -0.116311, 44.7364 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../../Colision:shape:extents")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 33.2077, 75.0774 ) ]
 }
 
 [sub_resource type="SpriteFrames" id=11]
@@ -334,12 +653,11 @@ use_parent_material = true
 
 [node name="body2" type="Sprite" parent="SPRITES"]
 use_parent_material = true
-position = Vector2( -0.737395, 33.1831 )
+position = Vector2( -0.737395, 32.8144 )
 scale = Vector2( 2.89255, 2.89255 )
 texture = ExtResource( 13 )
 vframes = 6
 hframes = 5
-frame = 10
 
 [node name="SwordHit" type="Area2D" parent="SPRITES/body2"]
 collision_layer = 4
@@ -352,7 +670,7 @@ disabled = true
 
 [node name="Head" type="Sprite" parent="SPRITES"]
 use_parent_material = true
-position = Vector2( -1.92569, -26.3901 )
+position = Vector2( 5.49709, -19.8999 )
 scale = Vector2( 1.93084, 1.99071 )
 texture = ExtResource( 8 )
 
@@ -362,12 +680,13 @@ anims/Atack1 = SubResource( 4 )
 anims/Atack2 = SubResource( 5 )
 anims/Idle = SubResource( 6 )
 anims/Running = SubResource( 7 )
+anims/crouched = SubResource( 14 )
 anims/fall = SubResource( 8 )
 anims/jump = SubResource( 9 )
 anims/wall_slide = SubResource( 10 )
 
 [node name="Mira" type="Position2D" parent="."]
-position = Vector2( 3.46482, 32.4403 )
+position = Vector2( 2.35871, 27.6472 )
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_group_": true
@@ -431,18 +750,17 @@ RandomVelocity = 350.0
 script = ExtResource( 12 )
 
 [node name="WallRaycast" type="Node2D" parent="."]
-visible = false
 
 [node name="RightWallRaycast" type="Node2D" parent="WallRaycast"]
 
 [node name="RightWallRaycast_1" type="RayCast2D" parent="WallRaycast/RightWallRaycast"]
-position = Vector2( 10, 0 )
+position = Vector2( 15.2616, 0 )
 enabled = true
 cast_to = Vector2( 20, 0 )
 collision_mask = 64
 
 [node name="RightWallRaycast_2" type="RayCast2D" parent="WallRaycast/RightWallRaycast"]
-position = Vector2( 10, 90 )
+position = Vector2( 17.0154, 90.4385 )
 enabled = true
 cast_to = Vector2( 20, 0 )
 collision_mask = 64
@@ -450,13 +768,13 @@ collision_mask = 64
 [node name="LeftWallRaycast" type="Node2D" parent="WallRaycast"]
 
 [node name="LeftWallRaycast_1" type="RayCast2D" parent="WallRaycast/LeftWallRaycast"]
-position = Vector2( -10, 0 )
+position = Vector2( -17.0154, 0 )
 enabled = true
 cast_to = Vector2( -20, 0 )
 collision_mask = 64
 
 [node name="LeftWallRaycast_2" type="RayCast2D" parent="WallRaycast/LeftWallRaycast"]
-position = Vector2( -10, 90 )
+position = Vector2( -14.8231, 90 )
 enabled = true
 cast_to = Vector2( -20, 0 )
 collision_mask = 64
