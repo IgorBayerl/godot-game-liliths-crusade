@@ -485,6 +485,18 @@ tracks/3/keys = {
 "update": 0,
 "values": [ Vector2( 33.2077, 75.0774 ) ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("../Head:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 5.51919, -14.4411 ) ]
+}
 
 [sub_resource type="Animation" id=10]
 length = 0.3
@@ -537,6 +549,18 @@ tracks/3/keys = {
 "update": 0,
 "values": [ Vector2( 33.2077, 75.0774 ) ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("../Head:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 5.51919, -14.4411 ) ]
+}
 
 [sub_resource type="Animation" id=11]
 length = 0.3
@@ -588,6 +612,18 @@ tracks/3/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 33.2077, 75.0774 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../Head:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 7.60723, -16.5292 ) ]
 }
 
 [sub_resource type="SpriteFrames" id=12]
@@ -657,7 +693,7 @@ scale = Vector2( 2.89255, 2.89255 )
 texture = ExtResource( 13 )
 vframes = 6
 hframes = 5
-frame = 10
+frame = 22
 
 [node name="SwordHit" type="Area2D" parent="SPRITES/body2"]
 collision_layer = 4
@@ -670,7 +706,7 @@ disabled = true
 
 [node name="Head" type="Sprite" parent="SPRITES"]
 use_parent_material = true
-position = Vector2( -1.46168, -25.6941 )
+position = Vector2( -5.28975, -25.3461 )
 scale = Vector2( 1.93084, 1.99071 )
 texture = ExtResource( 8 )
 
