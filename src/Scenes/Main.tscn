@@ -55,7 +55,9 @@ visible = false
 position = Vector2( -29.2578, -2.13983 )
 scale = Vector2( 9.04, 9.04 )
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level/StaticBody2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level/StaticBody2D" groups=[
+"terrain",
+]]
 polygon = PoolVector2Array( -151.731, 16.6504, -137.572, 16.6504, -137.572, 28.1549, -76.5102, 28.1549, -64.1208, 35.2345, -25.1828, 35.2345, -25.0821, 13.511, -8.26794, 13.511, 62.5285, 13.511, 62.5285, 63.0686, -164.02, 63.0686, -164.02, -57.2854, -151.631, -57.2854, -151.731, 16.6504 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/StaticBody2D"]
@@ -109,7 +111,9 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Level/wall"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Level/wall" groups=[
+"terrain",
+]]
 collision_layer = 65
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/wall/StaticBody2D"]
@@ -123,7 +127,9 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Level/wall3"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Level/wall3" groups=[
+"terrain",
+]]
 collision_layer = 65
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/wall3/StaticBody2D"]
@@ -137,7 +143,9 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Level/wall8"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Level/wall8" groups=[
+"terrain",
+]]
 collision_layer = 65
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/wall8/StaticBody2D"]
@@ -151,7 +159,9 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Level/wall9"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Level/wall9" groups=[
+"terrain",
+]]
 collision_layer = 65
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/wall9/StaticBody2D"]
@@ -165,7 +175,9 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Level/wall7"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Level/wall7" groups=[
+"terrain",
+]]
 collision_layer = 65
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/wall7/StaticBody2D"]
@@ -179,7 +191,9 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Level/wall4"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Level/wall4" groups=[
+"terrain",
+]]
 collision_layer = 65
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/wall4/StaticBody2D"]
@@ -193,7 +207,9 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Level/wall5"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Level/wall5" groups=[
+"terrain",
+]]
 collision_layer = 65
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/wall5/StaticBody2D"]
@@ -207,7 +223,9 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Level/wall6"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Level/wall6" groups=[
+"terrain",
+]]
 collision_layer = 65
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/wall6/StaticBody2D"]
@@ -221,7 +239,9 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Level/wall10"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Level/wall10" groups=[
+"terrain",
+]]
 collision_layer = 65
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/wall10/StaticBody2D"]
@@ -235,7 +255,9 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Level/wall12"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Level/wall12" groups=[
+"terrain",
+]]
 collision_layer = 65
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/wall12/StaticBody2D"]
@@ -249,7 +271,9 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Level/wall11"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Level/wall11" groups=[
+"terrain",
+]]
 collision_layer = 65
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/wall11/StaticBody2D"]
@@ -263,7 +287,9 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Level/wall2"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Level/wall2" groups=[
+"terrain",
+]]
 collision_layer = 65
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/wall2/StaticBody2D"]
@@ -360,6 +386,7 @@ scale = Vector2( 44.7077, 34.4197 )
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
 volume_db = -28.272
+autoplay = true
 [connection signal="body_entered" from="MainController/Arma" to="MainController" method="_on_Arma_body_entered"]
 [connection signal="body_entered" from="MainController/Arma2" to="MainController" method="_on_Arma_body_entered"]
 [connection signal="body_entered" from="MainController/Arma4" to="MainController" method="_on_Arma_body_entered"]

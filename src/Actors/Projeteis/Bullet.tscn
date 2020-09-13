@@ -10,7 +10,7 @@ height = 13.3985
 [node name="RigidBody2D" type="RigidBody2D"]
 position = Vector2( 0, -0.297295 )
 collision_layer = 16
-collision_mask = 34
+collision_mask = 98
 mass = 0.00102041
 gravity_scale = 0.0
 contacts_reported = 1

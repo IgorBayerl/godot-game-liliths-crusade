@@ -18,3 +18,8 @@ func _on_RigidBody2D_body_entered(body: Node) -> void:
 		explode_instance.position = self.position
 		get_tree().get_root().add_child(explode_instance)
 		queue_free()
+	if body.is_in_group("terrain"):
+		var explode_instance = explode.instance()
+		explode_instance.position = self.position
+		get_tree().get_root().add_child(explode_instance)
+		queue_free()
