@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://src/Actors/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Assets/Sprites/Level.png" type="Texture" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://src/Assets/Sprites/preto.png" type="Texture" id=14]
 [ext_resource path="res://src/Interface/Inventory/inventory.tscn" type="PackedScene" id=15]
 [ext_resource path="res://src/Actors/Efeitos/Fade_in.tscn" type="PackedScene" id=16]
+[ext_resource path="res://src/Assets/Sprites/doublejumpicon.png" type="Texture" id=17]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 42.4, 3.2 )
@@ -39,6 +40,9 @@ extents = Vector2( 24.9444, 25.0529 )
 shader = ExtResource( 13 )
 shader_param/flash_color = Color( 0.898039, 0.870588, 0.870588, 1 )
 shader_param/flash_modifier = 0.0
+
+[sub_resource type="CircleShape2D" id=8]
+radius = 123.64
 
 [node name="Main" type="Node2D"]
 
@@ -210,8 +214,8 @@ collision_layer = 65
 shape = SubResource( 6 )
 
 [node name="wall10" type="Sprite" parent="Level"]
-position = Vector2( 1986.08, 556.397 )
-scale = Vector2( 9.77939, 6.98742 )
+position = Vector2( 1986.08, 465.18 )
+scale = Vector2( 9.77939, 3.33875 )
 texture = ExtResource( 14 )
 __meta__ = {
 "_edit_group_": true
@@ -221,6 +225,20 @@ __meta__ = {
 collision_layer = 65
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/wall10/StaticBody2D"]
+shape = SubResource( 6 )
+
+[node name="wall11" type="Sprite" parent="Level"]
+position = Vector2( 2111.16, 164.654 )
+scale = Vector2( 5.16905, 21.7949 )
+texture = ExtResource( 14 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Level/wall11"]
+collision_layer = 65
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/wall11/StaticBody2D"]
 shape = SubResource( 6 )
 
 [node name="wall2" type="Sprite" parent="Level"]
@@ -310,6 +328,16 @@ type = 3
 position = Vector2( 2055.51, 599.819 )
 type = 2
 
+[node name="Sprite" type="Sprite" parent="MainController"]
+position = Vector2( 3416.43, 1129.13 )
+scale = Vector2( 0.307751, 0.303752 )
+texture = ExtResource( 17 )
+
+[node name="Area2D" type="Area2D" parent="MainController/Sprite"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainController/Sprite/Area2D"]
+shape = SubResource( 8 )
+
 [node name="FOG" parent="." instance=ExtResource( 6 )]
 visible = false
 position = Vector2( 1409.04, 608.412 )
@@ -322,3 +350,4 @@ volume_db = -28.272
 [connection signal="body_entered" from="MainController/Arma2" to="MainController" method="_on_Arma_body_entered"]
 [connection signal="body_entered" from="MainController/Arma4" to="MainController" method="_on_Arma_body_entered"]
 [connection signal="body_entered" from="MainController/Arma3" to="MainController" method="_on_Arma_body_entered"]
+[connection signal="body_entered" from="MainController/Sprite/Area2D" to="MainController/Player" method="_on_Area2D_body_entered"]

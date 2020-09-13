@@ -35,7 +35,7 @@ var double_jump_velocity = -460
 
 # Skills control #
 
-var have_double_jump = true
+var have_double_jump = false
 var have_wall_jump = true
 var have_rolling = false
 var have_heavy_gun = false
@@ -241,3 +241,7 @@ func _on_Roll_Timer_timeout() -> void:
 
 func _on_Ivunerability_timeout() -> void:
 	is_stuned = false
+
+
+func _on_Area2D_body_entered(body: Node) -> void:
+	have_double_jump = true
