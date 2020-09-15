@@ -27,7 +27,7 @@ extents = Vector2( 33.2077, 75.0774 )
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 11.8421, 28.6792 )
 
-[sub_resource type="ParticlesMaterial" id=15]
+[sub_resource type="ParticlesMaterial" id=4]
 emission_shape = 2
 emission_box_extents = Vector3( 1, 10, 1 )
 flag_disable_z = true
@@ -39,7 +39,7 @@ orbit_velocity_random = 0.0
 scale = 2.0
 color = Color( 0.866667, 0.866667, 0.866667, 1 )
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=5]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
@@ -128,7 +128,7 @@ tracks/6/keys = {
 "values": [ Vector2( 33.2077, 75.0774 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=6]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
@@ -217,7 +217,7 @@ tracks/6/keys = {
 "values": [ Vector2( 33.2077, 75.0774 ) ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=7]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -307,7 +307,7 @@ tracks/6/keys = {
 "values": [ Vector2( 33.2077, 75.0774 ) ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=8]
 length = 0.7
 loop = true
 tracks/0/type = "value"
@@ -383,8 +383,7 @@ tracks/5/keys = {
 "values": [ Vector2( 33.2077, 75.0774 ) ]
 }
 
-[sub_resource type="Animation" id=8]
-resource_name = "crouched"
+[sub_resource type="Animation" id=9]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
@@ -446,7 +445,7 @@ tracks/4/keys = {
 "values": [ Vector2( 35.7886, 51.4805 ) ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=10]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -510,7 +509,7 @@ tracks/4/keys = {
 "values": [ Vector2( 5.51919, -14.4411 ) ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=11]
 length = 0.3
 loop = true
 tracks/0/type = "value"
@@ -574,7 +573,7 @@ tracks/4/keys = {
 "values": [ Vector2( 5.51919, -14.4411 ) ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=12]
 length = 0.3
 loop = true
 tracks/0/type = "value"
@@ -638,7 +637,7 @@ tracks/4/keys = {
 "values": [ Vector2( 7.60723, -16.5292 ) ]
 }
 
-[sub_resource type="SpriteFrames" id=12]
+[sub_resource type="SpriteFrames" id=13]
 animations = [ {
 "frames": [ ExtResource( 9 ), ExtResource( 4 ), ExtResource( 10 ) ],
 "loop": false,
@@ -646,7 +645,7 @@ animations = [ {
 "speed": 0.0
 } ]
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=14]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:material:shader_param/flash_modifier")
 tracks/0/interp = 1
@@ -660,7 +659,7 @@ tracks/0/keys = {
 "values": [ 0.0 ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=15]
 length = 0.2
 loop = true
 tracks/0/type = "value"
@@ -705,6 +704,7 @@ scale = Vector2( 2.89255, 2.89255 )
 texture = ExtResource( 13 )
 vframes = 6
 hframes = 5
+frame = 18
 
 [node name="SwordHit" type="Area2D" parent="SPRITES/body2"]
 collision_layer = 4
@@ -717,7 +717,7 @@ disabled = true
 
 [node name="Head" type="Sprite" parent="SPRITES"]
 use_parent_material = true
-position = Vector2( 7.60723, -16.5292 )
+position = Vector2( 3.06244, -20.126 )
 scale = Vector2( 1.93084, 1.99071 )
 texture = ExtResource( 8 )
 
@@ -729,7 +729,7 @@ lifetime = 0.5
 explosiveness = 0.16
 randomness = 0.24
 local_coords = false
-process_material = SubResource( 15 )
+process_material = SubResource( 4 )
 
 [node name="Particles2D2" type="Particles2D" parent="SPRITES"]
 position = Vector2( -33.3876, 75.5959 )
@@ -739,18 +739,18 @@ lifetime = 0.5
 explosiveness = 0.16
 randomness = 0.24
 local_coords = false
-process_material = SubResource( 15 )
+process_material = SubResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="SPRITES"]
 root_node = NodePath("../body2")
-anims/Atack1 = SubResource( 4 )
-anims/Atack2 = SubResource( 5 )
-anims/Idle = SubResource( 6 )
-anims/Running = SubResource( 7 )
-anims/crouched = SubResource( 8 )
-anims/fall = SubResource( 9 )
-anims/jump = SubResource( 10 )
-anims/wall_slide = SubResource( 11 )
+anims/Atack1 = SubResource( 5 )
+anims/Atack2 = SubResource( 6 )
+anims/Idle = SubResource( 7 )
+anims/Running = SubResource( 8 )
+anims/crouched = SubResource( 9 )
+anims/fall = SubResource( 10 )
+anims/jump = SubResource( 11 )
+anims/wall_slide = SubResource( 12 )
 
 [node name="Mira" type="Position2D" parent="."]
 position = Vector2( 2.35871, 27.6472 )
@@ -770,7 +770,7 @@ texture = ExtResource( 15 )
 [node name="GunSprite" type="AnimatedSprite" parent="Mira/Arma"]
 position = Vector2( 29.8494, -6.98813 )
 scale = Vector2( 1.99719, 1.99719 )
-frames = SubResource( 12 )
+frames = SubResource( 13 )
 animation = "Guns"
 frame = 1
 
@@ -870,8 +870,8 @@ wait_time = 0.5
 one_shot = true
 
 [node name="Effects_animationPlayer" type="AnimationPlayer" parent="."]
-anims/normal = SubResource( 13 )
-anims/piscando = SubResource( 14 )
+anims/normal = SubResource( 14 )
+anims/piscando = SubResource( 15 )
 [connection signal="area_entered" from="SPRITES/body2/SwordHit" to="." method="_on_SwordHit_area_entered"]
 [connection signal="body_entered" from="SPRITES/body2/SwordHit" to="." method="_on_SwordHit_body_entered"]
 [connection signal="animation_finished" from="SPRITES/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

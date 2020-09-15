@@ -176,6 +176,8 @@ func _get_transition(delta):
 						return states.run
 					elif parent.velocity.x == 0:
 						return states.idle
+			elif parent.is_rolling:
+					return states.rolling
 		states.atack:
 			if !parent.is_atacking:
 				return states.idle
