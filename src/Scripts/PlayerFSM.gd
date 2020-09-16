@@ -26,6 +26,7 @@ var head_direction = Vector2()
 var rolling_speed = 600
 var jump_count = 0
 
+var can_stand_up = true
 var atack_combo = 0
 var can_atack = true
 
@@ -65,6 +66,9 @@ onready var ivunerability = $Ivunerability
 
 onready var particles_wall_slide1 = $SPRITES/Particles2D
 onready var particles_wall_slide2 = $SPRITES/Particles2D2
+
+onready var teto_detection = $WallRaycast/tetoDetection_1
+
 
 func _turning_on_skills():
 	if Input.is_key_pressed(KEY_J):
@@ -244,6 +248,14 @@ func _on_Roll_Timer_timeout() -> void:
 func _on_Ivunerability_timeout() -> void:
 	is_stuned = false
 
-
 func _on_Area2D_body_entered(body: Node) -> void:
 	have_double_jump = true
+
+
+func _on_tetoDetection_1_area_entered(area: Area2D) -> void:
+	can_stand_up = false
+	print('tem teto aqui caraio')
+
+func _on_tetoDetection_1_area_exited(area: Area2D) -> void:
+	can_stand_up = true
+	print('não tem teto não')

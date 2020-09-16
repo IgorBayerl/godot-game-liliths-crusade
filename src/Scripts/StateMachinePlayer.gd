@@ -14,6 +14,7 @@ func _ready() -> void:
 	call_deferred("set_state", states.idle)
 	
 func _input(event):
+	
 	if[states.idle, states.run ].has(state):
 		#JUMP
 		if event.is_action_pressed("jump"):
@@ -140,17 +141,20 @@ func _get_transition(delta):
 				return states.fall
 		states.rolling:
 			if !parent.is_rolling:
-				if parent.is_on_floor():
-					if parent.is_crouched:
-						return states.crouch
-					if parent.velocity.x != 0:
-						return states.run
-					elif parent.velocity.x == 0:
-						return states.idle
-				elif parent.wall_direction == 0:
-					return states.fall
-				elif parent.wall_direction != 0 and parent.have_wall_jump:
-					return states.wall_slide
+				if parent.can_stand_up:
+					if parent.is_on_floor():
+						if parent.is_crouched:
+							return states.crouch
+						if parent.velocity.x != 0:
+							return states.run
+						elif parent.velocity.x == 0:
+							return states.idle
+					elif parent.wall_direction == 0:
+						return states.fall
+					elif parent.wall_direction != 0 and parent.have_wall_jump:
+						return states.wall_slide
+				elif !parent.can_stand_up:
+					return states.crouch
 		states.stun:
 			if !parent.is_stuned:
 				if !parent.is_on_floor():
@@ -166,7 +170,7 @@ func _get_transition(delta):
 					elif parent.velocity.x == 0:
 						return states.idle
 		states.crouch:
-			if !parent.is_crouched:
+			if !parent.is_crouched and parent.can_stand_up:
 				if parent.is_stuned:
 					return states.stun
 				if parent.is_rolling:

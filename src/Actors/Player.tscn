@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://src/Scripts/PlayerFSM.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -22,7 +22,7 @@ shader_param/flash_color = Color( 1, 1, 1, 1 )
 shader_param/flash_modifier = 0.0
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 33.2077, 75.0774 )
+extents = Vector2( 35.7886, 51.4805 )
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 11.8421, 28.6792 )
@@ -645,6 +645,9 @@ animations = [ {
 "speed": 0.0
 } ]
 
+[sub_resource type="RectangleShape2D" id=16]
+extents = Vector2( 36.8145, 32.1031 )
+
 [sub_resource type="Animation" id=14]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:material:shader_param/flash_modifier")
@@ -691,7 +694,7 @@ texture = ExtResource( 2 )
 [node name="Colision" type="CollisionShape2D" parent="." groups=[
 "Player",
 ]]
-position = Vector2( -0.116311, 44.7364 )
+position = Vector2( -0.174973, 68.6014 )
 shape = SubResource( 2 )
 
 [node name="SPRITES" type="Node2D" parent="."]
@@ -704,7 +707,7 @@ scale = Vector2( 2.89255, 2.89255 )
 texture = ExtResource( 13 )
 vframes = 6
 hframes = 5
-frame = 18
+frame = 27
 
 [node name="SwordHit" type="Area2D" parent="SPRITES/body2"]
 collision_layer = 4
@@ -717,7 +720,7 @@ disabled = true
 
 [node name="Head" type="Sprite" parent="SPRITES"]
 use_parent_material = true
-position = Vector2( 3.06244, -20.126 )
+position = Vector2( 3.43114, 37.76 )
 scale = Vector2( 1.93084, 1.99071 )
 texture = ExtResource( 8 )
 
@@ -753,7 +756,7 @@ anims/jump = SubResource( 11 )
 anims/wall_slide = SubResource( 12 )
 
 [node name="Mira" type="Position2D" parent="."]
-position = Vector2( 2.35871, 27.6472 )
+position = Vector2( -5.384, 70.4165 )
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_group_": true
@@ -846,6 +849,14 @@ enabled = true
 cast_to = Vector2( -20, 0 )
 collision_mask = 64
 
+[node name="tetoDetection_1" type="Area2D" parent="WallRaycast"]
+position = Vector2( 1.30863, 20.7731 )
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallRaycast/tetoDetection_1"]
+position = Vector2( -0.492167, -33.4666 )
+shape = SubResource( 16 )
+
 [node name="WallSlideSticknesTimer" type="Timer" parent="."]
 wait_time = 0.1
 one_shot = true
@@ -877,6 +888,8 @@ anims/piscando = SubResource( 15 )
 [connection signal="animation_finished" from="SPRITES/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="timeout" from="MiliAtack_Timer" to="." method="_on_MiliAtack_Timer_timeout"]
 [connection signal="timeout" from="Roll_Timer" to="." method="_on_Roll_Timer_timeout"]
+[connection signal="area_entered" from="WallRaycast/tetoDetection_1" to="." method="_on_tetoDetection_1_area_entered"]
+[connection signal="area_exited" from="WallRaycast/tetoDetection_1" to="." method="_on_tetoDetection_1_area_exited"]
 [connection signal="timeout" from="WallSlideSticknesTimer" to="StateMachine" method="_on_WallSlideSticknesTimer_timeout"]
 [connection signal="timeout" from="WalljumpMovementBlocker" to="." method="_on_WalljumpMovementBlocker_timeout"]
 [connection signal="timeout" from="Ivunerability" to="." method="_on_Ivunerability_timeout"]
