@@ -244,6 +244,7 @@ func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 
 func _on_Roll_Timer_timeout() -> void:
 	is_rolling = false
+	_verify_if_can_standup()
 
 func _on_Ivunerability_timeout() -> void:
 	is_stuned = false
@@ -251,11 +252,23 @@ func _on_Ivunerability_timeout() -> void:
 func _on_Area2D_body_entered(body: Node) -> void:
 	have_double_jump = true
 
-
-func _on_tetoDetection_1_area_entered(area: Area2D) -> void:
+func _on_tetoDetection_1_body_entered(body):
 	can_stand_up = false
 	print('tem teto aqui caraio')
-
-func _on_tetoDetection_1_area_exited(area: Area2D) -> void:
+func _on_tetoDetection_1_body_exited(body):
 	can_stand_up = true
 	print('não tem teto não')
+
+
+func _verify_if_can_standup():
+	if can_stand_up and !Input.is_action_pressed("ctrl"):
+		is_crouched = false
+	elif !can_stand_up:
+		is_crouched = true
+
+
+
+
+
+
+

@@ -33,7 +33,7 @@ func _input(event):
 			if event.is_action_pressed("hability"):
 				parent.is_rolling = true
 	elif event.is_action_released("ctrl"):
-			parent.is_crouched = false	
+			parent.is_crouched = false
 			
 	elif state == states.wall_slide:
 		if event.is_action_pressed("jump"):
@@ -50,7 +50,10 @@ func _input(event):
 	if state == states.jump:
 		if event.is_action_released("jump") and parent.velocity.y < parent.min_jump_velocity:
 			parent.velocity.y = parent. min_jump_velocity
-	
+	if state == states.crouch:
+		if state != states.rolling:
+			if event.is_action_pressed("hability"):
+				parent.is_rolling = true
 	
 
 func _state_logic(delta):
@@ -155,6 +158,7 @@ func _get_transition(delta):
 						return states.wall_slide
 				elif !parent.can_stand_up:
 					return states.crouch
+					parent.is_crouched = true
 		states.stun:
 			if !parent.is_stuned:
 				if !parent.is_on_floor():
@@ -170,18 +174,19 @@ func _get_transition(delta):
 					elif parent.velocity.x == 0:
 						return states.idle
 		states.crouch:
-			if !parent.is_crouched and parent.can_stand_up:
-				if parent.is_stuned:
-					return states.stun
-				if parent.is_rolling:
-					return states.rolling
-				elif !parent.is_rolling:
-					if parent.velocity.x != 0:
-						return states.run
-					elif parent.velocity.x == 0:
-						return states.idle
+			if !parent.is_crouched :
+				if parent.can_stand_up:
+					if parent.is_stuned:
+						return states.stun
+					if parent.is_rolling:
+						return states.rolling
+					elif !parent.is_rolling:
+						if parent.velocity.x != 0:
+							return states.run
+						elif parent.velocity.x == 0:
+							return states.idle
 			elif parent.is_rolling:
-					return states.rolling
+				return states.rolling
 		states.atack:
 			if !parent.is_atacking:
 				return states.idle
@@ -215,16 +220,16 @@ func _enter_state(new_state, old_state):
 			print('fall')
 			parent.anim_player.play("fall")
 		states.wall_slide:
-			parent.jump_count = 0
 			print('wall_slide')
+			parent.jump_count = 0
 			parent.anim_player.play("wall_slide")
 			parent.is_wall_sliding = true
 			parent.particles_wall_slide1.emitting = true
 			parent.particles_wall_slide2.emitting = true
 			parent.get_node("SPRITES").scale.x = -parent.wall_direction
 		states.rolling:
-			parent.jump_count = 0
 			print('lets rolla')
+			parent.jump_count = 0
 			parent.anim_player.play("crouched")
 			parent._rolling_direction()
 		states.stun:
@@ -232,6 +237,7 @@ func _enter_state(new_state, old_state):
 			parent.velocity = Vector2()
 			parent.anim_effect.play("piscando")
 		states.crouch:
+			parent.is_crouched = true
 			parent.jump_count = 0
 			print('crouched')
 			parent.anim_player.play("crouched")

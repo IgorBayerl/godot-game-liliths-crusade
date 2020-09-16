@@ -14,7 +14,7 @@ func _ready() -> void:
 		if(parentSignal["name"] == BloodSplatterSignalName):
 			get_parent().connect(BloodSplatterSignalName,self, "on_parent_death")
 	rnd.randomize()
-	
+
 func on_parent_death(parent : Node):
 	splatter()
 	
