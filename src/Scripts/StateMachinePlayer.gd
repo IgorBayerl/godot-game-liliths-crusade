@@ -32,7 +32,7 @@ func _input(event):
 		if state != states.rolling:
 			if event.is_action_pressed("hability"):
 				parent.is_rolling = true
-	elif event.is_action_released("ctrl"):
+	elif event.is_action_released("ctrl") and parent.can_stand_up:
 			parent.is_crouched = false
 			
 	elif state == states.wall_slide:
@@ -76,8 +76,10 @@ func _state_logic(delta):
 		parent._apply_movement()
 		if state == states.rolling:
 			parent._roll()
+			parent._verify_if_can_standup()
 	parent._update_effect_animation()
 	parent._apply_gravity(delta)
+	
 
 func _get_transition(delta):
 	match state:

@@ -646,7 +646,7 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=14]
-extents = Vector2( 32.9245, 29.832 )
+extents = Vector2( 19.7543, 29.1231 )
 
 [sub_resource type="Animation" id=15]
 tracks/0/type = "value"
@@ -867,6 +867,7 @@ wait_time = 0.5
 one_shot = true
 
 [node name="state_label" type="Label" parent="."]
+visible = false
 margin_left = -24.025
 margin_top = -106.689
 margin_right = 45.975

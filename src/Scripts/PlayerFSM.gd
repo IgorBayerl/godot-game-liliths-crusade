@@ -258,6 +258,7 @@ func _on_tetoDetection_1_body_entered(body):
 func _on_tetoDetection_1_body_exited(body):
 	can_stand_up = true
 	print('não tem teto não')
+	_verify_if_can_standup()
 
 
 func _verify_if_can_standup():
