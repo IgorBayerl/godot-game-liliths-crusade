@@ -234,7 +234,7 @@ func _enter_state(new_state, old_state):
 		states.rolling:
 			print('lets rolla')
 			parent.jump_count = 0
-			parent.anim_player.play("crouched")
+			parent.anim_player.play("Roll")
 			parent._rolling_direction()
 		states.stun:
 			print('stunned')

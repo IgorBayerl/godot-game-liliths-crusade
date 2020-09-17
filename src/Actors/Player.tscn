@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://src/Scripts/PlayerFSM.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -292,11 +292,23 @@ tracks/5/keys = {
 "update": 0,
 "values": [ Vector2( 33.2077, 75.0774 ) ]
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath("../Head:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
-[sub_resource type="Animation" id=8]
-length = 0.65
-loop = true
-step = 0.07
+[sub_resource type="Animation" id=17]
+resource_name = "Roll"
+length = 0.5
+step = 0.06
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
@@ -304,84 +316,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.07, 0.14, 0.21, 0.28, 0.35, 0.42, 0.49, 0.56, 0.9 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.06, 0.12, 0.18, 0.24, 0.3, 0.36 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("SwordHit/CollisionShape2D:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, true ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("../Head:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 0.1, 0.4, 0.7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 5.49709, -19.8999 ), Vector2( 5.14908, -19.8999 ), Vector2( 5.49709, -20.9937 ), Vector2( 5.49709, -19.3282 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("../../Mira:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( -1.697, 29.4907 ) ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("../../Colision:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( -0.116311, 44.7364 ) ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("../../Colision:shape:extents")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 33.2077, 75.0774 ) ]
-}
-
-[sub_resource type="Animation" id=9]
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 27 ]
+"values": [ 15, 16, 17, 18, 19, 20, 21 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("../Head:position")
@@ -431,6 +369,182 @@ tracks/4/keys = {
 "update": 0,
 "values": [ Vector2( 35.7886, 51.4805 ) ]
 }
+tracks/5/type = "value"
+tracks/5/path = NodePath("../Head:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=8]
+length = 0.65
+loop = true
+step = 0.07
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.07, 0.14, 0.21, 0.28, 0.35, 0.42, 0.49, 0.56 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SwordHit/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../Head:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.21, 0.42, 0.56 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -0.541612, -27.8718 ), Vector2( 0.387458, -26.9427 ), Vector2( -2.37864, -28.7797 ), Vector2( -2.65405, -28.2271 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../../Mira:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -1.697, 29.4907 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../../Colision:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -0.116311, 44.7364 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../../Colision:shape:extents")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 33.2077, 75.0774 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("../Head:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=9]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 21, 22 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Head:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 3.43114, 37.76 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../../Mira:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -5.384, 70.4165 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../../Colision:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -0.174973, 68.6014 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../../Colision:shape:extents")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 35.7886, 51.4805 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../Head:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=10]
 length = 0.4
@@ -442,10 +556,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 14, 15, 16, 17 ]
+"values": [ 10 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("../../Mira:position")
@@ -494,6 +608,18 @@ tracks/4/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 5.51919, -14.4411 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../Head:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=11]
@@ -506,10 +632,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 11, 12, 13 ]
+"values": [ 11 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("../../Mira:position")
@@ -557,7 +683,19 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 5.51919, -14.4411 ) ]
+"values": [ Vector2( 2.39066, -25.1303 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../Head:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=12]
@@ -573,7 +711,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ 0, 1, 2 ]
+"values": [ 12, 13, 14 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("../../Mira:position")
@@ -621,7 +759,19 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 7.60723, -16.5292 ) ]
+"values": [ Vector2( 0.985631, -23.1508 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../Head:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
 [sub_resource type="SpriteFrames" id=13]
@@ -689,12 +839,12 @@ use_parent_material = true
 
 [node name="body2" type="Sprite" parent="SPRITES"]
 use_parent_material = true
-position = Vector2( 6.73291, 34.5414 )
+position = Vector2( 6.11283, 34.5414 )
 scale = Vector2( 1.7603, 1.7603 )
 texture = ExtResource( 13 )
-vframes = 4
-hframes = 3
-frame = 2
+vframes = 5
+hframes = 5
+frame = 23
 
 [node name="SwordHit" type="Area2D" parent="SPRITES/body2"]
 collision_layer = 4
@@ -703,11 +853,11 @@ collision_mask = 1059
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SPRITES/body2/SwordHit"]
 position = Vector2( 19.928, 0.941169 )
 shape = SubResource( 3 )
-disabled = true
 
 [node name="Head" type="Sprite" parent="SPRITES"]
 use_parent_material = true
-position = Vector2( 5.25155, -20.222 )
+position = Vector2( 0.97439, -21.5181 )
+rotation = 0.174533
 scale = Vector2( 1.93084, 1.99071 )
 texture = ExtResource( 8 )
 
@@ -736,6 +886,7 @@ root_node = NodePath("../body2")
 anims/Atack1 = SubResource( 5 )
 anims/Atack2 = SubResource( 6 )
 anims/Idle = SubResource( 7 )
+anims/Roll = SubResource( 17 )
 anims/Running = SubResource( 8 )
 anims/crouched = SubResource( 9 )
 anims/fall = SubResource( 10 )
@@ -743,7 +894,7 @@ anims/jump = SubResource( 11 )
 anims/wall_slide = SubResource( 12 )
 
 [node name="Mira" type="Position2D" parent="."]
-position = Vector2( -1.697, 29.4907 )
+position = Vector2( -1.3283, 30.2281 )
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_group_": true
@@ -792,7 +943,7 @@ wait_time = 0.5
 one_shot = true
 
 [node name="Roll_Timer" type="Timer" parent="."]
-wait_time = 0.3
+wait_time = 0.4
 one_shot = true
 
 [node name="Dash_sound" type="AudioStreamPlayer" parent="."]
