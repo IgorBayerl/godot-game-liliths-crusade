@@ -13,7 +13,7 @@ const WALL_JUMP_VELOCITY = Vector2(400 , -500)
 
 var checkpoint_position: Vector2
 
-var move_speed = 300
+var move_speed = 250
 var velocity = Vector2()
 var move_direction
 var move_input_speed = 0
@@ -117,7 +117,7 @@ func _update_sprite_direction():
 
 func _get_h_weight():
 	if is_on_floor():
-		return 0.2
+		return 0.6
 	else:
 		if move_direction == 0:
 			return 0.02

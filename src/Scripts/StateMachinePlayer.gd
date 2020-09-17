@@ -105,6 +105,8 @@ func _get_transition(delta):
 				return states.stun
 			if parent.is_crouched:
 				return states.crouch
+			if parent.is_atacking:
+				return states.atack
 			if !parent.is_on_floor():
 				if parent.velocity.y < 0:
 					return states.jump
@@ -246,6 +248,7 @@ func _enter_state(new_state, old_state):
 			parent.velocity.x = 0
 		states.atack:
 			parent.anim_player.play("Atack1")
+			parent.velocity.x = 0
 		states.air_atack:
 			parent.anim_player.play("Atack2")
 	

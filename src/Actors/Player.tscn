@@ -12,7 +12,7 @@
 [ext_resource path="res://src/Sprites/armas/Chamas.png" type="Texture" id=10]
 [ext_resource path="res://src/Actors/Efeitos/BloodSplitter.tscn" type="PackedScene" id=11]
 [ext_resource path="res://src/Scripts/StateMachinePlayer.gd" type="Script" id=12]
-[ext_resource path="res://src/Assets/Sprites/PLAYER/Player.png" type="Texture" id=13]
+[ext_resource path="res://src/Assets/Sprites/PLAYER/Player_Sheet.png" type="Texture" id=13]
 [ext_resource path="res://src/flash_shader.shader" type="Shader" id=14]
 [ext_resource path="res://src/Assets/Sprites/gun.png" type="Texture" id=15]
 
@@ -227,10 +227,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ 10, 12, 13, 10 ]
+"values": [ 10, 11, 10 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("SwordHit/CollisionShape2D:disabled")
@@ -256,22 +256,20 @@ tracks/2/keys = {
 "update": 0,
 "values": [ Vector2( -1.46168, -25.6941 ), Vector2( -2.85371, -27.7822 ) ]
 }
-tracks/3/type = "method"
-tracks/3/path = NodePath("../..")
+tracks/3/type = "value"
+tracks/3/path = NodePath("../../Mira:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0.3 ),
+"times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "_atack_finish"
-} ]
+"update": 0,
+"values": [ Vector2( -1.3283, 30.2281 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("../../Mira:position")
+tracks/4/path = NodePath("../../Colision:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -280,10 +278,10 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -1.3283, 30.2281 ) ]
+"values": [ Vector2( -0.116311, 44.7364 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("../../Colision:position")
+tracks/5/path = NodePath("../../Colision:shape:extents")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -292,24 +290,13 @@ tracks/5/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -0.116311, 44.7364 ) ]
-}
-tracks/6/type = "value"
-tracks/6/path = NodePath("../../Colision:shape:extents")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
 "values": [ Vector2( 33.2077, 75.0774 ) ]
 }
 
 [sub_resource type="Animation" id=8]
-length = 0.7
+length = 0.65
 loop = true
+step = 0.07
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
@@ -317,10 +304,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.07, 0.14, 0.21, 0.28, 0.35, 0.42, 0.49, 0.56, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 3, 4, 5, 6, 7, 8, 9 ]
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("SwordHit/CollisionShape2D:disabled")
@@ -702,12 +689,12 @@ use_parent_material = true
 
 [node name="body2" type="Sprite" parent="SPRITES"]
 use_parent_material = true
-position = Vector2( -0.737395, 32.8144 )
-scale = Vector2( 2.89255, 2.89255 )
+position = Vector2( 6.73291, 34.5414 )
+scale = Vector2( 1.7603, 1.7603 )
 texture = ExtResource( 13 )
-vframes = 6
-hframes = 5
-frame = 10
+vframes = 4
+hframes = 3
+frame = 2
 
 [node name="SwordHit" type="Area2D" parent="SPRITES/body2"]
 collision_layer = 4
@@ -720,7 +707,7 @@ disabled = true
 
 [node name="Head" type="Sprite" parent="SPRITES"]
 use_parent_material = true
-position = Vector2( -1.46168, -25.6941 )
+position = Vector2( 5.25155, -20.222 )
 scale = Vector2( 1.93084, 1.99071 )
 texture = ExtResource( 8 )
 
@@ -756,7 +743,7 @@ anims/jump = SubResource( 11 )
 anims/wall_slide = SubResource( 12 )
 
 [node name="Mira" type="Position2D" parent="."]
-position = Vector2( -1.3283, 30.2281 )
+position = Vector2( -1.697, 29.4907 )
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_group_": true
