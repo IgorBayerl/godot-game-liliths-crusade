@@ -51,8 +51,9 @@ __meta__ = {
 }
 
 [node name="CenterContainer" parent="Panel/CenterContainer" instance=ExtResource( 3 )]
-position = Vector2( 42.3466, -4.35445 )
+position = Vector2( 59.1645, 12.8839 )
 scale = Vector2( 1.31784, 1.31784 )
+centered = true
 
 [node name="Label" type="Label" parent="Panel"]
 anchor_left = 1.0

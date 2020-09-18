@@ -1,20 +1,26 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://src/Scripts/PlayerFSM.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 [ext_resource path="res://src/Scripts/Mira.gd" type="Script" id=3]
-[ext_resource path="res://src/Sprites/armas/Rifle.png" type="Texture" id=4]
+[ext_resource path="res://src/Assets/Sprites/inventoryGuns/1.png" type="Texture" id=4]
 [ext_resource path="res://src/Assets/Audios/Effects/SHOOT.wav" type="AudioStream" id=5]
 [ext_resource path="res://src/Assets/Audios/Effects/DASH.wav" type="AudioStream" id=6]
 [ext_resource path="res://src/Actors/Camera2D.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/Assets/Sprites/PLAYER/Player_Head.png" type="Texture" id=8]
-[ext_resource path="res://src/Sprites/armas/pistola.png" type="Texture" id=9]
-[ext_resource path="res://src/Sprites/armas/Chamas.png" type="Texture" id=10]
+[ext_resource path="res://src/Assets/Sprites/inventoryGuns/2.png" type="Texture" id=9]
+[ext_resource path="res://src/Assets/Sprites/inventoryGuns/3.png" type="Texture" id=10]
 [ext_resource path="res://src/Actors/Efeitos/BloodSplitter.tscn" type="PackedScene" id=11]
 [ext_resource path="res://src/Scripts/StateMachinePlayer.gd" type="Script" id=12]
 [ext_resource path="res://src/Assets/Sprites/PLAYER/Player_Sheet.png" type="Texture" id=13]
 [ext_resource path="res://src/flash_shader.shader" type="Shader" id=14]
 [ext_resource path="res://src/Assets/Sprites/gun.png" type="Texture" id=15]
+[ext_resource path="res://src/Assets/Sprites/inventoryGuns/5.png" type="Texture" id=16]
+[ext_resource path="res://src/Assets/Sprites/inventoryGuns/6.png" type="Texture" id=17]
+[ext_resource path="res://src/Assets/Sprites/inventoryGuns/4.png" type="Texture" id=18]
+[ext_resource path="res://src/Assets/Sprites/inventoryGuns/7.png" type="Texture" id=19]
+[ext_resource path="res://src/Assets/Sprites/inventoryGuns/9.png" type="Texture" id=20]
+[ext_resource path="res://src/Assets/Sprites/inventoryGuns/8.png" type="Texture" id=21]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 14 )
@@ -776,7 +782,7 @@ tracks/5/keys = {
 
 [sub_resource type="SpriteFrames" id=14]
 animations = [ {
-"frames": [ ExtResource( 9 ), ExtResource( 4 ), ExtResource( 10 ) ],
+"frames": [ ExtResource( 4 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 18 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 19 ), ExtResource( 21 ), ExtResource( 20 ) ],
 "loop": false,
 "name": "Guns",
 "speed": 0.0
@@ -914,7 +920,6 @@ position = Vector2( 29.8494, -6.98813 )
 scale = Vector2( 1.99719, 1.99719 )
 frames = SubResource( 14 )
 animation = "Guns"
-frame = 1
 
 [node name="SoundEffects" type="Node" parent="Mira"]
 
