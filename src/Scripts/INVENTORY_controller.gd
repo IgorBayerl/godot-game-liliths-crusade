@@ -5,6 +5,8 @@ extends Control
 var info
 
 onready var player = get_parent().get_parent().get_parent().get_node("Player")
+onready var mainController = get_parent().get_parent().get_parent()
+
 
 func _ready() -> void:
 	$Background/Container/Guns/VBoxGunsList.grab_focus()

@@ -7,7 +7,7 @@
 [ext_resource path="res://src/Assets/Audios/Effects/SHOOT.wav" type="AudioStream" id=5]
 [ext_resource path="res://src/Assets/Audios/Effects/DASH.wav" type="AudioStream" id=6]
 [ext_resource path="res://src/Actors/Camera2D.tscn" type="PackedScene" id=7]
-[ext_resource path="res://src/Assets/Sprites/PLAYER/HEAD.png" type="Texture" id=8]
+[ext_resource path="res://src/Assets/Sprites/PLAYER/Player_Head.png" type="Texture" id=8]
 [ext_resource path="res://src/Sprites/armas/pistola.png" type="Texture" id=9]
 [ext_resource path="res://src/Sprites/armas/Chamas.png" type="Texture" id=10]
 [ext_resource path="res://src/Actors/Efeitos/BloodSplitter.tscn" type="PackedScene" id=11]
@@ -22,7 +22,7 @@ shader_param/flash_color = Color( 1, 1, 1, 1 )
 shader_param/flash_modifier = 0.0
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 33.2077, 75.0774 )
+extents = Vector2( 35.7886, 51.4805 )
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 11.8421, 28.6792 )
@@ -305,7 +305,7 @@ tracks/6/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=8]
 resource_name = "Roll"
 length = 0.5
 step = 0.06
@@ -382,7 +382,7 @@ tracks/5/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=9]
 length = 0.65
 loop = true
 step = 0.07
@@ -471,7 +471,7 @@ tracks/6/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=10]
 length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
@@ -546,7 +546,7 @@ tracks/5/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=11]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -622,7 +622,7 @@ tracks/5/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=12]
 length = 0.3
 loop = true
 tracks/0/type = "value"
@@ -698,7 +698,7 @@ tracks/5/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=13]
 length = 0.3
 loop = true
 tracks/0/type = "value"
@@ -774,7 +774,7 @@ tracks/5/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="SpriteFrames" id=13]
+[sub_resource type="SpriteFrames" id=14]
 animations = [ {
 "frames": [ ExtResource( 9 ), ExtResource( 4 ), ExtResource( 10 ) ],
 "loop": false,
@@ -782,10 +782,10 @@ animations = [ {
 "speed": 0.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=14]
+[sub_resource type="RectangleShape2D" id=15]
 extents = Vector2( 19.7543, 29.1231 )
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=16]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:material:shader_param/flash_modifier")
 tracks/0/interp = 1
@@ -799,7 +799,7 @@ tracks/0/keys = {
 "values": [ 0.0 ]
 }
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=17]
 length = 0.2
 loop = true
 tracks/0/type = "value"
@@ -831,7 +831,7 @@ texture = ExtResource( 2 )
 [node name="Colision" type="CollisionShape2D" parent="." groups=[
 "Player",
 ]]
-position = Vector2( -0.116311, 44.7364 )
+position = Vector2( -0.174973, 68.6014 )
 shape = SubResource( 2 )
 
 [node name="SPRITES" type="Node2D" parent="."]
@@ -844,7 +844,7 @@ scale = Vector2( 1.7603, 1.7603 )
 texture = ExtResource( 13 )
 vframes = 5
 hframes = 5
-frame = 11
+frame = 15
 
 [node name="SwordHit" type="Area2D" parent="SPRITES/body2"]
 collision_layer = 4
@@ -856,9 +856,9 @@ shape = SubResource( 3 )
 disabled = true
 
 [node name="Head" type="Sprite" parent="SPRITES"]
+visible = false
 use_parent_material = true
-position = Vector2( -2.85371, -27.7822 )
-rotation = 0.174533
+position = Vector2( 3.43114, 37.76 )
 scale = Vector2( 1.93084, 1.99071 )
 texture = ExtResource( 8 )
 
@@ -887,15 +887,15 @@ root_node = NodePath("../body2")
 anims/Atack1 = SubResource( 5 )
 anims/Atack2 = SubResource( 6 )
 anims/Idle = SubResource( 7 )
-anims/Roll = SubResource( 17 )
-anims/Running = SubResource( 8 )
-anims/crouched = SubResource( 9 )
-anims/fall = SubResource( 10 )
-anims/jump = SubResource( 11 )
-anims/wall_slide = SubResource( 12 )
+anims/Roll = SubResource( 8 )
+anims/Running = SubResource( 9 )
+anims/crouched = SubResource( 10 )
+anims/fall = SubResource( 11 )
+anims/jump = SubResource( 12 )
+anims/wall_slide = SubResource( 13 )
 
 [node name="Mira" type="Position2D" parent="."]
-position = Vector2( -1.3283, 30.2281 )
+position = Vector2( -5.384, 70.4165 )
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_group_": true
@@ -912,7 +912,7 @@ texture = ExtResource( 15 )
 [node name="GunSprite" type="AnimatedSprite" parent="Mira/Arma"]
 position = Vector2( 29.8494, -6.98813 )
 scale = Vector2( 1.99719, 1.99719 )
-frames = SubResource( 13 )
+frames = SubResource( 14 )
 animation = "Guns"
 frame = 1
 
@@ -995,7 +995,7 @@ collision_mask = 64
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WallRaycast/tetoDetection_1"]
 position = Vector2( -2.05643, -20.9525 )
-shape = SubResource( 14 )
+shape = SubResource( 15 )
 
 [node name="WallSlideSticknesTimer" type="Timer" parent="."]
 wait_time = 0.1
@@ -1021,8 +1021,8 @@ wait_time = 0.5
 one_shot = true
 
 [node name="Effects_animationPlayer" type="AnimationPlayer" parent="."]
-anims/normal = SubResource( 15 )
-anims/piscando = SubResource( 16 )
+anims/normal = SubResource( 16 )
+anims/piscando = SubResource( 17 )
 [connection signal="area_entered" from="SPRITES/body2/SwordHit" to="." method="_on_SwordHit_area_entered"]
 [connection signal="body_entered" from="SPRITES/body2/SwordHit" to="." method="_on_SwordHit_body_entered"]
 [connection signal="animation_finished" from="SPRITES/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

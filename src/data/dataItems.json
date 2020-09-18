@@ -40,7 +40,7 @@
 			"name": "rifle",
 			"gun_id": 2,
 			"id": 1,
-			"ammo": 700,
+			"ammo": 200,
 			"ammo_type": 2,
 			"automatica": true,
 			"bullet_speed": 350,
@@ -93,7 +93,7 @@
 			"name": "pistol",
 			"gun_id": 1,
 			"id": 1,
-			"ammo": 700,
+			"ammo": 150,
 			"ammo_type": 2,
 			"automatica": true,
 			"bullet_speed": 350,
@@ -108,7 +108,7 @@
 		},
 		"2": {
 			"name": "rifle",
-			"gun_id": 2,
+			"gun_id": 3,
 			"id": 2,
 			"ammo": 25,
 			"ammo_type": 1,
@@ -126,7 +126,7 @@
 	},
 	"type4": {
 		"1": {
-			"name": "rifle",
+			"name": "150",
 			"gun_id": 2,
 			"id": 1,
 			"ammo": 700,

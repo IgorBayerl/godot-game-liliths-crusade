@@ -33,6 +33,9 @@ margin_right = 93.0
 margin_bottom = 57.0
 texture = ExtResource( 2 )
 stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="CenterContainer" type="CenterContainer" parent="Panel"]
 anchor_left = 0.5
