@@ -63,7 +63,7 @@ func _update_ammo(gun, ammo):
 
 func _update_gun():
 	var gun_on_hand_str = str("type" , gun_on_hand)
-
+	
 	print("gun_on_hand_str === " ,gun_on_hand_str)
 	for i in guns_info[gun_on_hand_str]:
 		if guns_info[gun_on_hand_str][i].selected == true:
@@ -122,7 +122,8 @@ func _select_gun(gun):
 
 
 func atirando():
-	player_GUNS_information[selected_gun].ammo -= 1
+#	player_GUNS_information[selected_gun].ammo -= 1
+	guns_info[str("type", gun_on_hand)]["1"].ammo -= 1
 
 
 

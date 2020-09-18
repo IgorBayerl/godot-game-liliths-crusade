@@ -844,7 +844,7 @@ scale = Vector2( 1.7603, 1.7603 )
 texture = ExtResource( 13 )
 vframes = 5
 hframes = 5
-frame = 23
+frame = 11
 
 [node name="SwordHit" type="Area2D" parent="SPRITES/body2"]
 collision_layer = 4
@@ -853,10 +853,11 @@ collision_mask = 1059
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SPRITES/body2/SwordHit"]
 position = Vector2( 19.928, 0.941169 )
 shape = SubResource( 3 )
+disabled = true
 
 [node name="Head" type="Sprite" parent="SPRITES"]
 use_parent_material = true
-position = Vector2( 0.97439, -21.5181 )
+position = Vector2( -2.85371, -27.7822 )
 rotation = 0.174533
 scale = Vector2( 1.93084, 1.99071 )
 texture = ExtResource( 8 )

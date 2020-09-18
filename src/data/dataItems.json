@@ -4,7 +4,7 @@
 			"id": 1,
 			"name": "pistol",
 			"gun_id": 1,
-			"ammo": 700,
+			"ammo": 20,
 			"ammo_type": 2,
 			"automatica": false,
 			"bullet_speed": 350,

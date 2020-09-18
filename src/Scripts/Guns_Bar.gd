@@ -8,6 +8,10 @@ var selected_gun = 0
 var normal_size = 1.0
 var selected_size = 1.1
 
+onready var label = $Panel/Label
+
+onready var mainController = get_parent().get_parent().get_parent()
+
 func addItem( value ):
 	
 	var item = ListItem.instance()
@@ -36,6 +40,7 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	pass
+#	pass
+	label.text = str(mainController.guns_info[str("type", mainController.gun_on_hand)]["1"].ammo)
 #	$list.get_child(selected_gun).rect_scale = Vector2(selected_size,selected_size)
 

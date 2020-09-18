@@ -28,7 +28,7 @@ func _process(delta: float) -> void:
 
 func _try_shoot():
 	if is_able_to_fire:
-		if Main_controller.player_GUNS_information[Main_controller.selected_gun].ammo > 0:
+		if Main_controller.guns_info[str("type", Main_controller.gun_on_hand)]["1"].ammo > 0:
 			if automatica:
 				if Input.is_action_pressed("shoot") and can_fire:
 					instanciate_bullet()
