@@ -28,13 +28,20 @@ func _ready() -> void:
 			_info_to_label(guns[i])
 #			print("The guns selected is : ", i)
 		var item = slot.instance()
-		item.get_child(0).frame = guns[i].gun_id-1
+		item.get_node("CenterContainer").frame = guns[i].gun_id-1
+		
+		if !guns[i].unlocked:
+			item.get_node("CenterContainer").modulate.r = 0
+			item.get_node("CenterContainer").modulate.g = 0
+			item.get_node("CenterContainer").modulate.b = 0
+		
 		$GunSlideBar.add_child(item)
 	_select_gun(0)
 	
 func _info_to_label(info):
 	inventory_controller.info = info
-	
+
+
 func _select_gun(direction):
 	
 	var temp_select_id
@@ -43,10 +50,10 @@ func _select_gun(direction):
 		if guns[i].selected == true :
 			temp_select_id = guns[i].id
 		guns[i].selected = false
+		
 		$GunSlideBar.get_child(int(i)-1).get_node("focus").visible = false
 	
 	new_selected = int(temp_select_id) + int(direction)
-	
 	
 	if new_selected == guns.size()+1:
 		new_selected = 1
@@ -55,12 +62,25 @@ func _select_gun(direction):
 	guns[str(new_selected)].selected = true
 #	print("child count: ", $GunSlideBar.get_child(new_selected-1).name)
 	info_gun = guns[str(new_selected)]
+#	$GunSlideBar.get_child(new_selected-1).get_node("fundo").visible = true
+#	if is_on_focus:
 	$GunSlideBar.get_child(new_selected-1).get_node("focus").visible = true
 
+func _tira_focus():
+	for i in guns:
+		$GunSlideBar.get_child(int(i)-1).get_node("focus").visible = false
 
+func _confirm_selection():
+	for i in guns:
+		$GunSlideBar.get_child(int(i)-1).get_node("fundo").visible = false
+		
+		
 
 func _unhandled_input(event: InputEvent) -> void:
+#	if !is_on_focus:
+#		_tira_focus()
 	if is_on_focus:
+#		_select_gun(0)
 		_info_to_label(info_gun)
 		if event.is_action_pressed("ui_right"):
 #			print("right ", self.type)
@@ -68,6 +88,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		if event.is_action_pressed("ui_left"):
 #			print("left ", self.type)
 			_select_gun(-1)
+		if event.is_action_pressed("shoot"):
+			_confirm_selection()
 
 
 

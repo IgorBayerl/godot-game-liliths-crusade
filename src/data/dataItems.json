@@ -14,7 +14,7 @@
 			"random_rate": 0.05,
 			"type": 3,
 			"selected": true,
-			"unlocked": false,
+			"unlocked": true,
 			"using": false
 		},
 		"2": {
@@ -101,7 +101,7 @@
 			"random_rate": 0.08,
 			"type": 3,
 			"selected": true,
-			"unlocked": false,
+			"unlocked": true,
 			"using": false
 		}
 	},
@@ -137,7 +137,7 @@
 			"random_rate": 0.08,
 			"type": 3,
 			"selected": true,
-			"unlocked": false,
+			"unlocked": true,
 			"using": true
 		},
 		"3": {
@@ -173,7 +173,7 @@
 			"random_rate": 0.2,
 			"type": 3,
 			"selected": true,
-			"unlocked": false,
+			"unlocked": true,
 			"using": false
 		},
 		"2": {
@@ -190,7 +190,7 @@
 			"random_rate": 0.08,
 			"type": 3,
 			"selected": false,
-			"unlocked": false,
+			"unlocked": true,
 			"using": false
 		},
 		"3": {

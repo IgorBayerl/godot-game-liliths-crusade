@@ -13,6 +13,15 @@ func _ready() -> void:
 
 
 func _unhandled_input(event):
+	if self.visible == true :
+		if (event.is_action_pressed("ui_left")
+		or event.is_action_pressed("ui_right")
+		or event.is_action_pressed("ui_up")
+		or event.is_action_pressed("ui_down")
+		):
+			$AudioStreamPlayer.play() 
+	
+	
 	_set_text()
 	if visible == true:
 		player.in_menu = true
@@ -38,3 +47,4 @@ func _set_text():
 	$Background/Container/HBoxContainer/VBoxContainer3/AmmoType.text = ("Ammo Type :" + str(info.ammo_type))
 	#Max ammo
 	$Background/Container/HBoxContainer/VBoxContainer3/MaxAmmo.text = ("Max Ammo :" + str(info.full_ammo))
+

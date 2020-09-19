@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/Assets/Sprites/inventory_background.png" type="Texture" id=1]
 [ext_resource path="res://src/Interface/Inventory/VBoxGunsList.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/Scripts/INVENTORY_controller.gd" type="Script" id=3]
+[ext_resource path="res://src/Assets/Audios/Effects/click.wav" type="AudioStream" id=4]
 [ext_resource path="res://src/Fonts/advanced_pixel-7.ttf" type="DynamicFontData" id=5]
 
 [sub_resource type="DynamicFont" id=1]
@@ -44,7 +45,7 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -194.5
+margin_left = -202.5
 margin_top = -155.0
 margin_right = 243.5
 margin_bottom = 164.0
@@ -54,7 +55,7 @@ __meta__ = {
 }
 
 [node name="TopBar" type="HBoxContainer" parent="Background/Container"]
-margin_right = 438.0
+margin_right = 446.0
 margin_bottom = 45.0
 rect_min_size = Vector2( 0, 45 )
 __meta__ = {
@@ -63,49 +64,49 @@ __meta__ = {
 
 [node name="Guns" type="VBoxContainer" parent="Background/Container"]
 margin_top = 49.0
-margin_right = 438.0
+margin_right = 446.0
 margin_bottom = 259.0
 size_flags_vertical = 3
 
 [node name="VBoxGunsList" parent="Background/Container/Guns" instance=ExtResource( 2 )]
 margin_top = 0.0
-margin_right = 438.0
+margin_right = 446.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 300, 40 )
 
 [node name="VBoxGunsList2" parent="Background/Container/Guns" instance=ExtResource( 2 )]
 margin_top = 44.0
-margin_right = 438.0
+margin_right = 446.0
 margin_bottom = 84.0
 type = "type2"
 
 [node name="VBoxGunsList3" parent="Background/Container/Guns" instance=ExtResource( 2 )]
 margin_top = 88.0
-margin_right = 438.0
+margin_right = 446.0
 margin_bottom = 128.0
 type = "type3"
 
 [node name="VBoxGunsList4" parent="Background/Container/Guns" instance=ExtResource( 2 )]
 margin_top = 132.0
-margin_right = 438.0
+margin_right = 446.0
 margin_bottom = 172.0
 type = "type4"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Background/Container"]
 margin_top = 263.0
-margin_right = 438.0
+margin_right = 446.0
 margin_bottom = 319.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Background/Container/HBoxContainer"]
-margin_right = 143.0
+margin_right = 146.0
 margin_bottom = 56.0
 size_flags_horizontal = 3
 
 [node name="Name" type="Label" parent="Background/Container/HBoxContainer/VBoxContainer"]
-margin_right = 143.0
+margin_right = 146.0
 margin_bottom = 16.0
 rect_min_size = Vector2( 0, 16 )
 size_flags_horizontal = 3
@@ -115,7 +116,7 @@ text = "Name"
 
 [node name="Damage" type="Label" parent="Background/Container/HBoxContainer/VBoxContainer"]
 margin_top = 20.0
-margin_right = 143.0
+margin_right = 146.0
 margin_bottom = 36.0
 rect_min_size = Vector2( 0, 16 )
 size_flags_horizontal = 3
@@ -125,7 +126,7 @@ text = "Damage"
 
 [node name="FireRate" type="Label" parent="Background/Container/HBoxContainer/VBoxContainer"]
 margin_top = 40.0
-margin_right = 143.0
+margin_right = 146.0
 margin_bottom = 56.0
 rect_min_size = Vector2( 0, 16 )
 size_flags_horizontal = 3
@@ -134,13 +135,13 @@ custom_fonts/font = SubResource( 1 )
 text = "Fire Rate"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Background/Container/HBoxContainer"]
-margin_left = 147.0
-margin_right = 290.0
+margin_left = 150.0
+margin_right = 296.0
 margin_bottom = 56.0
 size_flags_horizontal = 3
 
 [node name="Ammo" type="Label" parent="Background/Container/HBoxContainer/VBoxContainer2"]
-margin_right = 143.0
+margin_right = 146.0
 margin_bottom = 16.0
 rect_min_size = Vector2( 0, 16 )
 size_flags_horizontal = 3
@@ -150,7 +151,7 @@ text = "Ammo"
 
 [node name="AmmoType" type="Label" parent="Background/Container/HBoxContainer/VBoxContainer2"]
 margin_top = 20.0
-margin_right = 143.0
+margin_right = 146.0
 margin_bottom = 36.0
 rect_min_size = Vector2( 0, 16 )
 size_flags_horizontal = 3
@@ -160,7 +161,7 @@ text = "Ammo Type"
 
 [node name="MaxAmmo" type="Label" parent="Background/Container/HBoxContainer/VBoxContainer2"]
 margin_top = 40.0
-margin_right = 143.0
+margin_right = 146.0
 margin_bottom = 56.0
 rect_min_size = Vector2( 0, 16 )
 size_flags_horizontal = 3
@@ -169,13 +170,13 @@ custom_fonts/font = SubResource( 1 )
 text = "Max Ammo"
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="Background/Container/HBoxContainer"]
-margin_left = 294.0
-margin_right = 438.0
+margin_left = 300.0
+margin_right = 446.0
 margin_bottom = 56.0
 size_flags_horizontal = 3
 
 [node name="Ammo" type="Label" parent="Background/Container/HBoxContainer/VBoxContainer3"]
-margin_right = 144.0
+margin_right = 146.0
 margin_bottom = 16.0
 rect_min_size = Vector2( 0, 16 )
 size_flags_horizontal = 3
@@ -185,7 +186,7 @@ text = "Ammo"
 
 [node name="AmmoType" type="Label" parent="Background/Container/HBoxContainer/VBoxContainer3"]
 margin_top = 20.0
-margin_right = 144.0
+margin_right = 146.0
 margin_bottom = 36.0
 rect_min_size = Vector2( 0, 16 )
 size_flags_horizontal = 3
@@ -195,10 +196,13 @@ text = "Ammo Type"
 
 [node name="MaxAmmo" type="Label" parent="Background/Container/HBoxContainer/VBoxContainer3"]
 margin_top = 40.0
-margin_right = 144.0
+margin_right = 146.0
 margin_bottom = 56.0
 rect_min_size = Vector2( 0, 16 )
 size_flags_horizontal = 3
 size_flags_vertical = 12
 custom_fonts/font = SubResource( 1 )
 text = "Max Ammo"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
