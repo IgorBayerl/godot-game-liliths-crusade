@@ -29,6 +29,7 @@ var jump_count = 0
 var can_stand_up = true
 var atack_combo = 0
 var can_atack = true
+var can_access_inventory = false
 
 var max_jump_velocity = -600
 var min_jump_velocity = -400
@@ -268,8 +269,12 @@ func _verify_if_can_standup():
 		is_crouched = true
 
 
-
-
+func can_access_inventory(can_access):
+	if can_access != null :
+		can_access_inventory = can_access
+	else:
+		can_access_inventory = false
+	print("[ _can_access_inventory ] : ", can_access)
 
 
 

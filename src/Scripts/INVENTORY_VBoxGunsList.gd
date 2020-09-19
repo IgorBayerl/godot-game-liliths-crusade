@@ -30,20 +30,24 @@ func _ready() -> void:
 		var item = slot.instance()
 		item.get_child(0).frame = guns[i].gun_id-1
 		$GunSlideBar.add_child(item)
-
+	_select_gun(0)
+	
 func _info_to_label(info):
 	inventory_controller.info = info
 	
 func _select_gun(direction):
+	
 	var temp_select_id
 	var new_selected
 	for i in guns:
 		if guns[i].selected == true :
 			temp_select_id = guns[i].id
 		guns[i].selected = false
-		$GunSlideBar.get_child(int(i)-1).rect_scale = Vector2(1,1)
-		$GunSlideBar.get_child(int(i)-1).rect_pivot_offset.y = 0
+		$GunSlideBar.get_child(int(i)-1).get_node("focus").visible = false
+	
 	new_selected = int(temp_select_id) + int(direction)
+	
+	
 	if new_selected == guns.size()+1:
 		new_selected = 1
 	if new_selected == 0:
@@ -51,8 +55,7 @@ func _select_gun(direction):
 	guns[str(new_selected)].selected = true
 #	print("child count: ", $GunSlideBar.get_child(new_selected-1).name)
 	info_gun = guns[str(new_selected)]
-	$GunSlideBar.get_child(new_selected-1).rect_scale = Vector2(1.1,1.1)
-	$GunSlideBar.get_child(new_selected-1).rect_pivot_offset.y = 100
+	$GunSlideBar.get_child(new_selected-1).get_node("focus").visible = true
 
 
 
@@ -65,6 +68,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		if event.is_action_pressed("ui_left"):
 #			print("left ", self.type)
 			_select_gun(-1)
+
 
 
 

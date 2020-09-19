@@ -2,7 +2,7 @@
 	"type1": {
 		"1": {
 			"id": 1,
-			"name": "pistol",
+			"name": "Pistola",
 			"gun_id": 1,
 			"ammo": 20,
 			"ammo_type": 2,
@@ -18,7 +18,7 @@
 			"using": false
 		},
 		"2": {
-			"name": "rifle",
+			"name": "Resolve",
 			"gun_id": 2,
 			"id": 2,
 			"ammo": 25,
@@ -36,7 +36,7 @@
 		},
 		"3": {
 			"id": 3,
-			"name": "pistol",
+			"name": "SubMachine",
 			"gun_id": 3,
 			"ammo": 20,
 			"ammo_type": 2,
@@ -54,7 +54,7 @@
 	},
 	"type2": {
 		"1": {
-			"name": "rifle",
+			"name": "Shotgun",
 			"gun_id": 4,
 			"id": 1,
 			"ammo": 200,
@@ -71,7 +71,7 @@
 			"using": false
 		},
 		"2": {
-			"name": "flamethrower",
+			"name": "Sniper",
 			"gun_id": 5,
 			"id": 2,
 			"ammo": 700,
@@ -88,7 +88,7 @@
 			"using": false
 		},
 		"3": {
-			"name": "rifle",
+			"name": "Rifle",
 			"gun_id": 6,
 			"id": 3,
 			"ammo": 25,
@@ -107,7 +107,7 @@
 	},
 	"type3": {
 		"1": {
-			"name": "pistol",
+			"name": "FireThrower",
 			"gun_id": 7,
 			"id": 1,
 			"ammo": 150,
@@ -124,7 +124,7 @@
 			"using": false
 		},
 		"2": {
-			"name": "rifle",
+			"name": "Canon",
 			"gun_id": 8,
 			"id": 2,
 			"ammo": 25,
@@ -141,7 +141,7 @@
 			"using": true
 		},
 		"3": {
-			"name": "rifle",
+			"name": "BFG",
 			"gun_id": 9,
 			"id": 3,
 			"ammo": 25,
@@ -197,23 +197,6 @@
 			"name": "flamethrower",
 			"gun_id": 3,
 			"id": 3,
-			"ammo": 700,
-			"ammo_type": 2,
-			"automatica": true,
-			"bullet_speed": 350,
-			"damage": 8,
-			"fire_rate": 0.02,
-			"full_ammo": 700,
-			"random_rate": 0.2,
-			"type": 3,
-			"selected": false,
-			"unlocked": false,
-			"using": false
-		},
-		"4": {
-			"name": "pistol",
-			"gun_id": 1,
-			"id": 4,
 			"ammo": 700,
 			"ammo_type": 2,
 			"automatica": true,

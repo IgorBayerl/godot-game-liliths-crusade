@@ -15,11 +15,10 @@ __meta__ = {
 }
 
 [node name="Panel" type="Panel" parent="."]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -62.0
-margin_right = 62.0
-margin_bottom = 40.0
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -174.0
+margin_bottom = 60.0
 custom_styles/panel = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -28,9 +27,9 @@ __meta__ = {
 [node name="TextureRect" type="TextureRect" parent="Panel"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -73.0
+margin_left = -117.0
 margin_right = 93.0
-margin_bottom = 57.0
+margin_bottom = 65.0
 texture = ExtResource( 2 )
 stretch_mode = 5
 __meta__ = {
@@ -51,8 +50,8 @@ __meta__ = {
 }
 
 [node name="CenterContainer" parent="Panel/CenterContainer" instance=ExtResource( 3 )]
-position = Vector2( 59.1645, 12.8839 )
-scale = Vector2( 1.31784, 1.31784 )
+position = Vector2( 37.6007, 5.77798 )
+scale = Vector2( 0.809241, 0.812161 )
 centered = true
 
 [node name="Label" type="Label" parent="Panel"]
@@ -60,10 +59,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -39.1409
-margin_top = -22.4251
-margin_right = 9.85907
-margin_bottom = -3.4251
+margin_left = -73.2274
+margin_top = -35.9099
+margin_right = -24.2274
+margin_bottom = -16.9099
 text = "222"
 align = 1
 valign = 1

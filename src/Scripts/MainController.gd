@@ -100,11 +100,12 @@ func _unhandled_input(event: InputEvent) -> void:
 		print("Gun_4")
 
 	if event.is_action_pressed("inventory"):
-		_check_equiped_gun()
-		_update_gun()
-		var inventory = $CanvasLayer/Control/Inventory
-		inventory.visible = !inventory.visible
-		inventory.get_node("Background/Container/Guns/VBoxGunsList").grab_focus()
+		if $Player.can_access_inventory:
+			_check_equiped_gun()
+			_update_gun()
+			var inventory = $CanvasLayer/Control/Inventory
+			inventory.visible = !inventory.visible
+			inventory.get_node("Background/Container/Guns/VBoxGunsList").grab_focus()
 
 func _on_GetItem_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Guns"):
