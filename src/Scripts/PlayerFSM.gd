@@ -13,7 +13,7 @@ const WALL_JUMP_VELOCITY = Vector2(400 , -500)
 
 var checkpoint_position: Vector2
 
-var move_speed = 250
+var move_speed = 210
 var velocity = Vector2()
 var move_direction
 var move_input_speed = 0
@@ -23,7 +23,7 @@ var max_health = 100
 var health = 100
 var wal_jumping = false
 var head_direction = Vector2()
-var rolling_speed = 600
+var rolling_speed = 500
 var jump_count = 0
 
 var can_stand_up = true

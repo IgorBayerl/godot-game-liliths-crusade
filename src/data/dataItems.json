@@ -48,7 +48,7 @@
 			"random_rate": 0.08,
 			"type": 3,
 			"selected": true,
-			"unlocked": false,
+			"unlocked": true,
 			"using": false
 		},
 	},
