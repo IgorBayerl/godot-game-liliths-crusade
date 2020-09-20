@@ -2,8 +2,13 @@
     "money": 100,
     "life": 50,
     "totalLife": 100,
-    "levels": {
+    "levels_completed": {
         "level1": 0,
-        "level2": 0
+        "level2": 0,
+        "level3": 0,
+        "level4": 0,
+        "level5": 0,
+        "level6": 0,
+        "level7": 0
     }
 }

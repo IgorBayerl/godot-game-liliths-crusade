@@ -37,7 +37,7 @@ var double_jump_velocity = -460
 
 # Skills control #
 
-var have_double_jump = false
+var have_double_jump = true
 var have_wall_jump = true
 var have_rolling = false
 var have_heavy_gun = false

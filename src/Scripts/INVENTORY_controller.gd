@@ -42,7 +42,7 @@ func _set_text():
 	#Max ammo
 	$Background/Container/HBoxContainer/VBoxContainer2/MaxAmmo.text = ("Max Ammo :" + str(info.full_ammo))
 	#Ammo
-	$Background/Container/HBoxContainer/VBoxContainer3/Ammo.text = ("Ammo :" + str(info.ammo))
+	$Background/Container/HBoxContainer/VBoxContainer3/Ammo.text = ("Bullet Speed :" + str(info.bullet_speed))
 	#Ammo type
 	$Background/Container/HBoxContainer/VBoxContainer3/AmmoType.text = ("Ammo Type :" + str(info.ammo_type))
 	#Max ammo

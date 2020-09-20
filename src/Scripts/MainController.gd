@@ -4,6 +4,8 @@ extends Node2D
 var selected_gun = 1
 
 var guns_info: Dictionary
+var player_info: Dictionary
+
 
 var gun_on_hand = 1
 
@@ -11,47 +13,10 @@ var aquiped_gun_of_the_type = "1"
 
 var gun
 
-var player_GUNS_information = {
-	1: {
-		"unlocked" : true ,
-		"selected" : false ,
-		"ammo": 200,
-		"ammo_type" : 1,
-		"damage": 30,
-		"full_ammo": 60,
-		"fire_rate": 0,
-		"random_rate":0.02,
-		"bullet_speed": 1000,
-		"automatica": false
-	},
-	2: {
-		"unlocked" : false ,
-		"selected" : false ,
-		"ammo": 200,
-		"ammo_type" : 1,
-		"damage": 20,
-		"full_ammo": 60,
-		"fire_rate": 0.1,
-		"random_rate":0.08,
-		"bullet_speed": 1000,
-		"automatica": true
-	},
-	3: {
-		"unlocked" : false ,
-		"selected" : false ,
-		"ammo": 700,
-		"ammo_type" : 2,
-		"damage": 8,
-		"full_ammo": 700,
-		"fire_rate": 0.02,
-		"random_rate":0.2,
-		"bullet_speed": 350,
-		"automatica": true
-	}
-}
 
 func _ready() -> void:
 	guns_info = JsonData.item_data
+	player_info = JsonData.player_data
 	gun_on_hand = guns_info["onHand"].type
 	_update_gun()
 	$CanvasLayer/Control/Fade.show()
