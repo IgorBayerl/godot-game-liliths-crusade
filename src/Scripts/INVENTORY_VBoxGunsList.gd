@@ -53,17 +53,38 @@ func _select_gun(direction):
 		
 		$GunSlideBar.get_child(int(i)-1).get_node("focus").visible = false
 	
-#	for i in guns:
-#		var maybe_next = _select_next( guns , direction, new_selected, temp_select_id )
-#		if guns[str(maybe_next)].unlocked == true:
-#			new_selected = maybe_next
+#	var maybe_next = int(temp_select_id) + int(direction)
+#	if guns[str(maybe_next)].unlocked == false:
+#		maybe_next = maybe_next + int(direction)
+#	if guns[str(maybe_next)].unlocked == false:
+#		maybe_next = maybe_next + int(direction)
+		
+#	new_selected = int(temp_select_id) + int(direction)
+	var maybe_new_selected = int(temp_select_id) + int(direction)
 	
-	new_selected = int(temp_select_id) + int(direction)
+	if maybe_new_selected == guns.size()+1:
+		maybe_new_selected = 1
+	if maybe_new_selected == 0:
+		maybe_new_selected = guns.size()
+		
+	if guns[str(maybe_new_selected)].unlocked == false:
+		maybe_new_selected = maybe_new_selected + int(direction)
+
+	if maybe_new_selected == guns.size()+1:
+		maybe_new_selected = 1
+	if maybe_new_selected == 0:
+		maybe_new_selected = guns.size()
+		
+	if guns[str(maybe_new_selected)].unlocked == false:
+		maybe_new_selected = maybe_new_selected + int(direction)
+
+	new_selected = maybe_new_selected
 	
 	if new_selected == guns.size()+1:
 		new_selected = 1
 	if new_selected == 0:
 		new_selected = guns.size()
+	
 	guns[str(new_selected)].selected = true
 #	print("child count: ", $GunSlideBar.get_child(new_selected-1).name)
 	info_gun = guns[str(new_selected)]
@@ -72,37 +93,6 @@ func _select_gun(direction):
 	$GunSlideBar.get_child(new_selected-1).get_node("focus").visible = true
 
 
-
-func _verifica_desbloqueio_de_arma(direction):
-	var next_gun
-	var temp_select_id
-	
-	for i in guns:
-		if guns[i].selected == true :
-			temp_select_id = guns[i].id
-	
-	for i in guns:
-		var maybe_next = _select_next( guns , direction, next_gun, temp_select_id )
-		if guns[str(temp_select_id)].unlocked == true:
-			next_gun = maybe_next
-#	while guns[str(temp_select_id)].unlocked == false:
-#	for i in guns:
-#		if guns[i].unlocked == true :
-#			temp_select_id = guns[i].id
-#
-#	next_gun = int(temp_select_id) + int(direction)
-	if guns[str(next_gun)].unlocked == false:
-		pass
-
-func _select_next( array , direction, next, temp ):
-	for i in array:
-		if array[i].unlocked == true :
-			temp = array[i].id
-	next = int(temp) + int(direction)
-	print(next)
-	
-	return next
-	
 
 func _unhandled_input(event: InputEvent) -> void:
 #	if !is_on_focus:
