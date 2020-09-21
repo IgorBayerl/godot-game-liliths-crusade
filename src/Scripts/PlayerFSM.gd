@@ -30,6 +30,7 @@ var can_stand_up = true
 var atack_combo = 0
 var can_atack = true
 var can_access_inventory = false
+var can_climb_up = false
 
 var max_jump_velocity = -600
 var min_jump_velocity = -400
@@ -52,6 +53,7 @@ var is_atacking = false
 var is_rolling = false
 var is_crouched = false
 var is_stuned = false
+var is_clibing_up = false
 
 var in_menu = false
 
@@ -61,6 +63,12 @@ onready var anim_player = $SPRITES/AnimationPlayer
 onready var player_body = $SPRITES
 onready var left_wall_raycasts = $WallRaycast/LeftWallRaycast
 onready var right_wall_raycasts = $WallRaycast/RightWallRaycast
+
+onready var right_climb_up_raycast = $WallRaycast/ClimbUpRaycasts/ClimbUpRight
+onready var left_climb_up_raycast = $WallRaycast/ClimbUpRaycasts/ClimbUpLeft
+onready var DW_right_climb_up_raycast = $WallRaycast/ClimbUpRaycasts/DW_ClimbUpRight
+onready var DW_left_climb_up_raycast = $WallRaycast/ClimbUpRaycasts/DW_ClimbUpLeft
+
 onready var wall_slide_sticky_timer = $WallSlideSticknesTimer
 onready var anim_effect = $Effects_animationPlayer
 onready var ivunerability = $Ivunerability
@@ -70,6 +78,30 @@ onready var particles_wall_slide2 = $SPRITES/Particles2D2
 
 onready var teto_detection = $WallRaycast/tetoDetection_1
 
+func _check_if_can_climb_up():
+	if wall_direction != 0:
+		if wall_direction == 1:
+			if !right_climb_up_raycast.is_colliding() : #and DW_right_climb_up_raycast.is_colliding():
+				print('can climb up == true')
+				return true
+			elif right_climb_up_raycast.is_colliding():
+				print('can climb up == false')
+				return false
+		if wall_direction == -1:
+			if !left_climb_up_raycast.is_colliding() : #and DW_left_climb_up_raycast.is_colliding():
+				print('can climb up == true')
+				return true
+			elif left_climb_up_raycast.is_colliding():
+				print('can climb up == false')
+				return false
+
+func _climb_up():
+#	position = Vector2(position.x + (30 * wall_direction),position.y - 80)
+	
+	var climb_direction = wall_direction
+	velocity.y = -200
+	yield(get_tree().create_timer(0.2), "timeout")
+	velocity.x = 200 * climb_direction
 
 func _turning_on_skills():
 	if Input.is_key_pressed(KEY_J):

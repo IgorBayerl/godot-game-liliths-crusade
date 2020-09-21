@@ -28,7 +28,7 @@ shader_param/flash_color = Color( 1, 1, 1, 1 )
 shader_param/flash_modifier = 0.0
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 35.7886, 51.4805 )
+extents = Vector2( 33.2077, 75.0774 )
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 11.8421, 28.6792 )
@@ -837,7 +837,7 @@ texture = ExtResource( 2 )
 [node name="Colision" type="CollisionShape2D" parent="." groups=[
 "Player",
 ]]
-position = Vector2( -0.174973, 68.6014 )
+position = Vector2( -0.116311, 44.7364 )
 shape = SubResource( 2 )
 
 [node name="SPRITES" type="Node2D" parent="."]
@@ -850,7 +850,7 @@ scale = Vector2( 1.7603, 1.7603 )
 texture = ExtResource( 13 )
 vframes = 5
 hframes = 5
-frame = 21
+frame = 12
 
 [node name="SwordHit" type="Area2D" parent="SPRITES/body2"]
 collision_layer = 4
@@ -863,7 +863,7 @@ disabled = true
 
 [node name="Head" type="Sprite" parent="SPRITES"]
 use_parent_material = true
-position = Vector2( 18.5524, 24.7244 )
+position = Vector2( 0.985631, -23.1508 )
 scale = Vector2( 1.93084, 1.99071 )
 texture = ExtResource( 8 )
 
@@ -900,7 +900,7 @@ anims/jump = SubResource( 12 )
 anims/wall_slide = SubResource( 13 )
 
 [node name="Mira" type="Position2D" parent="."]
-position = Vector2( -5.384, 70.4165 )
+position = Vector2( 2.35871, 27.6472 )
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_group_": true
@@ -965,6 +965,8 @@ script = ExtResource( 12 )
 [node name="WallRaycast" type="Node2D" parent="."]
 
 [node name="RightWallRaycast" type="Node2D" parent="WallRaycast"]
+visible = false
+position = Vector2( 1.95313, 91.4063 )
 
 [node name="RightWallRaycast_1" type="RayCast2D" parent="WallRaycast/RightWallRaycast"]
 position = Vector2( 15.2616, 0 )
@@ -973,12 +975,14 @@ cast_to = Vector2( 20, 0 )
 collision_mask = 64
 
 [node name="RightWallRaycast_2" type="RayCast2D" parent="WallRaycast/RightWallRaycast"]
-position = Vector2( 17.0154, 90.4385 )
+position = Vector2( 15.8448, 24.505 )
 enabled = true
 cast_to = Vector2( 20, 0 )
 collision_mask = 64
 
 [node name="LeftWallRaycast" type="Node2D" parent="WallRaycast"]
+visible = false
+position = Vector2( 0.78125, 92.1875 )
 
 [node name="LeftWallRaycast_1" type="RayCast2D" parent="WallRaycast/LeftWallRaycast"]
 position = Vector2( -17.0154, 0 )
@@ -987,12 +991,13 @@ cast_to = Vector2( -20, 0 )
 collision_mask = 64
 
 [node name="LeftWallRaycast_2" type="RayCast2D" parent="WallRaycast/LeftWallRaycast"]
-position = Vector2( -14.8231, 90 )
+position = Vector2( -17.1669, 23.6759 )
 enabled = true
 cast_to = Vector2( -20, 0 )
 collision_mask = 64
 
 [node name="tetoDetection_1" type="Area2D" parent="WallRaycast"]
+visible = false
 position = Vector2( 1.30863, 20.7731 )
 collision_layer = 0
 collision_mask = 64
@@ -1000,6 +1005,27 @@ collision_mask = 64
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WallRaycast/tetoDetection_1"]
 position = Vector2( -2.05643, -20.9525 )
 shape = SubResource( 15 )
+
+[node name="ClimbUpRaycasts" type="Node2D" parent="WallRaycast"]
+position = Vector2( 0, -45.2784 )
+
+[node name="ClimbUpLeft" type="RayCast2D" parent="WallRaycast/ClimbUpRaycasts"]
+enabled = true
+cast_to = Vector2( -50, 0 )
+
+[node name="ClimbUpRight" type="RayCast2D" parent="WallRaycast/ClimbUpRaycasts"]
+enabled = true
+cast_to = Vector2( 50, 0 )
+
+[node name="DW_ClimbUpLeft" type="RayCast2D" parent="WallRaycast/ClimbUpRaycasts"]
+position = Vector2( 0, 14.4692 )
+enabled = true
+cast_to = Vector2( -50, 0 )
+
+[node name="DW_ClimbUpRight" type="RayCast2D" parent="WallRaycast/ClimbUpRaycasts"]
+position = Vector2( 0, 14.4692 )
+enabled = true
+cast_to = Vector2( 50, 0 )
 
 [node name="WallSlideSticknesTimer" type="Timer" parent="."]
 wait_time = 0.1

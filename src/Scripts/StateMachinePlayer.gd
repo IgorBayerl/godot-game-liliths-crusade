@@ -11,6 +11,7 @@ func _ready() -> void:
 	add_state("wall_slide")
 	add_state("crouch")
 	add_state("rolling")
+	add_state("climb_up")
 	call_deferred("set_state", states.idle)
 	
 func _input(event):
@@ -59,6 +60,7 @@ func _input(event):
 func _state_logic(delta):
 	parent._update_lebel_state(state , previous_state)
 	parent._turning_on_skills()
+	
 	if !parent.is_dead and !parent.in_menu == true:
 		parent._set_head_direction()
 		if state != states.rolling:
@@ -122,8 +124,11 @@ func _get_transition(delta):
 				return states.stun
 			if parent.is_atacking:
 				return states.air_atack
-			if parent.wall_direction != 0 and parent.have_wall_jump:
-				return states.wall_slide
+			if parent.wall_direction != 0 and parent.have_wall_jump :
+				if !parent._check_if_can_climb_up():
+					return states.wall_slide
+				elif parent._check_if_can_climb_up():
+					return states.climb_up
 			elif parent.is_on_floor():
 				return states.idle
 			elif parent.velocity.y >= 0:
@@ -133,13 +138,18 @@ func _get_transition(delta):
 				return states.stun
 			if parent.is_atacking:
 				return states.air_atack
-			if parent.wall_direction != 0 and parent.have_wall_jump:
-				return states.wall_slide
+			if parent.wall_direction != 0 and parent.have_wall_jump :
+				if !parent._check_if_can_climb_up():
+					return states.wall_slide
+				elif parent._check_if_can_climb_up():
+					return states.climb_up
 			elif parent.is_on_floor():
 				return states.idle
 			elif parent.velocity.y < 0 :
 				return states.jump
 		states.wall_slide:
+			if parent._check_if_can_climb_up():
+				return states.climb_up
 			if parent.is_stuned:
 				return states.stun
 			if parent.is_on_floor():
@@ -159,7 +169,10 @@ func _get_transition(delta):
 					elif parent.wall_direction == 0:
 						return states.fall
 					elif parent.wall_direction != 0 and parent.have_wall_jump:
-						return states.wall_slide
+						if !parent._check_if_can_climb_up():
+							return states.wall_slide
+						elif parent._check_if_can_climb_up():
+							return states.climb_up
 				elif !parent.can_stand_up:
 					return states.crouch
 					parent.is_crouched = true
@@ -205,6 +218,8 @@ func _get_transition(delta):
 					return states.run
 				elif parent.velocity.x == 0:
 					return states.idle
+		states.climb_up:
+			return states.idle
 	return null
 
 func _enter_state(new_state, old_state):
@@ -251,6 +266,10 @@ func _enter_state(new_state, old_state):
 			parent.velocity.x = 0
 		states.air_atack:
 			parent.anim_player.play("Atack2")
+		states.climb_up:
+			parent.velocity = Vector2()
+			parent._climb_up()
+			print('climbing_up')
 	
 func _exit_state(old_state, new_state):
 	match old_state:

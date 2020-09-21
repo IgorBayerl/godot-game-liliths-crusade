@@ -31,7 +31,7 @@
 			"random_rate": 0.01,
 			"type": 3,
 			"selected": false,
-			"unlocked": false,
+			"unlocked": true,
 			"using": false
 		},
 		"3": {
@@ -66,8 +66,8 @@
 			"full_ammo": 12,
 			"random_rate": 0.2,
 			"type": 3,
-			"selected": false,
-			"unlocked": false,
+			"selected": true,
+			"unlocked": true,
 			"using": false
 		},
 		"2": {
@@ -100,8 +100,8 @@
 			"full_ammo": 60,
 			"random_rate": 0.08,
 			"type": 3,
-			"selected": true,
-			"unlocked": true,
+			"selected": false,
+			"unlocked": false,
 			"using": false
 		}
 	},

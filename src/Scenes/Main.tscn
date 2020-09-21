@@ -323,10 +323,10 @@ script = ExtResource( 19 )
 shape = SubResource( 7 )
 
 [node name="Barril" parent="MainController" instance=ExtResource( 12 )]
-position = Vector2( 741.5, 743 )
+position = Vector2( 3279.09, 858.764 )
 
 [node name="Player" parent="MainController" instance=ExtResource( 1 )]
-position = Vector2( 2962.28, 1094.62 )
+position = Vector2( 2765.4, 251.978 )
 scale = Vector2( 0.52, 0.52 )
 
 [node name="Aroldo2" parent="MainController" instance=ExtResource( 3 )]
@@ -408,8 +408,9 @@ shape = SubResource( 9 )
 
 [node name="FOG" parent="." instance=ExtResource( 6 )]
 visible = false
-position = Vector2( 1409.04, 608.412 )
-scale = Vector2( 44.7077, 34.4197 )
+modulate = Color( 1, 1, 1, 0.619608 )
+position = Vector2( 1918.02, 827.226 )
+scale = Vector2( 60.6133, 41.2576 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
