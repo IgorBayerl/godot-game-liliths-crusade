@@ -295,7 +295,7 @@ func _exit_state(old_state, new_state):
 			parent.particles_wall_slide1.emitting = false
 			parent.particles_wall_slide2.emitting = false
 		states.climb_up:
-#			parent.move_direction = !parent.move_direction
+			parent.move_direction = !parent.move_direction
 			print('chegayyy')
 			
 func _on_WallSlideSticknesTimer_timeout() -> void:
