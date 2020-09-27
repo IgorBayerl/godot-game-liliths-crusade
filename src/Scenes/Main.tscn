@@ -326,7 +326,7 @@ shape = SubResource( 7 )
 position = Vector2( 3279.09, 858.764 )
 
 [node name="Player" parent="MainController" instance=ExtResource( 1 )]
-position = Vector2( 2765.4, 251.978 )
+position = Vector2( 2714.06, 248.513 )
 scale = Vector2( 0.52, 0.52 )
 
 [node name="Aroldo2" parent="MainController" instance=ExtResource( 3 )]

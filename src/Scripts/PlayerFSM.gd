@@ -54,6 +54,7 @@ var is_rolling = false
 var is_crouched = false
 var is_stuned = false
 var is_clibing_up = false
+var is_wall_grab = false
 
 var in_menu = false
 
@@ -95,13 +96,38 @@ func _check_if_can_climb_up():
 				print('can climb up == false')
 				return false
 
+func _check_if_can_wall_grab():
+	if wall_direction != 0:
+		if wall_direction == 1:
+			if !right_climb_up_raycast.is_colliding() and DW_right_climb_up_raycast.is_colliding():
+				print('can wall grab == true')
+				is_wall_grab = true
+				return true
+			elif right_climb_up_raycast.is_colliding():
+				print('can wall grab == false')
+				is_wall_grab = false
+				return false
+		if wall_direction == -1:
+			if !left_climb_up_raycast.is_colliding() and DW_left_climb_up_raycast.is_colliding():
+				print('can wall grab == true')
+				is_wall_grab = true
+				return true
+			elif left_climb_up_raycast.is_colliding():
+				print('can wall grab == false')
+				is_wall_grab = false
+				return false
+
 func _climb_up():
 #	position = Vector2(position.x + (30 * wall_direction),position.y - 80)
-	
+#	print('ooooooooooo')
 	var climb_direction = wall_direction
-	velocity.y = -200
+	velocity.y = -440
 	yield(get_tree().create_timer(0.2), "timeout")
-	velocity.x = 200 * climb_direction
+	velocity.x = 290 * climb_direction
+	velocity.y = 0
+	
+	is_clibing_up = false
+	is_wall_grab = false
 
 func _turning_on_skills():
 	if Input.is_key_pressed(KEY_J):
@@ -109,7 +135,9 @@ func _turning_on_skills():
 		print('double_jump = ', have_double_jump)
 
 func _apply_gravity(delta):
-	velocity.y += GRAVITY * delta
+	if !is_wall_grab and !is_clibing_up:
+		velocity.y += GRAVITY * delta
+
 	if is_jumping and velocity.y >=0:
 		is_jumping = false
 
@@ -138,12 +166,15 @@ func _apply_movement():
 	velocity = move_and_slide(velocity, UP,SLOPE_STOP)
 
 func _update_move_direction():
-	move_direction = -int(Input.is_action_pressed("move_LEFT")) + int(Input.is_action_pressed("move_RIGHT"))
-
+	if !is_wall_grab and !is_clibing_up:
+		move_direction = -int(Input.is_action_pressed("move_LEFT")) + int(Input.is_action_pressed("move_RIGHT"))
+	if is_wall_grab or is_clibing_up :
+		move_direction = -wall_direction
 func _handle_move_input():
 	velocity.x = lerp(velocity.x, move_speed * move_direction, _get_h_weight())
 
 func _update_sprite_direction():
+	
 	if move_direction != 0:
 		player_body.scale.x = move_direction
 		facing = move_direction

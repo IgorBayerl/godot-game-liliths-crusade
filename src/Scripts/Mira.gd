@@ -39,7 +39,7 @@ func _try_shoot():
 					$SoundEffects/Shoot.play()
 
 func _states():
-	if parent.is_dead or parent.is_atacking or parent.is_rolling:
+	if parent.is_dead or parent.is_atacking or parent.is_rolling or parent.is_clibing_up:
 			is_able_to_fire = false
 			visible = false
 	else :
@@ -85,7 +85,7 @@ func _set_poit_direction() :
 		dir.x = -int(Input.is_action_pressed("move_LEFT")) + int(Input.is_action_pressed("move_RIGHT"))
 	
 	
-	if !parent.is_wall_sliding:
+	if !parent.is_wall_sliding and !parent.is_clibing_up and !parent.is_wall_grab :
 		if Input.is_action_pressed("move_LEFT")or Input.is_action_pressed("move_RIGHT"):
 			dir.x = -int(Input.is_action_pressed("move_LEFT")) + int(Input.is_action_pressed("move_RIGHT"))
 		if dir.x == 0 and Input.is_action_pressed("move_LEFT"):

@@ -1036,7 +1036,6 @@ wait_time = 0.5
 one_shot = true
 
 [node name="state_label" type="Label" parent="."]
-visible = false
 margin_left = -24.025
 margin_top = -106.689
 margin_right = 45.975
