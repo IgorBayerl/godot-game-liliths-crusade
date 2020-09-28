@@ -227,12 +227,7 @@ func _get_transition(delta):
 			if !parent.is_clibing_up:
 				return states.idle
 		states.wall_grab:
-			if !parent.is_clibing_up:
-				if parent.velocity.y < 0:
-					return states.jump
-				elif parent.velocity.y > 0:
-					return states.fall
-			elif parent.is_clibing_up:
+			if parent.is_clibing_up:
 				return states.climb_up
 	return null
 
