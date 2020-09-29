@@ -554,7 +554,6 @@ tracks/5/keys = {
 
 [sub_resource type="Animation" id=11]
 length = 0.4
-loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
@@ -562,10 +561,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ 10 ]
+"values": [ 25, 26, 27 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("../../Mira:position")
@@ -630,7 +629,6 @@ tracks/5/keys = {
 
 [sub_resource type="Animation" id=12]
 length = 0.3
-loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
@@ -638,10 +636,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ 11 ]
+"values": [ 23, 23, 24 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("../../Mira:position")
@@ -848,9 +846,9 @@ use_parent_material = true
 position = Vector2( 6.11283, 34.5414 )
 scale = Vector2( 1.7603, 1.7603 )
 texture = ExtResource( 13 )
-vframes = 5
+vframes = 6
 hframes = 5
-frame = 12
+frame = 27
 
 [node name="SwordHit" type="Area2D" parent="SPRITES/body2"]
 collision_layer = 4
@@ -863,7 +861,7 @@ disabled = true
 
 [node name="Head" type="Sprite" parent="SPRITES"]
 use_parent_material = true
-position = Vector2( 0.985631, -23.1508 )
+position = Vector2( 5.51919, -14.4411 )
 scale = Vector2( 1.93084, 1.99071 )
 texture = ExtResource( 8 )
 
