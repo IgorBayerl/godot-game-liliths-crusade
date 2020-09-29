@@ -848,7 +848,7 @@ scale = Vector2( 1.7603, 1.7603 )
 texture = ExtResource( 13 )
 vframes = 6
 hframes = 5
-frame = 27
+frame = 25
 
 [node name="SwordHit" type="Area2D" parent="SPRITES/body2"]
 collision_layer = 4

@@ -70,6 +70,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			_update_gun()
 			var inventory = $CanvasLayer/Control/Inventory
 			inventory.visible = !inventory.visible
+			
 			inventory.get_node("Background/Container/Guns/VBoxGunsList").grab_focus()
 
 func _on_GetItem_area_entered(area: Area2D) -> void:
