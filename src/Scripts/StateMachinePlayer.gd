@@ -251,6 +251,7 @@ func _enter_state(new_state, old_state):
 		states.wall_slide:
 			print('wall_slide')
 			parent.jump_count = 0
+			parent.velocity.y += 100
 			parent.anim_player.play("wall_slide")
 			parent.is_wall_sliding = true
 			parent.particles_wall_slide1.emitting = true

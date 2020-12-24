@@ -77,6 +77,8 @@ onready var ivunerability = $Ivunerability
 onready var particles_wall_slide1 = $SPRITES/Particles2D
 onready var particles_wall_slide2 = $SPRITES/Particles2D2
 
+onready var playerColisionBox = $CollisionShape2D
+
 onready var teto_detection = $WallRaycast/tetoDetection_1
 
 func _check_if_can_climb_up():
@@ -119,9 +121,9 @@ func _check_if_can_wall_grab():
 
 func _climb_up():
 #	position = Vector2(position.x + (30 * wall_direction),position.y - 80)
-#	print('ooooooooooo')
+	print('ooooooooooo')
 	var climb_direction = wall_direction
-	velocity.y = -440
+	velocity.y = -460
 	yield(get_tree().create_timer(0.2), "timeout")
 	velocity.x = 290 * climb_direction
 	velocity.y = 0
@@ -200,11 +202,19 @@ func _update_wall_direction():
 		wall_direction = -int(is_near_wall_left) + int(is_near_wall_right)
 		
 func _check_is_valid_wall(wall_raycasts):
-	for raycast in wall_raycasts.get_children():
-		if raycast.is_colliding():
+	var raycast_up = wall_raycasts.get_child(0)
+	var raycast_down = wall_raycasts.get_child(1)
+	if raycast_down.is_colliding() and raycast_up.is_colliding():
+		for raycast in wall_raycasts.get_children():
 			var dot = acos(Vector2.UP.dot(raycast.get_collision_normal()))
 			if dot > PI * 0.35 and dot < PI * 0.55:
 				return true
+#	for raycast in wall_raycasts.get_children():
+#
+#		if raycast.is_colliding():
+#			var dot = acos(Vector2.UP.dot(raycast.get_collision_normal()))
+#			if dot > PI * 0.35 and dot < PI * 0.55:
+#				return true
 	return false
 
 func _set_head_direction():
