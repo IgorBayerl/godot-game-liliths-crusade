@@ -27,8 +27,9 @@ shader = ExtResource( 14 )
 shader_param/flash_color = Color( 1, 1, 1, 1 )
 shader_param/flash_modifier = 0.0
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 18, 83 )
+[sub_resource type="CapsuleShape2D" id=19]
+radius = 17.0
+height = 69.0
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 11.8421, 28.6792 )
@@ -133,6 +134,30 @@ tracks/6/keys = {
 "update": 0,
 "values": [ Vector2( 33.2077, 75.0774 ) ]
 }
+tracks/7/type = "value"
+tracks/7/path = NodePath("../../Colision:shape:radius")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 17.0 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("../../Colision:shape:height")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 132.0 ]
+}
 
 [sub_resource type="Animation" id=6]
 length = 0.4
@@ -222,6 +247,30 @@ tracks/6/keys = {
 "update": 0,
 "values": [ Vector2( 33.2077, 75.0774 ) ]
 }
+tracks/7/type = "value"
+tracks/7/path = NodePath("../../Colision:shape:radius")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 17.0 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("../../Colision:shape:height")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 132.0 ]
+}
 
 [sub_resource type="Animation" id=7]
 length = 0.4
@@ -310,6 +359,30 @@ tracks/6/keys = {
 "update": 1,
 "values": [ true ]
 }
+tracks/7/type = "value"
+tracks/7/path = NodePath("../../Colision:shape:radius")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 17.0 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("../../Colision:shape:height")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 132.0 ]
+}
 
 [sub_resource type="Animation" id=8]
 resource_name = "Roll"
@@ -358,10 +431,10 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.48 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( -0.174973, 68.6014 ) ]
+"values": [ Vector2( 0, 73.8515 ), Vector2( 0, 75.5 ) ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("../../Colision:shape:extents")
@@ -476,6 +549,30 @@ tracks/6/keys = {
 "update": 1,
 "values": [ true ]
 }
+tracks/7/type = "value"
+tracks/7/path = NodePath("../../Colision:shape:radius")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 17.0 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("../../Colision:shape:height")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 132.0 ]
+}
 
 [sub_resource type="Animation" id=10]
 length = 0.3
@@ -522,10 +619,10 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( -0.174973, 68.6014 ) ]
+"values": [ Vector2( 0, 75.453 ), Vector2( 0, 75.5 ) ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("../../Colision:shape:extents")
@@ -550,6 +647,30 @@ tracks/5/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("../../Colision:shape:height")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 69.0 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("../../Colision:shape:radius")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 17.0 ]
 }
 
 [sub_resource type="Animation" id=11]
@@ -666,6 +787,30 @@ tracks/5/keys = {
 "update": 1,
 "values": [ true ]
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath("../../Colision:shape:radius")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 17.0 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("../../Colision:shape:height")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 132.0 ]
+}
 
 [sub_resource type="Animation" id=13]
 length = 0.3
@@ -740,6 +885,30 @@ tracks/5/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("../../Colision:shape:radius")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 17.0 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("../../Colision:shape:height")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 132.0 ]
 }
 
 [sub_resource type="Animation" id=14]
@@ -817,6 +986,30 @@ tracks/5/keys = {
 "update": 1,
 "values": [ true ]
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath("../../Colision:shape:radius")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 17.0 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("../../Colision:shape:height")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 132.0 ]
+}
 
 [sub_resource type="SpriteFrames" id=15]
 animations = [ {
@@ -875,8 +1068,8 @@ texture = ExtResource( 2 )
 [node name="Colision" type="CollisionShape2D" parent="." groups=[
 "Player",
 ]]
-position = Vector2( 0, 44 )
-shape = SubResource( 2 )
+position = Vector2( 0, 75.5 )
+shape = SubResource( 19 )
 
 [node name="SPRITES" type="Node2D" parent="."]
 use_parent_material = true
@@ -888,7 +1081,7 @@ scale = Vector2( 1.7603, 1.7603 )
 texture = ExtResource( 13 )
 vframes = 10
 hframes = 5
-frame = 25
+frame = 21
 
 [node name="SwordHit" type="Area2D" parent="SPRITES/body2"]
 collision_layer = 4
@@ -900,8 +1093,9 @@ shape = SubResource( 3 )
 disabled = true
 
 [node name="Head" type="Sprite" parent="SPRITES"]
+visible = false
 use_parent_material = true
-position = Vector2( -0.878869, -19.8548 )
+position = Vector2( 3.43114, 37.76 )
 scale = Vector2( 1.93084, 1.99071 )
 texture = ExtResource( 8 )
 
@@ -940,7 +1134,7 @@ anims/wall_slide = SubResource( 14 )
 
 [node name="Mira" type="Position2D" parent="."]
 visible = false
-position = Vector2( 2.35871, 27.6472 )
+position = Vector2( -5.384, 70.4165 )
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_group_": true

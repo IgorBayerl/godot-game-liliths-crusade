@@ -19,15 +19,15 @@ shader_param/flash_modifier = 0.0
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 1 ), ExtResource( 3 ) ],
-"loop": true,
-"name": "Walk",
-"speed": 4.0
-}, {
 "frames": [ ExtResource( 6 ) ],
 "loop": true,
 "name": "Idle",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 1 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "Walk",
+"speed": 4.0
 }, {
 "frames": [ ExtResource( 9 ), ExtResource( 7 ), ExtResource( 8 ) ],
 "loop": true,
