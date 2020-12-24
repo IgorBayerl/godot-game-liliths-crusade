@@ -121,7 +121,7 @@ func _climb_up():
 #	position = Vector2(position.x + (30 * wall_direction),position.y - 80)
 #	print('ooooooooooo')
 	var climb_direction = wall_direction
-	velocity.y = -440
+	velocity.y = -460
 	yield(get_tree().create_timer(0.2), "timeout")
 	velocity.x = 290 * climb_direction
 	velocity.y = 0
