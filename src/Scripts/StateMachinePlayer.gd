@@ -13,8 +13,7 @@ func _ready() -> void:
 	add_state("rolling")
 	add_state("climb_up")
 	add_state("wall_grab")
-	add_state("deading")
-	add_state("dead")
+	add_state("is_dead")
 	call_deferred("set_state", states.idle)
 	
 func _input(event):
