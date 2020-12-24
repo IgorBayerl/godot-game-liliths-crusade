@@ -267,6 +267,7 @@ func death_detection():
 	if health <= 0 and not is_dead:
 		is_dead = true
 		emit_signal("OnDeath",self)
+#		anim_player.play("death")
 		_respawn()
 
 func _update_effect_animation():
@@ -276,6 +277,7 @@ func _update_effect_animation():
 		anim_effect.play("normal")
 
 func _respawn():
+	
 	yield(get_tree().create_timer(1), "timeout")
 	position = checkpoint_position
 	health = max_health
