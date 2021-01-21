@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://src/Scripts/screenEffect.gd" type="Script" id=1]
+[ext_resource path="res://src/Assets/Sprites/noise.png" type="Texture" id=2]
+[ext_resource path="res://src/Assets/Sprites/Vignette.jpg" type="Texture" id=3]
+
+[sub_resource type="Shader" id=3]
+code = "shader_type canvas_item;
+render_mode unshaded;
+
+uniform float randx;
+uniform float randy;
+uniform float grain_scale : hint_range(0.0, 1.0);
+uniform sampler2D noise_tex;
+uniform sampler2D vignette_tex;
+
+
+void fragment()
+{
+	vec4 col = texture(SCREEN_TEXTURE, SCREEN_UV);
+	float lum = col.r * 0.299 + col.g * 0.587 + col.b * 0.114;
+	
+	vec2 offset = vec2(randx,randy);
+	vec4 noise = texture(noise_tex, mod(SCREEN_UV * grain_scale + offset, 1.0));
+	vec4 v_fade = texture(vignette_tex, SCREEN_UV);
+	
+	COLOR.rgb = vec3(lum, lum, lum) * noise.rgb * v_fade.rgb;
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 3 )
+shader_param/randx = 0.0
+shader_param/randy = 0.0
+shader_param/grain_scale = 1.0
+shader_param/noise_tex = ExtResource( 2 )
+shader_param/vignette_tex = ExtResource( 3 )
+
+[node name="ColorRect" type="ColorRect"]
+material = SubResource( 2 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

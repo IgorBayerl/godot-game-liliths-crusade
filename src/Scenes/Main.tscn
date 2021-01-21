@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://src/Actors/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Assets/Sprites/Level.png" type="Texture" id=2]
@@ -16,7 +16,6 @@
 [ext_resource path="res://src/Assets/Sprites/preto.png" type="Texture" id=14]
 [ext_resource path="res://src/Interface/Inventory/inventory.tscn" type="PackedScene" id=15]
 [ext_resource path="res://src/Actors/Efeitos/Fade_in.tscn" type="PackedScene" id=16]
-[ext_resource path="res://src/Assets/Sprites/doublejumpicon.png" type="Texture" id=17]
 [ext_resource path="res://src/Assets/Sprites/mercador.png" type="Texture" id=18]
 [ext_resource path="res://src/Scripts/mercador.gd" type="Script" id=19]
 [ext_resource path="res://src/Interface/Money_Hud.tscn" type="PackedScene" id=20]
@@ -48,13 +47,10 @@ shader = ExtResource( 13 )
 shader_param/flash_color = Color( 0.898039, 0.870588, 0.870588, 1 )
 shader_param/flash_modifier = 0.0
 
-[sub_resource type="CircleShape2D" id=9]
-radius = 123.64
-
 [node name="Main" type="Node2D"]
 
 [node name="Level" type="Sprite" parent="."]
-position = Vector2( 1512, 520 )
+position = Vector2( 1512.4, 520 )
 texture = ExtResource( 2 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Level"]
@@ -175,8 +171,8 @@ collision_layer = 65
 shape = SubResource( 6 )
 
 [node name="wall7" type="Sprite" parent="Level"]
-position = Vector2( 1580.3, 763.187 )
-scale = Vector2( 16.9292, 3.84004 )
+position = Vector2( 2568.68, 763.187 )
+scale = Vector2( 56.4644, 3.84004 )
 texture = ExtResource( 14 )
 __meta__ = {
 "_edit_group_": true
@@ -223,8 +219,8 @@ collision_layer = 65
 shape = SubResource( 6 )
 
 [node name="wall6" type="Sprite" parent="Level"]
-position = Vector2( 1706.05, -228.115 )
-scale = Vector2( 8.19369, 16.0731 )
+position = Vector2( 1682.11, 23.8692 )
+scale = Vector2( 7.23615, 26.1525 )
 texture = ExtResource( 14 )
 __meta__ = {
 "_edit_group_": true
@@ -239,7 +235,7 @@ collision_layer = 65
 shape = SubResource( 6 )
 
 [node name="wall10" type="Sprite" parent="Level"]
-position = Vector2( 1882.63, 470.832 )
+position = Vector2( 2074.85, 441.466 )
 scale = Vector2( 11.6749, 4.09875 )
 texture = ExtResource( 14 )
 __meta__ = {
@@ -254,8 +250,24 @@ collision_layer = 65
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/wall10/StaticBody2D"]
 shape = SubResource( 6 )
 
+[node name="wall13" type="Sprite" parent="Level"]
+position = Vector2( 2073.35, 104.346 )
+scale = Vector2( 11.6749, 4.09875 )
+texture = ExtResource( 14 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Level/wall13" groups=[
+"terrain",
+]]
+collision_layer = 65
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/wall13/StaticBody2D"]
+shape = SubResource( 6 )
+
 [node name="wall12" type="Sprite" parent="Level"]
-position = Vector2( 1703.52, 560.728 )
+position = Vector2( 2176.63, 552.341 )
 scale = Vector2( 1.92048, 1.94286 )
 texture = ExtResource( 14 )
 __meta__ = {
@@ -271,8 +283,8 @@ collision_layer = 65
 shape = SubResource( 6 )
 
 [node name="wall11" type="Sprite" parent="Level"]
-position = Vector2( 2111.16, 164.654 )
-scale = Vector2( 5.16905, 21.7949 )
+position = Vector2( 2825.86, 226.953 )
+scale = Vector2( 7.84966, 9.18474 )
 texture = ExtResource( 14 )
 __meta__ = {
 "_edit_group_": true
@@ -284,6 +296,70 @@ __meta__ = {
 collision_layer = 65
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/wall11/StaticBody2D"]
+shape = SubResource( 6 )
+
+[node name="wall14" type="Sprite" parent="Level"]
+position = Vector2( 3010.27, 492.441 )
+scale = Vector2( 8.88309, 1.98628 )
+texture = ExtResource( 14 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Level/wall14" groups=[
+"terrain",
+]]
+collision_layer = 65
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/wall14/StaticBody2D"]
+shape = SubResource( 6 )
+
+[node name="wall15" type="Sprite" parent="Level"]
+position = Vector2( 3055.71, 388.206 )
+scale = Vector2( 3.35952, 3.09099 )
+texture = ExtResource( 14 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Level/wall15" groups=[
+"terrain",
+]]
+collision_layer = 65
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/wall15/StaticBody2D"]
+shape = SubResource( 6 )
+
+[node name="wall16" type="Sprite" parent="Level"]
+position = Vector2( 3444.14, 462.151 )
+scale = Vector2( 3.35952, 8.89965 )
+texture = ExtResource( 14 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Level/wall16" groups=[
+"terrain",
+]]
+collision_layer = 65
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/wall16/StaticBody2D"]
+shape = SubResource( 6 )
+
+[node name="wall17" type="Sprite" parent="Level"]
+position = Vector2( 3396.03, 251.899 )
+scale = Vector2( 5.21259, 2.48518 )
+texture = ExtResource( 14 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Level/wall17" groups=[
+"terrain",
+]]
+collision_layer = 65
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/wall17/StaticBody2D"]
 shape = SubResource( 6 )
 
 [node name="wall2" type="Sprite" parent="Level"]
@@ -306,16 +382,19 @@ shape = SubResource( 6 )
 position = Vector2( 317.18, 701.679 )
 
 [node name="CheckPoint2" parent="." instance=ExtResource( 10 )]
-position = Vector2( 1872.54, 567.688 )
+position = Vector2( 4175.68, 396.339 )
 
 [node name="MainController" type="Node2D" parent="."]
 script = ExtResource( 8 )
 
 [node name="mercador" type="Sprite" parent="MainController"]
-position = Vector2( 2804.79, 1139.52 )
+position = Vector2( 3432.7, 1136.96 )
 scale = Vector2( 0.113016, 0.104773 )
 texture = ExtResource( 18 )
 script = ExtResource( 19 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Area2D" type="Area2D" parent="MainController/mercador"]
 
@@ -323,10 +402,13 @@ script = ExtResource( 19 )
 shape = SubResource( 7 )
 
 [node name="Barril" parent="MainController" instance=ExtResource( 12 )]
-position = Vector2( 3279.09, 858.764 )
+position = Vector2( 4361.84, 1102.71 )
+
+[node name="Barril2" parent="MainController" instance=ExtResource( 12 )]
+position = Vector2( 4361.85, 1157.22 )
 
 [node name="Player" parent="MainController" instance=ExtResource( 1 )]
-position = Vector2( 2714.06, 248.513 )
+position = Vector2( 3549.17, 763.425 )
 scale = Vector2( 0.52, 0.52 )
 
 [node name="Aroldo2" parent="MainController" instance=ExtResource( 3 )]
@@ -394,16 +476,6 @@ type = 3
 position = Vector2( 2055.51, 599.819 )
 type = 2
 
-[node name="Sprite" type="Sprite" parent="MainController"]
-position = Vector2( 3416.43, 1129.13 )
-scale = Vector2( 0.307751, 0.303752 )
-texture = ExtResource( 17 )
-
-[node name="Area2D" type="Area2D" parent="MainController/Sprite"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MainController/Sprite/Area2D"]
-shape = SubResource( 9 )
-
 [node name="AnimatedSprite" parent="MainController" instance=ExtResource( 21 )]
 
 [node name="FOG" parent="." instance=ExtResource( 6 )]
@@ -415,10 +487,10 @@ scale = Vector2( 60.6133, 41.2576 )
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
 volume_db = -28.272
+autoplay = true
 [connection signal="body_entered" from="MainController/mercador/Area2D" to="MainController/mercador" method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="MainController/mercador/Area2D" to="MainController/mercador" method="_on_Area2D_body_exited"]
 [connection signal="body_entered" from="MainController/Arma" to="MainController" method="_on_Arma_body_entered"]
 [connection signal="body_entered" from="MainController/Arma2" to="MainController" method="_on_Arma_body_entered"]
 [connection signal="body_entered" from="MainController/Arma4" to="MainController" method="_on_Arma_body_entered"]
 [connection signal="body_entered" from="MainController/Arma3" to="MainController" method="_on_Arma_body_entered"]
-[connection signal="body_entered" from="MainController/Sprite/Area2D" to="MainController/Player" method="_on_Area2D_body_entered"]

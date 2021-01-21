@@ -13,11 +13,14 @@ var aquiped_gun_of_the_type = "1"
 
 var gun
 
+var money: int
+
 
 func _ready() -> void:
 	guns_info = JsonData.item_data
 	player_info = JsonData.player_data
 	gun_on_hand = guns_info["onHand"].type
+	money = player_info.money
 	_update_gun()
 	$CanvasLayer/Control/Fade.show()
 	$CanvasLayer/Control/Fade.fade_out()
@@ -89,12 +92,12 @@ func _on_GetItem_area_entered(area: Area2D) -> void:
 
 
 func _select_gun(gun):
-	$Player/Mira/Arma/GunSprite.set_frame(gun.gun_id-1)
-	$Player/Mira.damage = gun.damage
-	$Player/Mira.random_rate = gun.random_rate
-	$Player/Mira.bullet_speed = gun.bullet_speed
-	$Player/Mira.automatica = gun.automatica
-	$Player/Mira.fire_rate = gun.fire_rate
+	$Player/SPRITES/Mira/Arma/GunSprite.set_frame(gun.gun_id-1)
+	$Player/SPRITES/Mira.damage = gun.damage
+	$Player/SPRITES/Mira.random_rate = gun.random_rate
+	$Player/SPRITES/Mira.bullet_speed = gun.bullet_speed
+	$Player/SPRITES/Mira.automatica = gun.automatica
+	$Player/SPRITES/Mira.fire_rate = gun.fire_rate
 
 
 func atirando():

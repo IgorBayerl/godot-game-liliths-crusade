@@ -15,7 +15,9 @@ var can_fire = true
 var horizontal_dir := -1
 var looking = 1
 
-onready var parent = get_parent()
+onready var camera_position = $Camera_position
+
+onready var parent = get_parent().get_parent()
 onready var Main_controller = get_tree().get_root().get_node("Main").get_node("MainController")
 
 func _process(delta: float) -> void:
@@ -24,7 +26,10 @@ func _process(delta: float) -> void:
 	_states()
 	_try_shoot()
 	$Arma.scale.y = looking
+	$Arma.scale.x = looking
 	_set_poit_direction()
+#	if Input.is_action_pressed("ctrl") :
+#		pass
 
 func _try_shoot():
 	if is_able_to_fire:
@@ -40,8 +45,8 @@ func _try_shoot():
 
 func _states():
 	if parent.is_dead or parent.is_atacking or parent.is_rolling or parent.is_clibing_up:
-			is_able_to_fire = false
-			visible = false
+		is_able_to_fire = false
+		visible = false
 	else :
 		is_able_to_fire = true
 		visible = true
@@ -67,6 +72,7 @@ func instanciate_bullet() ->void:
 	can_fire = false
 	yield(get_tree().create_timer(fire_rate), "timeout")
 	can_fire = true
+
 
 func _random_value()-> float:
 	var _random_shoot_value = 0

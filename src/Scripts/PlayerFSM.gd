@@ -4,6 +4,7 @@ extends KinematicBody2D
 export var GRAVITY = 1200
 
 signal OnDeath(WhoDied)
+signal OnRespawn(WhoDied)
 
 const UP = Vector2(0, -1)
 const SLOPE_STOP = 60
@@ -32,9 +33,9 @@ var can_atack = true
 var can_access_inventory = false
 var can_climb_up = false
 
-var max_jump_velocity = -600
-var min_jump_velocity = -400
-var double_jump_velocity = -460
+var max_jump_velocity = -450
+var min_jump_velocity = -300
+var double_jump_velocity = -300
 
 # Skills control #
 
@@ -102,34 +103,47 @@ func _check_if_can_wall_grab():
 	if wall_direction != 0:
 		if wall_direction == 1:
 			if !right_climb_up_raycast.is_colliding() and DW_right_climb_up_raycast.is_colliding():
-				print('can wall grab == true')
+#				print('can wall grab == true')
 				is_wall_grab = true
 				return true
 			elif right_climb_up_raycast.is_colliding():
-				print('can wall grab == false')
+#				print('can wall grab == false')
 				is_wall_grab = false
 				return false
 		if wall_direction == -1:
 			if !left_climb_up_raycast.is_colliding() and DW_left_climb_up_raycast.is_colliding():
-				print('can wall grab == true')
+#				print('can wall grab == true')
 				is_wall_grab = true
 				return true
 			elif left_climb_up_raycast.is_colliding():
-				print('can wall grab == false')
+#				print('can wall grab == false')
 				is_wall_grab = false
 				return false
 
 func _climb_up():
 #	position = Vector2(position.x + (30 * wall_direction),position.y - 80)
-	print('ooooooooooo')
+	print('Climb up action')
 	var climb_direction = wall_direction
-	velocity.y = -460
+#	velocity.y = -800
+	velocity.y += -800 
 	yield(get_tree().create_timer(0.2), "timeout")
 	velocity.x = 290 * climb_direction
 	velocity.y = 0
 	
 	is_clibing_up = false
 	is_wall_grab = false
+
+#func _climb_up():
+##	position = Vector2(position.x + (30 * wall_direction),position.y - 80)
+#	print('ooooooooooo')
+#	var climb_direction = wall_direction
+#	velocity.y = -460
+#	yield(get_tree().create_timer(0.2), "timeout")
+#	velocity.x = 290 * climb_direction
+#	velocity.y = 0
+#
+#	is_clibing_up = false
+#	is_wall_grab = false
 
 func _turning_on_skills():
 	if Input.is_key_pressed(KEY_J):
@@ -147,7 +161,7 @@ func _cap_gravity_wall_slide():
 #	if !Input.is_action_pressed("move_DOWN"):
 #		var max_velocity = 96
 #		velocity.y = min(velocity.y, max_velocity)
-	var max_velocity = 96
+	var max_velocity = 0
 	velocity.y = min(velocity.y, max_velocity)
 
 func _handle_wall_slide_sticking():
@@ -157,6 +171,12 @@ func _handle_wall_slide_sticking():
 	else:
 		wall_slide_sticky_timer.stop()
 
+
+# Dano dano
+#func _unhandled_input(event):
+#	if event.is_action_pressed("ui_accept"):
+#		take_damage(80)
+		
 func _wall_jump():
 	var wall_jump_velocity = WALL_JUMP_VELOCITY
 	wall_jump_velocity.x *= -wall_direction
@@ -260,12 +280,12 @@ func _atack_combo():
 			anim_player.play("Atack2")
 
 func camera_shake(timeout):
-	$Mira/Camera_position/Camera2D.shake = true
+	$SPRITES/Mira/Camera_position/Camera2D.shake = true
 	yield(get_tree().create_timer(timeout), "timeout")
-	$Mira/Camera_position/Camera2D.shake = false
+	$SPRITES/Mira/Camera_position/Camera2D.shake = false
 
 func take_damage(damage):
-	if ivunerability.is_stopped():
+	if ivunerability.is_stopped() and not is_dead:
 		if !is_rolling:
 			is_stuned = true
 			ivunerability.start()
@@ -277,7 +297,7 @@ func death_detection():
 	if health <= 0 and not is_dead:
 		is_dead = true
 		emit_signal("OnDeath",self)
-#		anim_player.play("death")
+		yield(get_tree().create_timer(2.5), "timeout")
 		_respawn()
 
 func _update_effect_animation():
@@ -288,10 +308,12 @@ func _update_effect_animation():
 
 func _respawn():
 	
+	
 	yield(get_tree().create_timer(1), "timeout")
 	position = checkpoint_position
 	health = max_health
 	is_dead = false
+	emit_signal("OnRespawn",self)
 	get_parent().get_node("CanvasLayer/Control/Health Bar").restore_health()
 
 func _atack_finish():

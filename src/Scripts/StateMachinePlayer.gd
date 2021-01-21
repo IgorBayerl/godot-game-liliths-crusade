@@ -71,6 +71,9 @@ func _state_logic(delta):
 		if state != states.rolling:
 			parent._update_move_direction()
 		parent._update_wall_direction()
+#		if state == states.wall_grab:
+#			if Input.action_press("jump")
+#			pass
 		if state != states.wall_slide:
 			if ![states.rolling, states.atack, states.stun ].has(state):
 				if !parent.wal_jumping == true:
@@ -92,6 +95,7 @@ func _state_logic(delta):
 func _get_transition(delta):
 	match state:
 		states.idle:
+			
 			if parent.is_stuned:
 				return states.stun
 			if parent.is_crouched:
@@ -108,6 +112,8 @@ func _get_transition(delta):
 			elif !parent.is_rolling:
 				if parent.velocity.x != 0:
 					return states.run
+			elif parent.is_dead:
+				return states.is_dead
 		states.run:
 			if parent.is_stuned:
 				return states.stun
@@ -125,6 +131,8 @@ func _get_transition(delta):
 			elif !parent.is_rolling:
 				if parent.velocity.x == 0:
 					return states.idle
+			elif parent.is_dead:
+				return states.is_dead
 		states.jump:
 			if parent.is_stuned:
 				return states.stun
@@ -139,6 +147,8 @@ func _get_transition(delta):
 				return states.idle
 			elif parent.velocity.y >= 0:
 				return states.fall
+			elif parent.is_dead:
+				return states.is_dead
 		states.fall:
 			if parent.is_stuned:
 				return states.stun
@@ -153,6 +163,8 @@ func _get_transition(delta):
 				return states.idle
 			elif parent.velocity.y < 0 :
 				return states.jump
+			elif parent.is_dead:
+				return states.is_dead
 		states.wall_slide:
 			if parent._check_if_can_wall_grab():
 				return states.wall_grab
@@ -162,6 +174,8 @@ func _get_transition(delta):
 				return states.idle
 			elif parent.wall_direction == 0:
 				return states.fall
+			elif parent.is_dead:
+				return states.is_dead
 		states.rolling:
 			if !parent.is_rolling:
 				if parent.can_stand_up:
@@ -179,7 +193,7 @@ func _get_transition(delta):
 							return states.wall_slide
 						elif parent._check_if_can_wall_grab():
 							return states.wall_grab
-				elif !parent.can_stand_up:
+				elif parent.can_stand_up:
 					return states.crouch
 					parent.is_crouched = true
 		states.stun:
@@ -196,6 +210,8 @@ func _get_transition(delta):
 						return states.run
 					elif parent.velocity.x == 0:
 						return states.idle
+				elif parent.is_dead:
+					return states.is_dead
 		states.crouch:
 			if !parent.is_crouched :
 				if parent.can_stand_up:
@@ -210,9 +226,13 @@ func _get_transition(delta):
 							return states.idle
 			elif parent.is_rolling:
 				return states.rolling
+			elif parent.is_dead:
+					return states.is_dead
 		states.atack:
 			if !parent.is_atacking:
 				return states.idle
+			elif parent.is_dead:
+					return states.is_dead
 		states.air_atack:
 			if !parent.is_atacking:
 				if !parent.is_on_floor():
@@ -224,6 +244,8 @@ func _get_transition(delta):
 					return states.run
 				elif parent.velocity.x == 0:
 					return states.idle
+				elif parent.is_dead:
+					return states.is_dead
 		states.climb_up:
 			if !parent.is_clibing_up:
 				return states.idle
@@ -254,8 +276,8 @@ func _enter_state(new_state, old_state):
 			parent.velocity.y += 100
 			parent.anim_player.play("wall_slide")
 			parent.is_wall_sliding = true
-			parent.particles_wall_slide1.emitting = true
-			parent.particles_wall_slide2.emitting = true
+#			parent.particles_wall_slide1.emitting = true
+#			parent.particles_wall_slide2.emitting = true
 			parent.get_node("SPRITES").scale.x = -parent.wall_direction
 		states.rolling:
 			print('lets rolla')
@@ -283,7 +305,12 @@ func _enter_state(new_state, old_state):
 			print('to subindoooooooooooooooo')
 		states.wall_grab:
 			print('wall grab')
+			parent.anim_player.play("edgeGrab")
 			parent.velocity = Vector2()
+		states.is_dead:
+			print('morri')
+			parent.anim_player.play("death")
+			
 	
 func _exit_state(old_state, new_state):
 	match old_state:
@@ -298,3 +325,11 @@ func _exit_state(old_state, new_state):
 func _on_WallSlideSticknesTimer_timeout() -> void:
 	if state == states.wall_slide:
 		set_state(states.fall)
+
+
+func _on_Player_OnDeath(WhoDied):
+	set_state(states.is_dead)
+
+
+func _on_Player_OnRespawn(WhoDied):
+	set_state(states.idle)
