@@ -1,0 +1,13 @@
+[remap]
+
+importer="com.technohacker.piskel"
+type="StreamTexture"
+path="res://.import/RevolveHand.piskel-df0687b9caf3d1b78d41978958fd1c3f.stex"
+
+[deps]
+
+source_file="res://src/Assets/PISKELfiles/GUNS.piskel/RevolveHand.piskel"
+dest_files=[ "res://.import/RevolveHand.piskel-df0687b9caf3d1b78d41978958fd1c3f.stex" ]
+
+[params]
+

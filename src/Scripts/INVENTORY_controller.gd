@@ -4,7 +4,7 @@ extends Control
 #var selectedGun : String = "gun"
 var info
 
-onready var player = get_parent().get_parent().get_parent().get_node("Player")
+onready var player = get_parent().get_parent().get_parent().get_node("Player2")
 onready var mainController = get_parent().get_parent().get_parent()
 
 

@@ -1,8 +1,6 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=28 format=2]
 
-[ext_resource path="res://src/Actors/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Assets/Sprites/Level.png" type="Texture" id=2]
-[ext_resource path="res://src/Actors/Aroldo.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/Interface/Health Bar.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/Actors/Arma.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/Actors/Efeitos/fog.tscn" type="PackedScene" id=6]
@@ -16,6 +14,7 @@
 [ext_resource path="res://src/Assets/Sprites/preto.png" type="Texture" id=14]
 [ext_resource path="res://src/Interface/Inventory/inventory.tscn" type="PackedScene" id=15]
 [ext_resource path="res://src/Actors/Efeitos/Fade_in.tscn" type="PackedScene" id=16]
+[ext_resource path="res://src/Actors/PlayerNew.tscn" type="PackedScene" id=17]
 [ext_resource path="res://src/Assets/Sprites/mercador.png" type="Texture" id=18]
 [ext_resource path="res://src/Scripts/mercador.gd" type="Script" id=19]
 [ext_resource path="res://src/Interface/Money_Hud.tscn" type="PackedScene" id=20]
@@ -299,8 +298,8 @@ collision_layer = 65
 shape = SubResource( 6 )
 
 [node name="wall14" type="Sprite" parent="Level"]
-position = Vector2( 3010.27, 492.441 )
-scale = Vector2( 8.88309, 1.98628 )
+position = Vector2( 3022.56, 563.989 )
+scale = Vector2( 6.15458, 1.69649 )
 texture = ExtResource( 14 )
 __meta__ = {
 "_edit_group_": true
@@ -314,25 +313,9 @@ collision_layer = 65
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/wall14/StaticBody2D"]
 shape = SubResource( 6 )
 
-[node name="wall15" type="Sprite" parent="Level"]
-position = Vector2( 3055.71, 388.206 )
-scale = Vector2( 3.35952, 3.09099 )
-texture = ExtResource( 14 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Level/wall15" groups=[
-"terrain",
-]]
-collision_layer = 65
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/wall15/StaticBody2D"]
-shape = SubResource( 6 )
-
 [node name="wall16" type="Sprite" parent="Level"]
-position = Vector2( 3444.14, 462.151 )
-scale = Vector2( 3.35952, 8.89965 )
+position = Vector2( 3882.26, 545.49 )
+scale = Vector2( 3.35952, 5.24863 )
 texture = ExtResource( 14 )
 __meta__ = {
 "_edit_group_": true
@@ -347,8 +330,8 @@ collision_layer = 65
 shape = SubResource( 6 )
 
 [node name="wall17" type="Sprite" parent="Level"]
-position = Vector2( 3396.03, 251.899 )
-scale = Vector2( 5.21259, 2.48518 )
+position = Vector2( 2973.83, 516.133 )
+scale = Vector2( 5.21259, 6.23145 )
 texture = ExtResource( 14 )
 __meta__ = {
 "_edit_group_": true
@@ -401,27 +384,11 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MainController/mercador/Area2D"]
 shape = SubResource( 7 )
 
-[node name="Barril" parent="MainController" instance=ExtResource( 12 )]
-position = Vector2( 4361.84, 1102.71 )
-
 [node name="Barril2" parent="MainController" instance=ExtResource( 12 )]
-position = Vector2( 4361.85, 1157.22 )
+position = Vector2( 5144.44, 1152.46 )
 
-[node name="Player" parent="MainController" instance=ExtResource( 1 )]
-position = Vector2( 3549.17, 763.425 )
-scale = Vector2( 0.52, 0.52 )
-
-[node name="Aroldo2" parent="MainController" instance=ExtResource( 3 )]
-position = Vector2( 764.473, 396.152 )
-collision_layer = 2
-
-[node name="Aroldo3" parent="MainController" instance=ExtResource( 3 )]
-position = Vector2( 1243.06, 571.442 )
-collision_layer = 2
-
-[node name="Aroldo4" parent="MainController" instance=ExtResource( 3 )]
-position = Vector2( 443.614, 411.074 )
-collision_layer = 2
+[node name="Player2" parent="MainController" instance=ExtResource( 17 )]
+position = Vector2( 4740.96, 1075.95 )
 
 [node name="Roberto" parent="MainController" instance=ExtResource( 11 )]
 material = SubResource( 8 )

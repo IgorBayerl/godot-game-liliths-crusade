@@ -138,11 +138,11 @@ func _get_transition(delta):
 				return states.stun
 			if parent.is_atacking:
 				return states.air_atack
-			if parent.wall_direction != 0 and parent.have_wall_jump :
-				if !parent._check_if_can_wall_grab():
-					return states.wall_slide
-				elif parent._check_if_can_wall_grab():
-					return states.wall_grab
+#			if parent.wall_direction != 0 and parent.have_wall_jump :
+#				if !parent._check_if_can_wall_grab():
+#					return states.wall_slide
+#				elif parent._check_if_can_wall_grab():
+#					return states.wall_grab
 			elif parent.is_on_floor():
 				return states.idle
 			elif parent.velocity.y >= 0:

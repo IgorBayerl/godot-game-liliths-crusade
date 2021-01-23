@@ -1,0 +1,13 @@
+[remap]
+
+importer="com.technohacker.piskel"
+type="StreamTexture"
+path="res://.import/DozeHand.piskel-786ea0aee893fe0e5b5f8e785cb5856f.stex"
+
+[deps]
+
+source_file="res://src/Assets/PISKELfiles/GUNS.piskel/DozeHand.piskel"
+dest_files=[ "res://.import/DozeHand.piskel-786ea0aee893fe0e5b5f8e785cb5856f.stex" ]
+
+[params]
+

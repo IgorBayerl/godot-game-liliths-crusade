@@ -1,0 +1,13 @@
+[remap]
+
+importer="com.technohacker.piskel"
+type="StreamTexture"
+path="res://.import/submachine.piskel-32ab90b5d0a40723e74ccc2b6b9d8c43.stex"
+
+[deps]
+
+source_file="res://src/Assets/PISKELfiles/GUNS.piskel/submachine.piskel"
+dest_files=[ "res://.import/submachine.piskel-32ab90b5d0a40723e74ccc2b6b9d8c43.stex" ]
+
+[params]
+

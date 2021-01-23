@@ -1,0 +1,13 @@
+[remap]
+
+importer="com.technohacker.piskel"
+type="StreamTexture"
+path="res://.import/flame.piskel-9734cb1c9322a1f72741bcb3f3df4e37.stex"
+
+[deps]
+
+source_file="res://src/Assets/PISKELfiles/GUNS.piskel/flame.piskel"
+dest_files=[ "res://.import/flame.piskel-9734cb1c9322a1f72741bcb3f3df4e37.stex" ]
+
+[params]
+

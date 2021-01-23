@@ -1,0 +1,13 @@
+[remap]
+
+importer="com.technohacker.piskel"
+type="StreamTexture"
+path="res://.import/Player_Climbing.piskel-064ceda5b3d01232a43f02eebca51fd4.stex"
+
+[deps]
+
+source_file="res://src/Assets/PISKELfiles/Player_Climbing.piskel"
+dest_files=[ "res://.import/Player_Climbing.piskel-064ceda5b3d01232a43f02eebca51fd4.stex" ]
+
+[params]
+

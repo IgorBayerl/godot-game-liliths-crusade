@@ -1,0 +1,13 @@
+[remap]
+
+importer="com.technohacker.piskel"
+type="StreamTexture"
+path="res://.import/SniperHand.piskel-5aae626a4386c62de5db59d51475fbee.stex"
+
+[deps]
+
+source_file="res://src/Assets/PISKELfiles/GUNS.piskel/SniperHand.piskel"
+dest_files=[ "res://.import/SniperHand.piskel-5aae626a4386c62de5db59d51475fbee.stex" ]
+
+[params]
+

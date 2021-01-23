@@ -1,0 +1,13 @@
+[remap]
+
+importer="com.technohacker.piskel"
+type="StreamTexture"
+path="res://.import/Sniper.piskel-5f4d44147012561832e38f04f8991cb6.stex"
+
+[deps]
+
+source_file="res://src/Assets/PISKELfiles/GUNS.piskel/Sniper.piskel"
+dest_files=[ "res://.import/Sniper.piskel-5f4d44147012561832e38f04f8991cb6.stex" ]
+
+[params]
+

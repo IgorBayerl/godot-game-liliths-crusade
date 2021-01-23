@@ -79,20 +79,23 @@ onready var particles_wall_slide1 = $SPRITES/Particles2D
 onready var particles_wall_slide2 = $SPRITES/Particles2D2
 
 onready var playerColisionBox = $CollisionShape2D
-
+onready var Camera = $PlayerStructure/Mira/Eixo/CameraPosition/Camera2D
 onready var teto_detection = $WallRaycast/tetoDetection_1
+
+
+
 
 func _check_if_can_climb_up():
 	if wall_direction != 0:
 		if wall_direction == 1:
-			if !right_climb_up_raycast.is_colliding() : #and DW_right_climb_up_raycast.is_colliding():
+			if right_climb_up_raycast.is_colliding() and DW_right_climb_up_raycast.is_colliding():
 				print('can climb up == true')
 				return true
 			elif right_climb_up_raycast.is_colliding():
 				print('can climb up == false')
 				return false
 		if wall_direction == -1:
-			if !left_climb_up_raycast.is_colliding() : #and DW_left_climb_up_raycast.is_colliding():
+			if left_climb_up_raycast.is_colliding() and DW_left_climb_up_raycast.is_colliding():
 				print('can climb up == true')
 				return true
 			elif left_climb_up_raycast.is_colliding():
@@ -324,14 +327,14 @@ func _on_MiliAtack_Timer_timeout():
 
 func _on_SwordHit_body_entered(body: Node) -> void:
 	if body.is_in_group("Entidade"):
-		$Mira/Camera_position/Camera2D.shake = true
+#		Camera.shake = true
 		var damage = rand_range(30, 30)
 		if facing == 1:
 			body.take_damage(damage, 0)
 		if facing == -1:
 			body.take_damage(damage, 180)
 		yield(get_tree().create_timer(0.2), "timeout")
-		$Mira/Camera_position/Camera2D.shake = false
+#		Camera.shake = false
 
 func _on_WalljumpMovementBlocker_timeout() -> void:
 	wal_jumping = false

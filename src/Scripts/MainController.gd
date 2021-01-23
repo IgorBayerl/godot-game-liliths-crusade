@@ -12,7 +12,8 @@ var gun_on_hand = 1
 var aquiped_gun_of_the_type = "1"
 
 var gun
-
+onready var gunsProps = $Player2.gunsProps
+onready var gunsSprite = $Player2.gunsSprite
 var money: int
 
 
@@ -92,12 +93,20 @@ func _on_GetItem_area_entered(area: Area2D) -> void:
 
 
 func _select_gun(gun):
-	$Player/SPRITES/Mira/Arma/GunSprite.set_frame(gun.gun_id-1)
-	$Player/SPRITES/Mira.damage = gun.damage
-	$Player/SPRITES/Mira.random_rate = gun.random_rate
-	$Player/SPRITES/Mira.bullet_speed = gun.bullet_speed
-	$Player/SPRITES/Mira.automatica = gun.automatica
-	$Player/SPRITES/Mira.fire_rate = gun.fire_rate
+	gunsProps = {
+		'bullet_speed': gun.bullet_speed,
+		'fire_rate': gun.fire_rate,
+		'random_rate': gun.random_rate,
+		'automatica': gun.automatica,
+		'damage': gun.damage,
+		'shooter_point_position': Vector2( 0 , 0 )
+	}
+	gunsSprite.set_frame(gun.gun_id-1)
+#	$Player/SPRITES/Mira.damage = gun.damage
+#	$Player/SPRITES/Mira.random_rate = gun.random_rate
+#	$Player/SPRITES/Mira.bullet_speed = gun.bullet_speed
+#	$Player/SPRITES/Mira.automatica = gun.automatica
+#	$Player/SPRITES/Mira.fire_rate = gun.fire_rate
 
 
 func atirando():

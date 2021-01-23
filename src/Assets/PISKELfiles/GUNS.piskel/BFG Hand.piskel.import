@@ -1,0 +1,13 @@
+[remap]
+
+importer="com.technohacker.piskel"
+type="StreamTexture"
+path="res://.import/BFG Hand.piskel-ffe3264e8a5376d4194c9ca152d574c4.stex"
+
+[deps]
+
+source_file="res://src/Assets/PISKELfiles/GUNS.piskel/BFG Hand.piskel"
+dest_files=[ "res://.import/BFG Hand.piskel-ffe3264e8a5376d4194c9ca152d574c4.stex" ]
+
+[params]
+

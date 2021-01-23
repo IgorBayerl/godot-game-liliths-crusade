@@ -1,0 +1,13 @@
+[remap]
+
+importer="com.technohacker.piskel"
+type="StreamTexture"
+path="res://.import/Canon_Hand.piskel-a611afd25ddcde06e8c83c32c75c3af6.stex"
+
+[deps]
+
+source_file="res://src/Assets/PISKELfiles/GUNS.piskel/Canon_Hand.piskel"
+dest_files=[ "res://.import/Canon_Hand.piskel-a611afd25ddcde06e8c83c32c75c3af6.stex" ]
+
+[params]
+

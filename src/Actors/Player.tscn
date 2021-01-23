@@ -987,6 +987,21 @@ script = ExtResource( 1 )
 visible = false
 texture = ExtResource( 2 )
 
+[node name="playerStructure" type="Node" parent="."]
+
+[node name="Sprites" type="Node" parent="playerStructure"]
+
+[node name="Mira" type="Node" parent="playerStructure"]
+
+[node name="Raycasts" type="Node" parent="playerStructure"]
+
+[node name="Colisions" type="Node" parent="playerStructure"]
+
+[node name="HitBOX" type="Node" parent="playerStructure"]
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource( 12 )
+
 [node name="SPRITES" type="Node2D" parent="."]
 use_parent_material = true
 
@@ -997,7 +1012,7 @@ scale = Vector2( 1.9, 1.9 )
 texture = ExtResource( 13 )
 vframes = 10
 hframes = 5
-frame = 8
+frame = 10
 
 [node name="SwordHit" type="Area2D" parent="SPRITES/body2"]
 collision_layer = 4
@@ -1010,7 +1025,7 @@ disabled = true
 
 [node name="Head" type="Sprite" parent="SPRITES"]
 use_parent_material = true
-position = Vector2( -1.76141, -28.077 )
+position = Vector2( -1.46168, -25.6941 )
 scale = Vector2( 1.93084, 1.99071 )
 texture = ExtResource( 8 )
 
@@ -1049,7 +1064,7 @@ anims/jump = SubResource( 13 )
 anims/wall_slide = SubResource( 14 )
 
 [node name="Mira" type="Position2D" parent="SPRITES"]
-position = Vector2( -16.3401, -4.65868 )
+position = Vector2( -16.3401, -5.09714 )
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_group_": true
@@ -1120,18 +1135,13 @@ position = Vector2( 12.8755, -6.7047 )
 BloodParticleNumber = 30
 RandomVelocity = 350.0
 
-[node name="StateMachine" type="Node" parent="."]
-script = ExtResource( 12 )
-
 [node name="WallRaycast" type="Node2D" parent="."]
-visible = false
 
 [node name="RightWallRaycast" type="Node2D" parent="WallRaycast"]
 position = Vector2( 1.95313, 91.4063 )
 
 [node name="RightWallRaycast_1" type="RayCast2D" parent="WallRaycast/RightWallRaycast"]
-position = Vector2( 16.7381, -126.841 )
-enabled = true
+position = Vector2( 16.7381, -144.339 )
 cast_to = Vector2( 20, 0 )
 collision_mask = 64
 
@@ -1145,8 +1155,7 @@ collision_mask = 64
 position = Vector2( 0.78125, 92.1875 )
 
 [node name="LeftWallRaycast_1" type="RayCast2D" parent="WallRaycast/LeftWallRaycast"]
-position = Vector2( -18.4919, -127.59 )
-enabled = true
+position = Vector2( -18.4919, -144.777 )
 cast_to = Vector2( -20, 0 )
 collision_mask = 64
 
@@ -1167,23 +1176,25 @@ position = Vector2( -2.05643, -20.9525 )
 shape = SubResource( 18 )
 
 [node name="ClimbUpRaycasts" type="Node2D" parent="WallRaycast"]
-position = Vector2( 0, -45.2784 )
+position = Vector2( 0, -31.2159 )
 
 [node name="ClimbUpLeft" type="RayCast2D" parent="WallRaycast/ClimbUpRaycasts"]
+position = Vector2( -22.0177, -39.0699 )
 enabled = true
-cast_to = Vector2( -50, 0 )
+cast_to = Vector2( 0, 30 )
 
 [node name="ClimbUpRight" type="RayCast2D" parent="WallRaycast/ClimbUpRaycasts"]
+position = Vector2( 40, -40 )
 enabled = true
-cast_to = Vector2( 50, 0 )
+cast_to = Vector2( 0, 30 )
 
 [node name="DW_ClimbUpLeft" type="RayCast2D" parent="WallRaycast/ClimbUpRaycasts"]
-position = Vector2( 0, 14.4692 )
+position = Vector2( 0, 3.5317 )
 enabled = true
 cast_to = Vector2( -50, 0 )
 
 [node name="DW_ClimbUpRight" type="RayCast2D" parent="WallRaycast/ClimbUpRaycasts"]
-position = Vector2( 0, 14.4692 )
+position = Vector2( 0, 3.5317 )
 enabled = true
 cast_to = Vector2( 50, 0 )
 
@@ -1196,11 +1207,13 @@ wait_time = 0.5
 one_shot = true
 
 [node name="state_label" type="Label" parent="."]
-margin_left = -24.025
+margin_left = -35.1452
 margin_top = -106.689
-margin_right = 45.975
+margin_right = 34.8548
 margin_bottom = -65.6892
 text = "AAAA"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
