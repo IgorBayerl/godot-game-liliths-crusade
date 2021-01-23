@@ -94,20 +94,21 @@ onready var gunsProps = $PlayerStructure/Mira/Eixo.gunsProps
 #########################
 
 func _check_if_can_wall_grab():
-#func _check_if_can_climb_up():
 	if wall_direction != 0:
-		if ledge_grab_raycast_vertical.is_colliding():
-			if ledge_grab_raycast_horizontal.is_colliding():
-				print('can climb up == true')
-				return true
+#		if left_wall_raycasts.is_colliding():
+		if ledge_grab_raycast_horizontal.is_colliding():
+			print('can wall slide == true')
+			return true
 	else :
 		return false
 
 func _can_ledge_grab():
-	if ledge_grab_raycast_vertical.is_colliding():
-		if ledge_grab_raycast_horizontal.is_colliding() and !ledgeRay_Up_Horizontal.is_colliding():
-			print('can climb up == true')
-			return true
+	if !ledgeRay_Up_Horizontal.is_colliding():
+		if ledge_grab_raycast_vertical.is_colliding():
+			if ledge_grab_raycast_horizontal.is_colliding() :
+				print('can climb up == true')
+				return true
+	else: return false
 
 #func _check_if_can_wall_grab():
 #	if wall_direction != 0:

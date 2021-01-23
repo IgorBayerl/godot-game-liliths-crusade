@@ -271,19 +271,19 @@ shape = SubResource( 15 )
 [node name="ledgeGrabRaycasts" type="Node2D" parent="PlayerStructure"]
 
 [node name="LedgeRay_Vertical" type="RayCast2D" parent="PlayerStructure/ledgeGrabRaycasts"]
-position = Vector2( 25.154, -48.4183 )
+position = Vector2( 16.6905, -48.4183 )
 enabled = true
 cast_to = Vector2( 0, 10 )
 
 [node name="LedgeRay_Up_Horizontal" type="RayCast2D" parent="PlayerStructure/ledgeGrabRaycasts"]
-position = Vector2( 0, -46 )
+position = Vector2( 0, -60 )
 enabled = true
 cast_to = Vector2( 20, 0 )
 
 [node name="LedgeRay_Horizontal" type="RayCast2D" parent="PlayerStructure/ledgeGrabRaycasts"]
 position = Vector2( 0, -40 )
 enabled = true
-cast_to = Vector2( 20, 0 )
+cast_to = Vector2( 15, 0 )
 
 [node name="Timers" type="Node2D" parent="PlayerStructure"]
 
@@ -308,26 +308,29 @@ wait_time = 0.5
 one_shot = true
 
 [node name="WallDetectionRaycasts" type="Node2D" parent="."]
-visible = false
 
 [node name="Right" type="Node2D" parent="WallDetectionRaycasts"]
 
 [node name="Up" type="RayCast2D" parent="WallDetectionRaycasts/Right"]
 position = Vector2( 0, -30 )
+enabled = true
 cast_to = Vector2( 30, 0 )
 
 [node name="Down" type="RayCast2D" parent="WallDetectionRaycasts/Right"]
 position = Vector2( 0, 50 )
+enabled = true
 cast_to = Vector2( 30, 0 )
 
 [node name="Left" type="Node2D" parent="WallDetectionRaycasts"]
 
 [node name="Up" type="RayCast2D" parent="WallDetectionRaycasts/Left"]
 position = Vector2( 0, -30 )
+enabled = true
 cast_to = Vector2( -30, 0 )
 
 [node name="Down" type="RayCast2D" parent="WallDetectionRaycasts/Left"]
 position = Vector2( 0, 50 )
+enabled = true
 cast_to = Vector2( -30, 0 )
 
 [node name="state_label" type="Label" parent="."]
