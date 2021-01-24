@@ -35,6 +35,7 @@ var can_climb_up = false
 var max_jump_velocity = -450
 var min_jump_velocity = -300
 var double_jump_velocity = -300
+var climb_jump_velocity = -500
 
 # Skills control #
 
@@ -45,16 +46,17 @@ var have_heavy_gun = false
 
 # STATES #
 
-var is_jumping = false
-var is_grounded = false
-var is_wall_sliding = false
-var is_dead = false
-var is_atacking = false
-var is_rolling = false
-var is_crouched = false
-var is_stuned = false
-var is_clibing_up = false
-var is_wall_grab = false
+var is_jumping: bool = false
+var is_grounded: bool = false
+var is_wall_sliding: bool = false
+var is_dead: bool = false
+var is_atacking: bool = false
+var is_rolling: bool = false
+var is_crouched: bool = false
+var is_stuned: bool = false
+var is_clibing_up: bool = false
+var is_wall_grab: bool = false
+var is_wall_grab_jumping: bool = false
 
 var in_menu = false
 
@@ -65,6 +67,7 @@ onready var anim_player = $AnimationPlayer
 onready var player_head = $PlayerStructure/Sprites/Head
 onready var player_structure = $PlayerStructure
 
+onready var ledge_grab_raycasts = $PlayerStructure/ledgeGrabRaycasts
 onready var ledge_grab_raycast_vertical = $PlayerStructure/ledgeGrabRaycasts/LedgeRay_Vertical
 onready var ledgeRay_Up_Horizontal = $PlayerStructure/ledgeGrabRaycasts/LedgeRay_Up_Horizontal
 onready var ledge_grab_raycast_horizontal = $PlayerStructure/ledgeGrabRaycasts/LedgeRay_Horizontal
@@ -88,19 +91,20 @@ onready var playerColisionBox = $PlayerStructure/Colision
 onready var teto_detection = $PlayerStructure/Colision/DetectorDeTeto
 onready var roll_timer = $PlayerStructure/Timers/RollTimer
 onready var Camera = $PlayerStructure/Mira/Eixo/CameraPosition/Camera2D
-###### GUNS PROPS #######
+onready var wall_movement_blocker = $PlayerStructure/Timers/WalljumpMovementBlocker
+
 onready var gunsSprite = $PlayerStructure/Mira/Eixo/Guns/GunsSprites
 onready var gunsProps = $PlayerStructure/Mira/Eixo.gunsProps
-#########################
 
-func _check_if_can_wall_grab():
-	if wall_direction != 0:
-#		if left_wall_raycasts.is_colliding():
-		if ledge_grab_raycast_horizontal.is_colliding():
-			print('can wall slide == true')
-			return true
-	else :
-		return false
+
+func _invert_direction():
+	player_structure.scale.x = -wall_direction
+	
+
+
+func _ledge_grab_direction():
+	player_structure.scale.x = -player_structure.scale.x
+	
 
 func _can_ledge_grab():
 	if !ledgeRay_Up_Horizontal.is_colliding():
@@ -110,56 +114,27 @@ func _can_ledge_grab():
 				return true
 	else: return false
 
-#func _check_if_can_wall_grab():
-#	if wall_direction != 0:
-#		if wall_direction == 1:
-#			if !right_climb_up_raycast.is_colliding() and DW_right_climb_up_raycast.is_colliding():
-##				print('can wall grab == true')
-#				is_wall_grab = true
-#				return true
-#			elif right_climb_up_raycast.is_colliding():
-##				print('can wall grab == false')
-#				is_wall_grab = false
-#				return false
-#		if wall_direction == -1:
-#			if !left_climb_up_raycast.is_colliding() and DW_left_climb_up_raycast.is_colliding():
-##				print('can wall grab == true')
-#				is_wall_grab = true
-#				return true
-#			elif left_climb_up_raycast.is_colliding():
-##				print('can wall grab == false')
-#				is_wall_grab = false
-#				return false
-
 func _climb_up():
-#	position = Vector2(position.x + (30 * wall_direction),position.y - 80)
-	print('Climb up action')
-	var climb_direction = wall_direction
-#	velocity.y = -800
-	velocity.y += -800 
-	yield(get_tree().create_timer(0.2), "timeout")
-	velocity.x = 290 * climb_direction
-	velocity.y = 0
-	
+	velocity.y = climb_jump_velocity
+	is_jumping = true
 	is_clibing_up = false
-	is_wall_grab = false
-
-#func _climb_up():
-##	position = Vector2(position.x + (30 * wall_direction),position.y - 80)
-#	print('ooooooooooo')
+#	print('Climb up action')
 #	var climb_direction = wall_direction
-#	velocity.y = -460
+#	velocity = WALL_JUMP_VELOCITY
 #	yield(get_tree().create_timer(0.2), "timeout")
-#	velocity.x = 290 * climb_direction
+##	velocity.x = 290 * climb_direction
 #	velocity.y = 0
 #
-#	is_clibing_up = false
+#	
 #	is_wall_grab = false
 
-#func _turning_on_skills():
-#	if Input.is_key_pressed(KEY_J):
-#		have_double_jump = !have_double_jump
-#		print('double_jump = ', have_double_jump)
+
+	
+func _set_head_direction():
+	head_direction.x = 1.5
+	head_direction.y = -int(Input.is_action_pressed("move_DOWN")) + int(Input.is_action_pressed("move_UP"))
+	player_head.rotation = -head_direction.angle()
+
 
 func _apply_gravity(delta):
 	if !is_wall_grab and !is_clibing_up:
@@ -170,10 +145,9 @@ func _apply_gravity(delta):
 
 func _cap_gravity_wall_slide():
 #	if !Input.is_action_pressed("move_DOWN"):
-#		var max_velocity = 96
-#		velocity.y = min(velocity.y, max_velocity)
-	var max_velocity = 0
+	var max_velocity = 16
 	velocity.y = min(velocity.y, max_velocity)
+
 
 func _handle_wall_slide_sticking():
 	if move_direction !=0 and move_direction != wall_direction:
@@ -187,13 +161,16 @@ func _handle_wall_slide_sticking():
 #func _unhandled_input(event):
 #	if event.is_action_pressed("ui_accept"):
 #		take_damage(80)
-		
+func _jump():
+	velocity.y = max_jump_velocity
+	is_jumping = true
+	
 func _wall_jump():
 	var wall_jump_velocity = WALL_JUMP_VELOCITY
 	wall_jump_velocity.x *= -wall_direction
 	velocity = wall_jump_velocity
 	wal_jumping = true
-	$WalljumpMovementBlocker.start()
+	wall_movement_blocker.start()
 
 func _apply_movement():
 	velocity = move_and_slide(velocity, UP,SLOPE_STOP)
@@ -206,8 +183,7 @@ func _update_move_direction():
 func _handle_move_input():
 	velocity.x = lerp(velocity.x, move_speed * move_direction, _get_h_weight())
 
-func _update_sprite_direction():
-	
+func _update_direction():
 	if move_direction != 0:
 		player_structure.scale.x = move_direction
 		facing = move_direction
@@ -226,12 +202,14 @@ func _get_h_weight():
 func _update_wall_direction():
 	var is_near_wall_left = _check_is_valid_wall(left_wall_raycasts)
 	var is_near_wall_right = _check_is_valid_wall(right_wall_raycasts)
-	
-	if is_near_wall_left and is_near_wall_right:
+	if is_near_wall_left == true and is_near_wall_right == true:
 		wall_direction = move_direction
+#		print(wall_direction)
 	else:
 		wall_direction = -int(is_near_wall_left) + int(is_near_wall_right)
+#		print(wall_direction)
 		
+
 func _check_is_valid_wall(wall_raycasts):
 	var raycast_up = wall_raycasts.get_child(0)
 	var raycast_down = wall_raycasts.get_child(1)
@@ -240,19 +218,7 @@ func _check_is_valid_wall(wall_raycasts):
 			var dot = acos(Vector2.UP.dot(raycast.get_collision_normal()))
 			if dot > PI * 0.35 and dot < PI * 0.55:
 				return true
-#	for raycast in wall_raycasts.get_children():
-#
-#		if raycast.is_colliding():
-#			var dot = acos(Vector2.UP.dot(raycast.get_collision_normal()))
-#			if dot > PI * 0.35 and dot < PI * 0.55:
-#				return true
 	return false
-
-func _set_head_direction():
-	pass
-	head_direction.x = 1.5
-	head_direction.y = -int(Input.is_action_pressed("move_DOWN")) + int(Input.is_action_pressed("move_UP"))
-	player_head.rotation = -head_direction.angle()
 
 func _roll():
 	velocity.x = facing * rolling_speed
@@ -311,13 +277,6 @@ func death_detection():
 		emit_signal("OnDeath",self)
 		yield(get_tree().create_timer(2.5), "timeout")
 		_respawn()
-
-func _update_effect_animation():
-	pass
-#	if is_stuned:
-#		anim_effect.play("piscando")
-#	else:
-#		anim_effect.play("normal")
 
 func _respawn():
 	yield(get_tree().create_timer(1), "timeout")
@@ -379,12 +338,12 @@ func can_access_inventory(can_access):
 		can_access_inventory = false
 	print("[ _can_access_inventory ] : ", can_access)
 
-
 func _on_RollTimer_timeout():
 	is_rolling = false
 	_verify_if_can_standup()
 
-
 func _on_MiliAtack_timeout():
 	can_atack = true
 
+func _on_WallSlideSticknesTimer_timeout():
+	pass # Replace with function body.

@@ -39,6 +39,30 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 50, 51, 52, 53, 54, 55, 56, 57, 58 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("PlayerStructure/Mira:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("PlayerStructure/Sprites/Head:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=5]
 resource_name = "Crouch"
@@ -54,6 +78,30 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ 22 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("PlayerStructure/Mira:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("PlayerStructure/Sprites/Head:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -71,6 +119,30 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("PlayerStructure/Mira:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("PlayerStructure/Sprites/Head:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=7]
 resource_name = "Fall"
@@ -86,6 +158,30 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ 25, 26 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("PlayerStructure/Mira:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("PlayerStructure/Sprites/Head:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=8]
@@ -104,6 +200,30 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 10, 11 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("PlayerStructure/Mira:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("PlayerStructure/Sprites/Head:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=9]
 resource_name = "Jump"
@@ -120,6 +240,30 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 23, 24 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("PlayerStructure/Mira:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("PlayerStructure/Sprites/Head:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=10]
 resource_name = "LedgeGrab"
@@ -134,6 +278,30 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ 49 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("PlayerStructure/Mira:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("PlayerStructure/Sprites/Head:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=11]
@@ -152,6 +320,30 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 15, 16, 17, 18, 19, 20, 21 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("PlayerStructure/Mira:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("PlayerStructure/Sprites/Head:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=12]
 resource_name = "Run"
@@ -167,6 +359,30 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("PlayerStructure/Mira:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("PlayerStructure/Sprites/Head:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=13]
@@ -185,6 +401,30 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 12, 13, 14 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("PlayerStructure/Mira:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("PlayerStructure/Sprites/Head:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="SpriteFrames" id=14]
 animations = [ {
@@ -197,6 +437,7 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=15]
 
 [node name="Player" type="KinematicBody2D"]
+collision_layer = 4
 script = ExtResource( 13 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -227,12 +468,15 @@ anims/WallSlide = SubResource( 13 )
 [node name="Body" type="Sprite" parent="PlayerStructure/Sprites"]
 texture = ExtResource( 11 )
 hframes = 59
+frame = 50
 
 [node name="Head" type="Sprite" parent="PlayerStructure/Sprites"]
+visible = false
 position = Vector2( 0, -27.0781 )
 texture = ExtResource( 12 )
 
 [node name="Mira" type="Node2D" parent="PlayerStructure"]
+visible = false
 
 [node name="Eixo" type="Position2D" parent="PlayerStructure/Mira"]
 position = Vector2( -8, -14 )
@@ -242,7 +486,7 @@ script = ExtResource( 14 )
 position = Vector2( 68, 11.5 )
 
 [node name="CameraPosition" type="Position2D" parent="PlayerStructure/Mira/Eixo"]
-position = Vector2( 91, 11.5 )
+position = Vector2( 63, 6.5 )
 
 [node name="Camera2D" parent="PlayerStructure/Mira/Eixo/CameraPosition" instance=ExtResource( 15 )]
 
@@ -312,7 +556,7 @@ one_shot = true
 [node name="Right" type="Node2D" parent="WallDetectionRaycasts"]
 
 [node name="Up" type="RayCast2D" parent="WallDetectionRaycasts/Right"]
-position = Vector2( 0, -30 )
+position = Vector2( 0, -47 )
 enabled = true
 cast_to = Vector2( 30, 0 )
 
@@ -324,7 +568,7 @@ cast_to = Vector2( 30, 0 )
 [node name="Left" type="Node2D" parent="WallDetectionRaycasts"]
 
 [node name="Up" type="RayCast2D" parent="WallDetectionRaycasts/Left"]
-position = Vector2( 0, -30 )
+position = Vector2( 0, -47 )
 enabled = true
 cast_to = Vector2( -30, 0 )
 
@@ -340,5 +584,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="timeout" from="PlayerStructure/Timers/WallSlideSticknesTimer" to="." method="_on_WallSlideSticknesTimer_timeout"]
+[connection signal="timeout" from="PlayerStructure/Timers/WalljumpMovementBlocker" to="." method="_on_WalljumpMovementBlocker_timeout"]
 [connection signal="timeout" from="PlayerStructure/Timers/RollTimer" to="." method="_on_RollTimer_timeout"]
 [connection signal="timeout" from="PlayerStructure/Timers/MiliAtack" to="." method="_on_MiliAtack_timeout"]
+[connection signal="timeout" from="PlayerStructure/Timers/Ivunerability" to="." method="_on_Ivunerability_timeout"]
