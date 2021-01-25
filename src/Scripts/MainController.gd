@@ -14,6 +14,7 @@ var aquiped_gun_of_the_type = "1"
 var gun
 onready var gunsProps = $Player2.gunsProps
 onready var gunsSprite = $Player2.gunsSprite
+onready var Player = $Player2
 var money: int
 
 
@@ -69,7 +70,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		print("Gun_4")
 
 	if event.is_action_pressed("inventory"):
-		if $Player.can_access_inventory:
+		if Player.can_access_inventory:
 			_check_equiped_gun()
 			_update_gun()
 			var inventory = $CanvasLayer/Control/Inventory

@@ -35,7 +35,7 @@ var can_climb_up = false
 var max_jump_velocity = -450
 var min_jump_velocity = -300
 var double_jump_velocity = -300
-var climb_jump_velocity = -500
+var climb_jump_velocity = -550
 
 # Skills control #
 
@@ -63,48 +63,43 @@ var in_menu = false
 ############
 
 onready var anim_player = $AnimationPlayer
-#onready var player_body = $SPRITES
 onready var player_head = $PlayerStructure/Sprites/Head
 onready var player_structure = $PlayerStructure
-
 onready var ledge_grab_raycasts = $PlayerStructure/ledgeGrabRaycasts
 onready var ledge_grab_raycast_vertical = $PlayerStructure/ledgeGrabRaycasts/LedgeRay_Vertical
 onready var ledgeRay_Up_Horizontal = $PlayerStructure/ledgeGrabRaycasts/LedgeRay_Up_Horizontal
 onready var ledge_grab_raycast_horizontal = $PlayerStructure/ledgeGrabRaycasts/LedgeRay_Horizontal
-
 onready var left_wall_raycasts = $WallDetectionRaycasts/Left
 onready var right_wall_raycasts = $WallDetectionRaycasts/Right
-
-#-> Timers
 onready var wall_slide_sticky_timer = $PlayerStructure/Timers/WallSlideSticknesTimer
 onready var ivunerability = $PlayerStructure/Timers/Ivunerability
-
 onready var anim_effect = $Effects_animationPlayer
-
 onready var particles_wall_slide1 = $SPRITES/Particles2D
 onready var particles_wall_slide2 = $SPRITES/Particles2D2
-
+onready var ground_detector = $GroundDetector
 onready var state_label = $state_label
-
 onready var playerColisionBox = $PlayerStructure/Colision
-
 onready var teto_detection = $PlayerStructure/Colision/DetectorDeTeto
 onready var roll_timer = $PlayerStructure/Timers/RollTimer
 onready var Camera = $PlayerStructure/Mira/Eixo/CameraPosition/Camera2D
 onready var wall_movement_blocker = $PlayerStructure/Timers/WalljumpMovementBlocker
-
 onready var gunsSprite = $PlayerStructure/Mira/Eixo/Guns/GunsSprites
 onready var gunsProps = $PlayerStructure/Mira/Eixo.gunsProps
 
+func _is_on_floor():
+	var raycast_left = ground_detector.get_child(0)
+	var raycast_rigt = ground_detector.get_child(1)
+	if raycast_left.is_colliding() or raycast_rigt.is_colliding():
+		return true
+	return false
 
 func _invert_direction():
 	player_structure.scale.x = -wall_direction
-	
-
+	facing = -wall_direction
 
 func _ledge_grab_direction():
 	player_structure.scale.x = -player_structure.scale.x
-	
+
 
 func _can_ledge_grab():
 	if !ledgeRay_Up_Horizontal.is_colliding():
@@ -115,21 +110,12 @@ func _can_ledge_grab():
 	else: return false
 
 func _climb_up():
+	yield(get_tree().create_timer(0.4), "timeout")
 	velocity.y = climb_jump_velocity
 	is_jumping = true
 	is_clibing_up = false
-#	print('Climb up action')
-#	var climb_direction = wall_direction
-#	velocity = WALL_JUMP_VELOCITY
-#	yield(get_tree().create_timer(0.2), "timeout")
-##	velocity.x = 290 * climb_direction
-#	velocity.y = 0
-#
-#	
-#	is_wall_grab = false
 
 
-	
 func _set_head_direction():
 	head_direction.x = 1.5
 	head_direction.y = -int(Input.is_action_pressed("move_DOWN")) + int(Input.is_action_pressed("move_UP"))
@@ -180,6 +166,7 @@ func _update_move_direction():
 		move_direction = -int(Input.is_action_pressed("move_LEFT")) + int(Input.is_action_pressed("move_RIGHT"))
 	if is_wall_grab or is_clibing_up :
 		move_direction = -wall_direction
+		
 func _handle_move_input():
 	velocity.x = lerp(velocity.x, move_speed * move_direction, _get_h_weight())
 
@@ -189,7 +176,7 @@ func _update_direction():
 		facing = move_direction
 
 func _get_h_weight():
-	if is_on_floor():
+	if _is_on_floor():
 		return 0.6
 	else:
 		if move_direction == 0:
@@ -198,6 +185,8 @@ func _get_h_weight():
 			return 0.0
 		else:
 			return 0.1
+
+
 
 func _update_wall_direction():
 	var is_near_wall_left = _check_is_valid_wall(left_wall_raycasts)
@@ -242,8 +231,6 @@ func _atack():
 			is_atacking = true
 			can_atack = false
 			$MiliAtack_Timer.start()
-
-
 	print("atack_combo = ", atack_combo)
 
 func _update_lebel_state(state, previous_state):
@@ -329,6 +316,8 @@ func _verify_if_can_standup():
 		is_crouched = false
 	elif !can_stand_up:
 		is_crouched = true
+		
+
 
 
 func can_access_inventory(can_access):
@@ -345,5 +334,3 @@ func _on_RollTimer_timeout():
 func _on_MiliAtack_timeout():
 	can_atack = true
 
-func _on_WallSlideSticknesTimer_timeout():
-	pass # Replace with function body.

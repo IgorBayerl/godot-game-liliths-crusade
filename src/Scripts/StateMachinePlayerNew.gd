@@ -17,7 +17,6 @@ func _ready() -> void:
 	call_deferred("set_state", states.idle)
 	
 func _input(event):
-	
 	if[states.idle, states.run ].has(state):
 		#JUMP
 		if event.is_action_pressed("jump"):
@@ -102,7 +101,7 @@ func _get_transition(delta):
 				return states.crouch
 			if parent.is_atacking:
 				return states.atack
-			if !parent.is_on_floor():
+			if !parent._is_on_floor():
 				if parent.velocity.y < 0:
 					return states.jump
 				elif parent.velocity.y > 0:
@@ -121,7 +120,7 @@ func _get_transition(delta):
 				return states.crouch
 			if parent.is_atacking:
 				return states.atack
-			if !parent.is_on_floor():
+			if !parent._is_on_floor():
 				if parent.velocity.y < 0:
 					return states.jump
 				elif parent.velocity.y > 0:
@@ -143,7 +142,7 @@ func _get_transition(delta):
 #					return states.wall_slide
 #				elif parent._check_if_can_wall_grab():
 #					return states.wall_grab
-			elif parent.is_on_floor():
+			elif parent._is_on_floor():
 				return states.idle
 			elif parent.velocity.y >= 0:
 				return states.fall
@@ -160,7 +159,7 @@ func _get_transition(delta):
 					return states.wall_slide
 			elif parent._can_ledge_grab():
 				return states.wall_grab
-			elif parent.is_on_floor():
+			elif parent._is_on_floor():
 				return states.idle
 			elif parent.velocity.y < 0 :
 				return states.jump
@@ -171,7 +170,7 @@ func _get_transition(delta):
 				return states.wall_grab
 			if parent.is_stuned:
 				return states.stun
-			if parent.is_on_floor():
+			if parent._is_on_floor():
 				return states.idle
 			elif parent.wall_direction == 0:
 				return states.fall
@@ -179,27 +178,19 @@ func _get_transition(delta):
 				return states.is_dead
 		states.rolling:
 			if !parent.is_rolling:
-				if parent.can_stand_up:
-					if parent.is_on_floor():
-						if parent.is_crouched:
-							return states.crouch
+				if !parent._is_on_floor():
+					return states.fall
+				else :
+					if parent.can_stand_up:
 						if parent.velocity.x != 0:
 							return states.run
 						elif parent.velocity.x == 0:
 							return states.idle
-					elif parent.wall_direction == 0:
-						return states.fall
-					elif parent.wall_direction != 0 and parent.have_wall_jump:
-						if !parent._can_ledge_grab():
-							return states.wall_slide
-						elif parent._can_ledge_grab():
-							return states.wall_grab
-				elif parent.can_stand_up:
-					return states.crouch
-					parent.is_crouched = true
+					else:
+						return states.crouch
 		states.stun:
 			if !parent.is_stuned:
-				if !parent.is_on_floor():
+				if !parent._is_on_floor():
 					if parent.velocity.y < 0:
 						return states.jump
 					elif parent.velocity.y > 0:
@@ -236,7 +227,7 @@ func _get_transition(delta):
 					return states.is_dead
 		states.air_atack:
 			if !parent.is_atacking:
-				if !parent.is_on_floor():
+				if !parent._is_on_floor():
 					if parent.velocity.y < 0:
 						return states.jump
 					elif parent.velocity.y > 0:
@@ -293,22 +284,22 @@ func _enter_state(new_state, old_state):
 			parent.velocity = Vector2()
 			parent.anim_effect.play("piscando")
 		states.crouch:
+			parent.velocity = Vector2()
 			parent.is_crouched = true
 			parent.jump_count = 0
 			print('crouched')
 			parent.anim_player.play("Crouch")
-			parent.velocity.x = 0
 		states.atack:
 			parent.anim_player.play("Atack1")
 			parent.velocity.x = 0
 		states.air_atack:
 			parent.anim_player.play("Atack2")
 		states.climb_up:
-#			parent.velocity = Vector2()
 			parent.anim_player.play("ClimbUp")
 			parent._climb_up()
 			print('to subindoooooooooooooooo')
 		states.wall_grab:
+			parent.jump_count = 0
 			parent._ledge_grab_direction()
 			print('LedgeGrab')
 			parent.anim_player.play("LedgeGrab")
@@ -322,6 +313,7 @@ func _exit_state(old_state, new_state):
 	match old_state:
 		states.wall_slide:
 			parent.is_wall_sliding = false
+#			parent._ledge_grab_direction()
 #			parent.particles_wall_slide1.emitting = false
 #			parent.particles_wall_slide2.emitting = false
 		states.climb_up:
@@ -329,6 +321,8 @@ func _exit_state(old_state, new_state):
 			print('chegayyy')
 		states.wall_grab:
 			parent._ledge_grab_direction()
+#		states.rolling:
+#			parent.can_stand_up = true
 			
 func _on_WallSlideSticknesTimer_timeout() -> void:
 	if state == states.wall_slide:
