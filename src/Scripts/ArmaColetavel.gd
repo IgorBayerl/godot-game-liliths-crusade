@@ -9,7 +9,7 @@ export var ammount = 13
 export var type = 1
 
 func _on_Arma_body_entered(body: Node) -> void:
-	if body.get_name() == "Player":
+	if body.is_in_group("Player"):
 		_picked()
 		
 func _ready() -> void:

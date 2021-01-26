@@ -321,6 +321,7 @@ func _verify_if_can_standup():
 
 
 func can_access_inventory(can_access):
+#	return true
 	if can_access != null :
 		can_access_inventory = can_access
 	else:
