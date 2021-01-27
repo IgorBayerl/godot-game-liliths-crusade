@@ -913,6 +913,7 @@ position = Vector2( 63, 6.5 )
 [node name="Camera2D" parent="PlayerStructure/Mira/Eixo/CameraPosition" instance=ExtResource( 15 )]
 visible = false
 offset = Vector2( 0, 0 )
+zoom = Vector2( 1.5, 1.5 )
 offSetCamera = Vector2( 0, -70 )
 
 [node name="Arm" type="Node2D" parent="PlayerStructure/Mira/Eixo"]

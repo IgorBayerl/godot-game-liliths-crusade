@@ -32,9 +32,9 @@ var can_atack = true
 var can_access_inventory = false
 var can_climb_up = false
 
-var max_jump_velocity = -450
-var min_jump_velocity = -300
-var double_jump_velocity = -300
+var max_jump_velocity = -550
+var min_jump_velocity = -450
+var double_jump_velocity = -400
 var climb_jump_velocity = -550
 
 # Skills control #
