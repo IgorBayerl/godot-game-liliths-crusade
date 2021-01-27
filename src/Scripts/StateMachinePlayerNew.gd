@@ -81,9 +81,6 @@ func _state_logic(delta):
 			if state == states.rolling:
 				parent._roll()
 				parent._verify_if_can_standup()
-			if parent.is_clibing_up:
-				pass
-#				parent._climb_up()
 		if state != states.wall_grab:
 			parent._apply_gravity(delta)
 		parent._set_head_direction()
@@ -154,7 +151,7 @@ func _get_transition(delta):
 			if parent.is_atacking:
 				return states.air_atack
 			
-			if parent.wall_direction != 0 and parent.have_wall_jump :
+			if parent.wall_direction != 0 and parent.have_wall_jump :#and parent.move_direction == parent.wall_direction:
 				if !parent._can_ledge_grab():
 					return states.wall_slide
 			elif parent._can_ledge_grab():

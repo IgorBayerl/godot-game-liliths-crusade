@@ -144,7 +144,7 @@
 			"full_ammo": 60,
 			"random_rate": 0.08,
 			"type": 3,
-			"selected": true,
+			"selected": false,
 			"unlocked": true,
 			"using": true
 		},
@@ -162,7 +162,7 @@
 			"full_ammo": 60,
 			"random_rate": 0.08,
 			"type": 3,
-			"selected": false,
+			"selected": true,
 			"unlocked": true,
 			"using": true
 		}

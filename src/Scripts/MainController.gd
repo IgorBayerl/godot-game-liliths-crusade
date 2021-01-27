@@ -12,6 +12,7 @@ var gun_on_hand = 1
 var aquiped_gun_of_the_type = "1"
 
 var gun
+onready var gun_mira = $Player2.gun_mira
 onready var gunsProps = $Player2.gunsProps
 onready var gunsSprite = $Player2.gunsSprite
 onready var Player = $Player2
@@ -102,7 +103,9 @@ func _select_gun(gun):
 		'damage': gun.damage,
 		'shooter_point_position': Vector2( 0 , 0 )
 	}
-	gunsSprite.set_frame(gun.gun_id-1)
+	
+	gun_mira.selcted_gun(gun.gun_id-1)
+#	gunsSprite.set_frame(gun.gun_id-1)
 #	$Player/SPRITES/Mira.damage = gun.damage
 #	$Player/SPRITES/Mira.random_rate = gun.random_rate
 #	$Player/SPRITES/Mira.bullet_speed = gun.bullet_speed

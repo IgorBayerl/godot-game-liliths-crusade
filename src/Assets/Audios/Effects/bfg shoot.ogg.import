@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/bfg shoot.ogg-9b676c671072c5be8ba2c5ec03554aa4.oggstr"
+
+[deps]
+
+source_file="res://src/Assets/Audios/Effects/bfg shoot.ogg"
+dest_files=[ "res://.import/bfg shoot.ogg-9b676c671072c5be8ba2c5ec03554aa4.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

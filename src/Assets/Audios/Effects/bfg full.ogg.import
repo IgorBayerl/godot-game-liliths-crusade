@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/bfg full.ogg-84184abe173c9f9f4baeaf98a59c9a4b.oggstr"
+
+[deps]
+
+source_file="res://src/Assets/Audios/Effects/bfg full.ogg"
+dest_files=[ "res://.import/bfg full.ogg-84184abe173c9f9f4baeaf98a59c9a4b.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

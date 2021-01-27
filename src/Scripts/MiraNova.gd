@@ -18,12 +18,18 @@ var dir: = Vector2()
 var can_fire = true
 var horizontal_dir := -1
 var looking = 1
+var shoot_direction
+var gun_on_hand_id
 
 onready var camera_position = $Camera_position
 
 onready var parent = get_parent().get_parent().get_parent()
 onready var Main_controller = get_tree().get_root().get_node("Main").get_node("MainController")
 onready var ShootPoint = $Mira
+onready var sprites = $Guns/GunsSprites
+onready var BFGSprite = $Guns/BFG
+onready var BFGAnimation = $Guns/BFG_Animation
+onready var Camera = $CameraPosition/Camera2D
 #func _process(delta: float) -> void:
 #	if parent.in_menu:
 #		return
@@ -44,14 +50,18 @@ func _input(event):
 func _try_shoot():
 	if is_able_to_fire:
 		if Main_controller.guns_info[str("type", Main_controller.gun_on_hand)][Main_controller.aquiped_gun_of_the_type].ammo > 0:
-			if gunsProps.automatica:
-				if Input.is_action_pressed("shoot") and can_fire:
-					instanciate_bullet()
-#					$SoundEffects/Shoot.play()
+			if gun_on_hand_id != 8:
+				if gunsProps.automatica:
+					if Input.is_action_pressed("shoot") and can_fire:
+						instanciate_bullet()
+	#					$SoundEffects/Shoot.play()
+				else:
+					if Input.is_action_just_pressed("shoot") and can_fire:
+						instanciate_bullet()
+	#					$SoundEffects/Shoot.play()
 			else:
-				if Input.is_action_just_pressed("shoot") and can_fire:
-					instanciate_bullet()
-#					$SoundEffects/Shoot.play()
+				BFGAnimation.play("Shoot")
+			
 
 func _states():
 	pass
@@ -62,6 +72,18 @@ func _states():
 #		is_able_to_fire = true
 #		visible = true
 
+func selcted_gun(gun_id :int):
+	gun_on_hand_id = gun_id
+	if gun_id != 8:
+		BFGSprite.visible = false
+		sprites.visible = true
+	else:
+		BFGAnimation.play("Idle")
+		sprites.visible = false
+		BFGSprite.visible = true
+	sprites.set_frame(gun_id)
+	print(gun_id)
+	
 func get_direction() -> int:
 	if parent.is_wall_sliding:
 		horizontal_dir = -parent.wall_direction
@@ -120,3 +142,15 @@ func _set_gun_direction():
 #	if dir.x != 0:
 #		looking = dir.x
 #	rotation = dir.angle()
+func camera_shake(timeout):
+	Camera.shake = true
+	Camera.amplitude = 10
+	yield(get_tree().create_timer(timeout), "timeout")
+	Camera.shake = false
+	Camera.amplitude = 6
+
+func _on_BFG_Animation_animation_finished(anim_name):
+	if anim_name == 'Shoot':
+		print('TEEEEEEEEEEEEEEEEEEIIIII')
+		BFGAnimation.play("Idle")
+		camera_shake(1)

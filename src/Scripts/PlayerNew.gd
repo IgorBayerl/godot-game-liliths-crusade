@@ -85,6 +85,7 @@ onready var Camera = $PlayerStructure/Mira/Eixo/CameraPosition/Camera2D
 onready var wall_movement_blocker = $PlayerStructure/Timers/WalljumpMovementBlocker
 onready var gunsSprite = $PlayerStructure/Mira/Eixo/Guns/GunsSprites
 onready var gunsProps = $PlayerStructure/Mira/Eixo.gunsProps
+onready var gun_mira = $PlayerStructure/Mira/Eixo
 
 func _is_on_floor():
 	var raycast_left = ground_detector.get_child(0)
@@ -131,7 +132,7 @@ func _apply_gravity(delta):
 
 func _cap_gravity_wall_slide():
 #	if !Input.is_action_pressed("move_DOWN"):
-	var max_velocity = 16
+	var max_velocity = 0
 	velocity.y = min(velocity.y, max_velocity)
 
 
