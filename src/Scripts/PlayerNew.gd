@@ -319,8 +319,14 @@ func _verify_if_can_standup():
 		is_crouched = true
 		
 
-
-
+func _knockback(directionVector2: Vector2 , Force:int ):
+	var knockback: Vector2 
+	knockback.x = directionVector2.x * Force
+	knockback.y = directionVector2.y * Force
+	
+	print('directionX = ', directionVector2.x , ', DirectionY = ', directionVector2.y, ' -- Value = ',Force,' --')
+	velocity = knockback
+	
 func can_access_inventory(can_access):
 #	return true
 	if can_access != null :

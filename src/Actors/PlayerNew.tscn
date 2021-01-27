@@ -820,6 +820,20 @@ tracks/5/keys = {
 "method": "play"
 } ]
 }
+tracks/6/type = "method"
+tracks/6/path = NodePath("../../../..")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ Vector2( -2, -0.1 ), 300 ],
+"method": "_knockback"
+} ]
+}
 
 [sub_resource type="RectangleShape2D" id=19]
 
@@ -917,7 +931,7 @@ offset = Vector2( 20, 0 )
 position = Vector2( 20, -3 )
 texture = ExtResource( 16 )
 hframes = 8
-frame = 6
+frame = 4
 
 [node name="BFG_Animation" type="AnimationPlayer" parent="PlayerStructure/Mira/Eixo/Guns"]
 anims/Idle = SubResource( 17 )
