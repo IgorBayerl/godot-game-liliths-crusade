@@ -40,5 +40,6 @@ func _apaga():
 func _on_CheckPoint_body_entered(body: Node) -> void:
 	if body.is_in_group("Player") and not activated:
 		activated = true
+		print('checkpoint')
 		body.checkpoint_position = position
 		_ascende()

@@ -7,8 +7,9 @@ var gunsProps = {
 	'fire_rate': 0.3,
 	'random_rate': 0.08,
 	'automatica': false,
-	'damage': 0,
-	'shooter_point_position': Vector2( 0 , 0 )
+	'damage': 30,
+	'shooter_point_position_X': 30,
+	'shooter_point_position_Y': 30
 }
 
 
@@ -32,17 +33,14 @@ onready var BFGSprite = $Guns/BFG
 onready var BFGAnimation = $Guns/BFG_Animation
 onready var Camera = $CameraPosition/Camera2D
 onready var PlayerStructure = get_parent().get_parent()
+onready var StateMachine = get_parent().get_parent().get_parent().get_node("StateMachine")
+
+
 #func _process(delta: float) -> void:
-#	if parent.in_menu:
-#		return
-#	_states()
-#	_try_shoot()
-#	$Arma.scale.y = looking
-#	$Arma.scale.x = looking
-	
-#	_set_poit_direction()
-#	if Input.is_action_pressed("ctrl") :
-#		pass
+#	if Input.is_action_pressed("shoot") and can_fire:
+#		_try_shoot()
+
+
 
 func _input(event):
 	_set_gun_direction()
@@ -58,18 +56,23 @@ func _try_shoot():
 						instanciate_bullet()
 						$Guns/Shoot_1.play()
 				else:
-					if gun_on_hand_id == 3:
-						$Guns/Shoot_ShotGun.visible = true
-						yield(get_tree().create_timer(0.1), "timeout")
-						$Guns/Shoot_ShotGun.visible = false
+					if gun_on_hand_id == 3 and can_fire:
+						shotgunShoot()
+						
 					else:
 						if Input.is_action_just_pressed("shoot") and can_fire:
 							instanciate_bullet()
 							$Guns/Shoot_1.play()
 			else:
-				BFGAnimation.play("Shoot")
+				bfgShoot()
+				
 			
-
+func _update_props(gunsPropsMainController):
+	gunsProps = gunsPropsMainController
+	ShootPoint.position.x = gunsProps.shooter_point_position_X
+	ShootPoint.position.y = gunsProps.shooter_point_position_Y
+	print(gunsProps)
+	
 func _states():
 	pass
 #	if parent.is_dead or parent.is_atacking or parent.is_rolling or parent.is_clibing_up:
@@ -100,12 +103,27 @@ func get_direction() -> int:
 		horizontal_dir = -looking
 	return horizontal_dir
 	
+func bfgShoot() -> void:
+	BFGAnimation.play("Shoot")
+	can_fire = false
+	yield(get_tree().create_timer(gunsProps.fire_rate), "timeout")
+	can_fire = true
+
+func shotgunShoot() -> void:
+	$Guns/Shoot_1.play()
+	$Guns/Shoot_ShotGun.visible = true
+	yield(get_tree().create_timer(0.1), "timeout")
+	$Guns/Shoot_ShotGun.visible = false
+	can_fire = false
+	yield(get_tree().create_timer(gunsProps.fire_rate), "timeout")
+	can_fire = true
+
 func instanciate_bullet() ->void:
 	Main_controller.atirando()
 	var bullet_instance = bullet.instance()
 	bullet_instance.damage = gunsProps.damage
 	bullet_instance.position = ShootPoint.get_global_position()
-	print('Rotation ===> ',rotation_degrees)
+#	print('Rotation ===> ',rotation_degrees)
 	#GAMBIARRA DO KCT
 	if PlayerStructure.scale.x > 0:
 		bullet_instance.rotation_degrees = rotation_degrees + _random_value() 
@@ -132,7 +150,7 @@ func _set_gun_direction():
 	if inputX != 0:
 		dir.x = 1
 	else: 
-		if dir.y != 1:
+		if dir.y != 1 and !parent.is_wall_sliding:
 			dir.x = 0
 		else: dir.x = 1
 	var tempDir = dir
@@ -150,6 +168,6 @@ func camera_shake(timeout):
 
 func _on_BFG_Animation_animation_finished(anim_name):
 	if anim_name == 'Shoot':
-		print('TEEEEEEEEEEEEEEEEEEIIIII')
+#		print('TEEEEEEEEEEEEEEEEEEIIIII')
 		BFGAnimation.play("Idle")
 		camera_shake(1)

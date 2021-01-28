@@ -95,16 +95,18 @@ func _on_GetItem_area_entered(area: Area2D) -> void:
 
 
 func _select_gun(gun):
-	gunsProps = {
+	var tempGnsProps = {
 		'bullet_speed': gun.bullet_speed,
 		'fire_rate': gun.fire_rate,
 		'random_rate': gun.random_rate,
 		'automatica': gun.automatica,
 		'damage': gun.damage,
-		'shooter_point_position': Vector2( 0 , 0 )
+		'shooter_point_position_X': gun.shooter_point_position_X,
+		'shooter_point_position_Y': gun.shooter_point_position_Y
 	}
-	
+	gun_mira._update_props(tempGnsProps)
 	gun_mira.selcted_gun(gun.gun_id-1)
+# OLD
 #	gunsSprite.set_frame(gun.gun_id-1)
 #	$Player/SPRITES/Mira.damage = gun.damage
 #	$Player/SPRITES/Mira.random_rate = gun.random_rate

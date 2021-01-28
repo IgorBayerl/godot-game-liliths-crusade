@@ -14,5 +14,5 @@ func take_damage(damage,damage_direction):
 
 func _death_detection():
 	if health <= 0 :
-		get_parent().get_node("Player").camera_shake(0.2)
+		get_parent().get_node("Player2").camera_shake(0.2)
 		queue_free()

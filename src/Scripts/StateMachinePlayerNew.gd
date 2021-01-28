@@ -17,6 +17,7 @@ func _ready() -> void:
 	call_deferred("set_state", states.idle)
 	
 func _input(event):
+	parent._update_input_direction()
 	if[states.idle, states.run ].has(state):
 		#JUMP
 		if event.is_action_pressed("testKey"):
@@ -157,7 +158,7 @@ func _get_transition(delta):
 			if parent.is_atacking:
 				return states.air_atack
 			
-			if parent.wall_direction != 0 and parent.have_wall_jump :#and parent.move_direction == parent.wall_direction:
+			if parent.wall_direction != 0 and parent.have_wall_jump and parent.input_direction.x == parent.wall_direction:
 				if !parent._can_ledge_grab():
 					return states.wall_slide
 			elif parent._can_ledge_grab():
@@ -176,8 +177,9 @@ func _get_transition(delta):
 				return states.stun
 			if parent._is_on_floor():
 				return states.idle
-			elif parent.wall_direction == 0:
-				return states.fall
+			if parent.input_direction.x == parent.wall_direction * -1:
+				parent._handle_wall_slide_sticking()
+#				return states.fall
 			
 		states.rolling:
 			if !parent.is_rolling:
@@ -257,14 +259,17 @@ func _get_transition(delta):
 	return null
 
 func _enter_state(new_state, old_state):
+	
 	match new_state:
 		states.idle:
 			print('Idle')
 			parent.jump_count = 0
+			print('COUNT JUMP',parent.jump_count)
 			parent.anim_player.play("Idle")
 		states.run:
 			print('Run')
 			parent.jump_count = 0
+			print('COUNT JUMP',parent.jump_count)
 			parent.anim_player.play("Run")
 		states.jump:
 			print('Jump')
@@ -277,22 +282,25 @@ func _enter_state(new_state, old_state):
 			print('WallSlide')
 			parent._invert_direction()
 			parent.jump_count = 0
+			print('COUNT JUMP',parent.jump_count)
 			parent.velocity.y += 100
 			parent.anim_player.play("WallSlide")
 			parent.is_wall_sliding = true
 		states.rolling:
 			print('lets rolla')
 			parent.jump_count = 0
+			print('COUNT JUMP',parent.jump_count)
 			parent.anim_player.play("Roll")
 			parent._rolling_direction()
 		states.stun:
 			print('stunned')
 			parent.velocity = Vector2()
-			parent.anim_effect.play("piscando")
+#			parent.anim_effect.play("piscando")
 		states.crouch:
 			parent.velocity = Vector2()
 			parent.is_crouched = true
 			parent.jump_count = 0
+			print('COUNT JUMP',parent.jump_count)
 			print('crouched')
 			parent.anim_player.play("Crouch")
 		states.atack:
@@ -301,11 +309,14 @@ func _enter_state(new_state, old_state):
 		states.air_atack:
 			parent.anim_player.play("Atack2")
 		states.climb_up:
+			parent.jump_count = 0
+			print('COUNT JUMP',parent.jump_count)
 			parent.anim_player.play("ClimbUp")
 			parent._climb_up()
 			print('to subindoooooooooooooooo')
 		states.wall_grab:
 			parent.jump_count = 0
+			print('COUNT JUMP',parent.jump_count)
 			parent._ledge_grab_direction()
 			print('LedgeGrab')
 			parent.anim_player.play("LedgeGrab")

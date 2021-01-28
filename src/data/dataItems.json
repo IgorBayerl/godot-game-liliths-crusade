@@ -16,7 +16,9 @@
 			"type": 3,
 			"selected": true,
 			"unlocked": true,
-			"using": false
+			"using": false,
+			"shooter_point_position_X": 59,
+			"shooter_point_position_Y": -2.5
 		},
 		"2": {
 			"name": "Resolve",
@@ -34,7 +36,9 @@
 			"type": 3,
 			"selected": false,
 			"unlocked": true,
-			"using": false
+			"using": false,
+			"shooter_point_position_X": 66,
+			"shooter_point_position_Y": -3.5
 		},
 		"3": {
 			"id": 3,
@@ -52,7 +56,9 @@
 			"type": 3,
 			"selected": true,
 			"unlocked": true,
-			"using": false
+			"using": false,
+			"shooter_point_position_X": 72,
+			"shooter_point_position_Y": -3.5
 		}
 	},
 	"type2": {
@@ -72,7 +78,9 @@
 			"type": 3,
 			"selected": true,
 			"unlocked": true,
-			"using": false
+			"using": false,
+			"shooter_point_position_X": 68,
+			"shooter_point_position_Y": 11.5
 		},
 		"2": {
 			"name": "Sniper",
@@ -90,7 +98,9 @@
 			"type": 3,
 			"selected": false,
 			"unlocked": true,
-			"using": false
+			"using": false,
+			"shooter_point_position_X": 84,
+			"shooter_point_position_Y": 6.5
 		},
 		"3": {
 			"name": "Rifle",
@@ -108,7 +118,9 @@
 			"type": 3,
 			"selected": false,
 			"unlocked": false,
-			"using": false
+			"using": false,
+			"shooter_point_position_X": 57,
+			"shooter_point_position_Y": 6.5
 		}
 	},
 	"type3": {
@@ -128,7 +140,9 @@
 			"type": 3,
 			"selected": false,
 			"unlocked": true,
-			"using": false
+			"using": false,
+			"shooter_point_position_X": 73,
+			"shooter_point_position_Y": 25.5
 		},
 		"2": {
 			"name": "Canon",
@@ -146,7 +160,9 @@
 			"type": 3,
 			"selected": false,
 			"unlocked": true,
-			"using": true
+			"using": true,
+			"shooter_point_position_X": 75,
+			"shooter_point_position_Y": 15		
 		},
 		"3": {
 			"name": "BFG",
@@ -164,7 +180,9 @@
 			"type": 3,
 			"selected": true,
 			"unlocked": true,
-			"using": true
+			"using": true,
+			"shooter_point_position_X": 75,
+			"shooter_point_position_Y": 15		
 		}
 	},
 	"type4": {
@@ -184,7 +202,9 @@
 			"type": 3,
 			"selected": true,
 			"unlocked": true,
-			"using": false
+			"using": false,
+			"shooter_point_position_X": 1,
+			"shooter_point_position_Y": 2
 		},
 		"2": {
 			"name": "flamethrower",
@@ -202,7 +222,9 @@
 			"type": 3,
 			"selected": false,
 			"unlocked": true,
-			"using": false
+			"using": false,
+			"shooter_point_position_X": 1,
+			"shooter_point_position_Y": 2
 		},
 		"3": {
 			"name": "flamethrower",
@@ -220,7 +242,9 @@
 			"type": 3,
 			"selected": false,
 			"unlocked": false,
-			"using": false
+			"using": false,
+			"shooter_point_position_X": 1,
+			"shooter_point_position_Y": 2
 		}
 	},
 	"onHand": {

@@ -46,6 +46,7 @@ func set_dir(target_dir):
 		next_dir_time = OS.get_ticks_msec() + react_time
 
 func sees_player():
+	return false
 	var eye_center = get_global_position()
 	var eye_top = eye_center + Vector2(0, -eye_reach)
 	var eye_left = eye_center + Vector2(-eye_reach, 0)
@@ -147,7 +148,7 @@ func _atack():
 		atacking = true
 		$AnimatedSprite.play("Atack")
 		$AnimatedSprite/HitBox/AnimationPlayer.play("Hit")
-		yield(get_tree().create_timer(0.5), "timeout")
+		yield(get_tree().create_timer(1), "timeout")
 		atacking = false
 
 

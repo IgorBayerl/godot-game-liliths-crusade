@@ -1,5 +1,6 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
+[ext_resource path="res://src/Actors/Aroldo.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Assets/Sprites/Level.png" type="Texture" id=2]
 [ext_resource path="res://src/Interface/Health Bar.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/Actors/Arma.tscn" type="PackedScene" id=5]
@@ -434,6 +435,9 @@ shape = SubResource( 7 )
 
 [node name="Barril2" parent="MainController" instance=ExtResource( 12 )]
 position = Vector2( 5144.44, 1152.46 )
+
+[node name="Aroldo" parent="MainController" instance=ExtResource( 1 )]
+position = Vector2( 3206.68, 324.15 )
 
 [node name="Player2" parent="MainController" instance=ExtResource( 17 )]
 position = Vector2( 3633.32, 427.649 )

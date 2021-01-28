@@ -25,6 +25,7 @@ var wal_jumping = false
 var head_direction = Vector2()
 var rolling_speed = 500
 var jump_count = 0
+var input_direction = Vector2()
 
 var can_stand_up = true
 var atack_combo = 0
@@ -87,6 +88,10 @@ onready var gunsSprite = $PlayerStructure/Mira/Eixo/Guns/GunsSprites
 onready var gunsProps = $PlayerStructure/Mira/Eixo.gunsProps
 onready var gun_mira = $PlayerStructure/Mira/Eixo
 
+func _update_input_direction():
+	input_direction.x = -int(Input.is_action_pressed("move_LEFT")) + int(Input.is_action_pressed("move_RIGHT"))
+	input_direction.y = -int(Input.is_action_pressed("move_UP")) + int(Input.is_action_pressed("move_DOWN"))
+
 func _is_on_floor():
 	var raycast_left = ground_detector.get_child(0)
 	var raycast_rigt = ground_detector.get_child(1)
@@ -108,8 +113,8 @@ func _dead():
 func _can_ledge_grab():
 	if !ledgeRay_Up_Horizontal.is_colliding():
 		if ledge_grab_raycast_vertical.is_colliding():
-			if ledge_grab_raycast_horizontal.is_colliding() :
-				print('can climb up == true')
+			if ledge_grab_raycast_horizontal.is_colliding() and input_direction.y != 1:
+#				print('can climb up == true')
 				return true
 	else: return false
 
@@ -140,6 +145,7 @@ func _cap_gravity_wall_slide():
 
 
 func _handle_wall_slide_sticking():
+	jump_count = 0
 	if move_direction !=0 and move_direction != wall_direction:
 		if wall_slide_sticky_timer.is_stopped():
 			wall_slide_sticky_timer.start()
@@ -308,10 +314,10 @@ func _on_Area2D_body_entered(body: Node) -> void:
 
 func _on_tetoDetection_1_body_entered(body):
 	can_stand_up = false
-	print('tem teto aqui caraio')
+#	print('tem teto aqui caraio')
 func _on_tetoDetection_1_body_exited(body):
 	can_stand_up = true
-	print('não tem teto não')
+#	print('não tem teto não')
 	_verify_if_can_standup()
 
 
@@ -327,7 +333,7 @@ func _knockback(directionVector2: Vector2 , Force:int ):
 	knockback.x = directionVector2.x * Force * facing
 	knockback.y = directionVector2.y * Force
 	
-	print('directionX = ', directionVector2.x , ', DirectionY = ', directionVector2.y, ' -- Value = ',Force,' --')
+#	print('directionX = ', directionVector2.x , ', DirectionY = ', directionVector2.y, ' -- Value = ',Force,' --')
 	velocity = knockback
 	
 func can_access_inventory(can_access):
