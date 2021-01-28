@@ -101,6 +101,9 @@ func _invert_direction():
 func _ledge_grab_direction():
 	player_structure.scale.x = -player_structure.scale.x
 
+func _dead():
+	take_damage(100)
+#	is_dead = !is_dead
 
 func _can_ledge_grab():
 	if !ledgeRay_Up_Horizontal.is_colliding():
@@ -321,7 +324,7 @@ func _verify_if_can_standup():
 
 func _knockback(directionVector2: Vector2 , Force:int ):
 	var knockback: Vector2 
-	knockback.x = directionVector2.x * Force
+	knockback.x = directionVector2.x * Force * facing
 	knockback.y = directionVector2.y * Force
 	
 	print('directionX = ', directionVector2.x , ', DirectionY = ', directionVector2.y, ' -- Value = ',Force,' --')

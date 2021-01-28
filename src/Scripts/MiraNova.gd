@@ -21,6 +21,7 @@ var looking = 1
 var shoot_direction
 var gun_on_hand_id
 
+
 onready var camera_position = $Camera_position
 
 onready var parent = get_parent().get_parent().get_parent()
@@ -30,6 +31,7 @@ onready var sprites = $Guns/GunsSprites
 onready var BFGSprite = $Guns/BFG
 onready var BFGAnimation = $Guns/BFG_Animation
 onready var Camera = $CameraPosition/Camera2D
+onready var PlayerStructure = get_parent().get_parent()
 #func _process(delta: float) -> void:
 #	if parent.in_menu:
 #		return
@@ -54,11 +56,16 @@ func _try_shoot():
 				if gunsProps.automatica:
 					if Input.is_action_pressed("shoot") and can_fire:
 						instanciate_bullet()
-	#					$SoundEffects/Shoot.play()
+						$Guns/Shoot_1.play()
 				else:
-					if Input.is_action_just_pressed("shoot") and can_fire:
-						instanciate_bullet()
-	#					$SoundEffects/Shoot.play()
+					if gun_on_hand_id == 3:
+						$Guns/Shoot_ShotGun.visible = true
+						yield(get_tree().create_timer(0.1), "timeout")
+						$Guns/Shoot_ShotGun.visible = false
+					else:
+						if Input.is_action_just_pressed("shoot") and can_fire:
+							instanciate_bullet()
+							$Guns/Shoot_1.play()
 			else:
 				BFGAnimation.play("Shoot")
 			
@@ -98,8 +105,13 @@ func instanciate_bullet() ->void:
 	var bullet_instance = bullet.instance()
 	bullet_instance.damage = gunsProps.damage
 	bullet_instance.position = ShootPoint.get_global_position()
-	bullet_instance.rotation_degrees = rotation_degrees + _random_value() 
-	bullet_instance.apply_impulse(Vector2(),Vector2(gunsProps.bullet_speed,0).rotated(rotation + _random_value()))
+	print('Rotation ===> ',rotation_degrees)
+	#GAMBIARRA DO KCT
+	if PlayerStructure.scale.x > 0:
+		bullet_instance.rotation_degrees = rotation_degrees + _random_value() 
+	else: 
+		bullet_instance.rotation_degrees = -rotation_degrees + 180 + _random_value() 
+	bullet_instance.apply_impulse(Vector2(),Vector2(gunsProps.bullet_speed,0).rotated(shoot_direction + _random_value()))
 	get_tree().get_root().add_child(bullet_instance)
 	can_fire = false
 	yield(get_tree().create_timer(gunsProps.fire_rate), "timeout")
@@ -113,35 +125,22 @@ func _random_value()-> float:
 	
 func _set_gun_direction():
 	dir.y = -int(Input.is_action_pressed("move_UP")) + int(Input.is_action_pressed("move_DOWN"))
-	if dir.y != 0:
+	var inputX = -int(Input.is_action_pressed("move_LEFT")) + int(Input.is_action_pressed("move_RIGHT"))
+	if inputX != 0:
+		looking = inputX
+		
+	if inputX != 0:
 		dir.x = 1
+	else: 
+		if dir.y != 1:
+			dir.x = 0
+		else: dir.x = 1
+	var tempDir = dir
+	tempDir.x = tempDir.x * PlayerStructure.scale.x
+		
 	rotation = dir.angle()
-	
-#### OLD
-#func _set_poit_direction() :
-#	if get_direction() < 0 :
-#		dir = Vector2(0, 0)
-#	if get_direction() > 0 :
-#		dir = Vector2(-1, 0)
-#
-#
-#	dir.y = -int(Input.is_action_pressed("move_UP")) + int(Input.is_action_pressed("move_DOWN"))
-#	if dir.y != 0:
-#		dir.x = -int(Input.is_action_pressed("move_LEFT")) + int(Input.is_action_pressed("move_RIGHT"))
-#
-#
-#	if !parent.is_wall_sliding and !parent.is_clibing_up and !parent.is_wall_grab :
-#		if Input.is_action_pressed("move_LEFT")or Input.is_action_pressed("move_RIGHT"):
-#			dir.x = -int(Input.is_action_pressed("move_LEFT")) + int(Input.is_action_pressed("move_RIGHT"))
-#		if dir.x == 0 and Input.is_action_pressed("move_LEFT"):
-#			dir.x = looking
-#	if parent.is_wall_sliding:
-#		dir.x = -parent.wall_direction
-#		horizontal_dir = -parent.wall_direction
-#
-#	if dir.x != 0:
-#		looking = dir.x
-#	rotation = dir.angle()
+	shoot_direction = tempDir.angle()
+#	
 func camera_shake(timeout):
 	Camera.shake = true
 	Camera.amplitude = 10

@@ -19,6 +19,8 @@ func _ready() -> void:
 func _input(event):
 	if[states.idle, states.run ].has(state):
 		#JUMP
+		if event.is_action_pressed("testKey"):
+			parent._dead()
 		if event.is_action_pressed("jump"):
 			if not Input.is_action_pressed("move_DOWN"):
 				parent._jump()
@@ -91,7 +93,8 @@ func _state_logic(delta):
 func _get_transition(delta):
 	match state:
 		states.idle:
-			
+			if parent.is_dead:
+				return states.is_dead
 			if parent.is_stuned:
 				return states.stun
 			if parent.is_crouched:
@@ -108,9 +111,10 @@ func _get_transition(delta):
 			elif !parent.is_rolling:
 				if parent.velocity.x != 0:
 					return states.run
-			elif parent.is_dead:
-				return states.is_dead
+			
 		states.run:
+			if parent.is_dead:
+				return states.is_dead
 			if parent.is_stuned:
 				return states.stun
 			if parent.is_crouched:
@@ -127,9 +131,10 @@ func _get_transition(delta):
 			elif !parent.is_rolling:
 				if parent.velocity.x == 0:
 					return states.idle
-			elif parent.is_dead:
-				return states.is_dead
+			
 		states.jump:
+			if parent.is_dead:
+				return states.is_dead
 			if parent.is_stuned:
 				return states.stun
 			if parent.is_atacking:
@@ -143,9 +148,10 @@ func _get_transition(delta):
 				return states.idle
 			elif parent.velocity.y >= 0:
 				return states.fall
-			elif parent.is_dead:
-				return states.is_dead
+			
 		states.fall:
+			if parent.is_dead:
+				return states.is_dead
 			if parent.is_stuned:
 				return states.stun
 			if parent.is_atacking:
@@ -160,9 +166,10 @@ func _get_transition(delta):
 				return states.idle
 			elif parent.velocity.y < 0 :
 				return states.jump
-			elif parent.is_dead:
-				return states.is_dead
+			
 		states.wall_slide:
+			if parent.is_dead:
+				return states.is_dead
 			if parent._can_ledge_grab():
 				return states.wall_grab
 			if parent.is_stuned:
@@ -171,8 +178,7 @@ func _get_transition(delta):
 				return states.idle
 			elif parent.wall_direction == 0:
 				return states.fall
-			elif parent.is_dead:
-				return states.is_dead
+			
 		states.rolling:
 			if !parent.is_rolling:
 				if !parent._is_on_floor():
@@ -187,6 +193,8 @@ func _get_transition(delta):
 						return states.crouch
 		states.stun:
 			if !parent.is_stuned:
+				if parent.is_dead:
+					return states.is_dead
 				if !parent._is_on_floor():
 					if parent.velocity.y < 0:
 						return states.jump
@@ -199,10 +207,11 @@ func _get_transition(delta):
 						return states.run
 					elif parent.velocity.x == 0:
 						return states.idle
-				elif parent.is_dead:
-					return states.is_dead
+				
 		states.crouch:
 			if !parent.is_crouched :
+				if parent.is_dead:
+					return states.is_dead
 				if parent.can_stand_up:
 					if parent.is_stuned:
 						return states.stun
@@ -215,13 +224,13 @@ func _get_transition(delta):
 							return states.idle
 			elif parent.is_rolling:
 				return states.rolling
-			elif parent.is_dead:
-					return states.is_dead
+			
 		states.atack:
+			if parent.is_dead:
+				return states.is_dead
 			if !parent.is_atacking:
 				return states.idle
-			elif parent.is_dead:
-					return states.is_dead
+			
 		states.air_atack:
 			if !parent.is_atacking:
 				if !parent._is_on_floor():

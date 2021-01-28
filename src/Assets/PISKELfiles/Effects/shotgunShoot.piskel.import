@@ -1,0 +1,13 @@
+[remap]
+
+importer="com.technohacker.piskel"
+type="StreamTexture"
+path="res://.import/shotgunShoot.piskel-6aeed2aeaa82c5464f72f5c223c32179.stex"
+
+[deps]
+
+source_file="res://src/Assets/PISKELfiles/Effects/shotgunShoot.piskel"
+dest_files=[ "res://.import/shotgunShoot.piskel-6aeed2aeaa82c5464f72f5c223c32179.stex" ]
+
+[params]
+
