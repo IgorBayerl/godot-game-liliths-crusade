@@ -590,7 +590,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ true ]
+"values": [ false ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("PlayerStructure/Sprites/Head:visible")
@@ -611,10 +611,10 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.07, 0.28, 0.35, 0.42, 0.49, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, -26 ) ]
+"values": [ Vector2( -1, -27 ), Vector2( -2, -27 ), Vector2( -0.666667, -27 ), Vector2( -1.72222, -28 ), Vector2( -5.57778, -28.8 ), Vector2( -5.43333, -29.35 ), Vector2( -2, -28 ) ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("PlayerStructure/Mira:position")
@@ -623,10 +623,10 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.00248224 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1, 1 ) ]
+"values": [ Vector2( -0.0606689, 0.855745 ), Vector2( -52.8317, 25.2345 ) ]
 }
 tracks/5/type = "value"
 tracks/5/path = NodePath("CollisionShape2D:disabled")
@@ -891,13 +891,15 @@ anims/WallSlide = SubResource( 15 )
 [node name="Body" type="Sprite" parent="PlayerStructure/Sprites"]
 texture = ExtResource( 11 )
 hframes = 59
-frame = 10
+frame = 9
 
 [node name="Head" type="Sprite" parent="PlayerStructure/Sprites"]
-position = Vector2( -1, -25 )
+position = Vector2( -3.00743, -28.3961 )
 texture = ExtResource( 12 )
 
 [node name="Mira" type="Node2D" parent="PlayerStructure"]
+visible = false
+position = Vector2( -4.72252, 3.00939 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -927,6 +929,7 @@ position = Vector2( 8, 14 )
 [node name="GunsSprites" type="AnimatedSprite" parent="PlayerStructure/Mira/Eixo/Guns"]
 frames = SubResource( 16 )
 animation = "Guns"
+frame = 3
 offset = Vector2( 20, 0 )
 
 [node name="BFG" type="Sprite" parent="PlayerStructure/Mira/Eixo/Guns"]
