@@ -1,0 +1,13 @@
+[remap]
+
+importer="com.technohacker.piskel"
+type="StreamTexture"
+path="res://.import/FlameHand.piskel-511756ddcfab32a8761d378edf832867.stex"
+
+[deps]
+
+source_file="res://src/Pasta Sprites Sheets/Guns/WeaponHoldingSprites/FlameHand.piskel"
+dest_files=[ "res://.import/FlameHand.piskel-511756ddcfab32a8761d378edf832867.stex" ]
+
+[params]
+

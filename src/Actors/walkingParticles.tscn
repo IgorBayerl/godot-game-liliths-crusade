@@ -1,0 +1,14 @@
+[gd_scene format=2]
+
+[node name="Particles2D" type="CPUParticles2D"]
+amount = 5
+lifetime = 0.5
+randomness = 1.0
+lifetime_randomness = 0.3
+local_coords = false
+direction = Vector2( 0, -1 )
+spread = 58.07
+gravity = Vector2( 0, 90 )
+initial_velocity = 25.0
+scale_amount = 2.0
+color = Color( 0, 0, 0, 1 )

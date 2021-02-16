@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://src/Scripts/StateMachinePlayerNew.gd" type="Script" id=1]
 [ext_resource path="res://src/Assets/PISKELfiles/GUNS.piskel/RifleHand.piskel" type="Texture" id=2]
@@ -22,6 +22,7 @@
 [ext_resource path="res://src/Assets/Sprites/light.png" type="Texture" id=20]
 [ext_resource path="res://src/Assets/Audios/Effects/SHOOT.wav" type="AudioStream" id=21]
 [ext_resource path="res://src/Assets/PISKELfiles/Effects/shotgunShoot.piskel" type="Texture" id=22]
+[ext_resource path="res://src/Actors/walkingParticles.tscn" type="PackedScene" id=23]
 
 [sub_resource type="CircleShape2D" id=1]
 
@@ -590,7 +591,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ false ]
+"values": [ true ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("PlayerStructure/Sprites/Head:visible")
@@ -617,19 +618,19 @@ tracks/3/keys = {
 "values": [ Vector2( -1, -27 ), Vector2( -2, -27 ), Vector2( -0.666667, -27 ), Vector2( -1.72222, -28 ), Vector2( -5.57778, -28.8 ), Vector2( -5.43333, -29.35 ), Vector2( -2, -28 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("PlayerStructure/Mira:position")
+tracks/4/path = NodePath("CollisionShape2D:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.00248224 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( -0.0606689, 0.855745 ), Vector2( -52.8317, 25.2345 ) ]
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("CollisionShape2D:disabled")
+tracks/5/path = NodePath("PlayerStructure/Mira:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -637,8 +638,8 @@ tracks/5/enabled = true
 tracks/5/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
 }
 
 [sub_resource type="Animation" id=15]
@@ -894,12 +895,10 @@ hframes = 59
 frame = 9
 
 [node name="Head" type="Sprite" parent="PlayerStructure/Sprites"]
-position = Vector2( -3.00743, -28.3961 )
+position = Vector2( -2, -28 )
 texture = ExtResource( 12 )
 
 [node name="Mira" type="Node2D" parent="PlayerStructure"]
-visible = false
-position = Vector2( -4.72252, 3.00939 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -996,6 +995,11 @@ cast_to = Vector2( 20, 0 )
 position = Vector2( 0, -40 )
 enabled = true
 cast_to = Vector2( 15, 0 )
+
+[node name="particles" type="Node2D" parent="PlayerStructure"]
+
+[node name="WalkingParticles" parent="PlayerStructure/particles" instance=ExtResource( 23 )]
+position = Vector2( 0, 58 )
 
 [node name="Timers" type="Node" parent="PlayerStructure"]
 

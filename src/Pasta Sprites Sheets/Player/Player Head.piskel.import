@@ -1,0 +1,13 @@
+[remap]
+
+importer="com.technohacker.piskel"
+type="StreamTexture"
+path="res://.import/Player Head.piskel-5f01a9d5c914d7befcfd12e6577ff81e.stex"
+
+[deps]
+
+source_file="res://src/Pasta Sprites Sheets/Player/Player Head.piskel"
+dest_files=[ "res://.import/Player Head.piskel-5f01a9d5c914d7befcfd12e6577ff81e.stex" ]
+
+[params]
+

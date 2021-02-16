@@ -1,0 +1,13 @@
+[remap]
+
+importer="com.technohacker.piskel"
+type="StreamTexture"
+path="res://.import/rifle.piskel-abda2c694a2ba57f77ee3c1a4e1a175c.stex"
+
+[deps]
+
+source_file="res://src/Pasta Sprites Sheets/Guns/Weapons Sprites/rifle.piskel"
+dest_files=[ "res://.import/rifle.piskel-abda2c694a2ba57f77ee3c1a4e1a175c.stex" ]
+
+[params]
+

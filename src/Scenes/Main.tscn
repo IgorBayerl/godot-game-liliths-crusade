@@ -298,7 +298,7 @@ collision_layer = 65
 shape = SubResource( 6 )
 
 [node name="wall14" type="Sprite" parent="Level"]
-position = Vector2( 3022.56, 532.876 )
+position = Vector2( 3015.95, 504.56 )
 scale = Vector2( 6.15458, 0.451987 )
 texture = ExtResource( 14 )
 __meta__ = {
@@ -314,7 +314,7 @@ collision_layer = 65
 shape = SubResource( 6 )
 
 [node name="wall15" type="Sprite" parent="Level"]
-position = Vector2( 3547.94, 524.391 )
+position = Vector2( 3546.68, 394.619 )
 scale = Vector2( 2.33621, 0.451987 )
 texture = ExtResource( 14 )
 __meta__ = {
@@ -362,7 +362,7 @@ collision_layer = 65
 shape = SubResource( 6 )
 
 [node name="wall17" type="Sprite" parent="Level"]
-position = Vector2( 2933.4, 457.862 )
+position = Vector2( 2933.4, 423.883 )
 scale = Vector2( 5.21259, 5.42279 )
 texture = ExtResource( 14 )
 __meta__ = {
@@ -420,7 +420,7 @@ shape = SubResource( 7 )
 position = Vector2( 5144.44, 1152.46 )
 
 [node name="Player2" parent="MainController" instance=ExtResource( 17 )]
-position = Vector2( 4640.96, 973.773 )
+position = Vector2( 4781.6, 1097.42 )
 
 [node name="Roberto" parent="MainController" instance=ExtResource( 11 )]
 material = SubResource( 8 )

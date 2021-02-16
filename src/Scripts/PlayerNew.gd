@@ -87,6 +87,7 @@ onready var wall_movement_blocker = $PlayerStructure/Timers/WalljumpMovementBloc
 onready var gunsSprite = $PlayerStructure/Mira/Eixo/Guns/GunsSprites
 onready var gunsProps = $PlayerStructure/Mira/Eixo.gunsProps
 onready var gun_mira = $PlayerStructure/Mira/Eixo
+onready var walkingParticles = $PlayerStructure/particles/WalkingParticles
 
 func _update_input_direction():
 	input_direction.x = -int(Input.is_action_pressed("move_LEFT")) + int(Input.is_action_pressed("move_RIGHT"))

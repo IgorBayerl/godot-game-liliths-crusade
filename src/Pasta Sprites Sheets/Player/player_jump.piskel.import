@@ -1,0 +1,13 @@
+[remap]
+
+importer="com.technohacker.piskel"
+type="StreamTexture"
+path="res://.import/player_jump.piskel-9196f3f861e43cecfc8769089ab981cb.stex"
+
+[deps]
+
+source_file="res://src/Pasta Sprites Sheets/Player/player_jump.piskel"
+dest_files=[ "res://.import/player_jump.piskel-9196f3f861e43cecfc8769089ab981cb.stex" ]
+
+[params]
+

@@ -58,7 +58,6 @@ func _try_shoot():
 				else:
 					if gun_on_hand_id == 3 and can_fire:
 						shotgunShoot()
-						
 					else:
 						if Input.is_action_just_pressed("shoot") and can_fire:
 							instanciate_bullet()

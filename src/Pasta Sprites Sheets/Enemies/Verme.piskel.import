@@ -1,0 +1,13 @@
+[remap]
+
+importer="com.technohacker.piskel"
+type="StreamTexture"
+path="res://.import/Verme.piskel-430cfbc41620445fa8e305e7317e9cc1.stex"
+
+[deps]
+
+source_file="res://src/Pasta Sprites Sheets/Enemies/Verme.piskel"
+dest_files=[ "res://.import/Verme.piskel-430cfbc41620445fa8e305e7317e9cc1.stex" ]
+
+[params]
+

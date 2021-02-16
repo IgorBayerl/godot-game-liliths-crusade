@@ -271,6 +271,7 @@ func _enter_state(new_state, old_state):
 			parent.jump_count = 0
 			print('COUNT JUMP',parent.jump_count)
 			parent.anim_player.play("Run")
+			parent.walkingParticles.emitting = true
 		states.jump:
 			print('Jump')
 			parent.is_wall_grab = false
@@ -328,6 +329,8 @@ func _enter_state(new_state, old_state):
 	
 func _exit_state(old_state, new_state):
 	match old_state:
+		states.run:
+			parent.walkingParticles.emitting = false
 		states.wall_slide:
 			parent.is_wall_sliding = false
 #			parent._ledge_grab_direction()

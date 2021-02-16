@@ -1,0 +1,13 @@
+[remap]
+
+importer="com.technohacker.piskel"
+type="StreamTexture"
+path="res://.import/RifleHand.piskel-bbf7c06e44233771e9e259d2421ebd5e.stex"
+
+[deps]
+
+source_file="res://src/Pasta Sprites Sheets/Guns/WeaponHoldingSprites/RifleHand.piskel"
+dest_files=[ "res://.import/RifleHand.piskel-bbf7c06e44233771e9e259d2421ebd5e.stex" ]
+
+[params]
+

@@ -1,0 +1,13 @@
+[remap]
+
+importer="com.technohacker.piskel"
+type="StreamTexture"
+path="res://.import/Zombie.piskel-b868ce9111d896b1b420f8a8ebce662e.stex"
+
+[deps]
+
+source_file="res://src/Pasta Sprites Sheets/Enemies/Zombie.piskel"
+dest_files=[ "res://.import/Zombie.piskel-b868ce9111d896b1b420f8a8ebce662e.stex" ]
+
+[params]
+

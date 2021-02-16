@@ -1,0 +1,13 @@
+[remap]
+
+importer="com.technohacker.piskel"
+type="StreamTexture"
+path="res://.import/RevolveHand.piskel-50a98fb96db925f2f3c7bc82edf92b24.stex"
+
+[deps]
+
+source_file="res://src/Pasta Sprites Sheets/Guns/WeaponHoldingSprites/RevolveHand.piskel"
+dest_files=[ "res://.import/RevolveHand.piskel-50a98fb96db925f2f3c7bc82edf92b24.stex" ]
+
+[params]
+
