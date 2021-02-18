@@ -1,13 +1,18 @@
 extends KinematicBody2D
 
 export var GRAVITY = 1200
+export var snap_player_on_the_ground_apply_movement: bool = true
 
 signal OnDeath(WhoDied)
 signal OnRespawn(WhoDied)
 
 const UP = Vector2(0, -1)
-const SLOPE_STOP = 60
-const WALL_JUMP_VELOCITY = Vector2(400 , -500)
+const SLOPE_STOP = true # Era 60 nao sei pq
+const WALL_JUMP_VELOCITY = Vector2(400 , -400)
+const SNAP_DIRECTION = Vector2.DOWN
+const SNAP_LENGTH = 32.0
+const FLOOR_MAX_ANGLE = deg2rad(46)
+
 
 ####################
 
@@ -38,6 +43,7 @@ var min_jump_velocity = -450
 var double_jump_velocity = -400
 var climb_jump_velocity = -550
 
+var was_on_floor = false
 # Skills control #
 
 var have_double_jump = true
@@ -87,7 +93,14 @@ onready var wall_movement_blocker = $PlayerStructure/Timers/WalljumpMovementBloc
 onready var gunsSprite = $PlayerStructure/Mira/Eixo/Guns/GunsSprites
 onready var gunsProps = $PlayerStructure/Mira/Eixo.gunsProps
 onready var gun_mira = $PlayerStructure/Mira/Eixo
+onready var WallJumpToDoubleJumpDelay = $PlayerStructure/Timers/WallJumpToDoubleJumpDelay
+onready var CoyoteTime = $PlayerStructure/Timers/CoyoteTime
+#Pariticles
+onready var DoubleJumpParticlesEmissor = $PlayerStructure/particles/DoubleJumpParticleEmissor
 onready var walkingParticles = $PlayerStructure/particles/WalkingParticles
+#onready var doubleJumpParticles = $PlayerStructure/particles/DoubleJumpParticle
+var doubleJumpParticles = preload("res://src/Actors/Mancha_Particle.tscn")
+var jumpEffect = preload("res://src/Actors/Efeitos/jumpEffect.tscn")
 
 func _update_input_direction():
 	input_direction.x = -int(Input.is_action_pressed("move_LEFT")) + int(Input.is_action_pressed("move_RIGHT"))
@@ -106,6 +119,8 @@ func _invert_direction():
 
 func _ledge_grab_direction():
 	player_structure.scale.x = -player_structure.scale.x
+
+
 
 func _dead():
 	take_damage(100)
@@ -159,18 +174,50 @@ func _handle_wall_slide_sticking():
 #	if event.is_action_pressed("ui_accept"):
 #		take_damage(80)
 func _jump():
+	_nstanciate_Jump_Effect()
 	velocity.y = max_jump_velocity
 	is_jumping = true
-	
+	jump_count = 1
+#	_nstanciate_Jump_Particle()
+
+func _double_jump():
+	print('double jump')
+	velocity.y = double_jump_velocity
+	jump_count = 2
+	is_jumping = true
+	_nstanciate_Jump_Particle()
+
+
+#Instanciando particulas
+func _nstanciate_Jump_Particle() -> void :
+	var particle_intance = doubleJumpParticles.instance()
+	particle_intance.position = DoubleJumpParticlesEmissor.get_global_position()
+	particle_intance.emitting = true
+	get_tree().get_root().add_child(particle_intance)
+
+func _nstanciate_Jump_Effect() -> void :
+	var effect_intance = jumpEffect.instance()
+	effect_intance.position = DoubleJumpParticlesEmissor.get_global_position()
+	get_tree().get_root().add_child(effect_intance)
+
+
 func _wall_jump():
 	var wall_jump_velocity = WALL_JUMP_VELOCITY
 	wall_jump_velocity.x *= -wall_direction
 	velocity = wall_jump_velocity
 	wal_jumping = true
 	wall_movement_blocker.start()
+	jump_count = 1
+	WallJumpToDoubleJumpDelay.start()
 
 func _apply_movement():
-	velocity = move_and_slide(velocity, UP,SLOPE_STOP)
+	var snap_vector = SNAP_DIRECTION * SNAP_LENGTH if !is_jumping else Vector2.ZERO
+	if snap_player_on_the_ground_apply_movement == true:
+		velocity.y = move_and_slide_with_snap(velocity, snap_vector, UP, false, 4, FLOOR_MAX_ANGLE ).y
+	else:
+		velocity = move_and_slide(velocity, UP,SLOPE_STOP, 4 , deg2rad(45))
+#	velocity.y = move_and_slide(velocity, UP,SLOPE_STOP, 4 , deg2rad(45)).y
+	
 
 func _update_move_direction():
 	if !is_wall_grab and !is_clibing_up:
@@ -180,15 +227,22 @@ func _update_move_direction():
 		
 func _handle_move_input():
 	velocity.x = lerp(velocity.x, move_speed * move_direction, _get_h_weight())
-
+#	_stop_player_slide_on_a_ramp()
+	
 func _update_direction():
 	if move_direction != 0:
 		player_structure.scale.x = move_direction
 		facing = move_direction
+		
+#func _stop_player_slide_on_a_ramp():
+#	if velocity.x < 0.1 * move_direction:
+#		velocity.x = 0
+#	pass
 
 func _get_h_weight():
 	if _is_on_floor():
-		return 0.6
+		return 1
+#		return 0.6
 	else:
 		if move_direction == 0:
 			return 0.02

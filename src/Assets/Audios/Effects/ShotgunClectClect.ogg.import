@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/ShotgunClectClect.ogg-16565f089d29e471628a000e2f98840c.oggstr"
+
+[deps]
+
+source_file="res://src/Assets/Audios/Effects/ShotgunClectClect.ogg"
+dest_files=[ "res://.import/ShotgunClectClect.ogg-16565f089d29e471628a000e2f98840c.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/ShotgunRecharge.ogg-062a835733bd3d0fb37f3751dd21f578.oggstr"
+
+[deps]
+
+source_file="res://src/Assets/Audios/Effects/ShotgunRecharge.ogg"
+dest_files=[ "res://.import/ShotgunRecharge.ogg-062a835733bd3d0fb37f3751dd21f578.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://src/Scripts/StateMachinePlayerNew.gd" type="Script" id=1]
 [ext_resource path="res://src/Assets/PISKELfiles/GUNS.piskel/RifleHand.piskel" type="Texture" id=2]
@@ -23,6 +23,8 @@
 [ext_resource path="res://src/Assets/Audios/Effects/SHOOT.wav" type="AudioStream" id=21]
 [ext_resource path="res://src/Assets/PISKELfiles/Effects/shotgunShoot.piskel" type="Texture" id=22]
 [ext_resource path="res://src/Actors/walkingParticles.tscn" type="PackedScene" id=23]
+[ext_resource path="res://src/Actors/Mancha_Particle.tscn" type="PackedScene" id=24]
+[ext_resource path="res://src/Assets/Audios/Effects/ShotgunShoot.ogg" type="AudioStream" id=25]
 
 [sub_resource type="CircleShape2D" id=1]
 
@@ -839,7 +841,24 @@ tracks/6/keys = {
 } ]
 }
 
-[sub_resource type="RectangleShape2D" id=19]
+[sub_resource type="Animation" id=19]
+resource_name = "shoot"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
+}
+
+[sub_resource type="RectangleShape2D" id=20]
 
 [node name="Player" type="KinematicBody2D" groups=[
 "Player",
@@ -962,10 +981,19 @@ stream = ExtResource( 19 )
 [node name="Shoot_1" type="AudioStreamPlayer2D" parent="PlayerStructure/Mira/Eixo/Guns"]
 stream = ExtResource( 21 )
 
+[node name="Shoot_Shotgun_sound" type="AudioStreamPlayer2D" parent="PlayerStructure/Mira/Eixo/Guns"]
+stream = ExtResource( 25 )
+
 [node name="Shoot_ShotGun" type="Sprite" parent="PlayerStructure/Mira/Eixo/Guns"]
 visible = false
-position = Vector2( 99.7829, 0 )
+position = Vector2( 138.126, 1 )
+scale = Vector2( 1.60686, 1.42 )
 texture = ExtResource( 22 )
+hframes = 9
+frame = 2
+
+[node name="ShootAnimationShotgun" type="AnimationPlayer" parent="PlayerStructure/Mira/Eixo/Guns/Shoot_ShotGun"]
+anims/shoot = SubResource( 19 )
 
 [node name="Colision" type="Node2D" parent="PlayerStructure"]
 visible = false
@@ -974,7 +1002,7 @@ visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerStructure/Colision/DetectorDeTeto"]
 position = Vector2( 0, -30 )
-shape = SubResource( 19 )
+shape = SubResource( 20 )
 
 [node name="HitBox" type="Node2D" parent="PlayerStructure"]
 
@@ -1000,6 +1028,13 @@ cast_to = Vector2( 15, 0 )
 
 [node name="WalkingParticles" parent="PlayerStructure/particles" instance=ExtResource( 23 )]
 position = Vector2( 0, 58 )
+emitting = false
+
+[node name="DoubleJumpParticle" parent="PlayerStructure/particles" instance=ExtResource( 24 )]
+position = Vector2( 0, 58 )
+
+[node name="DoubleJumpParticleEmissor" type="Position2D" parent="PlayerStructure/particles"]
+position = Vector2( 0, 58 )
 
 [node name="Timers" type="Node" parent="PlayerStructure"]
 
@@ -1021,6 +1056,13 @@ one_shot = true
 
 [node name="Ivunerability" type="Timer" parent="PlayerStructure/Timers"]
 wait_time = 0.5
+one_shot = true
+
+[node name="WallJumpToDoubleJumpDelay" type="Timer" parent="PlayerStructure/Timers"]
+wait_time = 0.01
+one_shot = true
+
+[node name="CoyoteTime" type="Timer" parent="PlayerStructure/Timers"]
 one_shot = true
 
 [node name="WallDetectionRaycasts" type="Node2D" parent="."]

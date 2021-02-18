@@ -1,0 +1,13 @@
+[remap]
+
+importer="com.technohacker.piskel"
+type="StreamTexture"
+path="res://.import/Plague_Fly.piskel-b042076d6dc22d9fa380bea0245e2046.stex"
+
+[deps]
+
+source_file="res://src/Pasta Sprites Sheets/Enemies/Plague_Fly.piskel"
+dest_files=[ "res://.import/Plague_Fly.piskel-b042076d6dc22d9fa380bea0245e2046.stex" ]
+
+[params]
+

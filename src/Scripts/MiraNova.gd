@@ -32,21 +32,22 @@ onready var sprites = $Guns/GunsSprites
 onready var BFGSprite = $Guns/BFG
 onready var BFGAnimation = $Guns/BFG_Animation
 onready var Camera = $CameraPosition/Camera2D
+onready var ShotgunShootSound = $Guns/Shoot_Shotgun_sound
 onready var PlayerStructure = get_parent().get_parent()
 onready var StateMachine = get_parent().get_parent().get_parent().get_node("StateMachine")
 
 
-#func _process(delta: float) -> void:
-#	if Input.is_action_pressed("shoot") and can_fire:
-#		_try_shoot()
+func _process(delta: float) -> void:
+	if Input.is_action_pressed("shoot") and can_fire:
+		_try_shoot()
 
 
 
 func _input(event):
 	_set_gun_direction()
-	if event.is_action_pressed("shoot"):
-		_try_shoot()
-	pass
+#	if event.is_action_pressed("shoot"):
+#		_try_shoot()
+#	pass
 func _try_shoot():
 	if is_able_to_fire:
 		if Main_controller.guns_info[str("type", Main_controller.gun_on_hand)][Main_controller.aquiped_gun_of_the_type].ammo > 0:
@@ -67,6 +68,7 @@ func _try_shoot():
 				
 			
 func _update_props(gunsPropsMainController):
+	
 	gunsProps = gunsPropsMainController
 	ShootPoint.position.x = gunsProps.shooter_point_position_X
 	ShootPoint.position.y = gunsProps.shooter_point_position_Y
@@ -109,9 +111,11 @@ func bfgShoot() -> void:
 	can_fire = true
 
 func shotgunShoot() -> void:
-	$Guns/Shoot_1.play()
+	ShotgunShootSound.play()
+#	$Guns/Shoot_1.play()
+	$Guns/Shoot_ShotGun/ShootAnimationShotgun.play("shoot")
 	$Guns/Shoot_ShotGun.visible = true
-	yield(get_tree().create_timer(0.1), "timeout")
+	yield(get_tree().create_timer(0.5), "timeout")
 	$Guns/Shoot_ShotGun.visible = false
 	can_fire = false
 	yield(get_tree().create_timer(gunsProps.fire_rate), "timeout")

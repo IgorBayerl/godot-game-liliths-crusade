@@ -49,10 +49,9 @@ func _input(event):
 		if event.is_action_pressed("interact"):
 			parent.is_atacking = true
 		if parent.have_double_jump:
-			if event.is_action_pressed("jump") and parent.jump_count == 0:
-				parent.velocity.y = parent.double_jump_velocity
-				parent.jump_count = 1
-				parent.is_jumping = true
+			if event.is_action_pressed("jump") and parent.jump_count == 1 and parent.WallJumpToDoubleJumpDelay.is_stopped():
+				parent._double_jump()
+				
 	if state == states.jump:
 		if event.is_action_released("jump") and parent.velocity.y < parent.min_jump_velocity:
 			parent.velocity.y = parent. min_jump_velocity
@@ -84,13 +83,10 @@ func _state_logic(delta):
 			if state == states.rolling:
 				parent._roll()
 				parent._verify_if_can_standup()
-		if state != states.wall_grab:
-			parent._apply_gravity(delta)
+			if state != states.wall_grab or parent._is_on_floor() :
+				parent._apply_gravity(delta)
 		parent._set_head_direction()
 		
-
-
-
 func _get_transition(delta):
 	match state:
 		states.idle:
@@ -278,6 +274,8 @@ func _enter_state(new_state, old_state):
 			parent.anim_player.play("Jump")
 		states.fall:
 			print('Fall')
+#			if parent.was_on_floor == true:
+			parent.CoyoteTime.start()
 			parent.anim_player.play("Fall")
 		states.wall_slide:
 			print('WallSlide')
@@ -328,9 +326,12 @@ func _enter_state(new_state, old_state):
 			
 	
 func _exit_state(old_state, new_state):
+#	parent.was_on_floor = false
 	match old_state:
 		states.run:
 			parent.walkingParticles.emitting = false
+			parent.walkingParticles.emitting = false
+			parent.was_on_floor = true
 		states.wall_slide:
 			parent.is_wall_sliding = false
 #			parent._ledge_grab_direction()
@@ -341,8 +342,8 @@ func _exit_state(old_state, new_state):
 			print('chegayyy')
 		states.wall_grab:
 			parent._ledge_grab_direction()
-#		states.rolling:
-#			parent.can_stand_up = true
+#		states.fall:
+#			parent.CoyoteTime.stop()
 			
 func _on_WallSlideSticknesTimer_timeout() -> void:
 	if state == states.wall_slide:
