@@ -1,6 +1,7 @@
 extends Position2D
 
 var bullet = preload("res://src/Actors/Projeteis/Bullet.tscn")
+var shotgunShootSprite = preload("res://src/Actors/Efeitos/shootgun_shoot.tscn")
 
 var gunsProps = {
 	'bullet_speed': 1000,
@@ -23,7 +24,6 @@ var shoot_direction
 var gun_on_hand_id
 
 
-onready var camera_position = $Camera_position
 
 onready var parent = get_parent().get_parent().get_parent()
 onready var Main_controller = get_tree().get_root().get_node("Main").get_node("MainController")
@@ -37,13 +37,13 @@ onready var PlayerStructure = get_parent().get_parent()
 onready var StateMachine = get_parent().get_parent().get_parent().get_node("StateMachine")
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_pressed("shoot") and can_fire:
 		_try_shoot()
 
 
 
-func _input(event):
+func _input(_event):
 	_set_gun_direction()
 #	if event.is_action_pressed("shoot"):
 #		_try_shoot()
@@ -57,8 +57,9 @@ func _try_shoot():
 						instanciate_bullet()
 						$Guns/Shoot_1.play()
 				else:
-					if gun_on_hand_id == 3 and can_fire:
-						shotgunShoot()
+					if Input.is_action_just_pressed("shoot") and can_fire:
+						if gun_on_hand_id == 3 and can_fire:
+							shotgunShoot()
 					else:
 						if Input.is_action_just_pressed("shoot") and can_fire:
 							instanciate_bullet()
@@ -111,12 +112,19 @@ func bfgShoot() -> void:
 	can_fire = true
 
 func shotgunShoot() -> void:
+	var shotgun_shoot_effect_intance = shotgunShootSprite.instance()
+#	shotgun_shoot_effect_intance.damage = gunsProps.damage
+	shotgun_shoot_effect_intance.position = ShootPoint.get_global_position()
+	shotgun_shoot_effect_intance.z_index = -1
+	get_tree().get_root().add_child(shotgun_shoot_effect_intance)
+	if PlayerStructure.scale.x > 0:
+		shotgun_shoot_effect_intance.rotation_degrees = rotation_degrees 
+	else: 
+		shotgun_shoot_effect_intance.rotation_degrees = -rotation_degrees + 180 
 	ShotgunShootSound.play()
 #	$Guns/Shoot_1.play()
 	$Guns/Shoot_ShotGun/ShootAnimationShotgun.play("shoot")
-	$Guns/Shoot_ShotGun.visible = true
-	yield(get_tree().create_timer(0.5), "timeout")
-	$Guns/Shoot_ShotGun.visible = false
+#	$Guns/Shoot_ShotGun.visible = false
 	can_fire = false
 	yield(get_tree().create_timer(gunsProps.fire_rate), "timeout")
 	can_fire = true

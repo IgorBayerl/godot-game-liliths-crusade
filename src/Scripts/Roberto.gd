@@ -8,12 +8,12 @@ signal OnDeath(WhoDied)
 
 func _death_detection():
 	if health <= 0 :
-		get_parent().get_node("Player").camera_shake(0.2)
+		get_parent().get_node("Player2").camera_shake(0.2)
 		queue_free()
 		emit_signal("OnDeath",self)
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	_death_detection()
 
 func _ready() -> void:

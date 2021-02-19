@@ -42,7 +42,7 @@ func _ready() -> void:
 
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	label.text = str(mainController.guns_info[str("type", mainController.gun_on_hand)][mainController.aquiped_gun_of_the_type].ammo)
 	sprite.frame = mainController.guns_info[str("type", mainController.gun_on_hand)][mainController.aquiped_gun_of_the_type].gun_id-1
 

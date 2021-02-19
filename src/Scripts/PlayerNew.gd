@@ -35,7 +35,7 @@ var input_direction = Vector2()
 var can_stand_up = true
 var atack_combo = 0
 var can_atack = true
-var can_access_inventory = false
+var can_access_inventory_var = false
 var can_climb_up = false
 
 var max_jump_velocity = -550
@@ -80,9 +80,6 @@ onready var left_wall_raycasts = $WallDetectionRaycasts/Left
 onready var right_wall_raycasts = $WallDetectionRaycasts/Right
 onready var wall_slide_sticky_timer = $PlayerStructure/Timers/WallSlideSticknesTimer
 onready var ivunerability = $PlayerStructure/Timers/Ivunerability
-onready var anim_effect = $Effects_animationPlayer
-onready var particles_wall_slide1 = $SPRITES/Particles2D
-onready var particles_wall_slide2 = $SPRITES/Particles2D2
 onready var ground_detector = $GroundDetector
 onready var state_label = $state_label
 onready var playerColisionBox = $PlayerStructure/Colision
@@ -211,9 +208,11 @@ func _wall_jump():
 	WallJumpToDoubleJumpDelay.start()
 
 func _apply_movement():
+	var stop_on_slope = false if get_floor_velocity().x != 0 else true
+		
 	var snap_vector = SNAP_DIRECTION * SNAP_LENGTH if !is_jumping else Vector2.ZERO
 	if snap_player_on_the_ground_apply_movement == true:
-		velocity.y = move_and_slide_with_snap(velocity, snap_vector, UP, false, 4, FLOOR_MAX_ANGLE ).y
+		velocity.y = move_and_slide_with_snap(velocity, snap_vector, UP, stop_on_slope, 4, FLOOR_MAX_ANGLE ).y
 	else:
 		velocity = move_and_slide(velocity, UP,SLOPE_STOP, 4 , deg2rad(45))
 #	velocity.y = move_and_slide(velocity, UP,SLOPE_STOP, 4 , deg2rad(45)).y
@@ -298,7 +297,7 @@ func _atack():
 			$MiliAtack_Timer.start()
 	print("atack_combo = ", atack_combo)
 
-func _update_lebel_state(state, previous_state):
+func _update_lebel_state(state, _previous_state):
 	state_label.text = str(state)
 
 func _atack_combo():
@@ -364,13 +363,13 @@ func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 func _on_Ivunerability_timeout() -> void:
 	is_stuned = false
 
-func _on_Area2D_body_entered(body: Node) -> void:
+func _on_Area2D_body_entered(_body: Node) -> void:
 	have_double_jump = true
 
-func _on_tetoDetection_1_body_entered(body):
+func _on_tetoDetection_1_body_entered(_body):
 	can_stand_up = false
 #	print('tem teto aqui caraio')
-func _on_tetoDetection_1_body_exited(body):
+func _on_tetoDetection_1_body_exited(_body):
 	can_stand_up = true
 #	print('não tem teto não')
 	_verify_if_can_standup()
@@ -384,7 +383,7 @@ func _verify_if_can_standup():
 		
 
 func _knockback(directionVector2: Vector2 , Force:int ):
-	var knockback: Vector2 
+	var knockback: Vector2 = Vector2(0,0)
 	knockback.x = directionVector2.x * Force * facing
 	knockback.y = directionVector2.y * Force
 	
@@ -394,9 +393,9 @@ func _knockback(directionVector2: Vector2 , Force:int ):
 func can_access_inventory(can_access):
 #	return true
 	if can_access != null :
-		can_access_inventory = can_access
+		can_access_inventory_var = can_access
 	else:
-		can_access_inventory = false
+		can_access_inventory_var = false
 	print("[ _can_access_inventory ] : ", can_access)
 
 func _on_RollTimer_timeout():

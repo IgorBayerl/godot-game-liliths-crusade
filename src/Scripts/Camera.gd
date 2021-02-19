@@ -19,7 +19,7 @@ func _ready() -> void:
 	connect_to_shakers()
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 
 
 	var damping : = ease(timer.time_left / timer.wait_time, DAMP_EASING)

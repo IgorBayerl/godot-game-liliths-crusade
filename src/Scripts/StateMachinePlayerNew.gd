@@ -87,7 +87,7 @@ func _state_logic(delta):
 				parent._apply_gravity(delta)
 		parent._set_head_direction()
 		
-func _get_transition(delta):
+func _get_transition(_delta):
 	match state:
 		states.idle:
 			if parent.is_dead:
@@ -254,7 +254,7 @@ func _get_transition(delta):
 				return states.climb_up
 	return null
 
-func _enter_state(new_state, old_state):
+func _enter_state(new_state, _old_state):
 	
 	match new_state:
 		states.idle:
@@ -325,7 +325,7 @@ func _enter_state(new_state, old_state):
 			parent.anim_player.play("Death")
 			
 	
-func _exit_state(old_state, new_state):
+func _exit_state(old_state, _new_state):
 #	parent.was_on_floor = false
 	match old_state:
 		states.run:
@@ -350,9 +350,9 @@ func _on_WallSlideSticknesTimer_timeout() -> void:
 		set_state(states.fall)
 
 
-func _on_Player_OnDeath(WhoDied):
+func _on_Player_OnDeath(_WhoDied):
 	set_state(states.is_dead)
 
 
-func _on_Player_OnRespawn(WhoDied):
+func _on_Player_OnRespawn(_WhoDied):
 	set_state(states.idle)

@@ -5,7 +5,7 @@ onready var money_label = get_node("Panel/Label")
 
 func _ready(): 
 	pass
-func _unhandled_input(event):
+func _unhandled_input(_event):
 	_update_money()
 	
 func _update_money():

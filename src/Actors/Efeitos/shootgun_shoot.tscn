@@ -1,0 +1,224 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://src/Scripts/shootgun_shoot_effect.gd" type="Script" id=1]
+[ext_resource path="res://src/Assets/PISKELfiles/Effects/shotgunShoot.piskel" type="Texture" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "main"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.45 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Hitbox/CollisionShape2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -20.6323, -8.56043 ), Vector2( -16.7946, -8.72728 ), Vector2( -21.9671, -5.89075 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Hitbox2/CollisionShape2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 13.2002, -11.7479 ), Vector2( 20.3749, -10.4131 ), Vector2( 15.8699, -6.40855 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Hitbox2/CollisionShape2D:shape:radius")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 12.639, 8.13393, 12.3053 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Hitbox2/CollisionShape2D:shape:height")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 41.025, 52.0374, 41.6924 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Hitbox/CollisionShape2D:shape:radius")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 26.1662, 32.2891, 18.6245 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Hitbox3/CollisionShape2D:shape:radius")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 11.6863, 11.8531, 10.6852 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Hitbox3/CollisionShape2D:shape:height")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 49.8884, 50.5558, 51.8906 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Hitbox3/CollisionShape2D:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 33.9177, -11.4316 ), Vector2( 36.7542, -12.2659 ), Vector2( 35.2526, -6.09226 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Hitbox3/CollisionShape2D:disabled")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 0.1, 0.15 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Hitbox2/CollisionShape2D:disabled")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 0.1, 0.15 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("Hitbox/CollisionShape2D:disabled")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, false, true ]
+}
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 18.6245
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 12.3053
+height = 41.6924
+
+[sub_resource type="CapsuleShape2D" id=4]
+radius = 10.6852
+height = 51.8906
+
+[node name="Shoot" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 69.9693, -0.442937 )
+scale = Vector2( 1.40045, 1.26697 )
+texture = ExtResource( 2 )
+hframes = 9
+frame = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/main = SubResource( 1 )
+
+[node name="Hitbox" type="Area2D" parent="."]
+position = Vector2( 49.9467, 0.891899 )
+collision_layer = 0
+collision_mask = 34
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2( -21.9671, -5.89075 )
+shape = SubResource( 2 )
+disabled = true
+
+[node name="Hitbox2" type="Area2D" parent="."]
+position = Vector2( 49.9467, 0.891899 )
+collision_layer = 0
+collision_mask = 34
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox2"]
+position = Vector2( 15.8699, -6.40855 )
+shape = SubResource( 3 )
+disabled = true
+
+[node name="Hitbox3" type="Area2D" parent="."]
+position = Vector2( 53.8753, 0.0500488 )
+collision_layer = 0
+collision_mask = 34
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox3"]
+position = Vector2( 35.2526, -6.09226 )
+shape = SubResource( 4 )
+disabled = true
+[connection signal="body_entered" from="Hitbox" to="." method="_on_Hitbox_body_entered"]
+[connection signal="body_entered" from="Hitbox2" to="." method="_on_Hitbox2_body_entered"]
+[connection signal="body_entered" from="Hitbox3" to="." method="_on_Hitbox3_body_entered"]

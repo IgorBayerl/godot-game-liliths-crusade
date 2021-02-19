@@ -2,7 +2,7 @@ extends StaticBody2D
 
 var health = 100
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	_death_detection()
 
 func take_damage(damage,damage_direction):

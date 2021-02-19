@@ -1099,11 +1099,13 @@ visible = false
 position = Vector2( 5, 58 )
 enabled = true
 cast_to = Vector2( 0, 10 )
+collision_mask = 33
 
 [node name="2" type="RayCast2D" parent="GroundDetector"]
 position = Vector2( -5, 58 )
 enabled = true
 cast_to = Vector2( 0, 10 )
+collision_mask = 33
 
 [node name="state_label" type="Label" parent="."]
 visible = false

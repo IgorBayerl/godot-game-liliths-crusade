@@ -31,7 +31,7 @@ func _ready() -> void:
 func _update_guns_inventory():
 	pass
 	
-func _update_ammo(gun, ammo):
+func _update_ammo(_gun, _ammo):
 	pass
 
 func _update_gun():
@@ -71,7 +71,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		print("Gun_4")
 
 	if event.is_action_pressed("inventory"):
-		if Player.can_access_inventory:
+		if Player.can_access_inventory_var:
 			_check_equiped_gun()
 			_update_gun()
 			var inventory = $CanvasLayer/Control/Inventory
@@ -82,30 +82,30 @@ func _unhandled_input(event: InputEvent) -> void:
 func _on_GetItem_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Guns"):
 		var quantidade = area.ammount
-		var gun = area.type
+#		var gun = area.type
 		if guns_info[str("type", gun_on_hand)][aquiped_gun_of_the_type].unlocked == false:
 			guns_info[str("type", gun_on_hand)][aquiped_gun_of_the_type].unlocked = true
 			print("agaragun bitch")
 #		if player_GUNS_information[gun].unlocked == false:
 #			player_GUNS_information[gun].unlocked = true
 		else:
-			var total = guns_info[str("type", gun_on_hand)][aquiped_gun_of_the_type].ammo + quantidade
+#			var total = guns_info[str("type", gun_on_hand)][aquiped_gun_of_the_type].ammo + quantidade
 			guns_info[str("type", gun_on_hand)][aquiped_gun_of_the_type].ammo += quantidade
 			print("more ammo")
 
 
-func _select_gun(gun):
+func _select_gun(s_gun):
 	var tempGnsProps = {
-		'bullet_speed': gun.bullet_speed,
-		'fire_rate': gun.fire_rate,
-		'random_rate': gun.random_rate,
-		'automatica': gun.automatica,
-		'damage': gun.damage,
-		'shooter_point_position_X': gun.shooter_point_position_X,
-		'shooter_point_position_Y': gun.shooter_point_position_Y
+		'bullet_speed': s_gun.bullet_speed,
+		'fire_rate': s_gun.fire_rate,
+		'random_rate': s_gun.random_rate,
+		'automatica': s_gun.automatica,
+		'damage': s_gun.damage,
+		'shooter_point_position_X': s_gun.shooter_point_position_X,
+		'shooter_point_position_Y': s_gun.shooter_point_position_Y
 	}
 	gun_mira._update_props(tempGnsProps)
-	gun_mira.selcted_gun(gun.gun_id-1)
+	gun_mira.selcted_gun(s_gun.gun_id-1)
 # OLD
 #	gunsSprite.set_frame(gun.gun_id-1)
 #	$Player/SPRITES/Mira.damage = gun.damage

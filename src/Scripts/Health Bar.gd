@@ -8,7 +8,7 @@ var health = 100
 
 
 
-func _on_health_updated(p_health, amount):
+func _on_health_updated(p_health, _amount):
 	health_over.value = p_health
 	update_tween.interpolate_property(health_under, "value", health_under.value, p_health, 0.4, Tween.TRANS_SINE, Tween.EASE_IN_OUT, 0.4)
 	update_tween.start()

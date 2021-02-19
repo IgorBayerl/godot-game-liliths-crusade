@@ -15,7 +15,7 @@ func _ready() -> void:
 			get_parent().connect(BloodSplatterSignalName,self, "on_parent_death")
 	rnd.randomize()
 
-func on_parent_death(parent : Node):
+func on_parent_death(_parent : Node):
 	splatter()
 	
 func splatter(particles_to_spawn := -1):
@@ -24,7 +24,7 @@ func splatter(particles_to_spawn := -1):
 		
 	var spawnedParticles : RigidBody2D
 	
-	for i in range(particles_to_spawn):
+	for _i in range(particles_to_spawn):
 		spawnedParticles = BloodParticleScene.instance()
 		
 		get_tree().root.add_child((spawnedParticles))

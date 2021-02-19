@@ -9,5 +9,5 @@ func fade_out():
 	$AnimationPlayer.play_backwards("fade_in")
 	
 	
-func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
+func _on_AnimationPlayer_animation_finished(_anim_name: String) -> void:
 	emit_signal("fade_finished")
