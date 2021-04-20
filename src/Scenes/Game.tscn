@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://src/Interface/Guns_Bar.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/Actors/Efeitos/Fade_in.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/Interface/Inventory/inventory.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/Interface/Health Bar.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/Scripts/MainGameController.gd" type="Script" id=5]
+[ext_resource path="res://src/Scenes/Main.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/Scripts/LevelLoader.gd" type="Script" id=7]
+
+[node name="Main" type="Node2D"]
+
+[node name="MainGameController" type="Node2D" parent="."]
+script = ExtResource( 5 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="MainGameController"]
+
+[node name="Control" type="Control" parent="MainGameController/CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Health Bar" parent="MainGameController/CanvasLayer/Control" instance=ExtResource( 4 )]
+margin_top = 0.0
+margin_right = 0.0
+margin_bottom = 0.0
+rect_scale = Vector2( 0.2, 0.2 )
+
+[node name="Inventory" parent="MainGameController/CanvasLayer/Control" instance=ExtResource( 3 )]
+visible = false
+
+[node name="Guns_bar" parent="MainGameController/CanvasLayer/Control" instance=ExtResource( 1 )]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+margin_left = -370.0
+margin_right = 370.0
+margin_bottom = 416.0
+
+[node name="Fade" parent="MainGameController/CanvasLayer/Control" instance=ExtResource( 2 )]
+
+[node name="LevelLoader" type="Node2D" parent="."]
+script = ExtResource( 7 )
+
+[node name="Main" parent="LevelLoader" instance=ExtResource( 6 )]

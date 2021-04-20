@@ -1,11 +1,14 @@
 extends Position2D
 
 var bullet = preload("res://src/Actors/Projeteis/Bullet.tscn")
+var fireball = preload("res://src/Actors/Projeteis/Fireball.tscn")
 var shotgunShootSprite = preload("res://src/Actors/Efeitos/shootgun_shoot.tscn")
 
+var ammo_type_array = [ 'none' , bullet, fireball]
 var gunsProps = {
 	'bullet_speed': 1000,
 	'fire_rate': 0.3,
+	'ammo_type': 1,
 	'random_rate': 0.08,
 	'automatica': false,
 	'damage': 30,
@@ -44,7 +47,8 @@ func _process(_delta: float) -> void:
 
 
 func _input(_event):
-	_set_gun_direction()
+	if !parent.in_menu:
+		_set_gun_direction()
 #	if event.is_action_pressed("shoot"):
 #		_try_shoot()
 #	pass
@@ -55,7 +59,7 @@ func _try_shoot():
 				if gunsProps.automatica:
 					if Input.is_action_pressed("shoot") and can_fire:
 						instanciate_bullet()
-						$Guns/Shoot_1.play()
+						
 				else:
 					if Input.is_action_just_pressed("shoot") and can_fire:
 						if gun_on_hand_id == 3 and can_fire:
@@ -63,7 +67,6 @@ func _try_shoot():
 					else:
 						if Input.is_action_just_pressed("shoot") and can_fire:
 							instanciate_bullet()
-							$Guns/Shoot_1.play()
 			else:
 				bfgShoot()
 				
@@ -130,8 +133,12 @@ func shotgunShoot() -> void:
 	can_fire = true
 
 func instanciate_bullet() ->void:
+#	ammo_type
+	var ammo_type_instance = ammo_type_array[1]
+	
+	$Guns/Shoot_1.play()
 	Main_controller.atirando()
-	var bullet_instance = bullet.instance()
+	var bullet_instance = ammo_type_instance.instance()
 	bullet_instance.damage = gunsProps.damage
 	bullet_instance.position = ShootPoint.get_global_position()
 #	print('Rotation ===> ',rotation_degrees)
@@ -153,6 +160,7 @@ func _random_value()-> float:
 	return _random_shoot_value
 	
 func _set_gun_direction():
+	
 	dir.y = -int(Input.is_action_pressed("move_UP")) + int(Input.is_action_pressed("move_DOWN"))
 	var inputX = -int(Input.is_action_pressed("move_LEFT")) + int(Input.is_action_pressed("move_RIGHT"))
 	if inputX != 0:

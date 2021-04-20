@@ -1,0 +1,13 @@
+[remap]
+
+importer="com.technohacker.piskel"
+type="StreamTexture"
+path="res://.import/Soldado Apodrecido Full.piskel-182c5adec6ee4d8a5f3fe003d4fae64e.stex"
+
+[deps]
+
+source_file="res://src/Pasta Sprites Sheets/Enemies/Soldado Apodrecido Full.piskel"
+dest_files=[ "res://.import/Soldado Apodrecido Full.piskel-182c5adec6ee4d8a5f3fe003d4fae64e.stex" ]
+
+[params]
+

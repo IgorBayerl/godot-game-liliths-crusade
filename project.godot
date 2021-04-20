@@ -53,6 +53,10 @@ config/icon="res://icon.png"
 
 JsonData="*res://src/Scripts/JSONData.gd"
 
+[debug]
+
+settings/stdout/print_fps=true
+
 [display]
 
 window/size/width=740
@@ -183,4 +187,5 @@ testKey={
 
 quality/intended_usage/framebuffer_allocation=1
 quality/intended_usage/framebuffer_allocation.mobile=1
+quality/2d/use_pixel_snap=true
 environment/default_environment="res://default_env.tres"

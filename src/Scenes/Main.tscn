@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://src/Actors/plataformaMovel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Assets/Sprites/fundoCastelinho.png" type="Texture" id=2]
@@ -17,13 +17,17 @@
 [ext_resource path="res://src/Interface/Inventory/inventory.tscn" type="PackedScene" id=15]
 [ext_resource path="res://src/Actors/Efeitos/Fade_in.tscn" type="PackedScene" id=16]
 [ext_resource path="res://src/Actors/PlayerNew.tscn" type="PackedScene" id=17]
+[ext_resource path="res://src/Actors/Enemy.tscn" type="PackedScene" id=18]
+[ext_resource path="res://src/Actors/Lilith_Estatua.tscn" type="PackedScene" id=19]
 [ext_resource path="res://src/Interface/Money_Hud.tscn" type="PackedScene" id=20]
 [ext_resource path="res://src/Actors/Money.tscn" type="PackedScene" id=21]
+[ext_resource path="res://src/Pasta Sprites Sheets/StaticActors/Lilith_Estatua_2.piskel" type="Texture" id=22]
+[ext_resource path="res://src/Pasta Sprites Sheets/StaticActors/Lilith_Estatua_2_Jardim.piskel" type="Texture" id=23]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 24.9444, 25.0529 )
 
-[sub_resource type="ShaderMaterial" id=3]
+[sub_resource type="ShaderMaterial" id=2]
 shader = ExtResource( 13 )
 shader_param/flash_color = Color( 0.898039, 0.870588, 0.870588, 1 )
 shader_param/flash_modifier = 0.0
@@ -38,6 +42,17 @@ z_index = -100
 position = Vector2( 158.919, 78.4003 )
 scale = Vector2( 1.10595, 1.14519 )
 texture = ExtResource( 2 )
+
+[node name="Lilith_Estatua_2_Jardim" type="Sprite" parent="Level"]
+position = Vector2( -476.758, 402.386 )
+texture = ExtResource( 23 )
+
+[node name="Lilith_Estatua" parent="Level" instance=ExtResource( 19 )]
+position = Vector2( -721.559, 287.457 )
+
+[node name="Lilith_Estatua_2" type="Sprite" parent="Level"]
+position = Vector2( -447.4, -158.914 )
+texture = ExtResource( 22 )
 
 [node name="wall8" type="Sprite" parent="Level"]
 position = Vector2( -1551.06, 7.55682 )
@@ -72,8 +87,8 @@ collision_layer = 65
 shape = SubResource( 1 )
 
 [node name="wall10" type="Sprite" parent="Level"]
-position = Vector2( -1205.04, 325.956 )
-scale = Vector2( 11.6749, 4.09875 )
+position = Vector2( -1222.01, 325.956 )
+scale = Vector2( 10.9961, 4.09875 )
 texture = ExtResource( 14 )
 __meta__ = {
 "_edit_group_": true
@@ -104,7 +119,7 @@ collision_layer = 65
 shape = SubResource( 1 )
 
 [node name="wall12" type="Sprite" parent="Level"]
-position = Vector2( -998.488, 420.957 )
+position = Vector2( -1018.29, 420.957 )
 scale = Vector2( 1.92048, 1.94286 )
 texture = ExtResource( 14 )
 __meta__ = {
@@ -184,8 +199,8 @@ collision_layer = 65
 shape = SubResource( 1 )
 
 [node name="wall21" type="Sprite" parent="Level"]
-position = Vector2( 1788.18, -24.0656 )
-scale = Vector2( 2.96619, 27.3613 )
+position = Vector2( 1788.18, -95.418 )
+scale = Vector2( 2.96619, 30.2154 )
 texture = ExtResource( 14 )
 __meta__ = {
 "_edit_group_": true
@@ -288,17 +303,18 @@ position = Vector2( 1225.92, 412.953 )
 script = ExtResource( 8 )
 
 [node name="mercador" parent="MainController" instance=ExtResource( 3 )]
-position = Vector2( 200.124, 1011.23 )
+position = Vector2( 210.023, 997.389 )
+scale = Vector2( 0.142175, 0.131805 )
 
 [node name="Barril2" parent="MainController" instance=ExtResource( 12 )]
-position = Vector2( 961.823, 1015.9 )
+position = Vector2( 380.384, 692.75 )
 
 [node name="Player2" parent="MainController" instance=ExtResource( 17 )]
-position = Vector2( 2360.64, 540.788 )
+position = Vector2( 1526.47, 999.917 )
 
 [node name="Roberto" parent="MainController" instance=ExtResource( 11 )]
-material = SubResource( 3 )
-position = Vector2( 1709.04, 957.215 )
+material = SubResource( 2 )
+position = Vector2( 1581.68, 950.307 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="MainController"]
 
@@ -311,11 +327,9 @@ __meta__ = {
 }
 
 [node name="Health Bar" parent="MainController/CanvasLayer/Control" instance=ExtResource( 4 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
 margin_top = 0.0
-margin_right = 751.996
-margin_bottom = 393.0
+margin_right = 0.0
+margin_bottom = 0.0
 rect_scale = Vector2( 0.2, 0.2 )
 
 [node name="Inventory" parent="MainController/CanvasLayer/Control" instance=ExtResource( 15 )]
@@ -350,17 +364,20 @@ position = Vector2( 2136.68, 1005.68 )
 type = 2
 
 [node name="AnimatedSprite" parent="MainController" instance=ExtResource( 21 )]
-position = Vector2( 176.104, 763.382 )
+position = Vector2( 173.859, 709.504 )
 
 [node name="FOG" parent="." instance=ExtResource( 6 )]
 visible = false
 modulate = Color( 0.168627, 0.509804, 0.14902, 0.788235 )
-position = Vector2( 1643.42, 580.507 )
+position = Vector2( 1654.1, 580.507 )
 scale = Vector2( 52.2742, 19.5612 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
 volume_db = -28.272
+
+[node name="Enemy" parent="." instance=ExtResource( 18 )]
+position = Vector2( 1793.33, 1010.37 )
 [connection signal="body_entered" from="MainController/Arma" to="MainController" method="_on_Arma_body_entered"]
 [connection signal="body_entered" from="MainController/Arma2" to="MainController" method="_on_Arma_body_entered"]
 [connection signal="body_entered" from="MainController/Arma4" to="MainController" method="_on_Arma_body_entered"]

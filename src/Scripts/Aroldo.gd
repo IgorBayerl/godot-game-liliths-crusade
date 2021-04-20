@@ -31,7 +31,7 @@ signal OnDeath(WhoDied)
 
 func _death_detection():
 	if health <= 0 :
-		get_parent().get_node("Player").camera_shake(0.2)
+#		get_parent().get_node("Player2").camera_shake(0.2)
 		queue_free()
 		emit_signal("OnDeath",self)
 
@@ -66,54 +66,54 @@ func sees_player():
 			if (corner - eye).length() > vision:
 				continue
 			var collision = space_state.intersect_ray(eye, corner, [], 4) # collision mask = sum of 2^(collision layers) - e.g 2^0 + 2^3 = 9
-			if collision and collision.collider.name == "Player":
+			if collision and collision.collider.name == "Player2":
 				return true
 	return false
 
 
 func _process(delta):
 	_death_detection()
-	if is_in_atack_range:
-		_atack()
-	
-	$AnimatedSprite.scale.x = LOOKING_DIRECTION.x
-	if not atacking:
-		if Player.position.x < position.x - target_player_dist and sees_player() :
-			set_dir(-1)
-			LOOKING_DIRECTION = Vector2(1,0)
-			$AnimatedSprite.play("Walk")
-
-		elif Player.position.x > position.x + target_player_dist and sees_player() :
-			set_dir(1)
-			LOOKING_DIRECTION = Vector2(-1,0)
-			$AnimatedSprite.play("Walk")
-		else :
-			set_dir(0)
-			$AnimatedSprite.play("Idle")
-	else:
-		$AnimatedSprite.play("Atack")
-
-	if OS.get_ticks_msec() > next_dir_time:
-		dir = next_dir
-
-	if OS.get_ticks_msec() > next_jump_time and next_jump_time != -1 and is_on_floor():
-		if Player.position.y < position.y - 64 and sees_player():
-			vel.y = -800
-		next_jump_time = -1
-
-	vel.x = dir * walk_speed
-
-#	if Player.position.y < position.y - 64 and next_jump_time == -1 and sees_player():
-#		next_jump_time = OS.get_ticks_msec() + react_time
-
-	vel.y += grav * delta;
-	if vel.y > max_grav:
-		vel.y = max_grav
-
-	if is_on_floor() and vel.y > 0:
-		vel.y = 0
-
-	vel = move_and_slide(vel, Vector2(0, -1))
+#	if is_in_atack_range:
+#		_atack()
+#
+#	$AnimatedSprite.scale.x = LOOKING_DIRECTION.x
+#	if not atacking:
+#		if Player.position.x < position.x - target_player_dist and sees_player() :
+#			set_dir(-1)
+#			LOOKING_DIRECTION = Vector2(1,0)
+#			$AnimatedSprite.play("Walk")
+#
+#		elif Player.position.x > position.x + target_player_dist and sees_player() :
+#			set_dir(1)
+#			LOOKING_DIRECTION = Vector2(-1,0)
+#			$AnimatedSprite.play("Walk")
+#		else :
+#			set_dir(0)
+#			$AnimatedSprite.play("Idle")
+#	else:
+#		$AnimatedSprite.play("Atack")
+#
+#	if OS.get_ticks_msec() > next_dir_time:
+#		dir = next_dir
+#
+#	if OS.get_ticks_msec() > next_jump_time and next_jump_time != -1 and is_on_floor():
+#		if Player.position.y < position.y - 64 and sees_player():
+#			vel.y = -800
+#		next_jump_time = -1
+#
+#	vel.x = dir * walk_speed
+#
+##	if Player.position.y < position.y - 64 and next_jump_time == -1 and sees_player():
+##		next_jump_time = OS.get_ticks_msec() + react_time
+#
+#	vel.y += grav * delta;
+#	if vel.y > max_grav:
+#		vel.y = max_grav
+#
+#	if is_on_floor() and vel.y > 0:
+#		vel.y = 0
+#
+#	vel = move_and_slide(vel, Vector2(0, -1))
 
 func take_damage(damage,damage_direction):
 #	get_parent().get_node("Player").camera_shake(0.2)

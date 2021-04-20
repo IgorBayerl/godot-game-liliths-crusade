@@ -2,6 +2,9 @@
     "money": 122,
     "life": 50,
     "totalLife": 100,
+    "atual_area":"A1",
+    "loc_x":1256,
+    "loc_y":220,
     "levels_completed": {
         "level1": 0,
         "level2": 0,

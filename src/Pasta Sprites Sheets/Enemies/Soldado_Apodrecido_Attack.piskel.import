@@ -1,0 +1,13 @@
+[remap]
+
+importer="com.technohacker.piskel"
+type="StreamTexture"
+path="res://.import/Soldado_Apodrecido_Attack.piskel-91dba33f1cccee9d5131b0288b36ed9d.stex"
+
+[deps]
+
+source_file="res://src/Pasta Sprites Sheets/Enemies/Soldado_Apodrecido_Attack.piskel"
+dest_files=[ "res://.import/Soldado_Apodrecido_Attack.piskel-91dba33f1cccee9d5131b0288b36ed9d.stex" ]
+
+[params]
+
