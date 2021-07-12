@@ -2,12 +2,12 @@
 
 importer="com.technohacker.piskel"
 type="StreamTexture"
-path="res://.import/Player_Sheet_Master.piskel-2b650cec74419d8b58553008e18a912b.stex"
+path="res://.import/Player_sheet_master.piskel-2b118d4e2c3ac243f7dcd87aff2f6ab3.stex"
 
 [deps]
 
-source_file="res://src/Assets/PISKELfiles/Player_Sheet_Master.piskel"
-dest_files=[ "res://.import/Player_Sheet_Master.piskel-2b650cec74419d8b58553008e18a912b.stex" ]
+source_file="res://src/Assets/PISKELfiles/Player_sheet_master.piskel"
+dest_files=[ "res://.import/Player_sheet_master.piskel-2b118d4e2c3ac243f7dcd87aff2f6ab3.stex" ]
 
 [params]
 
